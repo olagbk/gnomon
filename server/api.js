@@ -1,7 +1,4 @@
 const express = require('express');
-const path = require('path');
-const gulp = require('gulp');
-const tap = require('gulp-tap');
 const router = express.Router();
 
 require('./routes.js')(router);
