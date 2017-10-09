@@ -7,10 +7,7 @@ const sequelize = require('./database/sequelize');
 
 
 require('./models/index.js')(sequelize).then(function(models){
-  gulp.src('./server/routes/*.js')
-    .pipe(tap(function(file){
-      require(file.path)(router, models, sequelize);
-  }))
+    require('./routes.js')(router, models, sequelize);
 });
 
 

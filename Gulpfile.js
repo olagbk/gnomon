@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const gls = require('gulp-live-server');
 const q = require('q');
 const Umzug = require('umzug');
-const watch = require('gulp-watch');
 
 
 gulp.task('server', ()=>{
