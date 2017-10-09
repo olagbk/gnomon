@@ -3,7 +3,6 @@ const gls = require('gulp-live-server');
 const q = require('q');
 const Umzug = require('umzug');
 
-
 gulp.task('server', ()=>{
   var server = gls.new('./server/index.js');
   server.start();
@@ -21,7 +20,7 @@ gulp.task('default', ['server']);
 
 gulp.task('umzug',  function(){
   var deferred = q.defer();
-  var sequelize = require('./app/server/database/sequelize');
+  var sequelize = require('./server/database/sequelize');
 
   sequelize
     .authenticate()
@@ -32,7 +31,7 @@ gulp.task('umzug',  function(){
       console.error('Unable to connect to the database:', err);
     });
 
-  require('./app/server/models/index.js')(sequelize).then(function(models){
+  require('./server/models.js')(sequelize).then(function(models){
     try {
       var umzug = new Umzug({
         storage: 'sequelize',

@@ -1,16 +1,10 @@
 const express = require('express');
-const router = express.Router();
 const path = require('path');
 const gulp = require('gulp');
 const tap = require('gulp-tap');
-const sequelize = require('./database/sequelize');
+const router = express.Router();
 
-
-require('./models/index.js')(sequelize).then(function(models){
-    require('./routes.js')(router, models, sequelize);
-});
-
-
+require('./routes.js')(router);
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
