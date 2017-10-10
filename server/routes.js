@@ -11,6 +11,14 @@ module.exports = function(router){
       for (let file of files){
         require(`./routes/${file}`)(router, models, sequelize);
       }
+      sequelize
+        .authenticate()
+        .then(() => {
+          console.log('Connection has been established successfully.');
+        })
+        .catch(err => {
+          console.error('Unable to connect to the database:', err);
+        });
       deferred.resolve();
     });
   });

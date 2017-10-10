@@ -22,14 +22,6 @@ gulp.task('umzug',  function(){
   var deferred = q.defer();
   var sequelize = require('./server/database/sequelize');
 
-  sequelize
-    .authenticate()
-    .then(() => {
-      console.log('Connection has been established successfully.');
-    })
-    .catch(err => {
-      console.error('Unable to connect to the database:', err);
-    });
 
   require('./server/models.js')(sequelize).then(function(models){
     try {
@@ -40,7 +32,7 @@ gulp.task('umzug',  function(){
         },
         migrations: {
           params: [
-            sequelize, models
+            sequelize
           ],
           path: './server/database/migrations'
         }
