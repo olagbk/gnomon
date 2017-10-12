@@ -1,29 +1,27 @@
-const express = require('express');
-const http = require('http');
-const path = require('path');
-const bodyParser = require('body-parser');
+'use strict';
 
-// Get our API routes
-const api = require('./api');
+import express from 'express';
+import path from 'path';
+
+import api from './api';
 
 const app = express();
+const port = process.env.PORT || '3000';
+
 // Parsers for POST data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-// Point static path to dist
-app.use(express.static(path.join(path.resolve(), 'dist')));
+// Point static path to dist/client
+app.use(express.static(path.join(path.resolve(), 'dist/client')));
 
-// Set our api routes
+// Set api routes
 app.use('/api', api);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(path.resolve(), 'dist/index.html'));
+  res.sendFile(path.join(path.resolve(), 'dist/client/index.html'));
 });
 
-const port = process.env.PORT || '3000';
 app.listen(port);
 
-
-module.exports = app;

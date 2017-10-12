@@ -4,8 +4,6 @@ import gls from 'gulp-live-server';
 import gulp from 'gulp';
 import Umzug from 'umzug';
 
-import sequelize from '/dist/server/database/sequelize';
-
 const server = gls.new('./dist/server/index.js');
 
 gulp.task('default', ['watch']);
@@ -28,7 +26,8 @@ gulp.task('transpile', () => {
   });
 });
 
-gulp.task('umzug', () => {
+gulp.task('umzug', ['transpile'], () => {
+  const sequelize = require('./dist/server/database/sequelize');
   const migrations = new Umzug({
     storage: 'sequelize',
     storageOptions: {

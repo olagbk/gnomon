@@ -1,11 +1,37 @@
-const express = require('express');
+'use strict';
+
+import express from 'express';
+import fs from 'fs';
+
+import sequelize from './database/sequelize';
+
 const router = express.Router();
 
-require('./routes.js')(router);
+fs.readdir('server/models', (err, files) => {
+
+  for (let file of files) {
+    require(`./models/${file}`)(sequelize)
+  }
+
+  fs.readdir('server/routes', (err, files) => {
+
+    for (let file of files) {
+      require(`./routes/${file}`)(router, sequelize);
+    }
+
+    sequelize
+      .authenticate()
+      .then(() => {
+        console.log('Connection has been established successfully.');
+      })
+      .catch(err => {
+        console.error('Unable to connect to the database:', err);
+      });
+  });
+});
 
 // middleware to use for all requests
-router.use(function(req, res, next) {
-  // do logging
+router.use((req, res, next) => {
   console.log('Something is happening.');
   next(); // make sure we go to the next routes and don't stop here
 });
@@ -15,5 +41,4 @@ router.get('/', (req, res) => {
   res.send('api works');
 });
 
-
-module.exports = router;
+export default router;

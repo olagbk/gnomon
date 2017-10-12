@@ -1,24 +1,22 @@
 'use strict';
 
-module.exports = function(router, models){
+module.exports = (router, sequelize) => {
   router.route('/posts')
 
-  // create a post (accessed at POST http://localhost:8080/api/posts)
-    .post(function(req, res) {
+    .post((req, res) => {
 
-      models.Post.create({title: req.query.title, body: req.query.body})
-        .then((post) => res.json({message: 'Post created!'}))
-        .catch((err)=> console.log(err))
+      sequelize.models.posts.create({
+        title: req.query.title,
+        body: req.query.body
       })
-    .get(function(req, res){
+        .then((post) => res.json(post))
+        .catch((err) => res.status(500).send(err))
+      })
 
-      models.Post.findAll().then((posts) => res.json(posts));
+    .get((req, res) => {
+
+      sequelize.models.posts.findAll()
+        .then((posts) => res.json(posts))
+        .catch((err) => res.status(500).send(err));
     })
-      // // save the post and check for errors
-      // post.save(function(err) {
-      //   if (err)
-      //     res.send(err);
-      //
-      //   res.json({ message: 'Post created!' });
-      // });
 };

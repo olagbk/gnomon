@@ -1,8 +1,9 @@
 'use strict';
 
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 
-module.exports = function(sequelize){
+module.exports = (sequelize) => {
+
   return sequelize.define('posts', {
     title: Sequelize.STRING,
     body: Sequelize.STRING

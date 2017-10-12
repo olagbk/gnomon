@@ -1,10 +1,10 @@
 'use strict';
-const Sequelize = require('sequelize');
-import config from '/config/config.json';
-//const config = require('../../config/config');
-const env = process.env.NODE_ENV || 'development';
 
-let sequelize =
+import Sequelize from 'sequelize';
+import config from '/config/config.json';
+
+const env = process.env.NODE_ENV || 'development';
+const sequelize =
   (process.env.DATABASE_URL) ?
     new Sequelize(process.env.DATABASE_URL, {
     "ssl": true,
@@ -17,4 +17,4 @@ let sequelize =
     host: config[env].database.host
   });
 
-module.exports = sequelize;
+export default sequelize;
