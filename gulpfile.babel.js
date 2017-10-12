@@ -1,14 +1,31 @@
-import gulp from 'gulp';
+import babel from 'gulp-babel';
+import del from 'del';
 import gls from 'gulp-live-server';
+import gulp from 'gulp';
 import Umzug from 'umzug';
-import sequelize from './server/database/sequelize';
 
-gulp.task('default', ['server']);
+import sequelize from '/dist/server/database/sequelize';
 
-gulp.task('server', () => {
-  const server = gls.new('./server/index.js');
+const server = gls.new('./dist/server/index.js');
+
+gulp.task('default', ['watch']);
+
+gulp.task('watch', ['server'], () => {
+  gulp.watch('./server/**/*.js', ['server']);
+});
+gulp.task('server', ['transpile'], () => {
   server.start();
-  gulp.watch('./server/**/*.js', () => server.start() );
+});
+
+gulp.task('transpile', () => {
+  return new Promise((resolve) => {
+    del(['dist/server/**', '!dist/server']).then(
+      gulp.src('server/**/*.js')
+        .pipe(babel())
+        .pipe(gulp.dest('dist/server'))
+        .on('end', resolve)
+    );
+  });
 });
 
 gulp.task('umzug', () => {
@@ -21,7 +38,7 @@ gulp.task('umzug', () => {
       params: [
         sequelize
       ],
-      path: './server/database/migrations'
+      path: './dist/server/database/migrations'
     }
   });
   return migrations.up()

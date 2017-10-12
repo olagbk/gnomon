@@ -1,6 +1,7 @@
 'use strict';
 const Sequelize = require('sequelize');
-const config = require('../../config/config.json');
+import config from '/config/config.json';
+//const config = require('../../config/config');
 const env = process.env.NODE_ENV || 'development';
 
 let sequelize =
