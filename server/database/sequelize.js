@@ -1,7 +1,7 @@
 'use strict';
 
 import Sequelize from 'sequelize';
-import config from '/config/config.json';
+import config from '/config/database.json';
 
 const env = process.env.NODE_ENV || 'development';
 const sequelize =
@@ -12,9 +12,9 @@ const sequelize =
       "ssl": true
     }
   }) :
-    new Sequelize(config[env].database.name, config[env].database.username, config[env].database.password, {
-    dialect: 'postgres',
-    host: config[env].database.host
+    new Sequelize(config[env].database, config[env].username, config[env].password, {
+    dialect: config[env].dialect,
+    host: config[env].host
   });
 
 export default sequelize;

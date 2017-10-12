@@ -1,18 +1,13 @@
 'use strict';
 
-var q = require('q');
+import path from 'path';
 
-module.exports = {
-  up: function(sequelize){
-    var deferred = q.defer();
+export default {
+  up: (queryInterface, Sequelize, done) => {
 
-    //Add schemas
-    sequelize.models.posts.sync().then(function() {
-      deferred.resolve();
-    });
-    return deferred.promise;
+    const model = queryInterface.sequelize.import(path.join(path.resolve(), '/dist/server/models/Post.js'));
 
-
+    model.sync().then(() => done());
   }
 };
 
