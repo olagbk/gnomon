@@ -14,14 +14,16 @@ gulp.task('server', ['transpile'], () => {
   server.start();
 });
 
-gulp.task('transpile', () => {
+gulp.task('clean', () => {
+  return del(['dist/*', '!dist/public/**']);
+});
+
+gulp.task('transpile', ['clean'], () => {
   return new Promise((resolve) => {
-    del(['dist/*.js', 'dist/**/*.js', '!dist/public']).then(
-      gulp.src('server/**/*.js')
-        .pipe(babel())
-        .pipe(gulp.dest('dist'))
-        .on('end', resolve)
-    );
+    gulp.src('server/**/*.js')
+      .pipe(babel())
+      .pipe(gulp.dest('dist'))
+      .on('end', resolve)
   });
 });
 
