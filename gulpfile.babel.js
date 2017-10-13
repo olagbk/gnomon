@@ -2,7 +2,6 @@ import babel from 'gulp-babel';
 import del from 'del';
 import gls from 'gulp-live-server';
 import gulp from 'gulp';
-import Umzug from 'umzug';
 
 const server = gls.new('./dist/server/index.js');
 
@@ -26,19 +25,3 @@ gulp.task('transpile', () => {
   });
 });
 
-gulp.task('umzug', ['transpile'], () => {
-  const sequelize = require('./dist/server/database/sequelize');
-  const migrations = new Umzug({
-    storage: 'sequelize',
-    storageOptions: {
-      sequelize: sequelize
-    },
-    migrations: {
-      params: [
-        sequelize
-      ],
-      path: './dist/server/database/migrations'
-    }
-  });
-  return migrations.up()
-});
