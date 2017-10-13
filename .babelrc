@@ -2,6 +2,6 @@
   "presets": ["env"],
   "plugins": [
     "add-module-exports",
-    "babel-root-slash-import"
+    "babel-plugin-root-import"
   ]
 }

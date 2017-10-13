@@ -3,7 +3,7 @@ import del from 'del';
 import gls from 'gulp-live-server';
 import gulp from 'gulp';
 
-const server = gls.new('./dist/server/index.js');
+const server = gls.new('./dist/index.js');
 
 gulp.task('default', ['watch']);
 
@@ -16,10 +16,10 @@ gulp.task('server', ['transpile'], () => {
 
 gulp.task('transpile', () => {
   return new Promise((resolve) => {
-    del(['dist/server/**', '!dist/server']).then(
+    del(['dist/*.js', 'dist/**/*.js', '!dist/public']).then(
       gulp.src('server/**/*.js')
         .pipe(babel())
-        .pipe(gulp.dest('dist/server'))
+        .pipe(gulp.dest('dist'))
         .on('end', resolve)
     );
   });
