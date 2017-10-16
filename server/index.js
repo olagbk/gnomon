@@ -1,5 +1,4 @@
 'use strict';
-import 'module-alias/register';
 
 import express from 'express';
 import path from 'path';
@@ -13,7 +12,6 @@ const port = process.env.PORT || '3000';
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Point static path to dist/client
 app.use(express.static(path.join(path.resolve(), 'dist/public')));
 
 // Set api routes
@@ -24,5 +22,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(path.resolve(), 'dist/public/index.html'));
 });
 
-app.listen(port);
+const server = app.listen(port);
 
+export default server;
