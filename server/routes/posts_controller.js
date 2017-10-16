@@ -9,14 +9,21 @@ module.exports = (router, sequelize) => {
         title: req.query.title,
         body: req.query.body
       })
-        .then((post) => res.json(post))
-        .catch((err) => res.status(422).send(err))
+        .then(post => res.json(post))
+
+        .catch(err => {
+
+        if (err.constructor.name === 'ValidationError')
+          res.status(422);
+
+        res.send(err);
+        })
       })
 
     .get((req, res) => {
 
       sequelize.models.posts.findAll()
-        .then((posts) => res.json(posts))
-        .catch((err) => res.status(500).send(err));
+        .then(posts => res.json(posts))
+        .catch(err => res.send(err));
     })
 };

@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'test';
 
 import chai from 'chai';
 import chaiHttp from 'chai-http';
@@ -12,16 +12,15 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-//Our parent block
 describe('Posts', () => {
-  beforeEach((done) => { //Before each test we empty the database
+  beforeEach((done) => { //empty the database before each test
     Post.destroy({where: {}}).then(() => done()); //must be wrapped
   });
   /*
     * Test the /GET route
     */
   describe('/GET posts', () => {
-    it('it should GET all the posts', (done) => {
+    it('it should GET an empty posts array', (done) => {
       chai.request(server)
         .get('/api/posts')
         .end((err, res) => {
@@ -35,46 +34,62 @@ describe('Posts', () => {
   /*
   * Test the /POST route
   */
+  describe('/POST a post', () => {
+    const post = {
+      title: "Proper title",
+      body: "Much body"
+    };
+    let response;
 
-  describe('/POST post', () => {
-    it('it should not POST a post without a title', (done) => {
-      const post = {
-        body: "Post body"
-      };
+    it('should return status 200', (done) => {
       chai.request(server)
         .post('/api/posts')
         .query(post)
         .end((err, res) => {
+          response = res;
+          res.should.have.status(200);
+          done();
+      });
+    });
+    it('should have a title and body', () => {
+      response.body.should.be.a('object');
+      response.body.should.have.property('title');
+      response.body.should.have.property('body');
+    });
+    it('should have timestamps', () => {
+      response.body.should.have.property('createdAt');
+      response.body.should.have.property('updatedAt');
+    })
+  });
 
-          res.should.have.status(422);
-          res.body.should.be.a('object');
-          res.body.should.have.property('errors');
-          res.body.errors.length.should.be.eql(1);
+  describe('/POST post with no title', () => {
+    const post = {
+      body: "Post body"
+    };
+    let response;
 
-          const error = res.body.errors[0];
-          error.should.have.property('path').eql('title');
-          error.should.have.property('type').eql('notNull Violation');
+    it('should return status 422', (done) => {
+      chai.request(server)
+        .post('/api/posts')
+        .query(post)
+        .end((err, res) => {
+          response = res;
+          response.should.have.status(422);
           done();
         });
     });
-    it('it should POST a post ', (done) => {
-      const post = {
-        title: "Proper title",
-        body: "Much body"
-      };
-      chai.request(server)
-        .post('/api/posts')
-        .query(post)
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.a('object');
-          res.body.should.have.property('title');
-          res.body.should.have.property('body');
-          res.body.should.have.property('createdAt');
-          res.body.should.have.property('updatedAt');
-          exeunt();
-          done();
-        });
-    })
-  })
+    it('should return one error', () => {
+      response.body.should.be.a('object');
+      response.body.should.have.property('errors');
+      response.body.errors.length.should.be.eql(1);
+    });
+    it('should return a notNull Violation error', () => {
+      const error = response.body.errors[0];
+      error.should.have.property('path').eql('title');
+      error.should.have.property('type').eql('notNull Violation');
+      exeunt();
+    });
+  });
 });
+
+
