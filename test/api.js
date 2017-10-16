@@ -41,15 +41,17 @@ describe('Posts', () => {
     };
     let response;
 
-    it('should return status 200', (done) => {
+    before(done => {
       chai.request(server)
         .post('/api/posts')
-        .query(post)
-        .end((err, res) => {
-          response = res;
-          res.should.have.status(200);
-          done();
-      });
+        .query(post).end((err, res) => {
+        response = res;
+        done();
+      })
+    });
+
+    it('should return status 200', () => {
+      response.should.have.status(200);
     });
     it('should have a title and body', () => {
       response.body.should.be.a('object');
@@ -68,28 +70,31 @@ describe('Posts', () => {
     };
     let response;
 
-    it('should return status 422', (done) => {
+    before(done => {
       chai.request(server)
         .post('/api/posts')
-        .query(post)
-        .end((err, res) => {
-          response = res;
-          response.should.have.status(422);
-          done();
-        });
+        .query(post).end((err, res) => {
+        response = res;
+        done();
+      })
+    });
+
+    it('should return status 422', () => {
+      response.should.have.status(422);
     });
     it('should return one error', () => {
       response.body.should.be.a('object');
       response.body.should.have.property('errors');
       response.body.errors.length.should.be.eql(1);
+
     });
     it('should return a notNull Violation error', () => {
       const error = response.body.errors[0];
       error.should.have.property('path').eql('title');
       error.should.have.property('type').eql('notNull Violation');
-      exeunt();
     });
   });
+  after(exeunt);
 });
 
 
