@@ -9,7 +9,7 @@ module.exports = (router, sequelize) => {
         title: req.query.title,
         body: req.query.body
       })
-        .then(post => res.json(post))
+        .then(post => res.status(201).json(post))
 
         .catch(err => {
 
@@ -25,5 +25,34 @@ module.exports = (router, sequelize) => {
       sequelize.models.posts.findAll()
         .then(posts => res.json(posts))
         .catch(err => res.send(err));
+    });
+
+  router.route('/posts/:id')
+    .get((req, res) => {
+    sequelize.models.posts.findById(req.params.id)
+      .then(post => res.json(post))
+      .catch(err => res.send(err));
     })
+    .put((req, res) => {
+      sequelize.models.posts.findById(req.params.id)
+        .then(post => {
+          post
+            .update(req.query)
+            .then(updatedPost => res.json(post))
+            .catch(err => res.send(err))
+        })
+        .catch(err => res.send(err));
+
+    })
+    .delete((req, res) => {
+      sequelize.models.posts.findById(req.params.id)
+        .then(post => {
+          post
+            .destroy()
+            .then(() => res.status(204).send())
+            .catch(err => res.send(err))
+        })
+        .catch(err => res.send(err));
+    })
+
 };
