@@ -1,23 +1,24 @@
+'use strict';
+
 process.env.NODE_ENV = 'test';
 
-import chai from 'chai';
 import chaiHttp from 'chai-http';
 import exeunt from 'exeunt';
 
 import server from '~/dist/index';
 import sequelize from '~/dist/database/sequelize';
 
+const chai = require('chai').use(chaiHttp);
 const Post = require('~/dist/models/Post')(sequelize);
-const should = chai.should();
 
-chai.use(chaiHttp);
+after(exeunt);
 
 describe('Posts', () => {
   const post = {
     title: "Proper title",
     body: "Much body"
   };
-  let postId, postResponse, getResponse, getAllResponse, putResponse, delResponse;
+  let postId, postResponse, postErrResponse, getResponse, getAllResponse, putResponse, delResponse;
 
   before((done) => { //empty the database and cache API responses
     Post.destroy({where: {}}).then(() => {
@@ -51,7 +52,14 @@ describe('Posts', () => {
                         .delete(`/api/posts/${postId}`)
                         .end((err, res) => {
                           delResponse = {err, res};
-                          done();
+
+                          chai.request(server)
+                            .post('/api/posts')
+                            .query({body: "Post body"})
+                            .end((err, res) => {
+                              postErrResponse = {err, res};
+                              done();
+                            })
                         })
                     });
                 });
@@ -59,9 +67,7 @@ describe('Posts', () => {
         });
     });
   });
-  /*
-    * Test the /GET route
-    */
+
   describe('/GET posts', () => {
     it('it should return correctly formatted data', () => {
       should.not.exist(getAllResponse.err);
@@ -71,9 +77,7 @@ describe('Posts', () => {
       getAllResponse.res.body.length.should.be.equal(1);
     });
   });
-  /*
-  * Test the /POST route
-  */
+
   describe('POST request response', () => {
     it('should return correctly formatted data', () => {
       should.not.exist(postResponse.err);
@@ -138,32 +142,18 @@ describe('Posts', () => {
   });
 
   describe('/POST post with no title', () => {
-    const post = {
-      body: "Post body"
-    };
-    let response;
 
-    before(done => {
-      chai.request(server)
-        .post('/api/posts')
-        .query(post).end((err, res) => {
-        response = {err, res};
-        done();
-      })
-    });
-
-    it('should return and error with status 422', () => {
-      should.exist(response.err);
-      response.res.body.errors.length.should.be.equal(1);
-      response.err.should.have.status(422);
+    it('should return correctly formatted data', () => {
+      should.exist(postErrResponse.err);
+      postErrResponse.res.body.errors.length.should.be.equal(1);
+      postErrResponse.err.should.have.status(422);
     });
     it('should return a notNull Violation error', () => {
-      const error = response.res.body.errors[0];
+      const error = postErrResponse.res.body.errors[0];
       error.should.have.property('path').equal('title');
       error.should.have.property('type').equal('notNull Violation');
     });
   });
-  after(exeunt);
 });
 
 
