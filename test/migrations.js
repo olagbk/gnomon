@@ -3,7 +3,6 @@
 process.env.NODE_ENV = 'test';
 
 import fs from 'fs';
-import exeunt from 'exeunt';
 import Sequelize from 'sequelize';
 
 import sequelize from '~/dist/database/sequelize';
@@ -31,7 +30,6 @@ describe('Sequelize migration', () => {
         () => done(),
         (err) => done(err));
   });
-  after(exeunt);
 
   it('should create the posts table', done => {
     migrations['001'].up(sequelize.queryInterface, Sequelize, () => {
