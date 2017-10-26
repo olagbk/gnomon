@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng build --prod && node dist/index.js",
+    "start": "ng build && node dist/index.js",
     "build": "ng build",
     "test": "mocha --require babel-register --require chai/register-should",
     "lint": "ng lint",
