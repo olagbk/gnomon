@@ -1,6 +1,8 @@
 'use strict';
 
-require('module-alias/register');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _express = require('express');
 
@@ -23,15 +25,17 @@ var port = process.env.PORT || '3000';
 app.use(_express2.default.json());
 app.use(_express2.default.urlencoded({ extended: false }));
 
-// Point static path to dist/client
-app.use(_express2.default.static(_path2.default.join(_path2.default.resolve(), 'dist/client')));
+app.use(_express2.default.static(_path2.default.join(_path2.default.resolve(), 'dist/public')));
 
 // Set api routes
 app.use('/api', _api2.default);
 
 // Catch all other routes and return the index file
 app.get('*', function (req, res) {
-  res.sendFile(_path2.default.join(_path2.default.resolve(), 'dist/client/index.html'));
+  res.sendFile(_path2.default.join(_path2.default.resolve(), 'dist/public/index.html'));
 });
 
-app.listen(port);
+var server = app.listen(port);
+
+exports.default = server;
+module.exports = exports['default'];

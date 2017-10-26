@@ -1,6 +1,6 @@
 webpackJsonp(["polyfills"],{
 
-/***/ "../../../../../src/polyfills.ts":
+/***/ "../../../../../app/polyfills.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5577,10 +5577,9 @@ Zone.__load_patch('PromiseRejectionEvent', function (global, Zone, api) {
 /***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("../../../../../src/polyfills.ts");
+module.exports = __webpack_require__("../../../../../app/polyfills.ts");
 
 
 /***/ })
 
 },[1]);
-//# sourceMappingURL=polyfills.bundle.js.map

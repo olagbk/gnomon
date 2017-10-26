@@ -8,7 +8,7 @@ var _sequelize = require('sequelize');
 
 var _sequelize2 = _interopRequireDefault(_sequelize);
 
-var _database = require('../../../config/database.json');
+var _database = require('../../config/database.json');
 
 var _database2 = _interopRequireDefault(_database);
 

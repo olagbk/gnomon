@@ -11110,7 +11110,7 @@ function createHostComponentMeta(hostTypeReference, compMeta, hostViewType) {
         template: new CompileTemplateMetadata({
             encapsulation: __WEBPACK_IMPORTED_MODULE_1__angular_core__["_19" /* ViewEncapsulation */].None,
             template: template,
-            templateUrl: 'dist/client/vendor.bundle',
+            templateUrl: '',
             styles: [],
             styleUrls: [],
             ngContentSelectors: [],
@@ -32613,7 +32613,7 @@ var ForJitSerializer = (function () {
         var /** @type {?} */ expressions = [this.serializeSummary(summary)];
         var /** @type {?} */ providers = [];
         if (metadata instanceof CompileNgModuleMetadata) {
-            expressions.push.apply(expressions,
+            expressions.push.apply(expressions, 
             // For directives / pipes, we only add the declared ones,
             // and rely on transitively importing NgModules to get the transitive
             // summaries.
@@ -42586,7 +42586,7 @@ var SystemJsNgModuleLoader = (function () {
         if (exportName === undefined) {
             exportName = 'default';
         }
-        return __webpack_require__("../../../../../src/$$_gendir lazy recursive")(module)
+        return __webpack_require__("../../../../../app/$$_gendir lazy recursive")(module)
             .then(function (module) { return module[exportName]; })
             .then(function (type) { return checkNotEmpty(type, module, exportName); })
             .then(function (type) { return _this._compiler.compileModuleAsync(type); });
@@ -42602,7 +42602,7 @@ var SystemJsNgModuleLoader = (function () {
             exportName = 'default';
             factoryClassSuffix = '';
         }
-        return __webpack_require__("../../../../../src/$$_gendir lazy recursive")(this._config.factoryPathPrefix + module + this._config.factoryPathSuffix)
+        return __webpack_require__("../../../../../app/$$_gendir lazy recursive")(this._config.factoryPathPrefix + module + this._config.factoryPathSuffix)
             .then(function (module) { return module[exportName + factoryClassSuffix]; })
             .then(function (factory) { return checkNotEmpty(factory, module, exportName); });
     };
@@ -46742,7 +46742,7 @@ var ComponentFactory_ = (function (_super) {
      * @param {?} ngContentSelectors
      */
     function ComponentFactory_(selector, componentType, viewDefFactory, _inputs, _outputs, ngContentSelectors) {
-        var _this =
+        var _this = 
         // Attention: this ctor is called as top level function.
         // Putting any logic in here will destroy closure tree shaking!
         _super.call(this) || this;
@@ -50767,7 +50767,7 @@ var NgModuleFactory_ = (function (_super) {
      * @param {?} _ngModuleDefFactory
      */
     function NgModuleFactory_(moduleType, _bootstrapComponents, _ngModuleDefFactory) {
-        var _this =
+        var _this = 
         // Attention: this ctor is called as top level function.
         // Putting any logic in here will destroy closure tree shaking!
         _super.call(this) || this;
@@ -65057,4 +65057,3 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["_15" /* Version *
 /***/ })
 
 });
-//# sourceMappingURL=vendor.bundle.js.map

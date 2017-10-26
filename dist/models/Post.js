@@ -9,7 +9,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 module.exports = function (sequelize) {
 
   return sequelize.define('posts', {
-    title: _sequelize2.default.STRING,
+    title: {
+      type: _sequelize2.default.STRING,
+      allowNull: false
+    },
     body: _sequelize2.default.STRING
   });
 };

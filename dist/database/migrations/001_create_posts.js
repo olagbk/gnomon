@@ -13,11 +13,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
   up: function up(queryInterface, Sequelize, done) {
 
-    var model = queryInterface.sequelize.import(_path2.default.join(_path2.default.resolve(), '/dist/server/models/Post.js'));
+    var model = queryInterface.sequelize.import(_path2.default.join(_path2.default.resolve(), '/dist/models/Post.js'));
 
     model.sync().then(function () {
       return done();
-    });
+    }); //must be wrapped
   }
 };
 module.exports = exports['default'];
