@@ -1,16 +1,26 @@
+import { should } from 'chai';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 import { PostsComponent } from './posts.component';
+import { PostsService } from '../posts.service';
 
 describe('PostsComponent', () => {
   let component: PostsComponent;
   let fixture: ComponentFixture<PostsComponent>;
+  let postsServiceStub: {
+    getAllPosts(): Observable<Array<{}>>
+  };
 
   beforeEach(async(() => {
+    postsServiceStub = {
+      getAllPosts: () => Observable.of([{title: 'Post title', body: 'Post body'}])
+    };
     TestBed.configureTestingModule({
-      declarations: [ PostsComponent ]
-    })
-    .compileComponents();
+      declarations: [ PostsComponent ],
+      providers: [{provide: PostsService, useValue: postsServiceStub }]
+    });
   }));
 
   beforeEach(() => {
@@ -20,6 +30,6 @@ describe('PostsComponent', () => {
   });
 
   it('should be created', () => {
-    expect(component).toBeTruthy();
+    should().exist(component);
   });
 });

@@ -7,28 +7,31 @@ import sequelize from './database/sequelize';
 
 const router = express.Router();
 
-fs.readdir('server/models', (err, files) => {
+sequelize
+  .authenticate()
+  .then(() => {
 
-  for (let file of files) {
-    require(`./models/${file}`)(sequelize)
-  }
+    console.log('Connection has been established successfully.');
 
-  fs.readdir('server/routes', (err, files) => {
+    //define models and controllers
+    fs.readdir('server/models', (err, files) => {
 
-    for (let file of files) {
-      require(`./routes/${file}`)(router, sequelize);
-    }
+      for (let file of files) {
+        require(`./models/${file}`)(sequelize)
+      }
 
-    sequelize
-      .authenticate()
-      .then(() => {
-        console.log('Connection has been established successfully.');
-      })
-      .catch(err => {
-        console.error('Unable to connect to the database:', err);
+      fs.readdir('server/routes', (err, files) => {
+
+        for (let file of files) {
+          require(`./routes/${file}`)(router, sequelize);
+        }
       });
+    });
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
   });
-});
+
 
 // middleware to use for all requests
 router.use((req, res, next) => {

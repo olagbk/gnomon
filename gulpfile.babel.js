@@ -3,25 +3,37 @@ import del from 'del';
 import gls from 'gulp-live-server';
 import gulp from 'gulp';
 
-const server = gls.new('./dist/server/index.js');
+const exec = require('child_process').exec;
+
+const server = gls.new('./dist/index.js');
 
 gulp.task('default', ['watch']);
 
 gulp.task('watch', ['server'], () => {
+  gulp.watch(['./app/**/*.ts', './app/**/*.html', './app/**/*.scss'], ['build']);
   gulp.watch('./server/**/*.js', ['server']);
 });
-gulp.task('server', ['transpile'], () => {
+gulp.task('server', ['transpile', 'build'], () => {
   server.start();
 });
 
-gulp.task('transpile', () => {
+gulp.task('clean', () => {
+  return del(['dist/*', '!dist/public/**']);
+});
+
+gulp.task('transpile', ['clean'], () => {
   return new Promise((resolve) => {
-    del(['dist/server/**', '!dist/server']).then(
-      gulp.src('server/**/*.js')
-        .pipe(babel())
-        .pipe(gulp.dest('dist/server'))
-        .on('end', resolve)
-    );
+    gulp.src('server/**/*.js')
+      .pipe(babel())
+      .pipe(gulp.dest('dist'))
+      .on('end', resolve)
+  });
+});
+gulp.task('build', cb => {
+  exec('ng build -sm=false', (err, stdout, stderr) => {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
   });
 });
 

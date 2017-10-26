@@ -3,26 +3,27 @@
 
 module.exports = function (config) {
   config.set({
-    basePath: '../),
-    frameworks: ['jasmine', '@angular/cli'],
+    basePath: '',
+    frameworks: ['mocha', '@angular/cli'],
     plugins: [
-      require('karma-jasmine'),
+      require('karma-mocha'),
       require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
+      require('karma-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
     ],
-    client:{
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
-    },
     coverageIstanbulReporter: {
       reports: [ 'html', 'lcovonly' ],
       fixWebpackSourcePaths: true
     },
+    htmlReporter: {
+      outputDir: 'tmp',
+      reportName: 'karma'
+    },
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'html'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
