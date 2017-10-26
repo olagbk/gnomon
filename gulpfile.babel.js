@@ -3,14 +3,17 @@ import del from 'del';
 import gls from 'gulp-live-server';
 import gulp from 'gulp';
 
+const exec = require('child_process').exec;
+
 const server = gls.new('./dist/index.js');
 
 gulp.task('default', ['watch']);
 
 gulp.task('watch', ['server'], () => {
+  gulp.watch(['./app/**/*.ts', './app/**/*.html', './app/**/*.scss'], ['build']);
   gulp.watch('./server/**/*.js', ['server']);
 });
-gulp.task('server', ['transpile'], () => {
+gulp.task('server', ['transpile', 'build'], () => {
   server.start();
 });
 
@@ -24,6 +27,13 @@ gulp.task('transpile', ['clean'], () => {
       .pipe(babel())
       .pipe(gulp.dest('dist'))
       .on('end', resolve)
+  });
+});
+gulp.task('build', cb => {
+  exec('ng build -sm=false', (err, stdout, stderr) => {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
   });
 });
 
