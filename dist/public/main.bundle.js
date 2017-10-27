@@ -45,7 +45,11 @@ var ROUTES = [
     {
         path: 'posts',
         component: __WEBPACK_IMPORTED_MODULE_2__posts_posts_component__["a" /* PostsComponent */]
-    }
+    },
+    {
+        path: '**',
+        redirectTo: 'home'
+    },
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -244,10 +248,29 @@ HomeComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/nav/nav-route.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavRoute; });
+var NavRoute = (function () {
+    function NavRoute(name, route, active) {
+        if (active === void 0) { active = false; }
+        this.name = name;
+        this.route = route;
+        this.active = active;
+    }
+    return NavRoute;
+}());
+
+//# sourceMappingURL=nav-route.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-sm navbar-dark fixed-top\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n      <li class=\"nav-item active px-1 px-lg-2\">\n        <a class=\"nav-link\" href=\"#\">Blog <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" href=\"#\">Drawings</a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" href=\"#\">Sketches</a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" href=\"#\">Photographs</a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" href=\"#\">About</a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-sm navbar-dark fixed-top\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n\n      <li *ngFor=\"let item of menu\" class=\"nav-item active px-1 px-lg-2\">\n        <a class=\"nav-link\" href={{item.route}}>{{item.name}}\n          <span *ngIf=\"item.active\" class=\"sr-only\">(current)</span>\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -275,6 +298,7 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nav_route__ = __webpack_require__("../../../../../src/app/nav/nav-route.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -285,11 +309,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var NavComponent = (function () {
     function NavComponent() {
     }
     NavComponent.prototype.ngOnInit = function () {
         this.isCollapsed = false;
+        this.menu = [
+            new __WEBPACK_IMPORTED_MODULE_1__nav_route__["a" /* NavRoute */]('Blog', '/blog'),
+            new __WEBPACK_IMPORTED_MODULE_1__nav_route__["a" /* NavRoute */]('Drawings', '/drawings'),
+            new __WEBPACK_IMPORTED_MODULE_1__nav_route__["a" /* NavRoute */]('Sketches', '/sketches'),
+            new __WEBPACK_IMPORTED_MODULE_1__nav_route__["a" /* NavRoute */]('Photographs', '/photos'),
+            new __WEBPACK_IMPORTED_MODULE_1__nav_route__["a" /* NavRoute */]('About', '/about'),
+        ];
     };
     NavComponent.prototype.toggleCollapse = function () {
         this.isCollapsed = !this.isCollapsed;
