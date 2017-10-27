@@ -10,7 +10,7 @@ const server = gls.new('./dist/index.js');
 gulp.task('default', ['watch']);
 
 gulp.task('watch', ['server'], () => {
-  gulp.watch(['./app/**/*.ts', './app/**/*.html', './app/**/*.scss'], ['build']);
+  gulp.watch(['./src/**/*.ts', './src/**/*.html', './src/**/*.scss'], ['build']);
   gulp.watch('./server/**/*.js', ['server']);
 });
 gulp.task('server', ['transpile', 'build'], () => {
