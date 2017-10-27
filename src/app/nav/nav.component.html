@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks"
+          aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation"
+          (click)="toggleCollapse()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse" [collapse]="!isCollapsed" id="navLinks">
+    <ul class="navbar-nav m-auto">
+      <li class="nav-item active px-1 px-lg-2">
+        <a class="nav-link" href="#">Blog <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item px-1 px-lg-2">
+        <a class="nav-link" href="#">Drawings</a>
+      </li>
+      <li class="nav-item px-1 px-lg-2">
+        <a class="nav-link" href="#">Sketches</a>
+      </li>
+      <li class="nav-item px-1 px-lg-2">
+        <a class="nav-link" href="#">Photographs</a>
+      </li>
+      <li class="nav-item px-1 px-lg-2">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+  </div>
+</nav>
