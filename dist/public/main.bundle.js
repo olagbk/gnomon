@@ -13,6 +13,55 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 
 /***/ }),
 
+/***/ "../../../../../src/app/app-routing.module.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__posts_posts_component__ = __webpack_require__("../../../../../src/app/posts/posts.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var ROUTES = [
+    {
+        path: '',
+        redirectTo: 'posts',
+        pathMatch: 'full'
+    },
+    {
+        path: 'posts',
+        component: __WEBPACK_IMPORTED_MODULE_2__posts_posts_component__["a" /* PostsComponent */]
+    }
+];
+var AppRoutingModule = (function () {
+    function AppRoutingModule() {
+    }
+    return AppRoutingModule;
+}());
+AppRoutingModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forRoot(ROUTES)
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]
+        ],
+        declarations: []
+    })
+], AppRoutingModule);
+
+//# sourceMappingURL=app-routing.module.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/app.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -75,10 +124,10 @@ AppComponent = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_bootstrap_collapse__ = __webpack_require__("../../../../ngx-bootstrap/collapse/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_bootstrap_collapse__ = __webpack_require__("../../../../ngx-bootstrap/collapse/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__posts_posts_component__ = __webpack_require__("../../../../../src/app/posts/posts.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nav_nav_component__ = __webpack_require__("../../../../../src/app/nav/nav.component.ts");
@@ -98,24 +147,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ROUTES = [
-    {
-        path: '',
-        redirectTo: 'posts',
-        pathMatch: 'full'
-    },
-    {
-        path: 'posts',
-        component: __WEBPACK_IMPORTED_MODULE_6__posts_posts_component__["a" /* PostsComponent */]
-    }
-];
 var AppModule = (function () {
     function AppModule() {
     }
     return AppModule;
 }());
 AppModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["M" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["M" /* NgModule */])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_6__posts_posts_component__["a" /* PostsComponent */],
@@ -123,9 +161,9 @@ AppModule = __decorate([
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forRoot(ROUTES),
-            __WEBPACK_IMPORTED_MODULE_4_ngx_bootstrap_collapse__["a" /* CollapseModule */].forRoot()
+            __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_3_ngx_bootstrap_collapse__["a" /* CollapseModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_4__app_routing_module__["a" /* AppRoutingModule */]
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_8__posts_service__["a" /* PostsService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
