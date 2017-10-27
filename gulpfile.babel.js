@@ -10,10 +10,11 @@ const server = gls.new('./dist/index.js');
 gulp.task('default', ['watch']);
 
 gulp.task('watch', ['server'], () => {
-  gulp.watch(['./src/**/*.ts', './src/**/*.html', './src/**/*.scss'], ['build']);
+  gulp.watch(['./src/**/*.ts', './src/**/*.html', './src/**/*.scss'], ['ng-build']);
   gulp.watch('./server/**/*.js', ['server']);
 });
-gulp.task('server', ['transpile', 'build'], () => {
+
+gulp.task('server', ['build'], () => {
   server.start();
 });
 
@@ -29,7 +30,10 @@ gulp.task('transpile', ['clean'], () => {
       .on('end', resolve)
   });
 });
-gulp.task('build', cb => {
+
+gulp.task('build', ['transpile', 'ng-build']);
+
+gulp.task('ng-build', cb => {
   exec('ng build -sm=false', (err, stdout, stderr) => {
     console.log(stdout);
     console.log(stderr);
