@@ -8,6 +8,23 @@ nav {
   }
 }
 
+@include media-breakpoint-up(sm) {
+  .nav-link {
+    &:after {
+      content:'';
+      display: block;
+      height: 1px;
+      width: 0px;
+      background: transparent;
+      transition: width .25s ease, background-color .5s ease;
+    }
+    &:hover:after {
+      width: 100%;
+      background: $navbar-dark-hover-color;
+    }
+  }
+}
+
 @include media-breakpoint-up(lg) {
   .nav-link {
     font-size: 1.25rem;
