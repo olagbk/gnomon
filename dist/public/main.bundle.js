@@ -202,7 +202,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h1, h4 {\n  font-weight: 400; }\n\n@media (min-width: 768px) {\n  h1 {\n    font-size: 3rem; }\n  h4 {\n    font-size: 1.8rem; } }\n\n@media (min-width: 992px) {\n  h1 {\n    font-size: 4rem; }\n  h4 {\n    font-size: 2.4rem; } }\n", ""]);
+exports.push([module.i, "h1, h4 {\n  font-weight: 400; }\n\nh1 {\n  -webkit-animation: fadein 1.5s forwards;\n          animation: fadein 1.5s forwards; }\n\nh4 {\n  -webkit-animation: fadein 2s forwards;\n          animation: fadein 2s forwards; }\n\n@-webkit-keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@media (min-width: 768px) {\n  h1 {\n    font-size: 3rem; }\n  h4 {\n    font-size: 1.8rem; } }\n\n@media (min-width: 992px) {\n  h1 {\n    font-size: 4rem; }\n  h4 {\n    font-size: 2.4rem; } }\n", ""]);
 
 // exports
 
@@ -270,7 +270,7 @@ var NavRoute = (function () {
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-sm navbar-dark fixed-top\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n\n      <li *ngFor=\"let item of menu\" class=\"nav-item active px-1 px-lg-2\">\n        <a class=\"nav-link\" href={{item.route}}>{{item.name}}\n          <span *ngIf=\"item.active\" class=\"sr-only\">(current)</span>\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-sm navbar-dark fixed-top\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n\n      <li *ngFor=\"let item of menu\" class=\"nav-item px-1 px-lg-2\" [class.active]=\"item.active\">\n        <a class=\"nav-link\" href={{item.route}}>{{item.name}}\n          <span *ngIf=\"item.active\" class=\"sr-only\">(current)</span>\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -282,7 +282,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "nav .nav-link {\n  font-weight: 500;\n  text-transform: uppercase;\n  letter-spacing: 1px; }\n\n@media (min-width: 992px) {\n  .nav-link {\n    font-size: 1.25rem; } }\n", ""]);
+exports.push([module.i, "nav .nav-link {\n  font-weight: 500;\n  text-transform: uppercase;\n  letter-spacing: 1px; }\n  nav .nav-link:after {\n    content: '';\n    display: block;\n    margin: auto;\n    height: 1px;\n    width: 0px;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  nav .nav-link:hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); }\n\n@-webkit-keyframes underline {\n  0% {\n    text-decoration: none; }\n  100% {\n    text-decoration: underline; } }\n\n@keyframes underline {\n  0% {\n    text-decoration: none; }\n  100% {\n    text-decoration: underline; } }\n\n@media (min-width: 992px) {\n  .nav-link {\n    font-size: 1.25rem; } }\n", ""]);
 
 // exports
 
