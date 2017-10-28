@@ -9,7 +9,8 @@
     "test": "mocha --require babel-register --require chai/register-should",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "reinstall": "rm -rf node_modules && npm install"
+    "reinstall": "rm -rf node_modules && npm install",
+    "heroku": "gulp build && git commit -am 'staging' && git push heroku heroku:master"
   },
   "private": true,
   "dependencies": {
