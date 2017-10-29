@@ -11,11 +11,19 @@ gulp.task('default', ['watch']);
 
 gulp.task('watch', ['server'], () => {
   gulp.watch(['./src/**/*.ts', './src/**/*.html', './src/**/*.scss'], ['ng-build']);
-  gulp.watch('./server/**/*.js', ['server']);
+  gulp.watch('./server/**/*.js', ['restart-server']);
 });
 
-gulp.task('server', ['build'], () => {
+gulp.task('restart-server', ['transpile'], () => {
   server.start();
+});
+
+gulp.task('server', ['kill', 'build'], () => {
+  server.start();
+});
+
+gulp.task('kill', cb => {
+  exec('kill -9 `lsof -t -i:3000`; kill -9 `lsof -t -i:35729`', cb);
 });
 
 gulp.task('clean', () => {
@@ -34,10 +42,6 @@ gulp.task('transpile', ['clean'], () => {
 gulp.task('build', ['transpile', 'ng-build']);
 
 gulp.task('ng-build', cb => {
-  exec('ng build -sm=false', (err, stdout, stderr) => {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
+  exec('ng build -sm=false', cb)
 });
 
