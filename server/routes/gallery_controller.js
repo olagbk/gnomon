@@ -12,7 +12,8 @@ module.exports = (router, sequelize) => {
           flickr.photosets.getPhotos(
             {
               photoset_id: config.flickr.drawings,
-              user_id: config.flickr.nsid
+              user_id: config.flickr.nsid,
+              extras: ['url_o']
             },
             (err, result) => (err) ? res.send(err) : res.json(result.photoset.photo)
           )

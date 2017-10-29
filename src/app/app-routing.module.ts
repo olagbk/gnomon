@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { PostsComponent } from './posts/posts.component';
+import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
 
 const ROUTES = [
@@ -15,8 +15,8 @@ const ROUTES = [
     component: HomeComponent
    },
   {
-    path: 'posts',
-    component: PostsComponent
+    path: 'drawings',
+    component: GalleryComponent
   },
   {
     path: '**',
