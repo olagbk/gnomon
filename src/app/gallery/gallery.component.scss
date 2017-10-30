@@ -1,0 +1,13 @@
+@import '../../styles/common';
+
+.row {
+  max-width: 1500px;
+}
+.image-holder {
+  width: 320px;
+  height: 220px;
+  background: #fff center no-repeat;
+  background-size: cover;
+  border-radius: 1px;
+  box-shadow: 4px 3px 3px $gray-700;
+}

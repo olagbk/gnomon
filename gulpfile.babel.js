@@ -18,7 +18,7 @@ gulp.task('restart-server', ['transpile'], () => {
   server.start();
 });
 
-gulp.task('server', ['kill', 'build'], () => {
+gulp.task('server', ['build'], () => {
   server.start();
 });
 

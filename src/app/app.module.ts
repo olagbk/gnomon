@@ -12,9 +12,11 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { PostsComponent } from './posts/posts.component';
 import { HomeComponent } from './home/home.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 import { PostsService } from './posts.service';
-import { GalleryComponent } from './gallery/gallery.component';
+import { FlickrService } from './gallery/flickr.service';
+
 
 export const galleryConfig: GalleryConfig = {
   // ...
@@ -36,7 +38,10 @@ export const galleryConfig: GalleryConfig = {
     BrowserAnimationsModule,
     GalleryModule.forRoot(galleryConfig)
   ],
-  providers: [PostsService],
+  providers: [
+    PostsService,
+    FlickrService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

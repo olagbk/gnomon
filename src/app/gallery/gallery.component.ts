@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GalleryService } from 'ng-gallery';
+import { GalleryService, GalleryImage } from 'ng-gallery';
+import { FlickrService } from './flickr.service';
 
 @Component({
   selector: 'app-gallery',
@@ -7,18 +8,14 @@ import { GalleryService } from 'ng-gallery';
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent implements OnInit {
-  public images = [
-    {
-      src: '../../assets/gnomon.png',
-      thumbnail: '../../assets/gnomon.png',
-      text: 'Gnomon'
-    }
-    ];
+  public images: GalleryImage[];
 
-  constructor(public gallery: GalleryService) { }
+  constructor(public gallery: GalleryService, private flickr: FlickrService) { }
 
   ngOnInit() {
-    this.gallery.load(this.images);
+    this.flickr.getDrawings().then(images => {
+      this.images = images;
+      this.gallery.load(this.images);
+    });
   }
-
 }
