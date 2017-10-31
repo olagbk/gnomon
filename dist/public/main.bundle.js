@@ -80,7 +80,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".wrapper {\n  position: absolute;\n  min-height: 100%;\n  width: 100%;\n}\n\n.trans-wrapper {\n  position: absolute;\n  min-height: 100%;\n  width: 100%;\n  background-color: rgba(0,0,0,0.7);\n}\n", ""]);
 
 // exports
 
@@ -93,7 +93,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav></app-nav>\n<router-outlet></router-outlet>\n\n\n"
+module.exports = "<div class=\"wrapper d-flex p-5 align-items-center justify-content-center\">\n  <div class=\"trans-wrapper\"></div>\n  <app-nav></app-nav>\n  <router-outlet></router-outlet>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -273,7 +273,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row {\n  max-width: 1500px; }\n\n.image-holder {\n  width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: 4px 3px 4px 1.5px #343a40; }\n", ""]);
+exports.push([module.i, ".row {\n  max-width: 1500px;\n  z-index: 0;\n  opacity: 0.85; }\n\n.image-holder {\n  width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: 4px 3px 4px 1.5px #343a40; }\n", ""]);
 
 // exports
 
@@ -334,7 +334,7 @@ var _a, _b;
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"text-center mt-5 mt-sm-0\">\n  <h1 class=\"text-light\">BoguO's Gnomon</h1>\n  <h4 class=\"text-muted\">I draw things</h4>\n</div>\n"
+module.exports = "<div class=\"home text-center mt-5 mt-sm-0\">\n  <h1 class=\"text-light\">BoguO's Gnomon</h1>\n  <h4 class=\"text-muted\">I draw things</h4>\n</div>\n"
 
 /***/ }),
 
@@ -346,7 +346,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h1, h4 {\n  font-weight: 400; }\n\nh1 {\n  -webkit-animation: fadein 1.5s forwards;\n          animation: fadein 1.5s forwards; }\n\nh4 {\n  -webkit-animation: fadein 2s forwards;\n          animation: fadein 2s forwards; }\n\n@-webkit-keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@media (min-width: 768px) {\n  h1 {\n    font-size: 3rem; }\n  h4 {\n    font-size: 1.8rem; } }\n\n@media (min-width: 992px) {\n  h1 {\n    font-size: 4rem; }\n  h4 {\n    font-size: 2.4rem; } }\n", ""]);
+exports.push([module.i, ".home {\n  opacity: 0.7; }\n\nh1, h4 {\n  font-weight: 400; }\n\nh1 {\n  -webkit-animation: fadein 1.5s forwards;\n          animation: fadein 1.5s forwards; }\n\nh4 {\n  -webkit-animation: fadein 2s forwards;\n          animation: fadein 2s forwards; }\n\n@-webkit-keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@media (min-width: 768px) {\n  h1 {\n    font-size: 3rem; }\n  h4 {\n    font-size: 1.8rem; } }\n\n@media (min-width: 992px) {\n  h1 {\n    font-size: 4rem; }\n  h4 {\n    font-size: 2.4rem; } }\n", ""]);
 
 // exports
 
@@ -426,7 +426,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: #000; }\n  nav .nav-link {\n    font-weight: 500;\n    text-transform: uppercase;\n    letter-spacing: 1px; }\n\n@media (min-width: 576px) {\n  .nav-link:after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0px;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); } }\n\n@media (min-width: 992px) {\n  .nav-link {\n    font-size: 1.25rem; } }\n", ""]);
+exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.7); }\n  nav .nav-link {\n    font-weight: 500;\n    text-transform: uppercase;\n    letter-spacing: 1px;\n    opacity: 0.8; }\n\n@media (min-width: 576px) {\n  .nav-link:after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0px;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); } }\n\n@media (min-width: 992px) {\n  .nav-link {\n    font-size: 1.25rem; } }\n", ""]);
 
 // exports
 
