@@ -16,6 +16,10 @@ const ROUTES = [
    },
   {
     path: 'drawings',
+    redirectTo: 'drawings/1'
+  },
+  {
+    path: 'drawings/:page',
     component: GalleryComponent
   },
   {
