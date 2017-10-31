@@ -44,6 +44,10 @@ var ROUTES = [
     },
     {
         path: 'drawings',
+        redirectTo: 'drawings/1'
+    },
+    {
+        path: 'drawings/:page',
         component: __WEBPACK_IMPORTED_MODULE_2__gallery_gallery_component__["a" /* GalleryComponent */]
     },
     {
@@ -59,10 +63,10 @@ var AppRoutingModule = (function () {
 AppRoutingModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forRoot(ROUTES)
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */].forRoot(ROUTES)
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* RouterModule */]
         ],
         declarations: []
     })
@@ -228,22 +232,18 @@ var FlickrService = FlickrService_1 = (function () {
     function FlickrService(http) {
         this.http = http;
         this.drawingsUrl = '/api/drawings';
+        this.params = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* URLSearchParams */];
     }
     FlickrService.handleError = function (error) {
         console.log("Gallery Service error: " + error);
         return Promise.reject(error.message || error);
     };
-    FlickrService.prototype.getDrawings = function () {
-        return this.http.get(this.drawingsUrl)
+    FlickrService.prototype.getDrawings = function (options) {
+        this.params.set('page', options.page);
+        this.params.set('perPage', options.perPage);
+        return this.http.get(this.drawingsUrl, { params: this.params })
             .toPromise()
-            .then(function (response) { return response.json()
-            .map(function (img) {
-            return {
-                src: img.url_o,
-                thumbnail: img.url_n,
-                text: img.title
-            };
-        }); })
+            .then(function (response) { return response.json(); })
             .catch(function (err) { return FlickrService_1.handleError(err); });
     };
     return FlickrService;
@@ -289,8 +289,9 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GalleryComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng_gallery__ = __webpack_require__("../../../../ng-gallery/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng_gallery__ = __webpack_require__("../../../../ng-gallery/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -303,15 +304,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var GalleryComponent = (function () {
-    function GalleryComponent(gallery, flickr) {
+    function GalleryComponent(gallery, flickr, activatedRoute) {
         this.gallery = gallery;
         this.flickr = flickr;
+        this.activatedRoute = activatedRoute;
+        this.perPage = 20;
     }
     GalleryComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.flickr.getDrawings().then(function (images) {
-            _this.images = images;
+        this.activatedRoute.params.subscribe(function (params) {
+            _this.currentPage = Number(params['page']);
+            _this.getDrawings();
+        });
+    };
+    GalleryComponent.prototype.getDrawings = function () {
+        var _this = this;
+        this.flickr.getDrawings({ page: this.currentPage, perPage: this.perPage }).then(function (data) {
+            _this.pages = Math.ceil(data.count / _this.perPage);
+            _this.images = data.images;
             _this.gallery.load(_this.images);
         });
     };
@@ -323,10 +335,10 @@ GalleryComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/gallery/gallery.component.html"),
         styles: [__webpack_require__("../../../../../src/app/gallery/gallery.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["b" /* GalleryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["b" /* GalleryService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__flickr_service__["a" /* FlickrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__flickr_service__["a" /* FlickrService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ng_gallery__["b" /* GalleryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ng_gallery__["b" /* GalleryService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__flickr_service__["a" /* FlickrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__flickr_service__["a" /* FlickrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
 ], GalleryComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=gallery.component.js.map
 
 /***/ }),
