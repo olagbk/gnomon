@@ -1,5 +1,7 @@
 .wrapper {
   position: absolute;
+  min-height: 100%;
+  width: 100%;
 }
 
 .trans-wrapper {
