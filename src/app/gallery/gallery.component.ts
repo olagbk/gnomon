@@ -15,7 +15,7 @@ export class GalleryComponent implements OnInit {
   private perPage: number;
 
   constructor(public gallery: GalleryService, private flickr: FlickrService, private activatedRoute: ActivatedRoute) {
-    this.perPage = 20;
+    this.perPage = 24;
   }
 
   ngOnInit() {
