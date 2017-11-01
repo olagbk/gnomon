@@ -9,3 +9,14 @@ body {
   background-size: cover;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 }
+
+.g-btn-close {
+  display: none;
+}
+
+@include media-breakpoint-down(lg) {
+  .g-image {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
