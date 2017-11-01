@@ -172,21 +172,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var galleryConfig = {
-    'style': {
-        'background': 'rgba(25,25,25,0.8)',
-        'width': '100%',
-        'height': '100%'
-    },
-    'animation': 'fade',
-    'thumbnails': {
-        'position': 'top',
-        'space': 20,
-        'width': 180,
-        'height': 135
-    },
-    'navigation': true
-};
+var galleryConfig = {};
 var AppModule = (function () {
     function AppModule() {
     }
@@ -275,7 +261,7 @@ var FlickrService_1, _a;
 /***/ "../../../../../src/app/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row m-5 p-4 justify-content-center\">\n  <div *ngFor=\"let image of images; let i = index\"\n       (click)=\"gallery.set(i)\"\n       class=\"image-holder m-2\"\n       [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n\n  </div>\n</div>\n<nav aria-label=\"Album pages\">\n  <ul class=\"pagination justify-content-center\">\n    <li [class.disabled]=\"currentPage - 1 < 1\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">Previous</a></li>\n    <li *ngIf=\"currentPage - 2 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 2}}\">{{currentPage - 2}}</a></li>\n    <li *ngIf=\"currentPage - 1 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">{{currentPage - 1}}</a></li>\n    <li class=\"page-item text-muted\"><a class=\"page-link active\" href=\"drawings/{{currentPage}}\">{{currentPage}}</a></li>\n    <li *ngIf=\"currentPage + 1 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">{{currentPage + 1}}</a></li>\n    <li *ngIf=\"currentPage + 2 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 2}}\">{{currentPage + 2}}</a></li>\n    <li [class.disabled]=\"currentPage + 1 > pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">Next</a></li>\n  </ul>\n</nav>\n\n<gallery-modal></gallery-modal>\n"
+module.exports = "<div class=\"row m-5 justify-content-center\">\n  <div *ngFor=\"let image of images; let i = index\"\n       (click)=\"gallery.set(i)\"\n       class=\"image-holder m-2\"\n       [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n\n  </div>\n</div>\n<nav aria-label=\"Album pages\">\n  <ul class=\"pagination justify-content-center\">\n    <li [class.disabled]=\"currentPage - 1 < 1\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">Previous</a></li>\n    <li *ngIf=\"currentPage - 2 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 2}}\">{{currentPage - 2}}</a></li>\n    <li *ngIf=\"currentPage - 1 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">{{currentPage - 1}}</a></li>\n    <li class=\"page-item text-muted\"><a class=\"page-link active\" href=\"drawings/{{currentPage}}\">{{currentPage}}</a></li>\n    <li *ngIf=\"currentPage + 1 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">{{currentPage + 1}}</a></li>\n    <li *ngIf=\"currentPage + 2 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 2}}\">{{currentPage + 2}}</a></li>\n    <li [class.disabled]=\"currentPage + 1 > pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">Next</a></li>\n  </ul>\n</nav>\n\n<gallery-modal></gallery-modal>\n"
 
 /***/ }),
 
@@ -287,7 +273,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row {\n  max-width: 1500px;\n  z-index: 0; }\n\n.image-holder {\n  opacity: 0.85;\n  width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: 4px 3px 4px 1.5px #343a40; }\n  .image-holder:hover {\n    cursor: pointer;\n    opacity: .99; }\n\n.page-item.disabled .page-link {\n  color: #495057; }\n\n.page-item .page-link {\n  background-color: rgba(0, 0, 0, 0.5);\n  color: #adb5bd;\n  font-weight: 500;\n  letter-spacing: 1px; }\n  .page-item .page-link:hover {\n    color: #f8f9fa; }\n  .page-item .page-link.active {\n    background-color: #ced4da;\n    color: #343a40; }\n    .page-item .page-link.active:hover {\n      background-color: #f8f9fa; }\n", ""]);
+exports.push([module.i, ".row {\n  max-width: 1500px;\n  z-index: 0;\n  opacity: 0.85; }\n\n.image-holder {\n  width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: 4px 3px 4px 1.5px #343a40; }\n\n.page-item.disabled .page-link {\n  color: #343a40; }\n\n.page-item .page-link {\n  background-color: rgba(0, 0, 0, 0.5);\n  border: 1px solid #495057;\n  color: #adb5bd;\n  font-weight: 500;\n  letter-spacing: 1px; }\n  .page-item .page-link:hover {\n    color: #f8f9fa; }\n  .page-item .page-link.active {\n    background-color: #ced4da;\n    color: #343a40; }\n    .page-item .page-link.active:hover {\n      background-color: #f8f9fa; }\n", ""]);
 
 // exports
 
@@ -324,7 +310,7 @@ var GalleryComponent = (function () {
         this.gallery = gallery;
         this.flickr = flickr;
         this.activatedRoute = activatedRoute;
-        this.perPage = 24;
+        this.perPage = 20;
     }
     GalleryComponent.prototype.ngOnInit = function () {
         var _this = this;
