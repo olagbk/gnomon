@@ -23,7 +23,8 @@ module.exports = function (router, sequelize) {
         if (err) res.send(err);
         var images = result.photoset.photo.map(function (img) {
           return {
-            src: img.url_o,
+            src: 'https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '_b.jpg',
+            url: img.url_o,
             thumbnail: img.url_n,
             text: img.title
           };
