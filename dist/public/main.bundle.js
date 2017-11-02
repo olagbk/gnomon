@@ -185,7 +185,8 @@ var galleryConfig = {
         'width': 180,
         'height': 135
     },
-    'navigation': true
+    'navigation': true,
+    'gestures': true
 };
 var AppModule = (function () {
     function AppModule() {
