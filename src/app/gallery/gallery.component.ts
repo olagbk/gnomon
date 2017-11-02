@@ -12,9 +12,11 @@ export class GalleryComponent implements OnInit {
   public images: GalleryImage[];
   public currentPage: number;
   public pages: number;
+  public loading: boolean;
   private perPage: number;
 
   constructor(public gallery: GalleryService, private flickr: FlickrService, private activatedRoute: ActivatedRoute) {
+    this.loading = true;
     this.perPage = 24;
   }
 
@@ -29,6 +31,7 @@ export class GalleryComponent implements OnInit {
       this.pages = Math.ceil(data.count / this.perPage);
       this.images = data.images;
       this.gallery.load(this.images);
+      this.loading = false;
     });
   }
 }
