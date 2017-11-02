@@ -84,7 +84,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".wrapper {\n  background-color: rgba(0,0,0,0.7);\n  position: absolute;\n  min-height: 100%;\n  width: 100%;\n}\n\n", ""]);
+exports.push([module.i, ".wrapper {\n  background-color: rgba(0,0,0,0.7);\n  position: absolute;\n  width: 100%;\n  min-height: 100%;\n  min-height: -webkit-fill-available;\n  min-height: -moz-available;\n}\n\n", ""]);
 
 // exports
 
