@@ -17,6 +17,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { PostsService } from './posts.service';
 import { FlickrService } from './gallery/flickr.service';
 
+import 'hammerjs';
+
 
 export const galleryConfig: GalleryConfig = {
   'style': {
@@ -31,7 +33,8 @@ export const galleryConfig: GalleryConfig = {
     'width': 180,
     'height': 135
   },
-  'navigation': true
+  'navigation': true,
+  'gestures': true
 };
 
 @NgModule({

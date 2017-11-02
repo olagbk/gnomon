@@ -21,7 +21,8 @@ module.exports = (router, sequelize) => {
               if (err) res.send(err);
               const images = result.photoset.photo.map(img => {
                 return {
-                  src: img.url_o,
+                  src: `https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}_b.jpg`,
+                  url: img.url_o,
                   thumbnail: img.url_n,
                   text: img.title
                 }
