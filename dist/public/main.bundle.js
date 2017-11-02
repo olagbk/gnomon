@@ -84,7 +84,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".wrapper {\n  background-color: rgba(0,0,0,0.7);\n  position: absolute;\n  width: 100%;\n  min-height: 100%;\n  min-height: -webkit-fill-available;\n  min-height: -moz-available;\n}\n\n", ""]);
+exports.push([module.i, ".wrapper {\n  background-color: rgba(0, 0, 0, 0.7);\n  position: absolute;\n  width: 100%;\n  min-height: 100%;\n  min-height: -webkit-fill-available;\n}\n\n", ""]);
 
 // exports
 
@@ -287,7 +287,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row {\n  max-width: 1500px;\n  z-index: 0; }\n\n.image-holder {\n  opacity: 0.85;\n  width: 100%;\n  max-width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: 4px 3px 4px 1.5px #343a40; }\n  .image-holder:hover {\n    cursor: pointer;\n    opacity: .99; }\n\n.page-item.disabled .page-link {\n  color: #495057; }\n\n.page-item .page-link {\n  background-color: rgba(0, 0, 0, 0.5);\n  color: #adb5bd;\n  font-weight: 500;\n  letter-spacing: 1px; }\n  .page-item .page-link:hover {\n    color: #f8f9fa; }\n  .page-item .page-link.active {\n    background-color: #ced4da;\n    color: #343a40; }\n    .page-item .page-link.active:hover {\n      background-color: #f8f9fa; }\n", ""]);
+exports.push([module.i, ".row {\n  margin: auto;\n  max-width: 1500px;\n  z-index: 0; }\n\n.image-holder {\n  opacity: 0.85;\n  width: 100%;\n  max-width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: 4px 3px 4px 1.5px #343a40; }\n  .image-holder:hover {\n    cursor: pointer;\n    opacity: .99; }\n\n.page-item.disabled .page-link {\n  color: #495057; }\n\n.page-item .page-link {\n  background-color: rgba(0, 0, 0, 0.5);\n  color: #adb5bd;\n  font-weight: 500;\n  letter-spacing: 1px; }\n  .page-item .page-link:hover {\n    color: #f8f9fa; }\n  .page-item .page-link.active {\n    background-color: #ced4da;\n    color: #343a40; }\n    .page-item .page-link.active:hover {\n      background-color: #f8f9fa; }\n", ""]);
 
 // exports
 
