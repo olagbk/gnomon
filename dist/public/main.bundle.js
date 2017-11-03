@@ -97,7 +97,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper d-flex p-5 align-items-center justify-content-center\">\n  <app-nav></app-nav>\n  <router-outlet></router-outlet>\n</div>\n\n\n"
+module.exports = "<div class=\"wrapper d-flex p-5 justify-content-center\">\n  <app-nav></app-nav>\n  <router-outlet></router-outlet>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -276,7 +276,7 @@ var FlickrService_1, _a;
 /***/ "../../../../../src/app/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row my-4 my-md-5 py-4 justify-content-center\">\n  <div *ngFor=\"let image of images; let i = index\"\n       (click)=\"gallery.set(i)\"\n       class=\"image-holder m-2\"\n       [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n\n  </div>\n</div>\n<nav aria-label=\"Album pages\">\n  <ul class=\"pagination justify-content-center\">\n    <li [class.disabled]=\"currentPage - 1 < 1\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">Previous</a></li>\n    <li *ngIf=\"currentPage - 2 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 2}}\">{{currentPage - 2}}</a></li>\n    <li *ngIf=\"currentPage - 1 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">{{currentPage - 1}}</a></li>\n    <li class=\"page-item text-muted\"><a class=\"page-link active\" href=\"drawings/{{currentPage}}\">{{currentPage}}</a></li>\n    <li *ngIf=\"currentPage + 1 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">{{currentPage + 1}}</a></li>\n    <li *ngIf=\"currentPage + 2 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 2}}\">{{currentPage + 2}}</a></li>\n    <li [class.disabled]=\"currentPage + 1 > pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">Next</a></li>\n  </ul>\n</nav>\n\n<gallery-modal></gallery-modal>\n"
+module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 py-4\">\n\n  <p *ngIf=\"loading\" class=\"loading text-white text-center\">Loading images...</p>\n\n  <div class=\"row justify-content-center\">\n    <div *ngFor=\"let image of images; let i = index\"\n    (click)=\"gallery.set(i)\"\n    class=\"image-holder m-2\"\n    [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n    </div>\n  </div>\n\n</div>\n\n<nav *ngIf=\"!loading\" aria-label=\"Album pages\">\n  <ul class=\"pagination justify-content-center\">\n    <li [class.disabled]=\"currentPage - 1 < 1\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">Previous</a></li>\n    <li *ngIf=\"currentPage - 2 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 2}}\">{{currentPage - 2}}</a></li>\n    <li *ngIf=\"currentPage - 1 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">{{currentPage - 1}}</a></li>\n    <li class=\"page-item text-muted\"><a class=\"page-link active\" href=\"drawings/{{currentPage}}\">{{currentPage}}</a></li>\n    <li *ngIf=\"currentPage + 1 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">{{currentPage + 1}}</a></li>\n    <li *ngIf=\"currentPage + 2 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 2}}\">{{currentPage + 2}}</a></li>\n    <li [class.disabled]=\"currentPage + 1 > pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">Next</a></li>\n  </ul>\n</nav>\n\n<gallery-modal></gallery-modal>\n"
 
 /***/ }),
 
@@ -288,7 +288,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".row {\n  margin: auto;\n  max-width: 1500px;\n  z-index: 0; }\n\n.image-holder {\n  opacity: 0.85;\n  width: 100%;\n  max-width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: 4px 3px 4px 1.5px #343a40; }\n  .image-holder:hover {\n    cursor: pointer;\n    opacity: .99; }\n\n.page-item.disabled .page-link {\n  color: #495057; }\n\n.page-item .page-link {\n  background-color: rgba(0, 0, 0, 0.5);\n  color: #adb5bd;\n  font-weight: 500;\n  letter-spacing: 1px; }\n  .page-item .page-link:hover {\n    color: #f8f9fa; }\n  .page-item .page-link.active {\n    background-color: #ced4da;\n    color: #343a40; }\n    .page-item .page-link.active:hover {\n      background-color: #f8f9fa; }\n", ""]);
+exports.push([module.i, ".gallery-wrapper {\n  margin: auto;\n  max-width: 1500px; }\n\n.loading {\n  opacity: .75;\n  letter-spacing: 1px; }\n\n.image-holder {\n  opacity: 0.85;\n  width: 100%;\n  max-width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: 4px 3px 4px 1.5px #343a40; }\n  .image-holder:hover {\n    cursor: pointer;\n    opacity: .99; }\n\n.page-item.disabled .page-link {\n  color: #495057; }\n\n.page-item .page-link {\n  background-color: rgba(0, 0, 0, 0.5);\n  color: #adb5bd;\n  font-weight: 500;\n  letter-spacing: 1px; }\n  .page-item .page-link:hover {\n    color: #f8f9fa; }\n  .page-item .page-link.active {\n    background-color: #ced4da;\n    color: #343a40; }\n    .page-item .page-link.active:hover {\n      background-color: #f8f9fa; }\n", ""]);
 
 // exports
 
@@ -325,6 +325,7 @@ var GalleryComponent = (function () {
         this.gallery = gallery;
         this.flickr = flickr;
         this.activatedRoute = activatedRoute;
+        this.loading = true;
         this.perPage = 24;
     }
     GalleryComponent.prototype.ngOnInit = function () {
@@ -340,6 +341,7 @@ var GalleryComponent = (function () {
             _this.pages = Math.ceil(data.count / _this.perPage);
             _this.images = data.images;
             _this.gallery.load(_this.images);
+            _this.loading = false;
         });
     };
     return GalleryComponent;
@@ -373,7 +375,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".home {\n  opacity: 0.7; }\n\nh1, h4 {\n  font-weight: 400; }\n\nh1 {\n  -webkit-animation: fadein 1.5s forwards;\n          animation: fadein 1.5s forwards; }\n\nh4 {\n  -webkit-animation: fadein 2s forwards;\n          animation: fadein 2s forwards; }\n\n@-webkit-keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@media (min-width: 768px) {\n  h1 {\n    font-size: 3rem; }\n  h4 {\n    font-size: 1.8rem; } }\n\n@media (min-width: 992px) {\n  h1 {\n    font-size: 4rem; }\n  h4 {\n    font-size: 2.4rem; } }\n", ""]);
+exports.push([module.i, ":host {\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center; }\n\n.home {\n  opacity: 0.7; }\n\nh1, h4 {\n  font-weight: 400; }\n\nh1 {\n  -webkit-animation: fadein 1.5s forwards;\n          animation: fadein 1.5s forwards; }\n\nh4 {\n  -webkit-animation: fadein 2s forwards;\n          animation: fadein 2s forwards; }\n\n@-webkit-keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@media (min-width: 768px) {\n  h1 {\n    font-size: 3rem; }\n  h4 {\n    font-size: 1.8rem; } }\n\n@media (min-width: 992px) {\n  h1 {\n    font-size: 4rem; }\n  h4 {\n    font-size: 2.4rem; } }\n", ""]);
 
 // exports
 
