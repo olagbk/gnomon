@@ -1,9 +1,12 @@
 @import '../../styles/common';
 
-.row {
+.gallery-wrapper {
   margin: auto;
   max-width: 1500px;
-  z-index: 0;
+}
+.loading {
+  opacity: .75;
+  letter-spacing: 1px;
 }
 .image-holder {
   opacity: 0.85;

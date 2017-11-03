@@ -1,5 +1,8 @@
 @import '../../styles/common';
 
+:host {
+  align-self: center;
+}
 .home {
   opacity: 0.7;
 }

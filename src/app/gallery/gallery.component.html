@@ -1,12 +1,18 @@
-<div class="row my-4 my-md-5 py-4 justify-content-center">
-  <div *ngFor="let image of images; let i = index"
-       (click)="gallery.set(i)"
-       class="image-holder m-2"
-       [ngStyle]="{'background-image': 'url(' + image.thumbnail + ')'}">
+<div class="gallery-wrapper my-4 my-md-5 py-4">
 
+  <p *ngIf="loading" class="loading text-white text-center">Loading images...</p>
+
+  <div class="row justify-content-center">
+    <div *ngFor="let image of images; let i = index"
+    (click)="gallery.set(i)"
+    class="image-holder m-2"
+    [ngStyle]="{'background-image': 'url(' + image.thumbnail + ')'}">
+    </div>
   </div>
+
 </div>
-<nav aria-label="Album pages">
+
+<nav *ngIf="!loading" aria-label="Album pages">
   <ul class="pagination justify-content-center">
     <li [class.disabled]="currentPage - 1 < 1" class="page-item"><a class="page-link" href="drawings/{{currentPage - 1}}">Previous</a></li>
     <li *ngIf="currentPage - 2 > 0" class="page-item"><a class="page-link" href="drawings/{{currentPage - 2}}">{{currentPage - 2}}</a></li>

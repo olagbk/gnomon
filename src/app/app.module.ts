@@ -17,9 +17,6 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { PostsService } from './posts.service';
 import { FlickrService } from './gallery/flickr.service';
 
-import 'hammerjs';
-
-
 export const galleryConfig: GalleryConfig = {
   'style': {
     'background': 'rgba(25,25,25,0.8)',
