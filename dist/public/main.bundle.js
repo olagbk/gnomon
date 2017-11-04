@@ -178,6 +178,16 @@ var galleryConfig = {
         'width': '100%',
         'height': '100%'
     },
+    'description': {
+        'text': true,
+        'counter': true,
+        'style': {
+            'text-align': 'center',
+            'font-size': '3vmin',
+            'letter-spacing': '2px',
+            'margin-bottom': '3px',
+        }
+    },
     'animation': 'fade',
     'thumbnails': {
         'position': 'top',
@@ -443,7 +453,7 @@ var NavRoute = (function () {
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-sm navbar-dark fixed-top py-3\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n\n      <li *ngFor=\"let item of menu\" class=\"nav-item px-1 px-lg-2\" [class.active]=\"item.active\">\n        <a class=\"nav-link\" href={{item.route}}>{{item.name}}\n          <span *ngIf=\"item.active\" class=\"sr-only\">(current)</span>\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark fixed-top py-3\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n\n      <li *ngFor=\"let item of menu\" class=\"nav-item px-1 px-lg-2\" [class.active]=\"item.active\">\n        <a class=\"nav-link\" href={{item.route}}>{{item.name}}\n          <span *ngIf=\"item.active\" class=\"sr-only\">(current)</span>\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
 
 /***/ }),
 
