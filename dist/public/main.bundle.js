@@ -178,6 +178,16 @@ var galleryConfig = {
         'width': '100%',
         'height': '100%'
     },
+    'description': {
+        'text': true,
+        'counter': true,
+        'style': {
+            'text-align': 'center',
+            'font-size': '3vmin',
+            'letter-spacing': '2px',
+            'margin-bottom': '3px',
+        }
+    },
     'animation': 'fade',
     'thumbnails': {
         'position': 'top',
