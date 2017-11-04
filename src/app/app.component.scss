@@ -3,6 +3,6 @@
   position: absolute;
   width: 100%;
   min-height: 100%;
-  min-height: -webkit-fill-available;
+  min-height: -webkit-fill-available; //required for mobile Chrome, breaks on Firefox if auto-prefixed
 }
 
