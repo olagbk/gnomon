@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
+import {SketchesComponent} from './gallery/sketches/sketches.component';
+import {DrawingsComponent} from './gallery/drawings/drawings.component';
 
 const ROUTES = [
   {
@@ -20,7 +21,15 @@ const ROUTES = [
   },
   {
     path: 'drawings/:page',
-    component: GalleryComponent
+    component: DrawingsComponent
+  },
+  {
+    path: 'sketches',
+    redirectTo: 'sketches/1'
+  },
+  {
+    path: 'sketches/:page',
+    component: SketchesComponent
   },
   {
     path: '**',

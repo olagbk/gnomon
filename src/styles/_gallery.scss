@@ -4,19 +4,22 @@ $number-width: 2.5rem;
 $number-margin-left: 0.5rem;
 $text-padding: 0.25rem;
 
-app-gallery {
-  width: 100%;
+.g-container {
+  @media (max-height: 767px) and (orientation: landscape) {
+    padding-top: 1.5rem;
+  }
 }
 .g-modal {
   z-index: 1040 !important;
 }
+.g-thumb-container {
+  @media (max-width: 480px),
+         (max-height: 767px) and (orientation: landscape) {
+    display: none !important;
+  }
+}
 .g-image {
   margin: 0 1rem;
-}
-.g-btn-close {
-  opacity: 0.8;
-  height: 40px !important;
-  width: 40px !important;
 }
 .g-number {
   width: $number-width;
@@ -30,24 +33,12 @@ app-gallery {
   border-radius: $border-radius;
   background-color: rgba(60, 60, 60, 0.3);
 }
-@media (max-width: 480px) {
-  .g-btn-close {
+.g-btn-close {
+  opacity: 0.8;
+  height: 40px !important;
+  width: 40px !important;
+  @media (max-width: 480px) {
     margin: 1rem !important;
     position: absolute !important;
-  }
-  //.g-thumb-container {
-  //  height: 100px !important;
-  //}
-  //.g-thumb {
-  //  width: 135px !important;
-  //  height: 100px !important;
-  //}
-}
-@media (max-height: 767px) and (orientation: landscape) {
-  .g-container {
-    padding-top: 1.5rem;
-  }
-  .g-thumb-container {
-    display: none !important;
   }
 }
