@@ -4,14 +4,14 @@ import config from '~/config/config.json';
 
 
 module.exports = (router, sequelize) => {
-  router.route('/drawings')
+  router.route('/albums')
 
     .get((req, res) => {
       Flickr
         .then(flickr => {
           flickr.photosets.getPhotos(
             {
-              photoset_id: config.flickr.drawings,
+              photoset_id: config.flickr[req.query.album],
               user_id: config.flickr.nsid,
               page: req.query.page,
               per_page: req.query.perPage,
