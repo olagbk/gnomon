@@ -11,10 +11,10 @@ var _config2 = _interopRequireDefault(_config);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = function (router, sequelize) {
-  router.route('/drawings').get(function (req, res) {
+  router.route('/albums').get(function (req, res) {
     _flickr2.default.then(function (flickr) {
       flickr.photosets.getPhotos({
-        photoset_id: _config2.default.flickr.drawings,
+        photoset_id: _config2.default.flickr[req.query.album],
         user_id: _config2.default.flickr.nsid,
         page: req.query.page,
         per_page: req.query.perPage,

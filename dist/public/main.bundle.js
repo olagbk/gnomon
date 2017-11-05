@@ -20,14 +20,16 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gallery_gallery_component__ = __webpack_require__("../../../../../src/app/gallery/gallery.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gallery_sketches_sketches_component__ = __webpack_require__("../../../../../src/app/gallery/sketches/sketches.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gallery_drawings_drawings_component__ = __webpack_require__("../../../../../src/app/gallery/drawings/drawings.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -40,7 +42,7 @@ var ROUTES = [
     },
     {
         path: 'home',
-        component: __WEBPACK_IMPORTED_MODULE_3__home_home_component__["a" /* HomeComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_2__home_home_component__["a" /* HomeComponent */]
     },
     {
         path: 'drawings',
@@ -48,7 +50,15 @@ var ROUTES = [
     },
     {
         path: 'drawings/:page',
-        component: __WEBPACK_IMPORTED_MODULE_2__gallery_gallery_component__["a" /* GalleryComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_4__gallery_drawings_drawings_component__["a" /* DrawingsComponent */]
+    },
+    {
+        path: 'sketches',
+        redirectTo: 'sketches/1'
+    },
+    {
+        path: 'sketches/:page',
+        component: __WEBPACK_IMPORTED_MODULE_3__gallery_sketches_sketches_component__["a" /* SketchesComponent */]
     },
     {
         path: '**',
@@ -76,7 +86,14 @@ AppRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/app.component.css":
+/***/ "../../../../../src/app/app.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"wrapper d-flex p-5 justify-content-center\">\n  <app-nav></app-nav>\n  <router-outlet></router-outlet>\n</div>\n\n\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/app.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -84,20 +101,13 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".wrapper {\n  background-color: rgba(0, 0, 0, 0.7);\n  position: absolute;\n  width: 100%;\n  min-height: 100%;\n  min-height: -webkit-fill-available;\n}\n\n", ""]);
+exports.push([module.i, ".wrapper {\n  background-color: rgba(0, 0, 0, 0.7);\n  position: absolute;\n  width: 100%;\n  min-height: 100%;\n  min-height: -webkit-fill-available; }\n", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/app.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"wrapper d-flex p-5 justify-content-center\">\n  <app-nav></app-nav>\n  <router-outlet></router-outlet>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -124,7 +134,7 @@ AppComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-root',
         template: __webpack_require__("../../../../../src/app/app.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/app.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/app.component.scss")]
     })
 ], AppComponent);
 
@@ -136,7 +146,6 @@ AppComponent = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export galleryConfig */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
@@ -150,8 +159,11 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__posts_posts_component__ = __webpack_require__("../../../../../src/app/posts/posts.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__gallery_gallery_component__ = __webpack_require__("../../../../../src/app/gallery/gallery.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__posts_service__ = __webpack_require__("../../../../../src/app/posts.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__gallery_flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__gallery_sketches_sketches_component__ = __webpack_require__("../../../../../src/app/gallery/sketches/sketches.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__gallery_drawings_drawings_component__ = __webpack_require__("../../../../../src/app/gallery/drawings/drawings.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__posts_service__ = __webpack_require__("../../../../../src/app/posts.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__gallery_flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__gallery_gallery_config__ = __webpack_require__("../../../../../src/app/gallery/gallery.config.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -172,32 +184,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var galleryConfig = {
-    'style': {
-        'background': 'rgba(25,25,25,0.8)',
-        'width': '100%',
-        'height': '100%'
-    },
-    'description': {
-        'text': true,
-        'counter': true,
-        'style': {
-            'text-align': 'center',
-            'font-size': '3vmin',
-            'letter-spacing': '2px',
-            'margin-bottom': '3px',
-        }
-    },
-    'animation': 'fade',
-    'thumbnails': {
-        'position': 'top',
-        'space': 20,
-        'width': 180,
-        'height': 135
-    },
-    'navigation': true,
-    'gestures': true
-};
+
+
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -210,7 +199,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_9__posts_posts_component__["a" /* PostsComponent */],
             __WEBPACK_IMPORTED_MODULE_8__nav_nav_component__["a" /* NavComponent */],
             __WEBPACK_IMPORTED_MODULE_10__home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__gallery_gallery_component__["a" /* GalleryComponent */]
+            __WEBPACK_IMPORTED_MODULE_11__gallery_gallery_component__["a" /* GalleryComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__gallery_sketches_sketches_component__["a" /* SketchesComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__gallery_drawings_drawings_component__["a" /* DrawingsComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -218,17 +209,77 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_4_ngx_bootstrap_collapse__["a" /* CollapseModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_6__app_routing_module__["a" /* AppRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-            __WEBPACK_IMPORTED_MODULE_5_ng_gallery__["a" /* GalleryModule */].forRoot(galleryConfig)
+            __WEBPACK_IMPORTED_MODULE_5_ng_gallery__["a" /* GalleryModule */].forRoot(__WEBPACK_IMPORTED_MODULE_16__gallery_gallery_config__["a" /* galleryConfig */])
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_12__posts_service__["a" /* PostsService */],
-            __WEBPACK_IMPORTED_MODULE_13__gallery_flickr_service__["a" /* FlickrService */]
+            __WEBPACK_IMPORTED_MODULE_14__posts_service__["a" /* PostsService */],
+            __WEBPACK_IMPORTED_MODULE_15__gallery_flickr_service__["a" /* FlickrService */]
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
 //# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/gallery/drawings/drawings.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-gallery [album]=\"'drawings'\"></app-gallery>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/gallery/drawings/drawings.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  width: 100%; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/gallery/drawings/drawings.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DrawingsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DrawingsComponent = (function () {
+    function DrawingsComponent() {
+    }
+    DrawingsComponent.prototype.ngOnInit = function () { };
+    return DrawingsComponent;
+}());
+DrawingsComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-drawings',
+        template: __webpack_require__("../../../../../src/app/gallery/drawings/drawings.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/gallery/drawings/drawings.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], DrawingsComponent);
+
+//# sourceMappingURL=drawings.component.js.map
 
 /***/ }),
 
@@ -256,17 +307,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var FlickrService = FlickrService_1 = (function () {
     function FlickrService(http) {
         this.http = http;
-        this.drawingsUrl = '/api/drawings';
-        this.params = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* URLSearchParams */];
+        this.url = '/api/albums';
     }
     FlickrService.handleError = function (error) {
         console.log("Gallery Service error: " + error);
         return Promise.reject(error.message || error);
     };
-    FlickrService.prototype.getDrawings = function (options) {
-        this.params.set('page', options.page);
-        this.params.set('perPage', options.perPage);
-        return this.http.get(this.drawingsUrl, { params: this.params })
+    FlickrService.prototype.getImages = function (options) {
+        return this.http.get(this.url, { params: options })
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(function (err) { return FlickrService_1.handleError(err); });
@@ -342,12 +390,13 @@ var GalleryComponent = (function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
             _this.currentPage = Number(params['page']);
-            _this.getDrawings();
+            _this.getImages();
         });
     };
-    GalleryComponent.prototype.getDrawings = function () {
+    GalleryComponent.prototype.getImages = function () {
         var _this = this;
-        this.flickr.getDrawings({ page: this.currentPage, perPage: this.perPage }).then(function (data) {
+        this.flickr.getImages({ page: this.currentPage, perPage: this.perPage, album: this.album })
+            .then(function (data) {
             _this.pages = Math.ceil(data.count / _this.perPage);
             _this.images = data.images;
             _this.gallery.load(_this.images);
@@ -356,6 +405,10 @@ var GalleryComponent = (function () {
     };
     return GalleryComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", String)
+], GalleryComponent.prototype, "album", void 0);
 GalleryComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-gallery',
@@ -367,6 +420,101 @@ GalleryComponent = __decorate([
 
 var _a, _b, _c;
 //# sourceMappingURL=gallery.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/gallery/gallery.config.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return galleryConfig; });
+var galleryConfig = {
+    'style': {
+        'background': 'rgba(25,25,25,0.8)',
+        'width': '100%',
+        'height': '100%'
+    },
+    'description': {
+        'text': true,
+        'counter': true,
+        'style': {
+            'text-align': 'center',
+            'font-size': '3vmin',
+            'letter-spacing': '2px',
+            'margin-bottom': '3px',
+        }
+    },
+    'animation': 'fade',
+    'thumbnails': {
+        'position': 'top',
+        'space': 20,
+        'width': 180,
+        'height': 135
+    },
+    'navigation': true,
+    'gestures': true
+};
+//# sourceMappingURL=gallery.config.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/gallery/sketches/sketches.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-gallery [album]=\"'sketches'\"></app-gallery>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/gallery/sketches/sketches.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  width: 100%; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/gallery/sketches/sketches.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SketchesComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SketchesComponent = (function () {
+    function SketchesComponent() {
+    }
+    SketchesComponent.prototype.ngOnInit = function () { };
+    return SketchesComponent;
+}());
+SketchesComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-sketches',
+        template: __webpack_require__("../../../../../src/app/gallery/sketches/sketches.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/gallery/sketches/sketches.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], SketchesComponent);
+
+//# sourceMappingURL=sketches.component.js.map
 
 /***/ }),
 
@@ -465,7 +613,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.7);\n  text-align: center; }\n  nav .nav-link {\n    font-weight: 500;\n    text-transform: uppercase;\n    letter-spacing: 1px;\n    opacity: 0.8; }\n\n@media (min-width: 576px) {\n  .nav-link:after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0px;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); } }\n\n@media (min-width: 992px) {\n  .nav-link {\n    font-size: 1.25rem; } }\n", ""]);
+exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.7);\n  text-align: center; }\n  nav .nav-link {\n    font-weight: 500;\n    text-transform: uppercase;\n    letter-spacing: 1px;\n    opacity: 0.8; }\n\n@media (min-width: 768px) {\n  .nav-link:after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0px;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); } }\n\n@media (min-width: 992px) {\n  .nav-link {\n    font-size: 1.25rem; } }\n", ""]);
 
 // exports
 

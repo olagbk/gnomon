@@ -711,7 +711,8 @@ var GalleryThumbComponent = (function () {
         }
     };
     GalleryThumbComponent.prototype.translateThumbs = function () {
-        var x = this.state.currIndex * this.config.width + this.config.width / 2;
+        var thumbWidth = (this.el.nativeElement.clientWidth <= 480)? this.config.smallWidth : this.config.width;
+        var x = this.state.currIndex * thumbWidth + thumbWidth / 2;
         return "translate3d(" + -x + "px, 0, 0)";
     };
     GalleryThumbComponent.prototype.getContainerStyle = function () {
@@ -749,6 +750,7 @@ GalleryThumbComponent.propDecorators = {
     'config': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */] },],
 };
 //# sourceMappingURL=gallery-thumb.component.js.map
+
 
 /***/ }),
 
@@ -61132,7 +61134,7 @@ function transition$$1(stateChangeExpr, steps) {
 /* unused harmony export Request */
 /* unused harmony export Response */
 /* unused harmony export QueryEncoder */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return URLSearchParams; });
+/* unused harmony export URLSearchParams */
 /* unused harmony export VERSION */
 /* unused harmony export ɵg */
 /* unused harmony export ɵa */
