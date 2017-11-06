@@ -5,7 +5,8 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class FlickrService {
-  private url = '/api/albums';
+  private galleryUrl = '/api/gallery';
+  private albumsUrl = '/api/albums';
   constructor(private http: Http) { }
 
   static handleError(error: any): Promise<any> {
@@ -13,9 +14,19 @@ export class FlickrService {
     return Promise.reject(error.message || error);
   }
   public getImages(options) {
-    return this.http.get(this.url, {params: options})
-      .toPromise()
-      .then(response => response.json())
-      .catch(err => FlickrService.handleError(err));
+    const getAlbumId = new Promise((resolve) => {
+      this.http.get(this.albumsUrl)
+        .toPromise()
+        .then(response => {
+          const responseObj = response.json();
+          resolve(responseObj[options.album]);
+        });
+    });
+    return getAlbumId.then(id => {
+      return this.http.get(this.galleryUrl, {params: {album_id: id, page: options.page, perPage: options.perPage}})
+        .toPromise()
+        .then(response => response.json())
+        .catch(err => FlickrService.handleError(err));
+      });
   }
 }

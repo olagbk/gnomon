@@ -20,6 +20,7 @@ import { PostsService } from './posts.service';
 import { FlickrService } from './gallery/flickr.service';
 
 import { galleryConfig } from './gallery/gallery.config';
+import { PhotosComponent } from './photos/photos.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { galleryConfig } from './gallery/gallery.config';
     HomeComponent,
     GalleryComponent,
     SketchesComponent,
-    DrawingsComponent
+    DrawingsComponent,
+    PhotosComponent
   ],
   imports: [
     BrowserModule,

@@ -4,21 +4,21 @@ import config from '~/config/config.json';
 
 
 module.exports = (router, sequelize) => {
-  router.route('/albums')
+  router.route('/gallery')
 
     .get((req, res) => {
       Flickr
         .then(flickr => {
           flickr.photosets.getPhotos(
             {
-              photoset_id: config.flickr[req.query.album],
               user_id: config.flickr.nsid,
+              photoset_id: req.query.album_id,
               page: req.query.page,
               per_page: req.query.perPage,
               extras: ['url_o', 'url_n']
             },
             (err, result) => {
-              if (err) res.send(err);
+              if (err) return res.send(err);
               const images = result.photoset.photo.map(img => {
                 return {
                   src: `https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}_b.jpg`,
