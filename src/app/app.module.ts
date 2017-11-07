@@ -18,6 +18,7 @@ import { DrawingsComponent } from './gallery/drawings/drawings.component';
 
 import { PostsService } from './posts.service';
 import { FlickrService } from './gallery/flickr.service';
+import { AlbumsService } from './gallery/albums.service';
 
 import { galleryConfig } from './gallery/gallery.config';
 import { PhotosComponent } from './photos/photos.component';
@@ -43,7 +44,8 @@ import { PhotosComponent } from './photos/photos.component';
   ],
   providers: [
     PostsService,
-    FlickrService
+    FlickrService,
+    AlbumsService
   ],
   bootstrap: [AppComponent]
 })

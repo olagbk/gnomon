@@ -5,7 +5,6 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class FlickrService {
-  private albumsUrl = '/api/albums';
   constructor(private http: Http) { }
 
   static handleError(error: any): Promise<any> {
@@ -13,11 +12,12 @@ export class FlickrService {
     return Promise.reject(error.message || error);
   }
   public getImages(options) {
-    if (sessionStorage) {
-      const albumID = sessionStorage.getItem(options.album);
-      if (albumID) { options.albumID = albumID; }
+    if (sessionStorage && sessionStorage.getItem('albumData')) {
+      const data = JSON.parse(sessionStorage.getItem('albumData'));
+      const album = data.find((item => item.type === options.album));
+      options.albumID = album.album_id;
     }
-    return this.http.get(this.albumsUrl, {params: options})
+    return this.http.get('/api/flickr', {params: options})
       .toPromise()
       .then(response => response.json())
       .catch(err => FlickrService.handleError(err));
