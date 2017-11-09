@@ -1,0 +1,25 @@
+<nav aria-label="Album pages">
+  <ul class="pagination justify-content-center">
+    <li
+      [class.disabled]="page === 1"
+      class="page-item">
+      <a class="page-link"
+        href="{{url}}/{{page - 1}}">Previous
+      </a>
+    </li><li
+      *ngFor="let p of pages | times"
+      class="page-item">
+      <a
+        [class.active]="p === page"
+        class="page-link"
+        href="{{url}}/{{p}}">{{p}}
+      </a>
+    </li><li
+      [class.disabled]="page === pages"
+      class="page-item">
+      <a class="page-link"
+         href="{{url}}/{{page + 1}}">Next
+      </a>
+    </li>
+  </ul>
+</nav>

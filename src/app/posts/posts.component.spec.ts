@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { PostsComponent } from './posts.component';
-import { PostsService } from '../posts.service';
+import { PostsService } from './posts.service';
 
 describe('PostsComponent', () => {
   let component: PostsComponent;

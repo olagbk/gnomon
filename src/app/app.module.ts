@@ -15,13 +15,16 @@ import { HomeComponent } from './home/home.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SketchesComponent } from './gallery/sketches/sketches.component';
 import { DrawingsComponent } from './gallery/drawings/drawings.component';
+import { PhotosComponent } from './photos/photos.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
-import { PostsService } from './posts.service';
+import { PostsService } from './posts/posts.service';
 import { FlickrService } from './gallery/flickr.service';
 import { AlbumsService } from './gallery/albums.service';
 
+import { TimesPipe } from './pipes/times.pipe';
+
 import { galleryConfig } from './gallery/gallery.config';
-import { PhotosComponent } from './photos/photos.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { PhotosComponent } from './photos/photos.component';
     GalleryComponent,
     SketchesComponent,
     DrawingsComponent,
-    PhotosComponent
+    PhotosComponent,
+    PaginationComponent,
+    TimesPipe
   ],
   imports: [
     BrowserModule,
