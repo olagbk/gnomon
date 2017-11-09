@@ -142,9 +142,11 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
         if (sessionStorage && !sessionStorage.getItem('albumData')) {
-            this.albums.load().then((function (data) {
+            this.albums.load()
+                .then((function (data) {
                 sessionStorage.setItem('albumData', JSON.stringify(data));
-            }));
+            }))
+                .catch(function (err) { return console.log('album data download error: ' + err); });
         }
     };
     return AppComponent;
@@ -286,7 +288,7 @@ var AlbumsService = (function () {
             .map(function (res) { return res.json(); })
             .toPromise()
             .then(function (data) { return _this._albumData = data; })
-            .catch(function (err) { return Promise.resolve(); });
+            .catch(function (err) { return Promise.reject(err.message || "Failed to fetch albums from the server"); });
     };
     Object.defineProperty(AlbumsService.prototype, "albumData", {
         get: function () {

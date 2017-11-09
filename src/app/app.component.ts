@@ -13,9 +13,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if (sessionStorage && !sessionStorage.getItem('albumData')) {
-      this.albums.load().then((data => {
+      this.albums.load()
+        .then((data => {
         sessionStorage.setItem('albumData', JSON.stringify(data));
-      }));
+      }))
+        .catch(err => console.log('album data download error: ' + err));
     }
   }
 }

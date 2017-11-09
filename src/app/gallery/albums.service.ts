@@ -20,7 +20,7 @@ export class AlbumsService {
       .map((res: Response) => res.json())
       .toPromise()
       .then((data: any) => this._albumData = data)
-      .catch((err: any) => Promise.resolve());
+      .catch((err: any) => Promise.reject(err.message || `Failed to fetch albums from the server`));
   }
 
   get albumData(): any {
