@@ -11,6 +11,7 @@ import { FlickrService } from './flickr.service';
 export class GalleryComponent implements OnInit {
   loading = true;
   perPage = 24;
+  message: string;
   pages: number;
   currentPage: number;
   images: GalleryImage[];
@@ -21,16 +22,18 @@ export class GalleryComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.currentPage = Number(params['page']);
+      this.message = 'Loading images...';
       this.getImages();
     });
   }
   getImages() {
     this.flickr.getImages({page: this.currentPage, perPage: this.perPage, album: this.album})
       .then(data => {
-      this.pages = Math.ceil(data.count / this.perPage);
-      this.images = data.images;
-      this.gallery.load(this.images);
-      this.loading = false;
-    });
-  }
+        this.pages = Math.ceil(data.count / this.perPage);
+        this.images = data.images;
+        this.gallery.load(this.images);
+        this.loading = false;
+      })
+      .catch(err => this.message = `Couldn't fetch images :(`);
+    }
 }

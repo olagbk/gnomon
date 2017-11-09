@@ -422,7 +422,7 @@ var FlickrService_1, _a;
 /***/ "../../../../../src/app/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 py-4\">\n\n  <p *ngIf=\"loading\" class=\"loading text-white text-center\">Loading images...</p>\n\n  <div class=\"row justify-content-center\">\n    <div *ngFor=\"let image of images; let i = index\"\n    (click)=\"gallery.set(i)\"\n    class=\"image-holder m-2\"\n    [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n    </div>\n  </div>\n\n</div>\n\n<nav *ngIf=\"!loading\" aria-label=\"Album pages\">\n  <ul class=\"pagination justify-content-center\">\n    <li [class.disabled]=\"currentPage - 1 < 1\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">Previous</a></li>\n    <li *ngIf=\"currentPage - 2 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 2}}\">{{currentPage - 2}}</a></li>\n    <li *ngIf=\"currentPage - 1 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">{{currentPage - 1}}</a></li>\n    <li class=\"page-item text-muted\"><a class=\"page-link active\" href=\"drawings/{{currentPage}}\">{{currentPage}}</a></li>\n    <li *ngIf=\"currentPage + 1 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">{{currentPage + 1}}</a></li>\n    <li *ngIf=\"currentPage + 2 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 2}}\">{{currentPage + 2}}</a></li>\n    <li [class.disabled]=\"currentPage + 1 > pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">Next</a></li>\n  </ul>\n</nav>\n\n<gallery-modal></gallery-modal>\n"
+module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 py-4\">\n\n  <p *ngIf=\"loading\" class=\"loading text-white text-center\">{{message}}</p>\n\n  <div class=\"row justify-content-center\">\n    <div *ngFor=\"let image of images; let i = index\"\n    (click)=\"gallery.set(i)\"\n    class=\"image-holder m-2\"\n    [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n    </div>\n  </div>\n\n</div>\n\n<nav *ngIf=\"!loading\" aria-label=\"Album pages\">\n  <ul class=\"pagination justify-content-center\">\n    <li [class.disabled]=\"currentPage - 1 < 1\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">Previous</a></li>\n    <li *ngIf=\"currentPage - 2 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 2}}\">{{currentPage - 2}}</a></li>\n    <li *ngIf=\"currentPage - 1 > 0\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage - 1}}\">{{currentPage - 1}}</a></li>\n    <li class=\"page-item text-muted\"><a class=\"page-link active\" href=\"drawings/{{currentPage}}\">{{currentPage}}</a></li>\n    <li *ngIf=\"currentPage + 1 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">{{currentPage + 1}}</a></li>\n    <li *ngIf=\"currentPage + 2 <= pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 2}}\">{{currentPage + 2}}</a></li>\n    <li [class.disabled]=\"currentPage + 1 > pages\" class=\"page-item\"><a class=\"page-link\" href=\"drawings/{{currentPage + 1}}\">Next</a></li>\n  </ul>\n</nav>\n\n<gallery-modal></gallery-modal>\n"
 
 /***/ }),
 
@@ -478,6 +478,7 @@ var GalleryComponent = (function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (params) {
             _this.currentPage = Number(params['page']);
+            _this.message = 'Loading images...';
             _this.getImages();
         });
     };
@@ -489,7 +490,8 @@ var GalleryComponent = (function () {
             _this.images = data.images;
             _this.gallery.load(_this.images);
             _this.loading = false;
-        });
+        })
+            .catch(function (err) { return _this.message = "Couldn't fetch images :("; });
     };
     return GalleryComponent;
 }());

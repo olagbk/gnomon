@@ -16,6 +16,8 @@ module.exports = function (router, sequelize) {
       if (req.query.albumID) return resolve(req.query.albumID);
       sequelize.models.albums.findOne({ where: { type: req.query.album } }).then(function (data) {
         return resolve(data.get('album_id'));
+      }).catch(function (err) {
+        return res.send(err);
       });
     });
 

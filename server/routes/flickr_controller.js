@@ -10,7 +10,8 @@ module.exports = (router, sequelize) => {
         if (req.query.albumID) return resolve(req.query.albumID);
         sequelize.models.albums
           .findOne({where: {type: req.query.album}})
-          .then(data => resolve(data.get('album_id')));
+          .then(data => resolve(data.get('album_id')))
+          .catch(err => res.send(err))
       });
 
       Flickr
