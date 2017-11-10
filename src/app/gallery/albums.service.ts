@@ -11,19 +11,30 @@ export class AlbumsService {
 
   constructor(private http: Http) { }
 
-  load(): Promise<any> {
-
-    this._albumData = null;
-
-    return this.http
-      .get('/api/albums')
+  loadAll(): Promise<any> {
+    return this.http.get('/api/albums')
       .map((res: Response) => res.json())
       .toPromise()
-      .then((data: any) => this._albumData = data)
+      .then((data: any) => data)
       .catch((err: any) => Promise.reject(err.message || `Failed to fetch albums from the server`));
   }
 
-  get albumData(): any {
-    return this._albumData;
+  getPhotos() {
+    if (this.data) {
+      return Promise.resolve(this.data.filter(a => a.type === 'photos'));
+    } else {
+      return this.http.get('/api/albums/photos').toPromise()
+        .then(response => response.json());
+    }
+  }
+
+  get data(): any {
+    try {
+      JSON.parse(sessionStorage.getItem('albumData'));
+    } catch (e) { return; }
+  }
+  set data(data) {
+    try { sessionStorage.setItem('albumData', JSON.stringify(data));
+    } catch (e) { return; }
   }
 }
