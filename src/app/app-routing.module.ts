@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {SketchesComponent} from './gallery/sketches/sketches.component';
 import {DrawingsComponent} from './gallery/drawings/drawings.component';
-import {PhotosComponent} from "./photos/photos.component";
+import {PhotosComponent} from './gallery/photos/photos.component';
 
 const ROUTES = [
   {

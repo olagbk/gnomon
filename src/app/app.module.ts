@@ -15,7 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SketchesComponent } from './gallery/sketches/sketches.component';
 import { DrawingsComponent } from './gallery/drawings/drawings.component';
-import { PhotosComponent } from './photos/photos.component';
+import { PhotosComponent } from './gallery/photos/photos.component';
 import { PaginationComponent } from './pagination/pagination.component';
 
 import { PostsService } from './posts/posts.service';
