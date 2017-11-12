@@ -4,6 +4,8 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
+import { Album } from './album';
+
 @Injectable()
 export class AlbumsService {
 
@@ -11,15 +13,15 @@ export class AlbumsService {
 
   constructor(private http: Http) { }
 
-  loadAll(): Promise<any> {
+  loadAll(): Promise<Album[]> {
     return this.http.get('/api/albums')
       .map((res: Response) => res.json())
       .toPromise()
-      .then((data: any) => data)
+      .then((data: Album[]) => data)
       .catch((err: any) => Promise.reject(err.message || `Failed to fetch albums from the server`));
   }
 
-  getPhotos() {
+  getPhotos(): Promise<Album[]> {
     if (this.data) {
       return Promise.resolve(this.data.filter(a => a.type === 'photos'));
     } else {
@@ -28,7 +30,7 @@ export class AlbumsService {
     }
   }
 
-  get data(): any {
+  get data(): Album[] {
     try {
       JSON.parse(sessionStorage.getItem('albumData'));
     } catch (e) { return; }

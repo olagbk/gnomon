@@ -45,9 +45,9 @@ module.exports = {
       },
       {
         type: 'photos',
-        name: 'mammalia',
-        album_id: '72157644448784543',
-        filename: 'mammalia.jpg'
+        name: 'reptilia et amphibia',
+        album_id: '72157642919170795',
+        filename: 'reptilia.jpg'
       },], {})
   },
 

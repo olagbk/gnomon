@@ -1,3 +1,15 @@
-<p>
-  photos works!
-</p>
+<div class="gallery-wrapper my-4 my-md-5 py-4">
+
+  <!--<p *ngIf="loading" class="loading text-white text-center">{{message}}</p>-->
+
+  <div class="row justify-content-center">
+    <div *ngFor="let album of albums; let i = index"
+         class="album-thumb-container rounded m-2"
+         [ngStyle]="{'background-image': 'url(../../assets/' + album.filename + ')'}">
+         <div class="album-thumb rounded p-2">
+      <p class="album-title">{{album.name}}</p>
+         </div>
+    </div>
+  </div>
+
+</div>

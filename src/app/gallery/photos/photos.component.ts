@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlbumsService } from '../albums.service';
+import { Album } from '../album';
 
 @Component({
   selector: 'app-photos',
@@ -7,11 +8,12 @@ import { AlbumsService } from '../albums.service';
   styleUrls: ['./photos.component.scss']
 })
 export class PhotosComponent implements OnInit {
+  albums: Album[];
 
-  constructor(private albums: AlbumsService) { }
+  constructor(private albumsService: AlbumsService) { }
 
   ngOnInit() {
-    this.albums.getPhotos().then(data => console.log(data));
+    this.albumsService.getPhotos().then(data => this.albums = data);
   }
 
 }
