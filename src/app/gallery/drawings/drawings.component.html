@@ -1,1 +1,1 @@
-<app-gallery [album]="'drawings'"></app-gallery>
+<app-gallery *ngIf="album" [album]="album.album_id"></app-gallery>

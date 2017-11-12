@@ -29,10 +29,18 @@ export class AlbumsService {
         .then(response => response.json());
     }
   }
+  getAlbumByType(type): Promise<Album> {
+    if (this.data) {
+      return Promise.resolve(this.data.find(album => album.type === type));
+    } else {
+      return this.http.get('/api/albums/' + type).toPromise()
+        .then(response => response.json());
+    }
+  }
 
   get data(): Album[] {
     try {
-      JSON.parse(sessionStorage.getItem('albumData'));
+      return JSON.parse(sessionStorage.getItem('albumData'));
     } catch (e) { return; }
   }
   set data(data) {

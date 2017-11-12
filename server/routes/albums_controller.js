@@ -10,10 +10,13 @@ module.exports = (router, sequelize) => {
     });
   router.route('/albums/:type')
     .get((req, res) => {
-    sequelize.models.albums.findAll({where: {type: req.params.type}})
+    const type = req.params.type;
+    const method = (type === 'photos')? 'findAll' : 'findOne';
+    sequelize.models.albums[method]({where: {type: type}})
       .then(data => res.json(data))
       .catch(err => res.send(err));
-    })
+
+  })
 };
 
 
