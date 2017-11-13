@@ -13,7 +13,7 @@ export class PhotosComponent implements OnInit {
   constructor(private albumsService: AlbumsService) { }
 
   ngOnInit() {
-    this.albumsService.getPhotos().then(data => this.albums = data);
+    this.albums = this.albumsService.getPhotos();
   }
 
 }

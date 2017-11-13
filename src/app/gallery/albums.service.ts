@@ -17,34 +17,19 @@ export class AlbumsService {
     return this.http.get('/api/albums')
       .map((res: Response) => res.json())
       .toPromise()
-      .then((data: Album[]) => data)
-      .catch((err: any) => Promise.reject(err.message || `Failed to fetch albums from the server`));
+      .then((data: Album[]) => this._albumData = data)
+      .catch((err: any) => {
+        console.log(`Couldn't prefetch albums from the server.`);
+        Promise.resolve();
+      });
   }
-
-  getPhotos(): Promise<Album[]> {
-    if (this.data) {
-      return Promise.resolve(this.data.filter(a => a.type === 'photos'));
-    } else {
-      return this.http.get('/api/albums/photos').toPromise()
-        .then(response => response.json());
-    }
+  getPhotos(): Album[] {
+    return this.data.filter(a => a.type === 'photos');
   }
-  getAlbumByType(type): Promise<Album> {
-    if (this.data) {
-      return Promise.resolve(this.data.find(album => album.type === type));
-    } else {
-      return this.http.get('/api/albums/' + type).toPromise()
-        .then(response => response.json());
-    }
+  getAlbumByType(type): Album {
+    return this.data.find(album => album.type === type);
   }
-
   get data(): Album[] {
-    try {
-      return JSON.parse(sessionStorage.getItem('albumData'));
-    } catch (e) { return; }
-  }
-  set data(data) {
-    try { sessionStorage.setItem('albumData', JSON.stringify(data));
-    } catch (e) { return; }
+    return this._albumData;
   }
 }

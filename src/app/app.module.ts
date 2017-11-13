@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { GalleryModule } from 'ng-gallery';
@@ -26,6 +26,10 @@ import { AlbumsService } from './gallery/albums.service';
 import { TimesPipe } from './pipes/times.pipe';
 
 import { galleryConfig } from './gallery/gallery.config';
+
+export function startupServiceFactory(albumsService: AlbumsService): Function {
+  return () => albumsService.loadAll();
+}
 
 @NgModule({
   declarations: [
@@ -52,7 +56,13 @@ import { galleryConfig } from './gallery/gallery.config';
   providers: [
     PostsService,
     FlickrService,
-    AlbumsService
+    AlbumsService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: startupServiceFactory,
+      deps: [AlbumsService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

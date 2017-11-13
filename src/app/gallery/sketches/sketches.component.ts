@@ -13,6 +13,6 @@ export class SketchesComponent implements OnInit {
   constructor(private albumsService: AlbumsService) {}
 
   ngOnInit() {
-    this.albumsService.getAlbumByType('sketches').then(data => this.album = data);
+    this.album = this.albumsService.getAlbumByType('sketches');
   }
 }

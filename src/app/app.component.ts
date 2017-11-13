@@ -11,11 +11,5 @@ export class AppComponent implements OnInit {
 
   constructor(private albums: AlbumsService) {}
 
-  ngOnInit() {
-    if (!this.albums.data) {
-      this.albums.loadAll()
-        .then((data => this.albums.data = data))
-        .catch(err => console.log('album data download error: ' + err));
-    }
-  }
+  ngOnInit() {}
 }
