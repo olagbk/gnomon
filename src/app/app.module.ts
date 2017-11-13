@@ -16,6 +16,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { SketchesComponent } from './gallery/sketches/sketches.component';
 import { DrawingsComponent } from './gallery/drawings/drawings.component';
 import { PhotosComponent } from './gallery/photos/photos.component';
+import { PhotoAlbumComponent } from './gallery/photos/photo-album.component';
 import { PaginationComponent } from './pagination/pagination.component';
 
 import { PostsService } from './posts/posts.service';
@@ -37,7 +38,8 @@ import { galleryConfig } from './gallery/gallery.config';
     DrawingsComponent,
     PhotosComponent,
     PaginationComponent,
-    TimesPipe
+    PhotoAlbumComponent,
+    TimesPipe,
   ],
   imports: [
     BrowserModule,

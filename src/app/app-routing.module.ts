@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import {SketchesComponent} from './gallery/sketches/sketches.component';
 import {DrawingsComponent} from './gallery/drawings/drawings.component';
 import {PhotosComponent} from './gallery/photos/photos.component';
+import {PhotoAlbumComponent} from "./gallery/photos/photo-album.component";
 
 const ROUTES = [
   {
@@ -18,23 +19,19 @@ const ROUTES = [
    },
   {
     path: 'drawings',
-    redirectTo: 'drawings/1'
-  },
-  {
-    path: 'drawings/:page',
     component: DrawingsComponent
   },
   {
     path: 'sketches',
-    redirectTo: 'sketches/1'
-  },
-  {
-    path: 'sketches/:page',
     component: SketchesComponent
   },
   {
     path: 'photos',
     component: PhotosComponent
+  },
+  {
+    path: 'photos/:album',
+    component: PhotoAlbumComponent
   },
   {
     path: '**',

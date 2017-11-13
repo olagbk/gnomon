@@ -4,7 +4,8 @@
       [class.disabled]="page === 1"
       class="page-item">
       <a class="page-link"
-        href="{{url}}/{{page - 1}}">Previous
+         routerLink="./"
+         [queryParams]="{page: page - 1}">Previous
       </a>
     </li><li
       *ngFor="let p of pages | times"
@@ -12,13 +13,15 @@
       <a
         [class.active]="p === page"
         class="page-link"
-        href="{{url}}/{{p}}">{{p}}
+        routerLink="./"
+        [queryParams]="{page: p}">{{p}}
       </a>
     </li><li
       [class.disabled]="page === pages"
       class="page-item">
       <a class="page-link"
-         href="{{url}}/{{page + 1}}">Next
+         routerLink="./"
+         [queryParams]="{page: page + 1}">Next
       </a>
     </li>
   </ul>

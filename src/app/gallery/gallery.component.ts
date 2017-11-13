@@ -20,7 +20,7 @@ export class GalleryComponent implements OnInit {
   constructor(public gallery: GalleryService, private flickr: FlickrService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params: Params) => {
+    this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.currentPage = Number(params['page']);
       this.message = 'Loading images...';
       this.getImages();

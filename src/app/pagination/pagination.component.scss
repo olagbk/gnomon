@@ -1,5 +1,7 @@
 @import '../../styles/common';
-
+.pagination {
+  flex-wrap: wrap;
+}
 .page-item {
   &.disabled .page-link {
     color: $gray-700;
