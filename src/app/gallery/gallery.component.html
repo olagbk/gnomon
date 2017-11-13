@@ -1,17 +1,18 @@
-<div class="gallery-wrapper my-4 my-md-5 py-4">
+<div class="gallery-wrapper my-4 my-md-5 pt-4">
 
-  <p *ngIf="loading" class="loading text-white text-center">{{message}}</p>
+  <p *ngIf="!galleryLoaded" class="loading text-white text-center">{{message}}</p>
 
-  <div *ngIf="!loading" class="row justify-content-center">
+  <div *ngIf="galleryLoaded" class="row justify-content-center">
+
     <div *ngFor="let image of images; let i = index"
-    (click)="gallery.set(i)"
-    class="image-holder m-2"
-    [ngStyle]="{'background-image': 'url(' + image.thumbnail + ')'}">
+         class="image-frame m-2"
+         (click)="gallery.set(i)"
+         [ngStyle]="{'background-image': 'url(' + image.thumbnail + ')'}">
     </div>
   </div>
 
 </div>
 
-<app-pagination *ngIf="!loading" [pages]="pages"></app-pagination>
+<app-pagination *ngIf="galleryLoaded" [pages]="pages"></app-pagination>
 
 <gallery-modal></gallery-modal>

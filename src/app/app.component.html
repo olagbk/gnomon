@@ -1,6 +1,6 @@
 <div class="wrapper d-flex p-5 justify-content-center">
   <app-nav></app-nav>
-  <router-outlet></router-outlet>
+  <router-outlet (deactivate)="scrollToTop()"></router-outlet>
 </div>
 
 

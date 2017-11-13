@@ -4,7 +4,7 @@
       [class.disabled]="page === 1"
       class="page-item">
       <a class="page-link"
-         routerLink="./"
+         routerLink="."
          [queryParams]="{page: page - 1}">Previous
       </a>
     </li><li
@@ -13,14 +13,14 @@
       <a
         [class.active]="p === page"
         class="page-link"
-        routerLink="./"
+        routerLink="."
         [queryParams]="{page: p}">{{p}}
       </a>
     </li><li
       [class.disabled]="page === pages"
       class="page-item">
       <a class="page-link"
-         routerLink="./"
+         routerLink="."
          [queryParams]="{page: page + 1}">Next
       </a>
     </li>

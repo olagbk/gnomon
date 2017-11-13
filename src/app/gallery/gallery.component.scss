@@ -1,14 +1,10 @@
 @import '../../styles/common';
 
-.gallery-wrapper {
-  margin: auto;
-  max-width: 1500px;
-}
 .loading {
   opacity: .75;
   letter-spacing: 1px;
 }
-.image-holder {
+.image-frame {
   opacity: 0.85;
   width: 100%;
   max-width: 320px;

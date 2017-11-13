@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Gnomon';
 
   constructor() {}
 
   ngOnInit() {}
+
+  scrollToTop() {
+    window.scroll(0, 0);
+  }
 }
