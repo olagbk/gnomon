@@ -138,14 +138,7 @@ var AppComponent = (function () {
         this.albums = albums;
         this.title = 'Gnomon';
     }
-    AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (!this.albums.data) {
-            this.albums.loadAll()
-                .then((function (data) { return _this.albums.data = data; }))
-                .catch(function (err) { return console.log('album data download error: ' + err); });
-        }
-    };
+    AppComponent.prototype.ngOnInit = function () { };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -166,6 +159,7 @@ var _a;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export startupServiceFactory */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
@@ -217,6 +211,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+function startupServiceFactory(albumsService) {
+    return function () { return albumsService.loadAll(); };
+}
 var AppModule = (function () {
     function AppModule() {
     }
@@ -248,7 +245,13 @@ AppModule = __decorate([
         providers: [
             __WEBPACK_IMPORTED_MODULE_17__posts_posts_service__["a" /* PostsService */],
             __WEBPACK_IMPORTED_MODULE_18__gallery_flickr_service__["a" /* FlickrService */],
-            __WEBPACK_IMPORTED_MODULE_19__gallery_albums_service__["a" /* AlbumsService */]
+            __WEBPACK_IMPORTED_MODULE_19__gallery_albums_service__["a" /* AlbumsService */],
+            {
+                provide: __WEBPACK_IMPORTED_MODULE_3__angular_core__["d" /* APP_INITIALIZER */],
+                useFactory: startupServiceFactory,
+                deps: [__WEBPACK_IMPORTED_MODULE_19__gallery_albums_service__["a" /* AlbumsService */]],
+                multi: true
+            }
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
     })
@@ -287,46 +290,25 @@ var AlbumsService = (function () {
         this.http = http;
     }
     AlbumsService.prototype.loadAll = function () {
+        var _this = this;
         return this.http.get('/api/albums')
             .map(function (res) { return res.json(); })
             .toPromise()
-            .then(function (data) { return data; })
-            .catch(function (err) { return Promise.reject(err.message || "Failed to fetch albums from the server"); });
+            .then(function (data) { return _this._albumData = data; })
+            .catch(function (err) {
+            console.log("Couldn't prefetch albums from the server.");
+            Promise.resolve();
+        });
     };
     AlbumsService.prototype.getPhotos = function () {
-        if (this.data) {
-            return Promise.resolve(this.data.filter(function (a) { return a.type === 'photos'; }));
-        }
-        else {
-            return this.http.get('/api/albums/photos').toPromise()
-                .then(function (response) { return response.json(); });
-        }
+        return this.data.filter(function (a) { return a.type === 'photos'; });
     };
     AlbumsService.prototype.getAlbumByType = function (type) {
-        if (this.data) {
-            return Promise.resolve(this.data.find(function (album) { return album.type === type; }));
-        }
-        else {
-            return this.http.get('/api/albums/' + type).toPromise()
-                .then(function (response) { return response.json(); });
-        }
+        return this.data.find(function (album) { return album.type === type; });
     };
     Object.defineProperty(AlbumsService.prototype, "data", {
         get: function () {
-            try {
-                return JSON.parse(sessionStorage.getItem('albumData'));
-            }
-            catch (e) {
-                return;
-            }
-        },
-        set: function (data) {
-            try {
-                sessionStorage.setItem('albumData', JSON.stringify(data));
-            }
-            catch (e) {
-                return;
-            }
+            return this._albumData;
         },
         enumerable: true,
         configurable: true
@@ -346,7 +328,7 @@ var _a;
 /***/ "../../../../../src/app/gallery/drawings/drawings.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-gallery *ngIf=\"album\" [album]=\"album.album_id\"></app-gallery>\n"
+module.exports = "<app-gallery [album]=\"album.album_id\"></app-gallery>\n"
 
 /***/ }),
 
@@ -391,8 +373,7 @@ var DrawingsComponent = (function () {
         this.albumsService = albumsService;
     }
     DrawingsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.albumsService.getAlbumByType('drawings').then(function (data) { return _this.album = data; });
+        this.album = this.albumsService.getAlbumByType('drawings');
     };
     return DrawingsComponent;
 }());
@@ -703,8 +684,7 @@ var PhotosComponent = (function () {
         this.albumsService = albumsService;
     }
     PhotosComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.albumsService.getPhotos().then(function (data) { return _this.albums = data; });
+        this.albums = this.albumsService.getPhotos();
     };
     return PhotosComponent;
 }());
@@ -725,7 +705,7 @@ var _a;
 /***/ "../../../../../src/app/gallery/sketches/sketches.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-gallery *ngIf=\"album\" [album]=\"album.album_id\"></app-gallery>\n"
+module.exports = "<app-gallery [album]=\"album.album_id\"></app-gallery>\n"
 
 /***/ }),
 
@@ -770,8 +750,7 @@ var SketchesComponent = (function () {
         this.albumsService = albumsService;
     }
     SketchesComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.albumsService.getAlbumByType('sketches').then(function (data) { return _this.album = data; });
+        this.album = this.albumsService.getAlbumByType('sketches');
     };
     return SketchesComponent;
 }());
