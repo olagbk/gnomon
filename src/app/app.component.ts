@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AlbumsService } from './gallery/albums.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import { AlbumsService } from './gallery/albums.service';
 export class AppComponent implements OnInit {
   title = 'Gnomon';
 
-  constructor(private albums: AlbumsService) {}
+  constructor() {}
 
   ngOnInit() {}
 }

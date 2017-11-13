@@ -2,7 +2,7 @@
 
   <p *ngIf="loading" class="loading text-white text-center">{{message}}</p>
 
-  <div class="row justify-content-center">
+  <div *ngIf="!loading" class="row justify-content-center">
     <div *ngFor="let image of images; let i = index"
     (click)="gallery.set(i)"
     class="image-holder m-2"

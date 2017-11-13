@@ -9,8 +9,8 @@ import { FlickrService } from './flickr.service';
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent implements OnInit {
-  loading = true;
   perPage = 24;
+  loading: boolean;
   message: string;
   pages: number;
   currentPage: number;
@@ -21,8 +21,10 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
+      this.loading = true;
       this.currentPage = Number(params['page']);
       this.message = 'Loading images...';
+      window.scroll(0, 0);
       this.getImages();
     });
   }
