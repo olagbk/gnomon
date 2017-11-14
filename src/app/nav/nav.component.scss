@@ -10,6 +10,8 @@ nav {
   text-transform: uppercase;
   letter-spacing: 1px;
   opacity: 0.8;
+  width: fit-content;
+  margin: auto;
   &:after {
     height: 0;
     content: '';
@@ -22,12 +24,9 @@ nav {
   &.active:after{
     height: 1px;
   }
-}
-
-@include media-breakpoint-up(md) {
-  .nav-link:not(.active) {
+  &:not(.active) {
     &:after {
-      content:'';
+      content: '';
       display: block;
       height: 1px;
       width: 0;
