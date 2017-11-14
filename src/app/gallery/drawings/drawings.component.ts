@@ -13,6 +13,6 @@ export class DrawingsComponent implements OnInit {
   constructor(private albumsService: AlbumsService) {}
 
   ngOnInit() {
-    this.albumsService.getAlbumByType('drawings').then(data => this.album = data);
+    this.album = this.albumsService.getAlbumByType('drawings');
   }
 }

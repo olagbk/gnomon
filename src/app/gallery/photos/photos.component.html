@@ -1,10 +1,8 @@
-<div class="gallery-wrapper my-4 my-md-5 py-4">
-
-  <!--<p *ngIf="loading" class="loading text-white text-center">{{message}}</p>-->
+<div class="gallery-wrapper my-4 my-md-5 pt-4">
 
   <div class="row justify-content-center">
     <div *ngFor="let album of albums; let i = index"
-         class="album-thumb-container rounded m-2"
+         class="album-thumb-container rounded m-3"
          [ngStyle]="{'background-image': 'url(../../assets/' + album.filename + ')'}">
          <a class="album-thumb rounded p-2"
          [routerLink]="album.album_id">

@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import {SketchesComponent} from './gallery/sketches/sketches.component';
-import {DrawingsComponent} from './gallery/drawings/drawings.component';
-import {PhotosComponent} from './gallery/photos/photos.component';
-import {PhotoAlbumComponent} from "./gallery/photos/photo-album.component";
+import { SketchesComponent } from './gallery/sketches/sketches.component';
+import { DrawingsComponent } from './gallery/drawings/drawings.component';
+import { PhotosComponent } from './gallery/photos/photos.component';
+import { PhotoAlbumComponent } from './gallery/photos/photo-album.component';
 
 const ROUTES = [
   {

@@ -10,13 +10,11 @@
     <ul class="navbar-nav m-auto">
 
       <li *ngFor="let item of menu"
-          class="nav-item px-1 px-lg-2"
-          [class.active]="item.active">
+          class="nav-item px-1 px-lg-2">
         <a class="nav-link"
-           [routerLink]="item.route">{{item.name}}
-          <span *ngIf="item.active"
-                class="sr-only">(current)
-          </span>
+           [routerLink]="item.route"
+           routerLinkActive="active">
+           {{item.name}}
         </a>
       </li>
     </ul>
