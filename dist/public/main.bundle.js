@@ -497,7 +497,7 @@ var GalleryComponent = (function () {
         this.activatedRoute.queryParams.subscribe(function (params) {
             window.scroll(0, 0);
             _this.galleryLoaded = false;
-            _this.currentPage = Number(params['page']);
+            _this.currentPage = Number(params['page']) || 1;
             _this.message = 'Loading images...';
             _this.getImages();
         });
