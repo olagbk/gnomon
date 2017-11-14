@@ -93,7 +93,7 @@ AppRoutingModule = __decorate([
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper d-flex p-5 justify-content-center\">\n  <app-nav></app-nav>\n  <router-outlet></router-outlet>\n</div>\n\n\n"
+module.exports = "<div class=\"wrapper d-flex p-5 justify-content-center\">\n  <app-nav></app-nav>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -121,7 +121,6 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -132,13 +131,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var AppComponent = (function () {
-    function AppComponent(albums) {
-        this.albums = albums;
-        this.title = 'Gnomon';
+    function AppComponent() {
     }
     AppComponent.prototype.ngOnInit = function () { };
+    AppComponent.prototype.scrollToTop = function () {
+        window.scroll(0, 0);
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -147,10 +146,9 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [])
 ], AppComponent);
 
-var _a;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -443,7 +441,7 @@ var FlickrService_1, _a, _b;
 /***/ "../../../../../src/app/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 py-4\">\n\n  <p *ngIf=\"loading\" class=\"loading text-white text-center\">{{message}}</p>\n\n  <div class=\"row justify-content-center\">\n    <div *ngFor=\"let image of images; let i = index\"\n    (click)=\"gallery.set(i)\"\n    class=\"image-holder m-2\"\n    [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n    </div>\n  </div>\n\n</div>\n\n<app-pagination *ngIf=\"!loading\" [pages]=\"pages\"></app-pagination>\n\n<gallery-modal></gallery-modal>\n"
+module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 pt-4\">\n\n  <p *ngIf=\"!galleryLoaded\" class=\"loading text-white text-center\">{{message}}</p>\n\n  <div *ngIf=\"galleryLoaded\" class=\"row justify-content-center\">\n\n    <div *ngFor=\"let image of images; let i = index\"\n         class=\"image-frame m-2\"\n         (click)=\"gallery.set(i)\"\n         [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n    </div>\n  </div>\n\n</div>\n\n<app-pagination *ngIf=\"galleryLoaded\" [pages]=\"pages\"></app-pagination>\n\n<gallery-modal></gallery-modal>\n"
 
 /***/ }),
 
@@ -455,7 +453,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".gallery-wrapper {\n  margin: auto;\n  max-width: 1500px; }\n\n.loading {\n  opacity: .75;\n  letter-spacing: 1px; }\n\n.image-holder {\n  opacity: 0.85;\n  width: 100%;\n  max-width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: 4px 3px 4px 1.5px #343a40; }\n  .image-holder:hover {\n    cursor: pointer;\n    opacity: .99; }\n", ""]);
+exports.push([module.i, ".loading {\n  opacity: .75;\n  letter-spacing: 1px; }\n\n.image-frame {\n  opacity: 0.85;\n  width: 100%;\n  max-width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: 4px 3px 4px 1.5px #343a40; }\n  .image-frame:hover {\n    cursor: pointer;\n    opacity: .99; }\n", ""]);
 
 // exports
 
@@ -492,12 +490,13 @@ var GalleryComponent = (function () {
         this.gallery = gallery;
         this.flickr = flickr;
         this.activatedRoute = activatedRoute;
-        this.loading = true;
         this.perPage = 24;
     }
     GalleryComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.queryParams.subscribe(function (params) {
+            window.scroll(0, 0);
+            _this.galleryLoaded = false;
             _this.currentPage = Number(params['page']);
             _this.message = 'Loading images...';
             _this.getImages();
@@ -510,7 +509,7 @@ var GalleryComponent = (function () {
             _this.pages = Math.ceil(data.count / _this.perPage);
             _this.images = data.images;
             _this.gallery.load(_this.images);
-            _this.loading = false;
+            _this.galleryLoaded = true;
         })
             .catch(function (err) { return _this.message = "Couldn't fetch images :("; });
     };
@@ -639,7 +638,7 @@ var _a;
 /***/ "../../../../../src/app/gallery/photos/photos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 py-4\">\n\n  <!--<p *ngIf=\"loading\" class=\"loading text-white text-center\">{{message}}</p>-->\n\n  <div class=\"row justify-content-center\">\n    <div *ngFor=\"let album of albums; let i = index\"\n         class=\"album-thumb-container rounded m-2\"\n         [ngStyle]=\"{'background-image': 'url(../../assets/' + album.filename + ')'}\">\n         <a class=\"album-thumb rounded p-2\"\n         [routerLink]=\"album.album_id\">\n      <p class=\"album-title\">{{album.name}}</p>\n         </a>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 pt-4\">\n\n  <div class=\"row justify-content-center\">\n    <div *ngFor=\"let album of albums; let i = index\"\n         class=\"album-thumb-container rounded m-3\"\n         [ngStyle]=\"{'background-image': 'url(../../assets/' + album.filename + ')'}\">\n         <a class=\"album-thumb rounded p-2\"\n         [routerLink]=\"album.album_id\">\n      <p class=\"album-title\">{{album.name}}</p>\n         </a>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -651,7 +650,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".album-thumb-container {\n  width: 640px;\n  height: 480px;\n  background-size: cover; }\n\n.album-thumb {\n  background: radial-gradient(#fff, #ced4da, #343a40) rgba(255, 255, 255, 0.6);\n  transition: .5s ease;\n  border: 1.5px solid black;\n  opacity: 0.6;\n  height: 100%;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  text-decoration: none;\n  font-size: 4rem;\n  color: inherit; }\n  .album-thumb:hover {\n    cursor: pointer;\n    background: transparent;\n    opacity: .9;\n    text-shadow: -1px -1px 10px antiquewhite, 1px -1px 10px antiquewhite, -1px 1px 10px antiquewhite, 1px 1px 10px antiquewhite; }\n", ""]);
+exports.push([module.i, ".album-thumb-container {\n  background-size: cover;\n  width: 100%;\n  max-width: 640px;\n  height: 480px;\n  font-size: 64px;\n  font-weight: 300;\n  letter-spacing: 1px; }\n  @media (max-width: 991px) {\n    .album-thumb-container {\n      max-width: 480px;\n      height: 360px;\n      font-size: 48px; } }\n  @media (max-width: 575px) {\n    .album-thumb-container {\n      max-width: 320px;\n      height: 240px;\n      font-size: 32px; } }\n\n.album-thumb {\n  background: radial-gradient(#fff, #ced4da, #343a40) rgba(255, 255, 255, 0.6);\n  transition: .5s ease;\n  border: 1.5px solid black;\n  opacity: 0.6;\n  height: 100%;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  text-decoration: none;\n  color: inherit; }\n  .album-thumb:hover {\n    cursor: pointer;\n    background: transparent;\n    opacity: .9;\n    text-shadow: -1px -1px 10px antiquewhite, 1px -1px 10px antiquewhite, -1px 1px 10px antiquewhite, 1px 1px 10px antiquewhite; }\n", ""]);
 
 // exports
 
@@ -851,7 +850,7 @@ var NavRoute = (function () {
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark fixed-top py-3\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n\n      <li *ngFor=\"let item of menu\"\n          class=\"nav-item px-1 px-lg-2\"\n          [class.active]=\"item.active\">\n        <a class=\"nav-link\"\n           [routerLink]=\"item.route\">{{item.name}}\n          <span *ngIf=\"item.active\"\n                class=\"sr-only\">(current)\n          </span>\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark fixed-top py-3\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n\n      <li *ngFor=\"let item of menu\"\n          class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\"\n           [routerLink]=\"item.route\"\n           routerLinkActive=\"active\">\n           {{item.name}}\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -863,7 +862,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.7);\n  text-align: center; }\n  nav .nav-link {\n    font-weight: 500;\n    text-transform: uppercase;\n    letter-spacing: 1px;\n    opacity: 0.8; }\n\n@media (min-width: 768px) {\n  .nav-link:after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0px;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); } }\n\n@media (min-width: 992px) {\n  .nav-link {\n    font-size: 1.25rem; } }\n", ""]);
+exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.7);\n  text-align: center; }\n\n.nav-link {\n  font-weight: 500;\n  text-transform: uppercase;\n  letter-spacing: 1px;\n  opacity: 0.8;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: auto; }\n  .nav-link:after {\n    height: 0;\n    content: '';\n    display: block;\n    position: relative;\n    background: rgba(255, 255, 255, 0.85);\n    top: -12px;\n    transition: 0.5s ease; }\n  .nav-link.active:after {\n    height: 1px; }\n  .nav-link:not(.active):after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0;\n    top: 0;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:not(.active):hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.85); }\n\n@media (min-width: 992px) {\n  .nav-link {\n    font-size: 20px; }\n    .nav-link.active:after {\n      top: -15px; } }\n", ""]);
 
 // exports
 
@@ -925,7 +924,7 @@ NavComponent = __decorate([
 /***/ "../../../../../src/app/pagination/pagination.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav aria-label=\"Album pages\">\n  <ul class=\"pagination justify-content-center\">\n    <li\n      [class.disabled]=\"page === 1\"\n      class=\"page-item\">\n      <a class=\"page-link\"\n         routerLink=\"./\"\n         [queryParams]=\"{page: page - 1}\">Previous\n      </a>\n    </li><li\n      *ngFor=\"let p of pages | times\"\n      class=\"page-item\">\n      <a\n        [class.active]=\"p === page\"\n        class=\"page-link\"\n        routerLink=\"./\"\n        [queryParams]=\"{page: p}\">{{p}}\n      </a>\n    </li><li\n      [class.disabled]=\"page === pages\"\n      class=\"page-item\">\n      <a class=\"page-link\"\n         routerLink=\"./\"\n         [queryParams]=\"{page: page + 1}\">Next\n      </a>\n    </li>\n  </ul>\n</nav>\n"
+module.exports = "<nav aria-label=\"Album pages\">\n  <ul class=\"pagination justify-content-center\">\n    <li\n      [class.disabled]=\"page === 1\"\n      class=\"page-item\">\n      <a class=\"page-link\"\n         routerLink=\".\"\n         [queryParams]=\"{page: page - 1}\">Previous\n      </a>\n    </li><li\n      *ngFor=\"let p of pages | times\"\n      class=\"page-item\">\n      <a\n        [class.active]=\"p === page\"\n        class=\"page-link\"\n        routerLink=\".\"\n        [queryParams]=\"{page: p}\">{{p}}\n      </a>\n    </li><li\n      [class.disabled]=\"page === pages\"\n      class=\"page-item\">\n      <a class=\"page-link\"\n         routerLink=\".\"\n         [queryParams]=\"{page: page + 1}\">Next\n      </a>\n    </li>\n  </ul>\n</nav>\n"
 
 /***/ }),
 
