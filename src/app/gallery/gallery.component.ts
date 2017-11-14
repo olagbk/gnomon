@@ -23,7 +23,7 @@ export class GalleryComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       window.scroll(0, 0);
       this.galleryLoaded = false;
-      this.currentPage = Number(params['page']);
+      this.currentPage = Number(params['page']) || 1;
       this.message = 'Loading images...';
       this.getImages();
     });
