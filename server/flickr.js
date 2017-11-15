@@ -9,8 +9,5 @@ export default new Promise(
     api_key: config.flickr.key,
     secret: config.flickr.secret
     },
-    (error, flickr) => {
-      if (error) console.log(error);
-      resolve(flickr);
-  });
+    (error, flickr) => resolve(error || flickr));
 })

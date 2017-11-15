@@ -9,7 +9,7 @@ module.exports = (router, sequelize) => {
 
       Flickr
         .then(flickr => {
-          if (!flickr) throw new Error(`Couldn't connect to Flickr API`);
+          if (flickr instanceof Error) throw new Error(flickr);
           flickr.photosets.getPhotos(
             {
               user_id: config.flickr.nsid,
@@ -32,6 +32,7 @@ module.exports = (router, sequelize) => {
             }
           )
         })
+        .catch(e => console.log(e))
     });
 };
 

@@ -20,8 +20,7 @@ exports.default = new Promise(function (resolve, reject) {
     api_key: _config2.default.flickr.key,
     secret: _config2.default.flickr.secret
   }, function (error, flickr) {
-    if (error) console.log(error);
-    resolve(flickr);
+    return resolve(error || flickr);
   });
 });
 module.exports = exports['default'];
