@@ -32,7 +32,7 @@ module.exports = (router, sequelize) => {
             }
           )
         })
-        .catch(e => console.log(e))
+        .catch(e => res.status(500).send(e))
     });
 };
 

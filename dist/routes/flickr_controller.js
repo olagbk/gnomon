@@ -34,7 +34,7 @@ module.exports = function (router, sequelize) {
         res.json({ images: images, count: result.photoset.total });
       });
     }).catch(function (e) {
-      return console.log(e);
+      return res.status(500).send(e);
     });
   });
 };
