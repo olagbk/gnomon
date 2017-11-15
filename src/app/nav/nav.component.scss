@@ -5,6 +5,18 @@ nav {
   background-color: rgba(0,0,0,0.7);
   text-align: center;
 }
+.home {
+  padding: .5rem;
+  border: 1px solid #222;
+  border-radius: 0.3rem;
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    margin-top: -1px;
+  }
+  &:hover {
+    border-color: #828282;
+  }
+}
 .nav-link {
   font-weight: 500;
   text-transform: uppercase;
