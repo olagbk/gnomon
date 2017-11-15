@@ -14,6 +14,7 @@ module.exports = function (router, sequelize) {
   router.route('/flickr').get(function (req, res) {
 
     _flickr2.default.then(function (flickr) {
+      if (!flickr) throw new Error('Couldn\'t connect to Flickr API');
       flickr.photosets.getPhotos({
         user_id: _config2.default.flickr.nsid,
         photoset_id: req.query.album,
@@ -32,8 +33,6 @@ module.exports = function (router, sequelize) {
         });
         res.json({ images: images, count: result.photoset.total });
       });
-    }).catch(function (err) {
-      res.send('Can\'t connect to Flickr API: ' + err);
     });
   });
 };

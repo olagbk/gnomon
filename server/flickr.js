@@ -10,6 +10,7 @@ export default new Promise(
     secret: config.flickr.secret
     },
     (error, flickr) => {
-      (error)? reject(error) : resolve(flickr);
+      if (error) console.log(error);
+      resolve(flickr);
   });
 })
