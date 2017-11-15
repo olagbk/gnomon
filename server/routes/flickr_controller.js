@@ -32,7 +32,7 @@ module.exports = (router, sequelize) => {
           )
         })
         .catch(err => {
-          res.send(`Can't connect to Flickr API: ${err.message}`)
+          res.send(`Can't connect to Flickr API: ${err}`)
         })
     });
 };

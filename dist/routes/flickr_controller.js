@@ -33,7 +33,7 @@ module.exports = function (router, sequelize) {
         res.json({ images: images, count: result.photoset.total });
       });
     }).catch(function (err) {
-      res.send('Can\'t connect to Flickr API: ' + err.message);
+      res.send('Can\'t connect to Flickr API: ' + err);
     });
   });
 };
