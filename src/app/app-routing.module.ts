@@ -6,6 +6,7 @@ import { SketchesComponent } from './gallery/sketches/sketches.component';
 import { DrawingsComponent } from './gallery/drawings/drawings.component';
 import { PhotosComponent } from './gallery/photos/photos.component';
 import { PhotoAlbumComponent } from './gallery/photos/photo-album.component';
+import { AboutComponent } from './about/about.component';
 
 const ROUTES = [
   {
@@ -32,6 +33,10 @@ const ROUTES = [
   {
     path: 'photos/:album',
     component: PhotoAlbumComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: '**',

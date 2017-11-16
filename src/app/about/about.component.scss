@@ -1,0 +1,28 @@
+@import '../../styles/common';
+
+$bg-color: rgba(0,0,0,0.5);
+:host {
+  width: 100%;
+  background: $bg-color;
+  box-shadow:
+    10px 0px 10px $bg-color,
+    -10px 0px 10px $bg-color
+}
+.about-wrapper {
+  margin: 6rem 6rem 0 6rem;
+  display: flex;
+}
+.photo {
+  height: fit-content;
+  border: 1px solid $gray-900;
+}
+.desc {
+  margin: auto;
+  color: $gray-500;
+  letter-spacing: 3px;
+  font-weight: 300;
+  font-size: 2rem;
+}
+.desc-links a {
+  color: $white;
+}
