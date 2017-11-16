@@ -77,10 +77,10 @@ var AppRoutingModule = (function () {
 AppRoutingModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forRoot(ROUTES)
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forRoot(ROUTES)
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */]
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */]
         ],
         declarations: []
     })
@@ -837,7 +837,7 @@ HomeComponent = __decorate([
 /***/ "../../../../../src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark fixed-top py-3\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <a class=\"home\" routerLink=\"/\"><img src=\"../../assets/home.svg\" alt=\"Home\"></a>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" routerLink=\"/blog\" routerLinkActive=\"active\"> blog </a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" routerLink=\"/drawings\" routerLinkActive=\"active\"> drawings </a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" routerLink=\"/sketches\" routerLinkActive=\"active\"> sketches </a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" routerLink=\"/photos\" routerLinkActive=\"active\"> photographs </a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" routerLink=\"about\" routerLinkActive=\"active\"> about </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark fixed-top py-3\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <a *ngIf=\"!homePage\" class=\"home\" routerLink=\"/\"><img src=\"../../assets/home.svg\" alt=\"Home\"></a>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" routerLink=\"/blog\" routerLinkActive=\"active\"> blog </a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" routerLink=\"/drawings\" routerLinkActive=\"active\"> drawings </a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" routerLink=\"/sketches\" routerLinkActive=\"active\"> sketches </a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" routerLink=\"/photos\" routerLinkActive=\"active\"> photographs </a>\n      </li>\n      <li class=\"nav-item px-1 px-lg-2\">\n        <a class=\"nav-link\" routerLink=\"about\" routerLinkActive=\"active\"> about </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -849,7 +849,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.7);\n  text-align: center; }\n\n.home {\n  padding: .5rem;\n  border: 1px solid #222;\n  border-radius: 0.3rem; }\n  @media (min-width: 768px) {\n    .home {\n      position: absolute;\n      margin-top: -1px; } }\n  .home:hover {\n    border-color: #828282; }\n\n.nav-link {\n  font-weight: 500;\n  text-transform: uppercase;\n  letter-spacing: 1px;\n  opacity: 0.8;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: auto; }\n  .nav-link:after {\n    height: 0;\n    content: '';\n    display: block;\n    position: relative;\n    background: rgba(255, 255, 255, 0.85);\n    top: -12px;\n    transition: 0.5s ease; }\n  .nav-link.active:after {\n    height: 1px; }\n  .nav-link:not(.active):after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0;\n    top: 0;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:not(.active):hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.85); }\n\n@media (min-width: 992px) {\n  .nav-link {\n    font-size: 20px; }\n    .nav-link.active:after {\n      top: -15px; } }\n", ""]);
+exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.7);\n  text-align: center; }\n\n.home {\n  padding: .75rem;\n  border: 1px solid #222;\n  border-radius: 0.3rem; }\n  @media (min-width: 768px) {\n    .home {\n      position: absolute; } }\n  .home:hover {\n    border-color: #828282; }\n\n.nav-link {\n  font-weight: 500;\n  text-transform: uppercase;\n  letter-spacing: 1px;\n  opacity: 0.8;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin: auto; }\n  .nav-link:after {\n    height: 0;\n    content: '';\n    display: block;\n    position: relative;\n    background: rgba(255, 255, 255, 0.85);\n    top: -12px;\n    transition: 0.5s ease; }\n  .nav-link.active:after {\n    height: 1px; }\n  .nav-link:not(.active):after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0;\n    top: 0;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:not(.active):hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.85); }\n\n@media (min-width: 992px) {\n  .nav-link {\n    font-size: 20px; }\n    .nav-link.active:after {\n      top: -15px; } }\n", ""]);
 
 // exports
 
@@ -865,6 +865,7 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -875,11 +876,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var NavComponent = (function () {
-    function NavComponent() {
+    function NavComponent(router) {
+        this.router = router;
     }
     NavComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.isCollapsed = false;
+        this.router.events.subscribe(function (event) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]) {
+                _this.homePage = event.urlAfterRedirects === '/home';
+            }
+        });
     };
     NavComponent.prototype.toggleCollapse = function () {
         this.isCollapsed = !this.isCollapsed;
@@ -892,9 +901,10 @@ NavComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/nav/nav.component.html"),
         styles: [__webpack_require__("../../../../../src/app/nav/nav.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object])
 ], NavComponent);
 
+var _a;
 //# sourceMappingURL=nav.component.js.map
 
 /***/ }),
@@ -970,7 +980,7 @@ PaginationComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pagination/pagination.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pagination/pagination.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object])
 ], PaginationComponent);
 
 var _a, _b;

@@ -6,12 +6,11 @@ nav {
   text-align: center;
 }
 .home {
-  padding: .5rem;
+  padding: .75rem;
   border: 1px solid #222;
   border-radius: 0.3rem;
   @include media-breakpoint-up(md) {
     position: absolute;
-    margin-top: -1px;
   }
   &:hover {
     border-color: #828282;

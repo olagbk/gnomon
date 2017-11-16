@@ -5,7 +5,7 @@
           (click)="toggleCollapse()">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="home" routerLink="/"><img src="../../assets/home.svg" alt="Home"></a>
+  <a *ngIf="!homePage" class="home" routerLink="/"><img src="../../assets/home.svg" alt="Home"></a>
 
   <div class="navbar-collapse" [collapse]="!isCollapsed" id="navLinks">
     <ul class="navbar-nav m-auto">
