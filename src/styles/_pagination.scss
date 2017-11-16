@@ -1,0 +1,44 @@
+@import './common';
+
+.page-nav-link {
+  background-color: rgba($black, 0.5);
+  border: 2px solid $gray-900;
+  border-radius: $border-radius;
+  letter-spacing: 2px;
+  text-decoration: none;
+  &:hover {
+    color: $white;
+    border-color: $gray-700;
+    cursor: pointer;
+  }
+}
+.pagination {
+  justify-content: center;
+  flex-wrap: wrap;
+  .page-item {
+    &, &.active, &.disabled, &:hover {
+      .page-link {
+        @extend .page-nav-link;
+        margin: 1px;
+      }
+    }
+    .page-link {
+      color: $gray-500;
+    }
+    &.active .page-link {
+      color: $gray-300;
+      font-weight: bold;
+    }
+    &.disabled .page-link {
+      color: $gray-700;
+    }
+  }
+}
+.scroll-top:not([href]):not([tabindex]) {
+  @extend .page-nav-link;
+  display: flex;
+  width: max-content;
+  margin: auto;
+  padding: 0.5rem;
+  color: $gray-500;
+}

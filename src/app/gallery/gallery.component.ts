@@ -21,7 +21,6 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      window.scroll(0, 0);
       this.galleryLoaded = false;
       this.currentPage = Number(params['page']) || 1;
       this.message = 'Loading images...';
@@ -37,5 +36,6 @@ export class GalleryComponent implements OnInit {
         this.galleryLoaded = true;
       })
       .catch(err => this.message = `Couldn't fetch images :(`);
-    }
+  }
+  scrollToTop() { scrollTo(0, 0); }
 }

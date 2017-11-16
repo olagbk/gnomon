@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgModel } from '@angular/forms';
 
 
 @Component({
@@ -8,15 +9,24 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
-  page = 1;
-  @Input() 'pages': number;
+  maxSize: number;
+  page: number;
+  @Input() pages: number;
 
-  constructor(private activatedRoute: ActivatedRoute) {}
-
-  ngOnInit() {
-    this.activatedRoute.queryParams.subscribe((params: Params) => {
-      if (params.page) {this.page = Number(params['page']); }
-    });
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+    this.maxSize = 5;
   }
 
+  ngOnInit(): void {
+    this.page = Number(this.activatedRoute.snapshot.queryParams.page) || 1;
+    this.goToPage(this.page);
+  }
+
+  pageChanged(event: any): void {
+    this.goToPage(event.page);
+  }
+
+  goToPage(page) {
+    this.router.navigate(this.activatedRoute.snapshot.url.map(segment => segment.path), {queryParams: {page: page}});
+  }
 }

@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
 import { GalleryModule } from 'ng-gallery';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,11 +49,13 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     TimesPipe,
   ],
   imports: [
-    BrowserModule,
-    HttpModule,
-    CollapseModule.forRoot(),
     AppRoutingModule,
+    BrowserModule,
+    FormsModule,
+    HttpModule,
     BrowserAnimationsModule,
+    CollapseModule.forRoot(),
+    PaginationModule.forRoot(),
     GalleryModule.forRoot(galleryConfig)
   ],
   providers: [
