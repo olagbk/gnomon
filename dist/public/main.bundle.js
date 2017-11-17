@@ -16,7 +16,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /***/ "../../../../../src/app/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"about-wrapper\">\n  <img class=\"photo\" src=\"../../assets/about.jpg\"/>\n  <div class=\"desc\">\n    <p>I am interior crocodile alligator</p>\n    <div class=\"desc-links\">\n      <a href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row justify-content-center pt-5 mt-5\">\n  <div class=\"photo\">\n    <div class=\"shader\"></div>\n  </div>\n  <div class=\"desc p-5 ml-3\">\n    <p>I am interior crocodile alligator</p>\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -28,7 +28,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  width: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.5), -10px 0px 10px rgba(0, 0, 0, 0.5); }\n\n.about-wrapper {\n  margin: 6rem 6rem 0 6rem;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n\n.photo {\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  border: 1px solid #212529; }\n\n.desc {\n  margin: auto;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300;\n  font-size: 2rem; }\n\n.desc-links a {\n  color: #fff; }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  background: rgba(0, 0, 0, 0.4);\n  box-shadow: 0 0 3rem 3rem rgba(0, 0, 0, 0.4); }\n\n.row {\n  width: 100%; }\n\n.photo {\n  background: url(" + __webpack_require__("../../../../../src/assets/about.jpg") + ");\n  background-size: cover;\n  width: 30%;\n  height: auto;\n  box-shadow: inset 0 0 15px #343a40; }\n\n.shader {\n  height: 100%;\n  width: 100%;\n  background: rgba(0, 0, 0, 0.5); }\n\n.desc {\n  background: rgba(0, 0, 0, 0.7);\n  box-shadow: inset 0 0 15px #343a40;\n  width: 60%;\n  min-height: 25vw;\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  color: #fff !important;\n  cursor: pointer;\n  line-height: 2rem; }\n", ""]);
 
 // exports
 
@@ -1233,6 +1233,13 @@ PostsService = __decorate([
 
 var _a;
 //# sourceMappingURL=posts.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/assets/about.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "about.50e6a5401491f7dab623.jpg";
 
 /***/ }),
 
