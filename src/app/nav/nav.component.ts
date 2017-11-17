@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -8,17 +7,11 @@ import {NavigationEnd, Router} from '@angular/router';
 })
 export class NavComponent implements OnInit {
   public isCollapsed: boolean;
-  public homePage: boolean;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
     this.isCollapsed = false;
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.homePage = event.urlAfterRedirects === '/home';
-      }
-    });
   }
   toggleCollapse() {
     this.isCollapsed = !this.isCollapsed;

@@ -1,9 +1,12 @@
 @import '../../node_modules/bootstrap/scss/variables';
 
+
 $navbar-dark-color:                 $white;
-$navbar-dark-hover-color:           rgba($white,.85);
+$navbar-dark-hover-color:           rgba($white,.75);
 $navbar-dark-active-color:          rgba($white, .85);
 $navbar-font:                       16px;
 $navbar-font-lg:                    20px;
 
 $border-radius:                     .15rem;
+
+$burnt-edges:                       inset 0 0 10px 2px $black

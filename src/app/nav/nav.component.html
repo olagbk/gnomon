@@ -5,24 +5,25 @@
           (click)="toggleCollapse()">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a *ngIf="!homePage" class="home" routerLink="/"><img src="../../assets/home.svg" alt="Home"></a>
 
   <div class="navbar-collapse" [collapse]="!isCollapsed" id="navLinks">
     <ul class="navbar-nav m-auto">
-
-      <li class="nav-item px-1 px-lg-2">
+      <li class="home-button align-self-center px-2 mb-3"  (click)="toggleCollapse()">
+        <a class="nav-link p-2" routerLink="/home" routerLinkActive="active"> g </a>
+      </li>
+      <li class="nav-item" (click)="toggleCollapse()">
         <a class="nav-link" routerLink="/blog" routerLinkActive="active"> blog </a>
       </li>
-      <li class="nav-item px-1 px-lg-2">
+      <li class="nav-item" (click)="toggleCollapse()">
         <a class="nav-link" routerLink="/drawings" routerLinkActive="active"> drawings </a>
       </li>
-      <li class="nav-item px-1 px-lg-2">
+      <li class="nav-item" (click)="toggleCollapse()">
         <a class="nav-link" routerLink="/sketches" routerLinkActive="active"> sketches </a>
       </li>
-      <li class="nav-item px-1 px-lg-2">
+      <li class="nav-item" (click)="toggleCollapse()">
         <a class="nav-link" routerLink="/photos" routerLinkActive="active"> photographs </a>
       </li>
-      <li class="nav-item px-1 px-lg-2">
+      <li class="nav-item" (click)="toggleCollapse()">
         <a class="nav-link" routerLink="about" routerLinkActive="active"> about </a>
       </li>
     </ul>

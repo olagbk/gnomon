@@ -12,7 +12,7 @@
   background: #fff center no-repeat;
   background-size: cover;
   border-radius: 1px;
-  box-shadow: 4px 3px 4px 1.5px $gray-800;
+  box-shadow: $burnt-edges;
   &:hover {
     cursor: pointer;
     opacity: .99;

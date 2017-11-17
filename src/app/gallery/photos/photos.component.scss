@@ -13,8 +13,7 @@ $album-height-sm: .5 * $album-height-lg;
   max-width: $album-width-lg;
   height: $album-height-lg;
   font-size: .1 * $album-width-lg;
-  font-weight: 300;
-  letter-spacing: 1px;
+  letter-spacing: 5px;
   @include media-breakpoint-down(md){
     max-width: $album-width-md;
     height: $album-height-md;
@@ -28,7 +27,8 @@ $album-height-sm: .5 * $album-height-lg;
   }
 }
 .album-thumb {
-  background: radial-gradient($white, $gray-400, $gray-800) rgba($white, 0.6);
+  background: radial-gradient($white, $gray-400, $gray-800);
+  box-shadow: $burnt-edges;
   transition: .5s ease;
   border: 1.5px solid black;
   opacity: 0.6;
