@@ -8,6 +8,7 @@ nav {
   padding: 0 0.5rem;
 }
 .nav-link {
+  font-size: $navbar-font;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -65,11 +66,11 @@ nav {
     }
   }
 }
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-only(md) {
   .nav-link {
-    font-size: $navbar-font-lg;
+    font-size: $navbar-font-md;
     &.active:after {
-      top: -(.75 * $navbar-font-lg);
+      top: -(.75 * $navbar-font-md);
     }
   }
 }
