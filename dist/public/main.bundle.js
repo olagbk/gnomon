@@ -16,7 +16,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /***/ "../../../../../src/app/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row justify-content-center pt-5 mt-5\">\n  <div class=\"photo\">\n    <div class=\"shader\"></div>\n  </div>\n  <div class=\"desc p-5 ml-3\">\n    <p>I am interior crocodile alligator</p>\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row pt-5\">\n  <div class=\"photo\">\n    <img src=\"../../assets/about.jpg\"/>\n  </div>\n  <div class=\"desc\">\n    <p>I am interior crocodile alligator</p>\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -28,7 +28,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  width: 100%;\n  background: rgba(0, 0, 0, 0.4);\n  box-shadow: 0 0 3rem 3rem rgba(0, 0, 0, 0.4); }\n\n.row {\n  width: 100%; }\n\n.photo {\n  background: url(" + __webpack_require__("../../../../../src/assets/about.jpg") + ");\n  background-size: cover;\n  width: 30%;\n  height: auto;\n  box-shadow: inset 0 0 15px #343a40; }\n\n.shader {\n  height: 100%;\n  width: 100%;\n  background: rgba(0, 0, 0, 0.5); }\n\n.desc {\n  background: rgba(0, 0, 0, 0.7);\n  box-shadow: inset 0 0 15px #343a40;\n  width: 60%;\n  min-height: 25vw;\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  color: #fff !important;\n  cursor: pointer;\n  line-height: 2rem; }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  box-shadow: 0 0 3rem 3rem rgba(0, 0, 0, 0.5); }\n\n.row {\n  width: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  box-shadow: 0 0 2rem 2rem rgba(0, 0, 0, 0.5);\n  min-height: 700px;\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 15px #fff; }\n  .photo img {\n    width: 100%;\n    opacity: 0.6; }\n\n.desc {\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  color: #fff !important;\n  cursor: pointer;\n  line-height: 2rem; }\n  .desc-link:hover {\n    text-shadow: 1px 1px 1px;\n    text-decoration: none; }\n\n@media (min-width: 992px) {\n  .row {\n    margin-top: 5rem; }\n  .photo {\n    width: 25%; } }\n", ""]);
 
 // exports
 
@@ -1233,13 +1233,6 @@ PostsService = __decorate([
 
 var _a;
 //# sourceMappingURL=posts.service.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/assets/about.jpg":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "about.50e6a5401491f7dab623.jpg";
 
 /***/ }),
 
