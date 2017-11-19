@@ -1,6 +1,6 @@
 <div class="row pt-5 px-4">
-  <div class="photo">
-    <img src="../../assets/about.jpg"/>
+  <div class="photo" [class.visible]="imageLoaded">
+    <img src="../../assets/about.jpg" onload="imageLoaded=true"/>
   </div>
   <div class="desc pt-3">
     <p>I am interior crocodile alligator</p>

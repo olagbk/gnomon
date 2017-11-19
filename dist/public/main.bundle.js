@@ -16,7 +16,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /***/ "../../../../../src/app/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row pt-5 px-4\">\n  <div class=\"photo\">\n    <img src=\"../../assets/about.jpg\"/>\n  </div>\n  <div class=\"desc pt-3\">\n    <p>I am interior crocodile alligator</p>\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row pt-5 px-4\">\n  <div class=\"photo\" [class.visible]=\"imageLoaded\">\n    <img src=\"../../assets/about.jpg\" onload=\"imageLoaded=true\"/>\n  </div>\n  <div class=\"desc pt-3\">\n    <p>I am interior crocodile alligator</p>\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
