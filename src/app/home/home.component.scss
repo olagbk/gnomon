@@ -2,43 +2,27 @@
 
 :host {
   align-self: center;
-}
-.home {
-  opacity: 0.7;
-}
-h1, h4 {
-  font-weight: 400;
+  padding: 3rem;
 }
 h1 {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-shadow: .05em .025em .025em $gray-100;
+  text-align: center;
   animation: fadein 1.5s forwards;
 }
-h4 {
-  animation: fadein 2s forwards;
-}
-
 @keyframes fadein {
   0% {
     opacity: 0;
   }
   100% {
-    opacity: 1;
+    opacity: 0.7;
   }
 }
 
 @include media-breakpoint-up(md) {
   h1 {
-    font-size: 3rem;
-  }
-  h4 {
-    font-size: 1.8rem;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  h1 {
-    font-size: 4rem;
-  }
-  h4 {
-    font-size: 2.4rem;
+    font-size: 6rem;
   }
 }
