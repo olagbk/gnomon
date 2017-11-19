@@ -16,7 +16,7 @@ nav {
   font-size: $navbar-font;
   font-weight: 500;
   text-transform: uppercase;
-  text-shadow: 1px 1px 1px $gray-600;
+  text-shadow: .5px .5px 1px $gray-600;
   letter-spacing: 1px;
   &:after {
     height: 0;

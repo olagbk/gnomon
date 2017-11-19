@@ -1,21 +1,15 @@
 @import '../../styles/common';
 
-$bg: rgba($black, 0.5);
-
-.blended-background {
-  width: 100%;
-  background: $bg;
-  box-shadow: 0 0 3rem 3rem $bg;
-}
 :host {
-  @extend .blended-background;
+  width: 100%;
+  background: radial-gradient($black, rgba($black, 0.8), rgba($black, 0.6));
 }
 .row {
-  @extend .blended-background;
   margin: auto;
   justify-content: space-evenly;
 }
 .photo {
+  border: 2px solid $gray-800;
   width: 100%;
   height: fit-content;
   box-shadow: $burnt-edges;
@@ -47,6 +41,6 @@ $bg: rgba($black, 0.5);
     min-height: 700px;
   }
   .photo {
-    width: 25%;
+    width: 30%;
   }
 }

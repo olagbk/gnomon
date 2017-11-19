@@ -16,7 +16,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 /***/ "../../../../../src/app/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row pt-5\">\n  <div class=\"photo\">\n    <img src=\"../../assets/about.jpg\"/>\n  </div>\n  <div class=\"desc pt-3\">\n    <p>I am interior crocodile alligator</p>\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row pt-5 px-4\">\n  <div class=\"photo\">\n    <img src=\"../../assets/about.jpg\"/>\n  </div>\n  <div class=\"desc pt-3\">\n    <p>I am interior crocodile alligator</p>\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -28,7 +28,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".blended-background, :host, .row {\n  width: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  box-shadow: 0 0 3rem 3rem rgba(0, 0, 0, 0.5); }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  background: saddlebrown;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  color: #fff !important;\n  cursor: pointer;\n  line-height: 2rem; }\n  .desc-link:hover {\n    text-shadow: 1px 1px 1px;\n    text-decoration: none; }\n\n@media (min-width: 992px) {\n  .row {\n    margin-top: 6rem;\n    min-height: 700px; }\n  .photo {\n    width: 25%; } }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  background: radial-gradient(#000, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  border: 2px solid #343a40;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  background: saddlebrown;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  color: #fff !important;\n  cursor: pointer;\n  line-height: 2rem; }\n  .desc-link:hover {\n    text-shadow: 1px 1px 1px;\n    text-decoration: none; }\n\n@media (min-width: 992px) {\n  .row {\n    margin-top: 6rem;\n    min-height: 700px; }\n  .photo {\n    width: 30%; } }\n", ""]);
 
 // exports
 
@@ -160,7 +160,7 @@ AppRoutingModule = __decorate([
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper d-flex pb-0 pt-5 px-5 justify-content-center\">\n  <app-nav></app-nav>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n</div>\n\n\n"
+module.exports = "<div class=\"wrapper d-flex pt-5 justify-content-center\">\n  <app-nav></app-nav>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -517,7 +517,7 @@ var FlickrService_1, _a, _b;
 /***/ "../../../../../src/app/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper my-4 my-md-5\">\n\n  <p *ngIf=\"!galleryLoaded\" class=\"message text-white text-center p-4 p-md-2\">{{message}}</p>\n\n  <ng-container *ngIf=\"galleryLoaded\">\n\n    <app-pagination [pages]=\"pages\"></app-pagination>\n\n    <div class=\"row justify-content-center\">\n\n      <div *ngFor=\"let image of images; let i = index\"\n           class=\"image-frame m-2\"\n           (click)=\"gallery.set(i)\"\n           [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n      </div>\n    </div>\n\n    <a class=\"scroll-top mt-4\" (click)=\"scrollToTop()\">Scroll to top</a>\n\n  </ng-container>\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
+module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 px-5\">\n\n  <p *ngIf=\"!galleryLoaded\" class=\"message text-white text-center p-4 p-md-2\">{{message}}</p>\n\n  <ng-container *ngIf=\"galleryLoaded\">\n\n    <app-pagination [pages]=\"pages\"></app-pagination>\n\n    <div class=\"row justify-content-center\">\n\n      <div *ngFor=\"let image of images; let i = index\"\n           class=\"image-frame m-2\"\n           (click)=\"gallery.set(i)\"\n           [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n      </div>\n    </div>\n\n    <a class=\"scroll-top mt-4\" (click)=\"scrollToTop()\">Scroll to top</a>\n\n  </ng-container>\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
 
 /***/ }),
 
@@ -714,7 +714,7 @@ var _a;
 /***/ "../../../../../src/app/gallery/photos/photos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 pt-4\">\n\n  <div class=\"row justify-content-center\">\n    <div *ngFor=\"let album of albums; let i = index\"\n         class=\"album-thumb-container rounded m-3\"\n         [ngStyle]=\"{'background-image': 'url(../../assets/' + album.filename + ')'}\">\n         <a class=\"album-thumb rounded p-2\"\n         [routerLink]=\"album.album_id\">\n      <p class=\"album-title\">{{album.name}}</p>\n         </a>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 pt-4 px-5\">\n\n  <div class=\"row justify-content-center\">\n    <div *ngFor=\"let album of albums; let i = index\"\n         class=\"album-thumb-container rounded m-3\"\n         [ngStyle]=\"{'background-image': 'url(../../assets/' + album.filename + ')'}\">\n         <a class=\"album-thumb rounded p-2\"\n         [routerLink]=\"album.album_id\">\n      <p class=\"album-title\">{{album.name}}</p>\n         </a>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -919,7 +919,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.75); }\n\n.nav-item {\n  padding: 0.5rem 0;\n  margin: auto;\n  opacity: 0.8; }\n  @media (min-width: 768px) {\n    .nav-item {\n      padding: 0 0.5rem; } }\n\n.nav-link {\n  font-size: 20px;\n  font-weight: 500;\n  text-transform: uppercase;\n  text-shadow: 1px 1px 1px #868e96;\n  letter-spacing: 1px; }\n  .nav-link:after {\n    height: 0;\n    content: '';\n    display: block;\n    position: relative;\n    background: rgba(255, 255, 255, 0.85);\n    top: -15px;\n    transition: 0.5s ease; }\n  .nav-link.active:after {\n    height: 1px; }\n  .nav-link:not(.active):after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0;\n    top: 0;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:not(.active):hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); }\n\n.home-button {\n  border: 1px solid #212529;\n  border-radius: 0.3rem;\n  transition: 0.25s ease; }\n  @media (min-width: 768px) {\n    .home-button {\n      position: absolute;\n      left: 1rem; } }\n  .home-button:hover {\n    cursor: pointer;\n    border-color: rgba(255, 255, 255, 0.75); }\n    .home-button:hover .nav-link {\n      color: rgba(255, 255, 255, 0.75); }\n  .home-button .nav-link {\n    text-shadow: 1px 1px 1px white;\n    color: #343a40;\n    font-weight: 400; }\n    .home-button .nav-link:after {\n      height: 0;\n      width: 0; }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .nav-link {\n    font-size: 16px; }\n    .nav-link.active:after {\n      top: -12px; } }\n", ""]);
+exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.75); }\n\n.nav-item {\n  padding: 0.5rem 0;\n  margin: auto;\n  opacity: 0.8; }\n  @media (min-width: 768px) {\n    .nav-item {\n      padding: 0 0.5rem; } }\n\n.nav-link {\n  font-size: 20px;\n  font-weight: 500;\n  text-transform: uppercase;\n  text-shadow: 0.5px 0.5px 1px #868e96;\n  letter-spacing: 1px; }\n  .nav-link:after {\n    height: 0;\n    content: '';\n    display: block;\n    position: relative;\n    background: rgba(255, 255, 255, 0.85);\n    top: -15px;\n    transition: 0.5s ease; }\n  .nav-link.active:after {\n    height: 1px; }\n  .nav-link:not(.active):after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0;\n    top: 0;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:not(.active):hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); }\n\n.home-button {\n  border: 1px solid #212529;\n  border-radius: 0.3rem;\n  transition: 0.25s ease; }\n  @media (min-width: 768px) {\n    .home-button {\n      position: absolute;\n      left: 1rem; } }\n  .home-button:hover {\n    cursor: pointer;\n    border-color: rgba(255, 255, 255, 0.75); }\n    .home-button:hover .nav-link {\n      color: rgba(255, 255, 255, 0.75); }\n  .home-button .nav-link {\n    text-shadow: 1px 1px 1px white;\n    color: #343a40;\n    font-weight: 400; }\n    .home-button .nav-link:after {\n      height: 0;\n      width: 0; }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .nav-link {\n    font-size: 16px; }\n    .nav-link.active:after {\n      top: -12px; } }\n", ""]);
 
 // exports
 
