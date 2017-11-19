@@ -30,6 +30,7 @@ import { TimesPipe } from './pipes/times.pipe';
 
 import { galleryConfig } from './gallery/gallery.config';
 import { AboutComponent } from './about/about.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 export function startupServiceFactory(albumsService: AlbumsService): Function {
   return () => albumsService.loadAll();
@@ -49,6 +50,7 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     PhotoAlbumComponent,
     TimesPipe,
     AboutComponent,
+    SpinnerComponent,
   ],
   imports: [
     AppRoutingModule,
