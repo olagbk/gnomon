@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  backgroundReady: boolean;
   backgroundUrl: string;
   imgPreloadUrl = '../assets/gnomon.png';
 
@@ -13,6 +14,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {}
 
+  setBackground() {
+    this.backgroundUrl = this.imgPreloadUrl;
+    this.backgroundReady = true;
+
+  }
   scrollToTop() {
     window.scroll(0, 0);
   }
