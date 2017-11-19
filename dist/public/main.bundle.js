@@ -160,7 +160,7 @@ AppRoutingModule = __decorate([
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background-wrapper\"></div>\n<div class=\"wrapper d-flex pt-5 justify-content-center\">\n  <app-nav></app-nav>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n</div>\n\n\n"
+module.exports = "<div class=\"background-wrapper\" [style.background-image]=\"'url(' + backgroundUrl + ')'\">\n  <img [src]=\"imgPreloadUrl\" (load)=\"backgroundUrl = imgPreloadUrl\" hidden>\n</div>\n<div class=\"wrapper d-flex pt-5 justify-content-center\">\n  <app-nav></app-nav>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -172,7 +172,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".background-wrapper {\n  background: url(" + __webpack_require__("../../../../../src/assets/gnomon.png") + ") no-repeat center center;\n  background-size: cover;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  overflow: auto; }\n\n.wrapper {\n  background-color: rgba(0, 0, 0, 0.7);\n  position: absolute;\n  width: 100%;\n  min-height: 100%;\n  min-height: -webkit-fill-available; }\n", ""]);
+exports.push([module.i, ".background-wrapper {\n  background-size: cover;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  overflow: auto; }\n\n.wrapper {\n  background-color: rgba(0, 0, 0, 0.7);\n  position: absolute;\n  width: 100%;\n  min-height: 100%;\n  min-height: -webkit-fill-available; }\n", ""]);
 
 // exports
 
@@ -200,6 +200,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppComponent = (function () {
     function AppComponent() {
+        this.imgPreloadUrl = '../assets/gnomon.png';
     }
     AppComponent.prototype.ngOnInit = function () { };
     AppComponent.prototype.scrollToTop = function () {
@@ -1233,13 +1234,6 @@ PostsService = __decorate([
 
 var _a;
 //# sourceMappingURL=posts.service.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/assets/gnomon.png":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "gnomon.dee3bbbb2117d7ff9cee.png";
 
 /***/ }),
 

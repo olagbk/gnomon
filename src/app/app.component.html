@@ -1,4 +1,6 @@
-<div class="background-wrapper"></div>
+<div class="background-wrapper" [style.background-image]="'url(' + backgroundUrl + ')'">
+  <img [src]="imgPreloadUrl" (load)="backgroundUrl = imgPreloadUrl" hidden>
+</div>
 <div class="wrapper d-flex pt-5 justify-content-center">
   <app-nav></app-nav>
   <router-outlet (deactivate)="scrollToTop()"></router-outlet>

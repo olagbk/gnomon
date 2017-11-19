@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  backgroundUrl: string;
+  imgPreloadUrl = '../assets/gnomon.png';
 
   constructor() {}
 
