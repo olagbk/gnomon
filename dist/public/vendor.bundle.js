@@ -1170,8 +1170,8 @@ GalleryModule.ctorParameters = function () { return []; };
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gallery_module__ = __webpack_require__("../../../../ng-gallery/gallery.module.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_gallery_service__ = __webpack_require__("../../../../ng-gallery/service/gallery.service.js");
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__gallery_module__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__service_gallery_service__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__gallery_module__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__service_gallery_service__["a"]; });
 
 
 

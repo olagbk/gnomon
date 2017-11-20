@@ -13,67 +13,6 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 
 /***/ }),
 
-/***/ "../../../../../src/app/about/about.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row pt-5 px-4\">\n  <div class=\"photo\" [class.visible]=\"imageLoaded\">\n    <img src=\"../../assets/about.jpg\" onload=\"imageLoaded=true\"/>\n  </div>\n  <div class=\"desc pt-3\">\n    <p>I am interior crocodile alligator</p>\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/about/about.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ":host {\n  width: 100%;\n  background: radial-gradient(#000, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  border: 2px solid #343a40;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  background: saddlebrown;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  color: #fff !important;\n  cursor: pointer;\n  line-height: 2rem; }\n  .desc-link:hover {\n    text-shadow: 1px 1px 1px;\n    text-decoration: none; }\n\n@media (min-width: 992px) {\n  .row {\n    margin-top: 6rem;\n    min-height: 700px; }\n  .photo {\n    width: 30vw;\n    height: 30vw; } }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/about/about.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var AboutComponent = (function () {
-    function AboutComponent() {
-    }
-    AboutComponent.prototype.ngOnInit = function () {
-    };
-    return AboutComponent;
-}());
-AboutComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-about',
-        template: __webpack_require__("../../../../../src/app/about/about.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/about/about.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], AboutComponent);
-
-//# sourceMappingURL=about.component.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/app-routing.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -81,12 +20,12 @@ AboutComponent = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gallery_sketches_sketches_component__ = __webpack_require__("../../../../../src/app/gallery/sketches/sketches.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gallery_drawings_drawings_component__ = __webpack_require__("../../../../../src/app/gallery/drawings/drawings.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gallery_photos_photos_component__ = __webpack_require__("../../../../../src/app/gallery/photos/photos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gallery_photos_photo_album_component__ = __webpack_require__("../../../../../src/app/gallery/photos/photo-album.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__about_about_component__ = __webpack_require__("../../../../../src/app/about/about.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_home_home_component__ = __webpack_require__("../../../../../src/app/pages/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_sketches_sketches_component__ = __webpack_require__("../../../../../src/app/pages/sketches/sketches.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_drawings_drawings_component__ = __webpack_require__("../../../../../src/app/pages/drawings/drawings.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_photos_photos_component__ = __webpack_require__("../../../../../src/app/pages/photos/photos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_photos_photo_album_component__ = __webpack_require__("../../../../../src/app/pages/photos/photo-album.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_about_about_component__ = __webpack_require__("../../../../../src/app/pages/about/about.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -109,27 +48,27 @@ var ROUTES = [
     },
     {
         path: 'home',
-        component: __WEBPACK_IMPORTED_MODULE_2__home_home_component__["a" /* HomeComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_2__pages_home_home_component__["a" /* HomeComponent */]
     },
     {
         path: 'drawings',
-        component: __WEBPACK_IMPORTED_MODULE_4__gallery_drawings_drawings_component__["a" /* DrawingsComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_4__pages_drawings_drawings_component__["a" /* DrawingsComponent */]
     },
     {
         path: 'sketches',
-        component: __WEBPACK_IMPORTED_MODULE_3__gallery_sketches_sketches_component__["a" /* SketchesComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_3__pages_sketches_sketches_component__["a" /* SketchesComponent */]
     },
     {
         path: 'photos',
-        component: __WEBPACK_IMPORTED_MODULE_5__gallery_photos_photos_component__["a" /* PhotosComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_5__pages_photos_photos_component__["a" /* PhotosComponent */]
     },
     {
         path: 'photos/:album',
-        component: __WEBPACK_IMPORTED_MODULE_6__gallery_photos_photo_album_component__["a" /* PhotoAlbumComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_6__pages_photos_photo_album_component__["a" /* PhotoAlbumComponent */]
     },
     {
         path: 'about',
-        component: __WEBPACK_IMPORTED_MODULE_7__about_about_component__["a" /* AboutComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_7__pages_about_about_component__["a" /* AboutComponent */]
     },
     {
         path: '**',
@@ -160,7 +99,7 @@ AppRoutingModule = __decorate([
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background-wrapper\" [style.background-image]=\"'url(' + backgroundUrl + ')'\">\n  <img [src]=\"imgPreloadUrl\" (load)=\"setBackground()\" hidden>\n</div>\n<app-spinner *ngIf=\"!backgroundReady\"></app-spinner>\n<div *ngIf=\"backgroundReady\" class=\"wrapper d-flex pt-5 justify-content-center\">\n  <app-nav></app-nav>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n</div>\n\n\n"
+module.exports = "<div class=\"background-wrapper\" [style.background-image]=\"'url(' + backgroundUrl + ')'\">\n  <img [src]=\"imgPreloadUrl\" (load)=\"setBackground()\" hidden>\n</div>\n<app-spinner *ngIf=\"!backgroundReady\"></app-spinner>\n<div *ngIf=\"backgroundReady\" class=\"wrapper d-flex pt-5 justify-content-center\">\n  <app-navbar></app-navbar>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -231,39 +170,43 @@ AppComponent = __decorate([
 "use strict";
 /* unused harmony export startupServiceFactory */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_collapse__ = __webpack_require__("../../../../ngx-bootstrap/collapse/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ngx_bootstrap_pagination__ = __webpack_require__("../../../../ngx-bootstrap/pagination/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng_gallery__ = __webpack_require__("../../../../ng-gallery/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__nav_nav_component__ = __webpack_require__("../../../../../src/app/nav/nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__posts_posts_component__ = __webpack_require__("../../../../../src/app/posts/posts.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_about_about_component__ = __webpack_require__("../../../../../src/app/pages/about/about.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_photos_album_thumb_component__ = __webpack_require__("../../../../../src/app/pages/photos/album-thumb.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_drawings_drawings_component__ = __webpack_require__("../../../../../src/app/pages/drawings/drawings.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__gallery_gallery_component__ = __webpack_require__("../../../../../src/app/gallery/gallery.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__gallery_sketches_sketches_component__ = __webpack_require__("../../../../../src/app/gallery/sketches/sketches.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__gallery_drawings_drawings_component__ = __webpack_require__("../../../../../src/app/gallery/drawings/drawings.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__gallery_photos_photos_component__ = __webpack_require__("../../../../../src/app/gallery/photos/photos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__gallery_photos_photo_album_component__ = __webpack_require__("../../../../../src/app/gallery/photos/photo-album.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pagination_pagination_component__ = __webpack_require__("../../../../../src/app/pagination/pagination.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__about_about_component__ = __webpack_require__("../../../../../src/app/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__spinner_spinner_component__ = __webpack_require__("../../../../../src/app/spinner/spinner.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__scroll_scroll_component__ = __webpack_require__("../../../../../src/app/scroll/scroll.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__posts_posts_service__ = __webpack_require__("../../../../../src/app/posts/posts.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__gallery_flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pipes_times_pipe__ = __webpack_require__("../../../../../src/app/pipes/times.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__gallery_gallery_config__ = __webpack_require__("../../../../../src/app/gallery/gallery.config.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__gallery_gallery_thumb_component__ = __webpack_require__("../../../../../src/app/gallery/gallery-thumb.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_home_home_component__ = __webpack_require__("../../../../../src/app/pages/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__widgets_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/widgets/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__widgets_pagination_pagination_component__ = __webpack_require__("../../../../../src/app/widgets/pagination/pagination.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_photos_photo_album_component__ = __webpack_require__("../../../../../src/app/pages/photos/photo-album.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_photos_photos_component__ = __webpack_require__("../../../../../src/app/pages/photos/photos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_posts_posts_component__ = __webpack_require__("../../../../../src/app/pages/posts/posts.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_sketches_sketches_component__ = __webpack_require__("../../../../../src/app/pages/sketches/sketches.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__widgets_spinner_spinner_component__ = __webpack_require__("../../../../../src/app/widgets/spinner/spinner.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__widgets_scroll_scroll_component__ = __webpack_require__("../../../../../src/app/widgets/scroll/scroll.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_posts_posts_service__ = __webpack_require__("../../../../../src/app/pages/posts/posts.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__gallery_flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pipes_times_pipe__ = __webpack_require__("../../../../../src/app/pipes/times.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__gallery_gallery_config__ = __webpack_require__("../../../../../src/app/gallery/gallery.config.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -300,49 +243,58 @@ var AppModule = (function () {
     return AppModule;
 }());
 AppModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["M" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__posts_posts_component__["a" /* PostsComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__nav_nav_component__["a" /* NavComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__widgets_navbar_navbar_component__["a" /* NavbarComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__widgets_pagination_pagination_component__["a" /* PaginationComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__widgets_spinner_spinner_component__["a" /* SpinnerComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__widgets_scroll_scroll_component__["a" /* ScrollComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__pages_home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__pages_posts_posts_component__["a" /* PostsComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__pages_about_about_component__["a" /* AboutComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__pages_sketches_sketches_component__["a" /* SketchesComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__pages_drawings_drawings_component__["a" /* DrawingsComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__pages_photos_photos_component__["a" /* PhotosComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__pages_photos_photo_album_component__["a" /* PhotoAlbumComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__pages_photos_album_thumb_component__["a" /* AlbumThumbComponent */],
             __WEBPACK_IMPORTED_MODULE_13__gallery_gallery_component__["a" /* GalleryComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__gallery_sketches_sketches_component__["a" /* SketchesComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__gallery_drawings_drawings_component__["a" /* DrawingsComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__gallery_photos_photos_component__["a" /* PhotosComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__pagination_pagination_component__["a" /* PaginationComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__gallery_photos_photo_album_component__["a" /* PhotoAlbumComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__about_about_component__["a" /* AboutComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__spinner_spinner_component__["a" /* SpinnerComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__scroll_scroll_component__["a" /* ScrollComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__pipes_times_pipe__["a" /* TimesPipe */]
+            __WEBPACK_IMPORTED_MODULE_14__gallery_gallery_thumb_component__["a" /* GalleryThumbComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__pipes_times_pipe__["a" /* TimesPipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_8__app_routing_module__["a" /* AppRoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_collapse__["a" /* CollapseModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_6_ngx_bootstrap_pagination__["a" /* PaginationModule */].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_7_ng_gallery__["a" /* GalleryModule */].forRoot(__WEBPACK_IMPORTED_MODULE_26__gallery_gallery_config__["a" /* galleryConfig */])
+            __WEBPACK_IMPORTED_MODULE_7_ng_gallery__["b" /* GalleryModule */].forRoot(__WEBPACK_IMPORTED_MODULE_28__gallery_gallery_config__["a" /* galleryConfig */])
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_22__posts_posts_service__["a" /* PostsService */],
-            __WEBPACK_IMPORTED_MODULE_23__gallery_flickr_service__["a" /* FlickrService */],
-            __WEBPACK_IMPORTED_MODULE_24__gallery_albums_service__["a" /* AlbumsService */],
+            __WEBPACK_IMPORTED_MODULE_26__gallery_albums_service__["a" /* AlbumsService */],
             {
-                provide: __WEBPACK_IMPORTED_MODULE_4__angular_core__["d" /* APP_INITIALIZER */],
+                provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* APP_INITIALIZER */],
                 useFactory: startupServiceFactory,
-                deps: [__WEBPACK_IMPORTED_MODULE_24__gallery_albums_service__["a" /* AlbumsService */]],
+                deps: [__WEBPACK_IMPORTED_MODULE_26__gallery_albums_service__["a" /* AlbumsService */]],
                 multi: true
-            }
+            },
+            __WEBPACK_IMPORTED_MODULE_25__gallery_flickr_service__["a" /* FlickrService */],
+            __WEBPACK_IMPORTED_MODULE_24__pages_posts_posts_service__["a" /* PostsService */]
         ],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
 //# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/gallery/album.ts":
+/***/ (function(module, exports) {
+
+//# sourceMappingURL=album.js.map
 
 /***/ }),
 
@@ -410,72 +362,6 @@ var _a;
 
 /***/ }),
 
-/***/ "../../../../../src/app/gallery/drawings/drawings.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<app-gallery [album]=\"album.album_id\"></app-gallery>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/gallery/drawings/drawings.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ":host {\n  width: 100%; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/gallery/drawings/drawings.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DrawingsComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var DrawingsComponent = (function () {
-    function DrawingsComponent(albumsService) {
-        this.albumsService = albumsService;
-    }
-    DrawingsComponent.prototype.ngOnInit = function () {
-        this.album = this.albumsService.getAlbumByType('drawings');
-    };
-    return DrawingsComponent;
-}());
-DrawingsComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-drawings',
-        template: __webpack_require__("../../../../../src/app/gallery/drawings/drawings.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/gallery/drawings/drawings.component.scss")]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__albums_service__["a" /* AlbumsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__albums_service__["a" /* AlbumsService */]) === "function" && _a || Object])
-], DrawingsComponent);
-
-var _a;
-//# sourceMappingURL=drawings.component.js.map
-
-/***/ }),
-
 /***/ "../../../../../src/app/gallery/flickr.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -525,10 +411,86 @@ var FlickrService_1, _a, _b;
 
 /***/ }),
 
+/***/ "../../../../../src/app/gallery/gallery-thumb.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div #thumb\n     class=\"image-frame\"\n     (click)=\"openGallery()\">\n\n  <img [src]=\"image.thumbnail\" (load)=\"thumb.style.backgroundImage = 'url(' + image.thumbnail + ')'\" hidden/>\n\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/gallery/gallery-thumb.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  width: 100%;\n  max-width: 320px;\n  margin: 0.5rem; }\n\n.image-frame {\n  opacity: 0.85;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: inset 0 0 10px 2px #000; }\n  .image-frame:hover {\n    cursor: pointer;\n    opacity: .99; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/gallery/gallery-thumb.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GalleryThumbComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng_gallery__ = __webpack_require__("../../../../ng-gallery/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var GalleryThumbComponent = (function () {
+    function GalleryThumbComponent(gallery) {
+        this.gallery = gallery;
+    }
+    GalleryThumbComponent.prototype.ngOnInit = function () {
+    };
+    GalleryThumbComponent.prototype.openGallery = function () {
+        this.gallery.set(this.index);
+    };
+    return GalleryThumbComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["GalleryImage"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["GalleryImage"]) === "function" && _a || Object)
+], GalleryThumbComponent.prototype, "image", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Number)
+], GalleryThumbComponent.prototype, "index", void 0);
+GalleryThumbComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-gallery-thumb',
+        template: __webpack_require__("../../../../../src/app/gallery/gallery-thumb.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/gallery/gallery-thumb.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["c" /* GalleryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["c" /* GalleryService */]) === "function" && _b || Object])
+], GalleryThumbComponent);
+
+var _a, _b;
+//# sourceMappingURL=gallery-thumb.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 px-5\">\n\n  <ng-container [ngSwitch]=\"true\">\n\n    <ng-container *ngSwitchCase=\"galleryLoaded\">\n\n      <app-pagination [pages]=\"pages\"></app-pagination>\n\n      <div class=\"row justify-content-center\">\n\n        <div *ngFor=\"let image of images; let i = index\"\n             class=\"image-frame m-2\"\n             (click)=\"gallery.set(i)\"\n             [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n        </div>\n\n      <app-scroll></app-scroll>\n      </div>\n\n    </ng-container>\n\n    <div class=\"d-flex justify-content-center\">\n\n      <p class=\"error-message p-3\" *ngSwitchCase=\"galleryError\">Couldn't fetch images :(</p>\n\n      <app-spinner *ngSwitchDefault></app-spinner>\n\n    </div>\n\n  </ng-container>\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
+module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 px-5\">\n\n  <ng-container [ngSwitch]=\"true\">\n\n    <ng-container *ngSwitchCase=\"galleryLoaded\">\n\n      <app-pagination [pages]=\"pages\"></app-pagination>\n\n      <div class=\"row justify-content-center\">\n\n        <app-gallery-thumb *ngFor=\"let image of images; let i = index\" [image]=\"image\" [index]=\"i\"></app-gallery-thumb>\n\n      </div>\n\n      <app-scroll></app-scroll>\n\n    </ng-container>\n\n    <div class=\"d-flex justify-content-center\">\n\n      <p class=\"error-message p-3\" *ngSwitchCase=\"galleryError\">Couldn't fetch images :(</p>\n\n      <app-spinner *ngSwitchDefault></app-spinner>\n\n    </div>\n\n  </ng-container>\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
 
 /***/ }),
 
@@ -540,7 +502,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "app-spinner {\n  position: absolute;\n  top: 0; }\n\n.error-message {\n  color: rgba(255, 255, 255, 0.85);\n  letter-spacing: 2px; }\n\n.image-frame {\n  opacity: 0.85;\n  width: 100%;\n  max-width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: inset 0 0 10px 2px #000; }\n  .image-frame:hover {\n    cursor: pointer;\n    opacity: .99; }\n", ""]);
+exports.push([module.i, "app-spinner {\n  position: absolute;\n  top: 0; }\n  @media (min-width: 768px) {\n    app-spinner {\n      top: 0.5rem; } }\n\n.error-message {\n  color: rgba(255, 255, 255, 0.85);\n  letter-spacing: 2px; }\n", ""]);
 
 // exports
 
@@ -582,8 +544,8 @@ var GalleryComponent = (function () {
     GalleryComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.queryParams.subscribe(function (params) {
-            _this.galleryError = false;
             _this.galleryLoaded = false;
+            _this.galleryError = false;
             _this.currentPage = Number(params['page']) || 1;
             _this.getImages();
         });
@@ -599,8 +561,6 @@ var GalleryComponent = (function () {
         })
             .catch(function (err) { return _this.galleryError = true; });
     };
-    GalleryComponent.prototype.setBackground = function () {
-    };
     return GalleryComponent;
 }());
 __decorate([
@@ -613,7 +573,7 @@ GalleryComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/gallery/gallery.component.html"),
         styles: [__webpack_require__("../../../../../src/app/gallery/gallery.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ng_gallery__["b" /* GalleryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ng_gallery__["b" /* GalleryService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__flickr_service__["a" /* FlickrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__flickr_service__["a" /* FlickrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ng_gallery__["c" /* GalleryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ng_gallery__["c" /* GalleryService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__flickr_service__["a" /* FlickrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__flickr_service__["a" /* FlickrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
 ], GalleryComponent);
 
 var _a, _b, _c;
@@ -656,14 +616,75 @@ var galleryConfig = {
 
 /***/ }),
 
-/***/ "../../../../../src/app/gallery/photos/photo-album.component.html":
+/***/ "../../../../../src/app/pages/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-gallery *ngIf=\"album\" [album]=\"album\"></app-gallery>\n"
+module.exports = "<div class=\"row pt-5 px-4\">\n\n  <div #photoDiv\n       class=\"photo\"\n       [style.visibility]=\"'hidden'\">\n    <img src=\"../../../assets/about.jpg\" (load)=\"photoDiv.style.visibility = 'visible'\"/>\n  </div>\n\n  <div class=\"desc pt-3\">\n\n    <p>I am interior crocodile alligator</p>\n\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/gallery/photos/photo-album.component.scss":
+/***/ "../../../../../src/app/pages/about/about.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  width: 100%;\n  background: radial-gradient(#000, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  border: 2px solid #343a40;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  background: saddlebrown;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  color: #fff !important;\n  cursor: pointer;\n  line-height: 2rem; }\n  .desc-link:hover {\n    text-shadow: 1px 1px 1px;\n    text-decoration: none; }\n\n@media (min-width: 992px) {\n  .row {\n    margin-top: 6rem;\n    min-height: 700px; }\n  .photo {\n    width: 30vw;\n    height: 30vw; } }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/about/about.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AboutComponent = (function () {
+    function AboutComponent() {
+    }
+    AboutComponent.prototype.ngOnInit = function () {
+    };
+    return AboutComponent;
+}());
+AboutComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-about',
+        template: __webpack_require__("../../../../../src/app/pages/about/about.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pages/about/about.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], AboutComponent);
+
+//# sourceMappingURL=about.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/drawings/drawings.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-gallery [album]=\"album.album_id\"></app-gallery>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/drawings/drawings.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -681,7 +702,204 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/gallery/photos/photo-album.component.ts":
+/***/ "../../../../../src/app/pages/drawings/drawings.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DrawingsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var DrawingsComponent = (function () {
+    function DrawingsComponent(albumsService) {
+        this.albumsService = albumsService;
+    }
+    DrawingsComponent.prototype.ngOnInit = function () {
+        this.album = this.albumsService.getAlbumByType('drawings');
+    };
+    return DrawingsComponent;
+}());
+DrawingsComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-drawings',
+        template: __webpack_require__("../../../../../src/app/pages/drawings/drawings.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pages/drawings/drawings.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */]) === "function" && _a || Object])
+], DrawingsComponent);
+
+var _a;
+//# sourceMappingURL=drawings.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/home/home.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"home\">\n  <h1>BoguO's Gnomon</h1>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/home/home.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center;\n  padding: 3rem; }\n\nh1 {\n  font-size: 3rem;\n  font-weight: 300;\n  letter-spacing: 2px;\n  text-shadow: 0.05em 0.025em 0.015em #f8f9fa;\n  text-align: center;\n  -webkit-animation: fadein 1.5s forwards;\n          animation: fadein 1.5s forwards; }\n\n@-webkit-keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 0.7; } }\n\n@keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 0.7; } }\n\n@media (min-width: 768px) {\n  h1 {\n    font-size: 6rem; } }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/home/home.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HomeComponent = (function () {
+    function HomeComponent() {
+    }
+    HomeComponent.prototype.ngOnInit = function () {
+    };
+    return HomeComponent;
+}());
+HomeComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-home',
+        template: __webpack_require__("../../../../../src/app/pages/home/home.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pages/home/home.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], HomeComponent);
+
+//# sourceMappingURL=home.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/photos/album-thumb.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"album-thumb-container rounded\" #thumb>\n\n  <a class=\"album-thumb rounded p-2\"\n     [routerLink]=\"album.album_id\">\n    <p class=\"album-title\">{{album.name}}</p>\n  </a>\n\n  <img [src]=\"path\" (load)=\"thumb.style.backgroundImage = 'url(' + path + ')'\" hidden>\n\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/photos/album-thumb.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  width: 100%;\n  max-width: 640px;\n  margin: 0.75rem; }\n\n.album-thumb-container {\n  background-size: cover;\n  height: 480px;\n  font-size: 72px;\n  letter-spacing: 0.075em; }\n\n.album-thumb {\n  background: rgba(33, 37, 41, 0.6);\n  color: rgba(250, 235, 215, 0.8);\n  border: 1.5px solid rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 0 10px 2px #000;\n  transition: .5s ease;\n  height: 100%;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  text-decoration: none;\n  font-weight: 300; }\n  .album-thumb:hover {\n    background: transparent;\n    color: #fff; }\n\n@media (max-width: 991px) {\n  :host {\n    max-width: 480px; }\n  .album-thumb-container {\n    height: 360px;\n    font-size: 54px; } }\n\n@media (max-width: 575px) {\n  :host {\n    max-width: 320px; }\n  .album-thumb-container {\n    height: 240px;\n    font-size: 32px; } }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/photos/album-thumb.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlbumThumbComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gallery_album__ = __webpack_require__("../../../../../src/app/gallery/album.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gallery_album___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__gallery_album__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AlbumThumbComponent = (function () {
+    function AlbumThumbComponent() {
+    }
+    AlbumThumbComponent.prototype.ngOnInit = function () {
+        this.path = "../../assets/" + this.album.filename;
+    };
+    return AlbumThumbComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__gallery_album__["Album"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__gallery_album__["Album"]) === "function" && _a || Object)
+], AlbumThumbComponent.prototype, "album", void 0);
+AlbumThumbComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-album-thumb',
+        template: __webpack_require__("../../../../../src/app/pages/photos/album-thumb.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pages/photos/album-thumb.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], AlbumThumbComponent);
+
+var _a;
+//# sourceMappingURL=album-thumb.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/photos/photo-album.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-gallery *ngIf=\"album\" [album]=\"album\"></app-gallery>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/photos/photo-album.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  width: 100%; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/photos/photo-album.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -712,8 +930,8 @@ var PhotoAlbumComponent = (function () {
 PhotoAlbumComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-photo-album',
-        template: __webpack_require__("../../../../../src/app/gallery/photos/photo-album.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/gallery/photos/photo-album.component.scss")]
+        template: __webpack_require__("../../../../../src/app/pages/photos/photo-album.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pages/photos/photo-album.component.scss")]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object])
 ], PhotoAlbumComponent);
@@ -723,14 +941,14 @@ var _a;
 
 /***/ }),
 
-/***/ "../../../../../src/app/gallery/photos/photos.component.html":
+/***/ "../../../../../src/app/pages/photos/photos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper mt-4 mt-md-5 pt-4 px-5 d-flex justify-content-center\">\n\n  <app-spinner *ngIf=\"albums.length !== backgroundsLoaded\"></app-spinner>\n\n  <div class=\"row justify-content-center\" [style.visibility]=\"(albums.length !== backgroundsLoaded)? 'hidden' : 'visible'\">\n    <div *ngFor=\"let album of albums; let i = index\"\n         class=\"album-thumb-container rounded m-2 m-md-3\"\n         [ngStyle]=\"{'background-image': 'url(' + imagePath(album.filename) + ')'}\">\n      <img [src]=\"imagePath(album.filename)\" (load)=\"setBackground(album.filename)\" hidden>\n      <a class=\"album-thumb rounded p-2\"\n         [routerLink]=\"album.album_id\">\n        <p class=\"album-title\">{{album.name}}</p>\n      </a>\n\n    </div>\n  </div>\n</div>\n<app-scroll></app-scroll>\n"
+module.exports = "<app-spinner *ngIf=\"!albumsLoaded\"></app-spinner>\n\n<ng-container *ngIf=\"albumsLoaded\">\n\n  <div class=\"gallery-wrapper mt-4 mt-md-5 pt-4 px-5 d-flex justify-content-center\">\n\n    <div class=\"row justify-content-center\">\n\n      <app-album-thumb *ngFor=\"let album of albums; let i = index\" [album]=\"album\"></app-album-thumb>\n\n    </div>\n\n  </div>\n\n  <app-scroll></app-scroll>\n\n</ng-container>\n\n\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/gallery/photos/photos.component.scss":
+/***/ "../../../../../src/app/pages/photos/photos.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -738,7 +956,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "app-spinner {\n  position: absolute;\n  top: 1rem; }\n\n.album-thumb-container {\n  background-size: cover;\n  width: 100%;\n  max-width: 640px;\n  height: 480px;\n  font-size: 72px;\n  letter-spacing: 0.075em; }\n  @media (max-width: 991px) {\n    .album-thumb-container {\n      max-width: 480px;\n      height: 360px;\n      font-size: 54px; } }\n  @media (max-width: 575px) {\n    .album-thumb-container {\n      max-width: 320px;\n      height: 240px;\n      font-size: 32px; } }\n\n.album-thumb {\n  background: rgba(33, 37, 41, 0.6);\n  color: rgba(250, 235, 215, 0.8);\n  border: 1.5px solid rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 0 10px 2px #000;\n  transition: .5s ease;\n  height: 100%;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  text-decoration: none;\n  font-weight: 300; }\n  .album-thumb:hover {\n    background: transparent;\n    color: #fff; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -748,13 +966,13 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/gallery/photos/photos.component.ts":
+/***/ "../../../../../src/app/pages/photos/photos.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotosComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -767,44 +985,155 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var PhotosComponent = (function () {
-    function PhotosComponent(albumsService) {
+    function PhotosComponent(albumsService, cd) {
         this.albumsService = albumsService;
-        this.backgroundsLoaded = 0;
+        this.cd = cd;
     }
     PhotosComponent.prototype.ngOnInit = function () {
         this.albums = this.albumsService.getPhotos();
     };
-    PhotosComponent.prototype.imagePath = function (filename) {
-        return "../../assets/" + filename;
-    };
-    PhotosComponent.prototype.setBackground = function (filename) {
-        this.backgroundImage = this.imagePath(filename);
-        this.backgroundsLoaded++;
+    PhotosComponent.prototype.ngAfterViewInit = function () {
+        this.albumsLoaded = true;
+        this.cd.detectChanges();
     };
     return PhotosComponent;
 }());
 PhotosComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-photos',
-        template: __webpack_require__("../../../../../src/app/gallery/photos/photos.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/gallery/photos/photos.component.scss")]
+        template: __webpack_require__("../../../../../src/app/pages/photos/photos.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pages/photos/photos.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__albums_service__["a" /* AlbumsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__albums_service__["a" /* AlbumsService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* ChangeDetectorRef */]) === "function" && _b || Object])
 ], PhotosComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=photos.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/gallery/sketches/sketches.component.html":
+/***/ "../../../../../src/app/pages/posts/posts.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/posts/posts.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container invisible\">\n  <div class=\"row\" *ngFor=\"let post of posts\">\n    <div class=\"card card-block\">\n      <h4 class=\"card-title\">{{ post.title }}</h4>\n      <p class=\"card-text\">{{post.body}}</p>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/posts/posts.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__posts_service__ = __webpack_require__("../../../../../src/app/pages/posts/posts.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PostsComponent = (function () {
+    function PostsComponent(postsService) {
+        this.postsService = postsService;
+        // instantiate posts to an empty array
+        this.posts = [];
+    }
+    PostsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // Retrieve posts from the API
+        this.postsService.getAllPosts().subscribe(function (posts) {
+            _this.posts = posts;
+        });
+    };
+    return PostsComponent;
+}());
+PostsComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-posts',
+        template: __webpack_require__("../../../../../src/app/pages/posts/posts.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pages/posts/posts.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__posts_service__["a" /* PostsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__posts_service__["a" /* PostsService */]) === "function" && _a || Object])
+], PostsComponent);
+
+var _a;
+//# sourceMappingURL=posts.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/posts/posts.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostsService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var PostsService = (function () {
+    function PostsService(http) {
+        this.http = http;
+    }
+    // Get all posts from the API
+    PostsService.prototype.getAllPosts = function () {
+        return this.http.get('/api/posts')
+            .map(function (res) { return res.json(); });
+    };
+    return PostsService;
+}());
+PostsService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+], PostsService);
+
+var _a;
+//# sourceMappingURL=posts.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/sketches/sketches.component.html":
 /***/ (function(module, exports) {
 
 module.exports = "<app-gallery [album]=\"album.album_id\"></app-gallery>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/gallery/sketches/sketches.component.scss":
+/***/ "../../../../../src/app/pages/sketches/sketches.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -822,13 +1151,13 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/gallery/sketches/sketches.component.ts":
+/***/ "../../../../../src/app/pages/sketches/sketches.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SketchesComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -852,219 +1181,14 @@ var SketchesComponent = (function () {
 SketchesComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-sketches',
-        template: __webpack_require__("../../../../../src/app/gallery/sketches/sketches.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/gallery/sketches/sketches.component.scss")]
+        template: __webpack_require__("../../../../../src/app/pages/sketches/sketches.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pages/sketches/sketches.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__albums_service__["a" /* AlbumsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__albums_service__["a" /* AlbumsService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */]) === "function" && _a || Object])
 ], SketchesComponent);
 
 var _a;
 //# sourceMappingURL=sketches.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/home/home.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"home\">\n  <h1>BoguO's Gnomon</h1>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/home/home.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ":host {\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center;\n  padding: 3rem; }\n\nh1 {\n  font-size: 3rem;\n  font-weight: 300;\n  letter-spacing: 2px;\n  text-shadow: 0.05em 0.025em 0.015em #f8f9fa;\n  text-align: center;\n  -webkit-animation: fadein 1.5s forwards;\n          animation: fadein 1.5s forwards; }\n\n@-webkit-keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 0.7; } }\n\n@keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 0.7; } }\n\n@media (min-width: 768px) {\n  h1 {\n    font-size: 6rem; } }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/home/home.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var HomeComponent = (function () {
-    function HomeComponent() {
-    }
-    HomeComponent.prototype.ngOnInit = function () {
-    };
-    return HomeComponent;
-}());
-HomeComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-home',
-        template: __webpack_require__("../../../../../src/app/home/home.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/home/home.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], HomeComponent);
-
-//# sourceMappingURL=home.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/nav/nav.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark fixed-top py-3\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n      <li class=\"home-button align-self-center px-2 mb-3\"  (click)=\"toggleCollapse()\">\n        <a class=\"nav-link p-2\" routerLink=\"/home\" routerLinkActive=\"active\"> g </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/blog\" routerLinkActive=\"active\"> blog </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/drawings\" routerLinkActive=\"active\"> drawings </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/sketches\" routerLinkActive=\"active\"> sketches </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/photos\" routerLinkActive=\"active\"> photographs </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"about\" routerLinkActive=\"active\"> about </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/nav/nav.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.75); }\n\n.nav-item {\n  padding: 0.5rem 0;\n  margin: auto;\n  opacity: 0.8; }\n  @media (min-width: 768px) {\n    .nav-item {\n      padding: 0 0.5rem; } }\n\n.nav-link {\n  font-size: 20px;\n  font-weight: 500;\n  text-transform: uppercase;\n  text-shadow: 0.5px 0.5px 1px #868e96;\n  letter-spacing: 1px; }\n  .nav-link:after {\n    height: 0;\n    content: '';\n    display: block;\n    position: relative;\n    background: rgba(255, 255, 255, 0.85);\n    top: -15px;\n    transition: 0.5s ease; }\n  .nav-link.active:after {\n    height: 1px; }\n  .nav-link:not(.active):after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0;\n    top: 0;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:not(.active):hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); }\n\n.home-button {\n  border: 1px solid #212529;\n  border-radius: 0.3rem;\n  transition: 0.25s ease; }\n  @media (min-width: 768px) {\n    .home-button {\n      position: absolute;\n      left: 1rem; } }\n  .home-button:hover {\n    cursor: pointer;\n    border-color: rgba(255, 255, 255, 0.75); }\n    .home-button:hover .nav-link {\n      color: rgba(255, 255, 255, 0.75); }\n  .home-button .nav-link {\n    text-shadow: 1px 1px 1px white;\n    color: #343a40;\n    font-weight: 400; }\n    .home-button .nav-link:after {\n      height: 0;\n      width: 0; }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .nav-link {\n    font-size: 16px; }\n    .nav-link.active:after {\n      top: -12px; } }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/nav/nav.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var NavComponent = (function () {
-    function NavComponent() {
-    }
-    NavComponent.prototype.ngOnInit = function () {
-        this.isCollapsed = false;
-    };
-    NavComponent.prototype.toggleCollapse = function () {
-        this.isCollapsed = !this.isCollapsed;
-    };
-    return NavComponent;
-}());
-NavComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-nav',
-        template: __webpack_require__("../../../../../src/app/nav/nav.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/nav/nav.component.scss")]
-    }),
-    __metadata("design:paramtypes", [])
-], NavComponent);
-
-//# sourceMappingURL=nav.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/pagination/pagination.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"row\">\n  <div class=\"col-12 px-0 pt-3 pt-md-0\" aria-label=\"album pages\">\n    <pagination [totalItems]=\"pages\" [(ngModel)]=\"page\" [maxSize]=\"maxSize\"\n                [boundaryLinks]=\"true\" [rotate]=\"false\" [itemsPerPage]=\"1\" (pageChanged)=\"pageChanged($event)\"\n                previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\"></pagination>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/pagination/pagination.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/pagination/pagination.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaginationComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var PaginationComponent = (function () {
-    function PaginationComponent(activatedRoute, router) {
-        this.activatedRoute = activatedRoute;
-        this.router = router;
-        this.maxSize = 5;
-    }
-    PaginationComponent.prototype.ngOnInit = function () {
-        this.page = Number(this.activatedRoute.snapshot.queryParams.page) || 1;
-        this.goToPage(this.page);
-    };
-    PaginationComponent.prototype.pageChanged = function (event) {
-        this.goToPage(event.page);
-    };
-    PaginationComponent.prototype.goToPage = function (page) {
-        this.router.navigate(this.activatedRoute.snapshot.url.map(function (segment) { return segment.path; }), { queryParams: { page: page } });
-    };
-    return PaginationComponent;
-}());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", Number)
-], PaginationComponent.prototype, "pages", void 0);
-PaginationComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-pagination',
-        template: __webpack_require__("../../../../../src/app/pagination/pagination.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/pagination/pagination.component.scss")]
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
-], PaginationComponent);
-
-var _a, _b;
-//# sourceMappingURL=pagination.component.js.map
 
 /***/ }),
 
@@ -1142,7 +1266,14 @@ TimesPipe = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/posts/posts.component.css":
+/***/ "../../../../../src/app/widgets/navbar/navbar.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark fixed-top py-3\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto\">\n      <li class=\"home-button align-self-center px-2 mb-3\"  (click)=\"toggleCollapse()\">\n        <a class=\"nav-link p-2\" routerLink=\"/home\" routerLinkActive=\"active\"> g </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/blog\" routerLinkActive=\"active\"> blog </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/drawings\" routerLinkActive=\"active\"> drawings </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/sketches\" routerLinkActive=\"active\"> sketches </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/photos\" routerLinkActive=\"active\"> photographs </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"about\" routerLinkActive=\"active\"> about </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/widgets/navbar/navbar.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -1150,7 +1281,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.75); }\n\n.nav-item {\n  padding: 0.5rem 0;\n  margin: auto;\n  opacity: 0.8; }\n  @media (min-width: 768px) {\n    .nav-item {\n      padding: 0 0.5rem; } }\n\n.nav-link {\n  font-size: 20px;\n  font-weight: 500;\n  text-transform: uppercase;\n  text-shadow: 0.5px 0.5px 1px #868e96;\n  letter-spacing: 1px; }\n  .nav-link:after {\n    height: 0;\n    content: '';\n    display: block;\n    position: relative;\n    background: rgba(255, 255, 255, 0.85);\n    top: -15px;\n    transition: 0.5s ease; }\n  .nav-link.active:after {\n    height: 1px; }\n  .nav-link:not(.active):after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0;\n    top: 0;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:not(.active):hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); }\n\n.home-button {\n  border: 1px solid #212529;\n  border-radius: 0.3rem;\n  transition: 0.25s ease; }\n  @media (min-width: 768px) {\n    .home-button {\n      position: absolute;\n      left: 1rem; } }\n  .home-button:hover {\n    cursor: pointer;\n    border-color: rgba(255, 255, 255, 0.75); }\n    .home-button:hover .nav-link {\n      color: rgba(255, 255, 255, 0.75); }\n  .home-button .nav-link {\n    text-shadow: 1px 1px 1px white;\n    color: #343a40;\n    font-weight: 400; }\n    .home-button .nav-link:after {\n      height: 0;\n      width: 0; }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .nav-link {\n    font-size: 16px; }\n    .nav-link.active:after {\n      top: -12px; } }\n", ""]);
 
 // exports
 
@@ -1160,20 +1291,60 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/posts/posts.component.html":
+/***/ "../../../../../src/app/widgets/navbar/navbar.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var NavbarComponent = (function () {
+    function NavbarComponent() {
+    }
+    NavbarComponent.prototype.ngOnInit = function () {
+        this.isCollapsed = false;
+    };
+    NavbarComponent.prototype.toggleCollapse = function () {
+        this.isCollapsed = !this.isCollapsed;
+    };
+    return NavbarComponent;
+}());
+NavbarComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-navbar',
+        template: __webpack_require__("../../../../../src/app/widgets/navbar/navbar.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/widgets/navbar/navbar.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], NavbarComponent);
+
+//# sourceMappingURL=navbar.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/widgets/pagination/pagination.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container invisible\">\n  <div class=\"row\" *ngFor=\"let post of posts\">\n    <div class=\"card card-block\">\n      <h4 class=\"card-title\">{{ post.title }}</h4>\n      <p class=\"card-text\">{{post.body}}</p>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\">\n  <div class=\"col-12 px-0 pt-3 pt-md-0\" aria-label=\"album pages\">\n    <pagination [totalItems]=\"pages\" [(ngModel)]=\"page\" [maxSize]=\"maxSize\"\n                [boundaryLinks]=\"true\" [rotate]=\"false\" [itemsPerPage]=\"1\" (pageChanged)=\"pageChanged($event)\"\n                previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\"></pagination>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/posts/posts.component.ts":
+/***/ "../../../../../src/app/widgets/pagination/pagination.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostsComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaginationComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__posts_service__ = __webpack_require__("../../../../../src/app/posts/posts.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1185,85 +1356,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var PostsComponent = (function () {
-    function PostsComponent(postsService) {
-        this.postsService = postsService;
-        // instantiate posts to an empty array
-        this.posts = [];
+var PaginationComponent = (function () {
+    function PaginationComponent(activatedRoute, router) {
+        this.activatedRoute = activatedRoute;
+        this.router = router;
+        this.maxSize = 5;
     }
-    PostsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        // Retrieve posts from the API
-        this.postsService.getAllPosts().subscribe(function (posts) {
-            _this.posts = posts;
-        });
+    PaginationComponent.prototype.ngOnInit = function () {
+        this.page = Number(this.activatedRoute.snapshot.queryParams.page) || 1;
+        this.goToPage(this.page);
     };
-    return PostsComponent;
+    PaginationComponent.prototype.pageChanged = function (event) {
+        this.goToPage(event.page);
+    };
+    PaginationComponent.prototype.goToPage = function (page) {
+        this.router.navigate(this.activatedRoute.snapshot.url.map(function (segment) { return segment.path; }), { queryParams: { page: page } });
+    };
+    return PaginationComponent;
 }());
-PostsComponent = __decorate([
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Number)
+], PaginationComponent.prototype, "pages", void 0);
+PaginationComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-posts',
-        template: __webpack_require__("../../../../../src/app/posts/posts.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/posts/posts.component.css")]
+        selector: 'app-pagination',
+        template: __webpack_require__("../../../../../src/app/widgets/pagination/pagination.component.html")
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__posts_service__["a" /* PostsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__posts_service__["a" /* PostsService */]) === "function" && _a || Object])
-], PostsComponent);
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+], PaginationComponent);
 
-var _a;
-//# sourceMappingURL=posts.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/posts/posts.service.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostsService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var PostsService = (function () {
-    function PostsService(http) {
-        this.http = http;
-    }
-    // Get all posts from the API
-    PostsService.prototype.getAllPosts = function () {
-        return this.http.get('/api/posts')
-            .map(function (res) { return res.json(); });
-    };
-    return PostsService;
-}());
-PostsService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
-], PostsService);
-
-var _a;
-//# sourceMappingURL=posts.service.js.map
+var _a, _b;
+//# sourceMappingURL=pagination.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/app/scroll/scroll.component.html":
+/***/ "../../../../../src/app/widgets/scroll/scroll.component.html":
 /***/ (function(module, exports) {
 
 module.exports = "<a class=\"scroll-top\" (click)=\"scrollToTop()\">Scroll to top</a>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/scroll/scroll.component.scss":
+/***/ "../../../../../src/app/widgets/scroll/scroll.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -1281,7 +1416,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/scroll/scroll.component.ts":
+/***/ "../../../../../src/app/widgets/scroll/scroll.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1307,8 +1442,8 @@ var ScrollComponent = (function () {
 ScrollComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-scroll',
-        template: __webpack_require__("../../../../../src/app/scroll/scroll.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/scroll/scroll.component.scss")]
+        template: __webpack_require__("../../../../../src/app/widgets/scroll/scroll.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/widgets/scroll/scroll.component.scss")]
     }),
     __metadata("design:paramtypes", [])
 ], ScrollComponent);
@@ -1317,14 +1452,14 @@ ScrollComponent = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/spinner/spinner.component.html":
+/***/ "../../../../../src/app/widgets/spinner/spinner.component.html":
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"spinner\">\n  <div class=\"bounce1\"></div>\n  <div class=\"bounce2\"></div>\n  <div class=\"bounce3\"></div>\n</div>\n"
 
 /***/ }),
 
-/***/ "../../../../../src/app/spinner/spinner.component.scss":
+/***/ "../../../../../src/app/widgets/spinner/spinner.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -1342,7 +1477,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/spinner/spinner.component.ts":
+/***/ "../../../../../src/app/widgets/spinner/spinner.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1368,8 +1503,8 @@ var SpinnerComponent = (function () {
 SpinnerComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-spinner',
-        template: __webpack_require__("../../../../../src/app/spinner/spinner.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/spinner/spinner.component.scss")]
+        template: __webpack_require__("../../../../../src/app/widgets/spinner/spinner.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/widgets/spinner/spinner.component.scss")]
     }),
     __metadata("design:paramtypes", [])
 ], SpinnerComponent);
