@@ -12,12 +12,12 @@ $album-height-sm: .5 * $album-height-lg;
   width: 100%;
   max-width: $album-width-lg;
   height: $album-height-lg;
-  font-size: .1 * $album-width-lg;
-  letter-spacing: 5px;
+  font-size: .15 * $album-height-lg;
+  letter-spacing: 0.075em;
   @include media-breakpoint-down(md){
     max-width: $album-width-md;
     height: $album-height-md;
-    font-size: .1 * $album-width-md;
+    font-size: .15 * $album-height-md;
 
   }
   @include media-breakpoint-only(xs){
@@ -27,11 +27,12 @@ $album-height-sm: .5 * $album-height-lg;
   }
 }
 .album-thumb {
-  background: radial-gradient($white, $gray-400, $gray-800);
+  //background: radial-gradient($white, $gray-400, $gray-800);
+  background: rgba(0,0,0,0.25);
+  color: rgba($white, 0.8);
+  border: 1.5px solid rgba(255,255,255,0.1);
   box-shadow: $burnt-edges;
   transition: .5s ease;
-  border: 1.5px solid black;
-  opacity: 0.6;
   height: 100%;
   width: 100%;
   display: flex;
@@ -39,16 +40,11 @@ $album-height-sm: .5 * $album-height-lg;
   justify-content: center;
   text-align: center;
   text-decoration: none;
-  color: inherit;
+  text-shadow: 0.05em 0.05em 0.1em black;
 
   &:hover {
     background: transparent;
-    opacity: .9;
-    text-shadow:
-      -1px -1px 10px antiquewhite,
-      1px -1px 10px antiquewhite,
-      -1px 1px 10px antiquewhite,
-      1px 1px 10px antiquewhite;
+    color: $white;
   }
 }
 

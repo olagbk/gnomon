@@ -15,5 +15,8 @@ export class PhotosComponent implements OnInit {
   ngOnInit() {
     this.albums = this.albumsService.getPhotos();
   }
+  imagePath(filename): string {
+    return `../../assets/${filename}`;
+  }
 
 }

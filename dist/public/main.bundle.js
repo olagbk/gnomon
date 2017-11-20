@@ -722,7 +722,7 @@ var _a;
 /***/ "../../../../../src/app/gallery/photos/photos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 pt-4 px-5\">\n\n  <div class=\"row justify-content-center\">\n    <div *ngFor=\"let album of albums; let i = index\"\n         class=\"album-thumb-container rounded m-3\"\n         [ngStyle]=\"{'background-image': 'url(../../assets/' + album.filename + ')'}\">\n         <a class=\"album-thumb rounded p-2\"\n         [routerLink]=\"album.album_id\">\n      <p class=\"album-title\">{{album.name}}</p>\n         </a>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 pt-4 px-5\">\n\n  <div class=\"row justify-content-center\">\n    <div *ngFor=\"let album of albums; let i = index\"\n         class=\"album-thumb-container rounded m-2 m-md-3\"\n         [ngStyle]=\"{'background-image': 'url(../../assets/' + album.filename + ')'}\">\n\n      <a class=\"album-thumb rounded p-2\"\n         [routerLink]=\"album.album_id\">\n        <p class=\"album-title\">{{album.name}}</p>\n      </a>\n\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -734,7 +734,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".album-thumb-container {\n  background-size: cover;\n  width: 100%;\n  max-width: 640px;\n  height: 480px;\n  font-size: 64px;\n  letter-spacing: 5px; }\n  @media (max-width: 991px) {\n    .album-thumb-container {\n      max-width: 480px;\n      height: 360px;\n      font-size: 48px; } }\n  @media (max-width: 575px) {\n    .album-thumb-container {\n      max-width: 320px;\n      height: 240px;\n      font-size: 32px; } }\n\n.album-thumb {\n  background: radial-gradient(#fff, #ced4da, #343a40);\n  box-shadow: inset 0 0 10px 2px #000;\n  transition: .5s ease;\n  border: 1.5px solid black;\n  opacity: 0.6;\n  height: 100%;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  text-decoration: none;\n  color: inherit; }\n  .album-thumb:hover {\n    background: transparent;\n    opacity: .9;\n    text-shadow: -1px -1px 10px antiquewhite, 1px -1px 10px antiquewhite, -1px 1px 10px antiquewhite, 1px 1px 10px antiquewhite; }\n", ""]);
+exports.push([module.i, ".album-thumb-container {\n  background-size: cover;\n  width: 100%;\n  max-width: 640px;\n  height: 480px;\n  font-size: 72px;\n  letter-spacing: 0.075em; }\n  @media (max-width: 991px) {\n    .album-thumb-container {\n      max-width: 480px;\n      height: 360px;\n      font-size: 54px; } }\n  @media (max-width: 575px) {\n    .album-thumb-container {\n      max-width: 320px;\n      height: 240px;\n      font-size: 32px; } }\n\n.album-thumb {\n  background: rgba(0, 0, 0, 0.25);\n  color: rgba(255, 255, 255, 0.8);\n  border: 1.5px solid rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 0 10px 2px #000;\n  transition: .5s ease;\n  height: 100%;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  text-decoration: none;\n  text-shadow: 0.05em 0.05em 0.1em black; }\n  .album-thumb:hover {\n    background: transparent;\n    color: #fff; }\n", ""]);
 
 // exports
 
@@ -768,6 +768,9 @@ var PhotosComponent = (function () {
     }
     PhotosComponent.prototype.ngOnInit = function () {
         this.albums = this.albumsService.getPhotos();
+    };
+    PhotosComponent.prototype.imagePath = function (filename) {
+        return "../../assets/" + filename;
     };
     return PhotosComponent;
 }());

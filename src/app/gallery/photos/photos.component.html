@@ -2,12 +2,14 @@
 
   <div class="row justify-content-center">
     <div *ngFor="let album of albums; let i = index"
-         class="album-thumb-container rounded m-3"
+         class="album-thumb-container rounded m-2 m-md-3"
          [ngStyle]="{'background-image': 'url(../../assets/' + album.filename + ')'}">
-         <a class="album-thumb rounded p-2"
+
+      <a class="album-thumb rounded p-2"
          [routerLink]="album.album_id">
-      <p class="album-title">{{album.name}}</p>
-         </a>
+        <p class="album-title">{{album.name}}</p>
+      </a>
+
     </div>
   </div>
 
