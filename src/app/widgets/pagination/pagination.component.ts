@@ -5,8 +5,7 @@ import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-pagination',
-  templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss']
+  templateUrl: './pagination.component.html'
 })
 export class PaginationComponent implements OnInit {
   maxSize: number;

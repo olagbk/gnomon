@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { AlbumsService } from '../albums.service';
-import { Album } from '../album';
+import { AlbumsService } from '../../gallery/albums.service';
+import { Album } from '../../gallery/album';
 
 @Component({
   selector: 'app-photos',

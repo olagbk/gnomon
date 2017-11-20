@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Album } from '../album';
-import { AlbumsService } from '../albums.service';
+import { Album } from '../../gallery/album';
+import { AlbumsService } from '../../gallery/albums.service';
 
 @Component({
   selector: 'app-sketches',

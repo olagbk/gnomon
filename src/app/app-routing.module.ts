@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import { SketchesComponent } from './gallery/sketches/sketches.component';
-import { DrawingsComponent } from './gallery/drawings/drawings.component';
-import { PhotosComponent } from './gallery/photos/photos.component';
-import { PhotoAlbumComponent } from './gallery/photos/photo-album.component';
-import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SketchesComponent } from './pages/sketches/sketches.component';
+import { DrawingsComponent } from './pages/drawings/drawings.component';
+import { PhotosComponent } from './pages/photos/photos.component';
+import { PhotoAlbumComponent } from './pages/photos/photo-album.component';
+import { AboutComponent } from './pages/about/about.component';
 
 const ROUTES = [
   {

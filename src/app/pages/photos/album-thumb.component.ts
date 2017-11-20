@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Album } from '../gallery/album';
+import { Album } from '../../gallery/album';
 
 @Component({
   selector: 'app-album-thumb',
