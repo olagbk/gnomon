@@ -1,13 +1,20 @@
 <div class="row pt-5 px-4">
-  <div class="photo" [class.visible]="imageLoaded">
-    <img src="../../assets/about.jpg" onload="imageLoaded=true"/>
+
+  <div #photoDiv
+       class="photo"
+       [style.visibility]="'hidden'">
+    <img src="../../assets/about.jpg" (load)="photoDiv.style.visibility = 'visible'"/>
   </div>
+
   <div class="desc pt-3">
+
     <p>I am interior crocodile alligator</p>
+
     <div class="desc-links">
       <a class="desc-link" href="https://www.facebook.com/BoguOs-Gnomon-689909394425813/" target="_blank">facebook</a> /
       <a class="desc-link" href="https://www.flickr.com/photos/99486946@N05/" target="_blank">flickr</a><br>
       <a class="desc-link contact-link">contact me</a>
     </div>
+
   </div>
 </div>

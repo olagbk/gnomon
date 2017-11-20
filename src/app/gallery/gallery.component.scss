@@ -3,6 +3,9 @@
 app-spinner {
   position: absolute;
   top: 0;
+  @include media-breakpoint-up(md){
+    top: 0.5rem;
+  }
 }
 .error-message {
   color: rgba($white, 0.85);

@@ -24,6 +24,8 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
+      this.galleryLoaded = false;
+      this.galleryError = false;
       this.currentPage = Number(params['page']) || 1;
       this.getImages();
     });
