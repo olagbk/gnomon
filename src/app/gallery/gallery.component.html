@@ -8,14 +8,11 @@
 
       <div class="row justify-content-center">
 
-        <div *ngFor="let image of images; let i = index"
-             class="image-frame m-2"
-             (click)="gallery.set(i)"
-             [ngStyle]="{'background-image': 'url(' + image.thumbnail + ')'}">
-        </div>
+        <app-gallery-thumb *ngFor="let image of images; let i = index" [image]="image" [index]="i"></app-gallery-thumb>
+
+      </div>
 
       <app-scroll></app-scroll>
-      </div>
 
     </ng-container>
 

@@ -1,0 +1,19 @@
+<app-spinner *ngIf="!albumsLoaded"></app-spinner>
+
+<ng-container *ngIf="albumsLoaded">
+
+  <div class="gallery-wrapper mt-4 mt-md-5 pt-4 px-5 d-flex justify-content-center">
+
+    <div class="row justify-content-center">
+
+      <app-album-thumb *ngFor="let album of albums; let i = index" [album]="album"></app-album-thumb>
+
+    </div>
+
+  </div>
+
+  <app-scroll></app-scroll>
+
+</ng-container>
+
+

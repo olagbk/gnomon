@@ -1,0 +1,19 @@
+@import '../../styles/common';
+
+:host {
+  width: 100%;
+  max-width: 320px;
+  margin: 0.5rem;
+}
+.image-frame {
+  opacity: 0.85;
+  height: 220px;
+  background: #fff center no-repeat;
+  background-size: cover;
+  border-radius: 1px;
+  box-shadow: $burnt-edges;
+  &:hover {
+    cursor: pointer;
+    opacity: .99;
+  }
+}

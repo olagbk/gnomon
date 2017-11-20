@@ -3,24 +3,13 @@
 app-spinner {
   position: absolute;
   top: 0;
+  @include media-breakpoint-up(md){
+    top: 0.5rem;
+  }
 }
 .error-message {
   color: rgba($white, 0.85);
   letter-spacing: 2px;
-}
-.image-frame {
-  opacity: 0.85;
-  width: 100%;
-  max-width: 320px;
-  height: 220px;
-  background: #fff center no-repeat;
-  background-size: cover;
-  border-radius: 1px;
-  box-shadow: $burnt-edges;
-  &:hover {
-    cursor: pointer;
-    opacity: .99;
-  }
 }
 
 

@@ -1,4 +1,4 @@
-@import '../../../styles/common.scss';
+@import '../../../styles/common';
 
 $album-width-lg: 640px;
 $album-height-lg: 480px;
@@ -7,31 +7,18 @@ $album-height-md: .75 * $album-height-lg;
 $album-width-sm: .5 * $album-width-lg;
 $album-height-sm: .5 * $album-height-lg;
 
-app-spinner {
-  position: absolute;
-  top: 1rem;
+:host {
+  width: 100%;
+  max-width: $album-width-lg;
+  margin: 0.75rem;
 }
 .album-thumb-container {
   background-size: cover;
-  width: 100%;
-  max-width: $album-width-lg;
   height: $album-height-lg;
   font-size: .15 * $album-height-lg;
   letter-spacing: 0.075em;
-  @include media-breakpoint-down(md){
-    max-width: $album-width-md;
-    height: $album-height-md;
-    font-size: .15 * $album-height-md;
-
-  }
-  @include media-breakpoint-only(xs){
-    max-width: $album-width-sm;
-    height: $album-height-sm;
-    font-size: .1 * $album-width-sm;
-  }
 }
 .album-thumb {
-  //background: radial-gradient($white, $gray-400, $gray-800);
   background: rgba($gray-900, 0.6);
   color: rgba(antiquewhite, 0.8);
   border: 1.5px solid rgba(255,255,255,0.1);
@@ -45,11 +32,28 @@ app-spinner {
   text-align: center;
   text-decoration: none;
   font-weight: 300;
-  //text-shadow: 0.05em 0.05em 0.1em black;
 
   &:hover {
     background: transparent;
     color: $white;
+  }
+}
+@include media-breakpoint-down(md){
+  :host {
+    max-width: $album-width-md;
+  }
+  .album-thumb-container {
+    height: $album-height-md;
+    font-size: .15 * $album-height-md;
+  }
+}
+@include media-breakpoint-only(xs){
+  :host {
+    max-width: $album-width-sm;
+  }
+  .album-thumb-container {
+    height: $album-height-sm;
+    font-size: .1 * $album-width-sm;
   }
 }
 

@@ -3,7 +3,7 @@
 </div>
 <app-spinner *ngIf="!backgroundReady"></app-spinner>
 <div *ngIf="backgroundReady" class="wrapper d-flex pt-5 justify-content-center">
-  <app-nav></app-nav>
+  <app-navbar></app-navbar>
   <router-outlet (deactivate)="scrollToTop()"></router-outlet>
 </div>
 

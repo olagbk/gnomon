@@ -1,8 +1,9 @@
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
@@ -11,21 +12,23 @@ import { GalleryModule } from 'ng-gallery';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { AboutComponent } from './pages/about/about.component';
+import { AlbumThumbComponent } from './pages/photos/album-thumb.component';
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { PostsComponent } from './posts/posts.component';
-import { HomeComponent } from './home/home.component';
+import { DrawingsComponent } from './pages/drawings/drawings.component';
 import { GalleryComponent } from './gallery/gallery.component';
-import { SketchesComponent } from './gallery/sketches/sketches.component';
-import { DrawingsComponent } from './gallery/drawings/drawings.component';
-import { PhotosComponent } from './gallery/photos/photos.component';
-import { PhotoAlbumComponent } from './gallery/photos/photo-album.component';
-import { PaginationComponent } from './pagination/pagination.component';
-import { AboutComponent } from './about/about.component';
-import { SpinnerComponent } from './spinner/spinner.component';
-import { ScrollComponent } from './scroll/scroll.component';
+import { GalleryThumbComponent } from './gallery/gallery-thumb.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NavbarComponent } from './widgets/navbar/navbar.component';
+import { PaginationComponent } from './widgets/pagination/pagination.component';
+import { PhotoAlbumComponent } from './pages/photos/photo-album.component';
+import { PhotosComponent } from './pages/photos/photos.component';
+import { PostsComponent } from './pages/posts/posts.component';
+import { SketchesComponent } from './pages/sketches/sketches.component';
+import { SpinnerComponent } from './widgets/spinner/spinner.component';
+import { ScrollComponent } from './widgets/scroll/scroll.component';
 
-import { PostsService } from './posts/posts.service';
+import { PostsService } from './pages/posts/posts.service';
 import { FlickrService } from './gallery/flickr.service';
 import { AlbumsService } from './gallery/albums.service';
 
@@ -40,40 +43,46 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent,
-    NavComponent,
+
+    NavbarComponent,
+    PaginationComponent,
+    SpinnerComponent,
+    ScrollComponent,
+
     HomeComponent,
-    GalleryComponent,
+    PostsComponent,
+    AboutComponent,
     SketchesComponent,
     DrawingsComponent,
     PhotosComponent,
-    PaginationComponent,
     PhotoAlbumComponent,
-    AboutComponent,
-    SpinnerComponent,
-    ScrollComponent,
+    AlbumThumbComponent,
+
+    GalleryComponent,
+    GalleryThumbComponent,
+
     TimesPipe
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    BrowserAnimationsModule,
     CollapseModule.forRoot(),
     PaginationModule.forRoot(),
     GalleryModule.forRoot(galleryConfig)
   ],
   providers: [
-    PostsService,
-    FlickrService,
     AlbumsService,
     {
       provide: APP_INITIALIZER,
       useFactory: startupServiceFactory,
       deps: [AlbumsService],
       multi: true
-    }
+    },
+    FlickrService,
+    PostsService
   ],
   bootstrap: [AppComponent]
 })
