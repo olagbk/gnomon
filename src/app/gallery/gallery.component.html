@@ -1,21 +1,31 @@
 <div class="gallery-wrapper my-4 my-md-5 px-5">
 
-  <p *ngIf="!galleryLoaded" class="message text-white text-center p-4 p-md-2">{{message}}</p>
+  <ng-container [ngSwitch]="true">
 
-  <ng-container *ngIf="galleryLoaded">
+    <ng-container *ngSwitchCase="galleryLoaded">
 
-    <app-pagination [pages]="pages"></app-pagination>
+      <app-pagination [pages]="pages"></app-pagination>
 
-    <div class="row justify-content-center">
+      <div class="row justify-content-center">
 
-      <div *ngFor="let image of images; let i = index"
-           class="image-frame m-2"
-           (click)="gallery.set(i)"
-           [ngStyle]="{'background-image': 'url(' + image.thumbnail + ')'}">
+        <div *ngFor="let image of images; let i = index"
+             class="image-frame m-2"
+             (click)="gallery.set(i)"
+             [ngStyle]="{'background-image': 'url(' + image.thumbnail + ')'}">
+        </div>
+
+      <app-scroll></app-scroll>
       </div>
-    </div>
 
-    <a class="scroll-top mt-4" (click)="scrollToTop()">Scroll to top</a>
+    </ng-container>
+
+    <div class="d-flex justify-content-center">
+
+      <p class="error-message p-3" *ngSwitchCase="galleryError">Couldn't fetch images :(</p>
+
+      <app-spinner *ngSwitchDefault></app-spinner>
+
+    </div>
 
   </ng-container>
 
