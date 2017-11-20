@@ -33,6 +33,7 @@ import { TimesPipe } from './pipes/times.pipe';
 
 import { galleryConfig } from './gallery/gallery.config';
 import { AlbumThumbComponent } from './album-thumb/album-thumb.component';
+import { GalleryThumbComponent } from './gallery-thumb/gallery-thumb.component';
 
 export function startupServiceFactory(albumsService: AlbumsService): Function {
   return () => albumsService.loadAll();
@@ -54,7 +55,8 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     SpinnerComponent,
     ScrollComponent,
     TimesPipe,
-    AlbumThumbComponent
+    AlbumThumbComponent,
+    GalleryThumbComponent
   ],
   imports: [
     AppRoutingModule,

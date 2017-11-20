@@ -10,7 +10,6 @@ import { FlickrService } from './flickr.service';
 })
 export class GalleryComponent implements OnInit {
   perPage = 24;
-  backgroundsLoaded: number;
   galleryLoaded: boolean;
   galleryError: boolean;
   pages: number;
@@ -18,12 +17,13 @@ export class GalleryComponent implements OnInit {
   images: GalleryImage[];
   @Input() album: string;
 
-  constructor(public gallery: GalleryService, private flickr: FlickrService, private activatedRoute: ActivatedRoute) { }
+  constructor(public gallery: GalleryService,
+              private flickr: FlickrService,
+              private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.galleryError = false;
-      this.galleryLoaded = false;
       this.currentPage = Number(params['page']) || 1;
       this.getImages();
     });
@@ -37,8 +37,5 @@ export class GalleryComponent implements OnInit {
         this.galleryLoaded = true;
       })
       .catch(err => this.galleryError = true);
-  }
-  setBackground() {
-
   }
 }
