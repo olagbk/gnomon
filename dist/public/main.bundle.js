@@ -250,19 +250,21 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__gallery_photos_photos_component__ = __webpack_require__("../../../../../src/app/gallery/photos/photos.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__gallery_photos_photo_album_component__ = __webpack_require__("../../../../../src/app/gallery/photos/photo-album.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pagination_pagination_component__ = __webpack_require__("../../../../../src/app/pagination/pagination.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__posts_posts_service__ = __webpack_require__("../../../../../src/app/posts/posts.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__gallery_flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pipes_times_pipe__ = __webpack_require__("../../../../../src/app/pipes/times.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__gallery_gallery_config__ = __webpack_require__("../../../../../src/app/gallery/gallery.config.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__about_about_component__ = __webpack_require__("../../../../../src/app/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__spinner_spinner_component__ = __webpack_require__("../../../../../src/app/spinner/spinner.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__about_about_component__ = __webpack_require__("../../../../../src/app/about/about.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__spinner_spinner_component__ = __webpack_require__("../../../../../src/app/spinner/spinner.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__scroll_scroll_component__ = __webpack_require__("../../../../../src/app/scroll/scroll.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__posts_posts_service__ = __webpack_require__("../../../../../src/app/posts/posts.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__gallery_flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pipes_times_pipe__ = __webpack_require__("../../../../../src/app/pipes/times.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__gallery_gallery_config__ = __webpack_require__("../../../../../src/app/gallery/gallery.config.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -310,9 +312,10 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_16__gallery_photos_photos_component__["a" /* PhotosComponent */],
             __WEBPACK_IMPORTED_MODULE_18__pagination_pagination_component__["a" /* PaginationComponent */],
             __WEBPACK_IMPORTED_MODULE_17__gallery_photos_photo_album_component__["a" /* PhotoAlbumComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__pipes_times_pipe__["a" /* TimesPipe */],
-            __WEBPACK_IMPORTED_MODULE_24__about_about_component__["a" /* AboutComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__spinner_spinner_component__["a" /* SpinnerComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__about_about_component__["a" /* AboutComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__spinner_spinner_component__["a" /* SpinnerComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__scroll_scroll_component__["a" /* ScrollComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__pipes_times_pipe__["a" /* TimesPipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_8__app_routing_module__["a" /* AppRoutingModule */],
@@ -322,16 +325,16 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
             __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_collapse__["a" /* CollapseModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_6_ngx_bootstrap_pagination__["a" /* PaginationModule */].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_7_ng_gallery__["a" /* GalleryModule */].forRoot(__WEBPACK_IMPORTED_MODULE_23__gallery_gallery_config__["a" /* galleryConfig */])
+            __WEBPACK_IMPORTED_MODULE_7_ng_gallery__["a" /* GalleryModule */].forRoot(__WEBPACK_IMPORTED_MODULE_26__gallery_gallery_config__["a" /* galleryConfig */])
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_19__posts_posts_service__["a" /* PostsService */],
-            __WEBPACK_IMPORTED_MODULE_20__gallery_flickr_service__["a" /* FlickrService */],
-            __WEBPACK_IMPORTED_MODULE_21__gallery_albums_service__["a" /* AlbumsService */],
+            __WEBPACK_IMPORTED_MODULE_22__posts_posts_service__["a" /* PostsService */],
+            __WEBPACK_IMPORTED_MODULE_23__gallery_flickr_service__["a" /* FlickrService */],
+            __WEBPACK_IMPORTED_MODULE_24__gallery_albums_service__["a" /* AlbumsService */],
             {
                 provide: __WEBPACK_IMPORTED_MODULE_4__angular_core__["d" /* APP_INITIALIZER */],
                 useFactory: startupServiceFactory,
-                deps: [__WEBPACK_IMPORTED_MODULE_21__gallery_albums_service__["a" /* AlbumsService */]],
+                deps: [__WEBPACK_IMPORTED_MODULE_24__gallery_albums_service__["a" /* AlbumsService */]],
                 multi: true
             }
         ],
@@ -525,7 +528,7 @@ var FlickrService_1, _a, _b;
 /***/ "../../../../../src/app/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 px-5\">\n\n  <p *ngIf=\"!galleryLoaded\" class=\"message text-white text-center p-4 p-md-2\">{{message}}</p>\n\n  <ng-container *ngIf=\"galleryLoaded\">\n\n    <app-pagination [pages]=\"pages\"></app-pagination>\n\n    <div class=\"row justify-content-center\">\n\n      <div *ngFor=\"let image of images; let i = index\"\n           class=\"image-frame m-2\"\n           (click)=\"gallery.set(i)\"\n           [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n      </div>\n    </div>\n\n    <a class=\"scroll-top mt-4\" (click)=\"scrollToTop()\">Scroll to top</a>\n\n  </ng-container>\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
+module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 px-5\">\n\n  <ng-container [ngSwitch]=\"true\">\n\n    <ng-container *ngSwitchCase=\"galleryLoaded\">\n\n      <app-pagination [pages]=\"pages\"></app-pagination>\n\n      <div class=\"row justify-content-center\">\n\n        <div *ngFor=\"let image of images; let i = index\"\n             class=\"image-frame m-2\"\n             (click)=\"gallery.set(i)\"\n             [ngStyle]=\"{'background-image': 'url(' + image.thumbnail + ')'}\">\n        </div>\n\n      <app-scroll></app-scroll>\n      </div>\n\n    </ng-container>\n\n    <div class=\"d-flex justify-content-center\">\n\n      <p class=\"error-message p-3\" *ngSwitchCase=\"galleryError\">Couldn't fetch images :(</p>\n\n      <app-spinner *ngSwitchDefault></app-spinner>\n\n    </div>\n\n  </ng-container>\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
 
 /***/ }),
 
@@ -537,7 +540,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".message {\n  opacity: .75;\n  letter-spacing: 2px; }\n\n.image-frame {\n  opacity: 0.85;\n  width: 100%;\n  max-width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: inset 0 0 10px 2px #000; }\n  .image-frame:hover {\n    cursor: pointer;\n    opacity: .99; }\n", ""]);
+exports.push([module.i, "app-spinner {\n  position: absolute;\n  top: 0; }\n\n.error-message {\n  color: rgba(255, 255, 255, 0.85);\n  letter-spacing: 2px; }\n\n.image-frame {\n  opacity: 0.85;\n  width: 100%;\n  max-width: 320px;\n  height: 220px;\n  background: #fff center no-repeat;\n  background-size: cover;\n  border-radius: 1px;\n  box-shadow: inset 0 0 10px 2px #000; }\n  .image-frame:hover {\n    cursor: pointer;\n    opacity: .99; }\n", ""]);
 
 // exports
 
@@ -579,9 +582,9 @@ var GalleryComponent = (function () {
     GalleryComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.queryParams.subscribe(function (params) {
+            _this.galleryError = false;
             _this.galleryLoaded = false;
             _this.currentPage = Number(params['page']) || 1;
-            _this.message = 'Loading images...';
             _this.getImages();
         });
     };
@@ -594,9 +597,10 @@ var GalleryComponent = (function () {
             _this.gallery.load(_this.images);
             _this.galleryLoaded = true;
         })
-            .catch(function (err) { return _this.message = "Couldn't fetch images :("; });
+            .catch(function (err) { return _this.galleryError = true; });
     };
-    GalleryComponent.prototype.scrollToTop = function () { scrollTo(0, 0); };
+    GalleryComponent.prototype.setBackground = function () {
+    };
     return GalleryComponent;
 }());
 __decorate([
@@ -722,7 +726,7 @@ var _a;
 /***/ "../../../../../src/app/gallery/photos/photos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 pt-4 px-5 d-flex justify-content-center\">\n\n  <app-spinner *ngIf=\"albums.length !== backgroundsLoaded\"></app-spinner>\n\n  <div class=\"row justify-content-center\" [style.visibility]=\"(albums.length !== backgroundsLoaded)? 'hidden' : 'visible'\">\n    <div *ngFor=\"let album of albums; let i = index\"\n         class=\"album-thumb-container rounded m-2 m-md-3\"\n         [ngStyle]=\"{'background-image': 'url(' + imagePath(album.filename) + ')'}\">\n      <img [src]=\"imagePath(album.filename)\" (load)=\"setBackground(album.filename)\" hidden>\n      <a class=\"album-thumb rounded p-2\"\n         [routerLink]=\"album.album_id\">\n        <p class=\"album-title\">{{album.name}}</p>\n      </a>\n\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"gallery-wrapper mt-4 mt-md-5 pt-4 px-5 d-flex justify-content-center\">\n\n  <app-spinner *ngIf=\"albums.length !== backgroundsLoaded\"></app-spinner>\n\n  <div class=\"row justify-content-center\" [style.visibility]=\"(albums.length !== backgroundsLoaded)? 'hidden' : 'visible'\">\n    <div *ngFor=\"let album of albums; let i = index\"\n         class=\"album-thumb-container rounded m-2 m-md-3\"\n         [ngStyle]=\"{'background-image': 'url(' + imagePath(album.filename) + ')'}\">\n      <img [src]=\"imagePath(album.filename)\" (load)=\"setBackground(album.filename)\" hidden>\n      <a class=\"album-thumb rounded p-2\"\n         [routerLink]=\"album.album_id\">\n        <p class=\"album-title\">{{album.name}}</p>\n      </a>\n\n    </div>\n  </div>\n</div>\n<app-scroll></app-scroll>\n"
 
 /***/ }),
 
@@ -1249,6 +1253,67 @@ PostsService = __decorate([
 
 var _a;
 //# sourceMappingURL=posts.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/scroll/scroll.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<a class=\"scroll-top\" (click)=\"scrollToTop()\">Scroll to top</a>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/scroll/scroll.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".scroll-top:not([href]):not([tabindex]) {\n  background-color: rgba(0, 0, 0, 0.5);\n  border: 1.5px solid #212529;\n  border-radius: 0.25rem;\n  letter-spacing: 2px;\n  text-decoration: none;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  margin: 2rem auto;\n  padding: 0.75rem;\n  color: #ced4da; }\n  .scroll-top:not([href]):not([tabindex]):hover {\n    color: #fff;\n    border-color: rgba(255, 255, 255, 0.75);\n    cursor: pointer; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/scroll/scroll.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ScrollComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ScrollComponent = (function () {
+    function ScrollComponent() {
+    }
+    ScrollComponent.prototype.ngOnInit = function () { };
+    ScrollComponent.prototype.scrollToTop = function () { scrollTo(0, 0); };
+    return ScrollComponent;
+}());
+ScrollComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-scroll',
+        template: __webpack_require__("../../../../../src/app/scroll/scroll.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/scroll/scroll.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], ScrollComponent);
+
+//# sourceMappingURL=scroll.component.js.map
 
 /***/ }),
 
