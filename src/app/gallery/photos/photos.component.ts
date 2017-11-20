@@ -9,6 +9,8 @@ import { Album } from '../album';
 })
 export class PhotosComponent implements OnInit {
   albums: Album[];
+  backgroundImage: string;
+  backgroundsLoaded = 0;
 
   constructor(private albumsService: AlbumsService) { }
 
@@ -18,5 +20,8 @@ export class PhotosComponent implements OnInit {
   imagePath(filename): string {
     return `../../assets/${filename}`;
   }
-
+  setBackground(filename) {
+    this.backgroundImage = this.imagePath(filename);
+    this.backgroundsLoaded++;
+  }
 }

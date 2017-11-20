@@ -7,6 +7,10 @@ $album-height-md: .75 * $album-height-lg;
 $album-width-sm: .5 * $album-width-lg;
 $album-height-sm: .5 * $album-height-lg;
 
+app-spinner {
+  position: absolute;
+  top: 1rem;
+}
 .album-thumb-container {
   background-size: cover;
   width: 100%;
@@ -28,7 +32,7 @@ $album-height-sm: .5 * $album-height-lg;
 }
 .album-thumb {
   //background: radial-gradient($white, $gray-400, $gray-800);
-  background: rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.3);
   color: rgba($white, 0.8);
   border: 1.5px solid rgba(255,255,255,0.1);
   box-shadow: $burnt-edges;

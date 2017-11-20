@@ -1,10 +1,12 @@
-<div class="gallery-wrapper my-4 my-md-5 pt-4 px-5">
+<div class="gallery-wrapper my-4 my-md-5 pt-4 px-5 d-flex justify-content-center">
 
-  <div class="row justify-content-center">
+  <app-spinner *ngIf="albums.length !== backgroundsLoaded"></app-spinner>
+
+  <div class="row justify-content-center" [style.visibility]="(albums.length !== backgroundsLoaded)? 'hidden' : 'visible'">
     <div *ngFor="let album of albums; let i = index"
          class="album-thumb-container rounded m-2 m-md-3"
-         [ngStyle]="{'background-image': 'url(../../assets/' + album.filename + ')'}">
-
+         [ngStyle]="{'background-image': 'url(' + imagePath(album.filename) + ')'}">
+      <img [src]="imagePath(album.filename)" (load)="setBackground(album.filename)" hidden>
       <a class="album-thumb rounded p-2"
          [routerLink]="album.album_id">
         <p class="album-title">{{album.name}}</p>
