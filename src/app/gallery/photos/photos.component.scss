@@ -32,8 +32,8 @@ app-spinner {
 }
 .album-thumb {
   //background: radial-gradient($white, $gray-400, $gray-800);
-  background: rgba(0,0,0,0.3);
-  color: rgba($white, 0.8);
+  background: rgba($gray-900, 0.6);
+  color: rgba(antiquewhite, 0.8);
   border: 1.5px solid rgba(255,255,255,0.1);
   box-shadow: $burnt-edges;
   transition: .5s ease;
@@ -44,7 +44,8 @@ app-spinner {
   justify-content: center;
   text-align: center;
   text-decoration: none;
-  text-shadow: 0.05em 0.05em 0.1em black;
+  font-weight: 300;
+  //text-shadow: 0.05em 0.05em 0.1em black;
 
   &:hover {
     background: transparent;
