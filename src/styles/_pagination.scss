@@ -18,8 +18,17 @@
   .page-item {
     &, &.active, &.disabled, &:hover {
       .page-link {
-        @extend .page-nav-link;
+        background-color: rgba($black, 0.5);
+        border: 1.5px solid $gray-900;
+        border-radius: $border-radius;
+        letter-spacing: 2px;
+        text-decoration: none;
         margin: 1px;
+        &:hover {
+          color: $white;
+          border-color: $navbar-dark-hover-color;
+          cursor: pointer;
+        }
       }
     }
     .page-link {
@@ -33,12 +42,4 @@
       color: $gray-700;
     }
   }
-}
-.scroll-top:not([href]):not([tabindex]) {
-  @extend .page-nav-link;
-  display: flex;
-  width: max-content;
-  margin: auto;
-  padding: 0.75rem;
-  color: $gray-400;
 }

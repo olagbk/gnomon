@@ -1,7 +1,11 @@
 @import '../../styles/common';
 
-.message {
-  opacity: .75;
+app-spinner {
+  position: absolute;
+  top: 0;
+}
+.error-message {
+  color: rgba($white, 0.85);
   letter-spacing: 2px;
 }
 .image-frame {

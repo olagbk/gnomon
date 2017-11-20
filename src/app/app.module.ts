@@ -21,6 +21,9 @@ import { DrawingsComponent } from './gallery/drawings/drawings.component';
 import { PhotosComponent } from './gallery/photos/photos.component';
 import { PhotoAlbumComponent } from './gallery/photos/photo-album.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { AboutComponent } from './about/about.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { ScrollComponent } from './scroll/scroll.component';
 
 import { PostsService } from './posts/posts.service';
 import { FlickrService } from './gallery/flickr.service';
@@ -29,8 +32,6 @@ import { AlbumsService } from './gallery/albums.service';
 import { TimesPipe } from './pipes/times.pipe';
 
 import { galleryConfig } from './gallery/gallery.config';
-import { AboutComponent } from './about/about.component';
-import { SpinnerComponent } from './spinner/spinner.component';
 
 export function startupServiceFactory(albumsService: AlbumsService): Function {
   return () => albumsService.loadAll();
@@ -48,9 +49,10 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     PhotosComponent,
     PaginationComponent,
     PhotoAlbumComponent,
-    TimesPipe,
     AboutComponent,
     SpinnerComponent,
+    ScrollComponent,
+    TimesPipe
   ],
   imports: [
     AppRoutingModule,
