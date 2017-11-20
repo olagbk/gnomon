@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { AlbumsService } from '../albums.service';
 import { Album } from '../album';
 
@@ -7,21 +7,17 @@ import { Album } from '../album';
   templateUrl: './photos.component.html',
   styleUrls: ['./photos.component.scss']
 })
-export class PhotosComponent implements OnInit {
+export class PhotosComponent implements OnInit, AfterViewInit {
   albums: Album[];
-  backgroundImage: string;
-  backgroundsLoaded = 0;
+  albumsLoaded: boolean;
 
-  constructor(private albumsService: AlbumsService) { }
+  constructor(private albumsService: AlbumsService, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.albums = this.albumsService.getPhotos();
   }
-  imagePath(filename): string {
-    return `../../assets/${filename}`;
-  }
-  setBackground(filename) {
-    this.backgroundImage = this.imagePath(filename);
-    this.backgroundsLoaded++;
+  ngAfterViewInit() {
+    this.albumsLoaded = true;
+    this.cd.detectChanges();
   }
 }
