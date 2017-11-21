@@ -2,6 +2,6 @@
      class="image-frame"
      (click)="openGallery()">
 
-  <img [src]="image.thumbnail" (load)="thumb.style.backgroundImage = 'url(' + image.thumbnail + ')'" hidden/>
+  <img [src]="image.thumbnail" (load)="setBackground(thumb)" hidden/>
 
 </div>

@@ -1,13 +1,17 @@
 <div class="row pt-5 px-4">
 
   <div #photoDiv
-       class="photo"
-       [style.visibility]="'hidden'">
-    <img src="../../../assets/about.jpg" (load)="photoDiv.style.visibility = 'visible'"/>
+       class="photo">
+
+    <span #spinner>
+      <app-spinner></app-spinner>
+    </span>
+
+    <img src="../../../assets/about.jpg"
+         (load)="photoDiv.style.backgroundColor = 'saddlebrown'; spinner.style.display = 'none'"/>
   </div>
 
   <div class="desc pt-3">
-
     <p>I am interior crocodile alligator</p>
 
     <div class="desc-links">
