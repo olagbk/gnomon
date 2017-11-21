@@ -99,7 +99,7 @@ AppRoutingModule = __decorate([
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background-wrapper\" [style.background-image]=\"'url(' + backgroundUrl + ')'\">\n  <img [src]=\"imgPreloadUrl\" (load)=\"setBackground()\" hidden>\n</div>\n<app-spinner *ngIf=\"!backgroundReady\"></app-spinner>\n<div *ngIf=\"backgroundReady\" class=\"wrapper d-flex pt-5 justify-content-center\">\n  <app-navbar></app-navbar>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n</div>\n\n\n"
+module.exports = "<div class=\"background-wrapper\" [style.background-image]=\"'url(' + backgroundUrl + ')'\">\n  <img [src]=\"imgPreloadUrl\" (load)=\"backgroundUrl = imgPreloadUrl\" hidden>\n  <app-spinner *ngIf=\"!backgroundUrl\"></app-spinner>\n</div>\n<div *ngIf=\"backgroundUrl\" class=\"wrapper d-flex pt-5 justify-content-center\">\n  <app-navbar></app-navbar>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -111,7 +111,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".background-wrapper {\n  background-size: cover;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  overflow: auto; }\n\n.wrapper {\n  background-color: rgba(0, 0, 0, 0.7);\n  position: absolute;\n  width: 100%;\n  min-height: 100%;\n  min-height: -webkit-fill-available; }\n", ""]);
+exports.push([module.i, ".background-wrapper {\n  background-color: rgba(0, 0, 0, 0.95);\n  background-size: cover;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  overflow: auto; }\n\n.wrapper {\n  background-color: rgba(0, 0, 0, 0.7);\n  position: absolute;\n  width: 100%;\n  min-height: 100%; }\n", ""]);
 
 // exports
 
@@ -414,7 +414,7 @@ var FlickrService_1, _a, _b;
 /***/ "../../../../../src/app/gallery/gallery-thumb.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div #thumb\n     class=\"image-frame\"\n     (click)=\"openGallery()\">\n\n  <img [src]=\"image.thumbnail\" (load)=\"thumb.style.backgroundImage = 'url(' + image.thumbnail + ')'\" hidden/>\n\n</div>\n"
+module.exports = "<div #thumb\n     class=\"image-frame\"\n     (click)=\"openGallery()\">\n\n  <img [src]=\"image.thumbnail\" (load)=\"setBackground(thumb)\" hidden/>\n\n</div>\n"
 
 /***/ }),
 
@@ -455,13 +455,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var GalleryThumbComponent = (function () {
-    function GalleryThumbComponent(gallery) {
+    function GalleryThumbComponent(gallery, renderer) {
         this.gallery = gallery;
+        this.renderer = renderer;
+        this.addBackground = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     GalleryThumbComponent.prototype.ngOnInit = function () {
     };
     GalleryThumbComponent.prototype.openGallery = function () {
         this.gallery.set(this.index);
+    };
+    GalleryThumbComponent.prototype.setBackground = function (el) {
+        this.renderer.setStyle(el, 'backgroundImage', "url(" + this.image.thumbnail + ")");
+        this.addBackground.emit();
     };
     return GalleryThumbComponent;
 }());
@@ -473,16 +479,20 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
     __metadata("design:type", Number)
 ], GalleryThumbComponent.prototype, "index", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+], GalleryThumbComponent.prototype, "addBackground", void 0);
 GalleryThumbComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-gallery-thumb',
         template: __webpack_require__("../../../../../src/app/gallery/gallery-thumb.component.html"),
         styles: [__webpack_require__("../../../../../src/app/gallery/gallery-thumb.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["c" /* GalleryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["c" /* GalleryService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["c" /* GalleryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["c" /* GalleryService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Renderer2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Renderer2 */]) === "function" && _d || Object])
 ], GalleryThumbComponent);
 
-var _a, _b;
+var _a, _b, _c, _d;
 //# sourceMappingURL=gallery-thumb.component.js.map
 
 /***/ }),
@@ -490,7 +500,7 @@ var _a, _b;
 /***/ "../../../../../src/app/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 px-5\">\n\n  <ng-container [ngSwitch]=\"true\">\n\n    <ng-container *ngSwitchCase=\"galleryLoaded\">\n\n      <app-pagination [pages]=\"pages\"></app-pagination>\n\n      <div class=\"row justify-content-center\">\n\n        <app-gallery-thumb *ngFor=\"let image of images; let i = index\" [image]=\"image\" [index]=\"i\"></app-gallery-thumb>\n\n      </div>\n\n      <app-scroll></app-scroll>\n\n    </ng-container>\n\n    <div class=\"d-flex justify-content-center\">\n\n      <p class=\"error-message p-3\" *ngSwitchCase=\"galleryError\">Couldn't fetch images :(</p>\n\n      <app-spinner *ngSwitchDefault></app-spinner>\n\n    </div>\n\n  </ng-container>\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
+module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 px-5\">\n\n  <div [ngSwitch]=\"true\" class=\"d-flex justify-content-center\">\n\n    <app-pagination *ngSwitchCase=\"galleryLoaded\" [pages]=\"pages\"></app-pagination>\n\n    <p *ngSwitchCase=\"galleryError\" class=\"error-message p-3\">Couldn't fetch images :(</p>\n\n    <app-spinner *ngSwitchDefault></app-spinner>\n\n  </div>\n\n  <div [style.visibility]=\"(galleryLoaded)? 'visible' : 'hidden'\">\n\n    <div class=\"row justify-content-center\">\n\n      <app-gallery-thumb *ngFor=\"let image of images; let i = index\"\n                         [image]=\"image\"\n                         [index]=\"i\"\n                         (addBackground)=\"addThumb()\">\n\n      </app-gallery-thumb>\n\n    </div>\n\n    <app-scroll></app-scroll>\n\n  </div>\n\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
 
 /***/ }),
 
@@ -544,6 +554,7 @@ var GalleryComponent = (function () {
     GalleryComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.queryParams.subscribe(function (params) {
+            _this.thumbsLoaded = 0;
             _this.galleryLoaded = false;
             _this.galleryError = false;
             _this.currentPage = Number(params['page']) || 1;
@@ -557,9 +568,13 @@ var GalleryComponent = (function () {
             _this.pages = Math.ceil(data.count / _this.perPage);
             _this.images = data.images;
             _this.gallery.load(_this.images);
-            _this.galleryLoaded = true;
         })
             .catch(function (err) { return _this.galleryError = true; });
+    };
+    GalleryComponent.prototype.addThumb = function () {
+        if (++this.thumbsLoaded === this.images.length) {
+            this.galleryLoaded = true;
+        }
     };
     return GalleryComponent;
 }());
@@ -619,7 +634,7 @@ var galleryConfig = {
 /***/ "../../../../../src/app/pages/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row pt-5 px-4\">\n\n  <div #photoDiv\n       class=\"photo\"\n       [style.visibility]=\"'hidden'\">\n    <img src=\"../../../assets/about.jpg\" (load)=\"photoDiv.style.visibility = 'visible'\"/>\n  </div>\n\n  <div class=\"desc pt-3\">\n\n    <p>I am interior crocodile alligator</p>\n\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"row pt-5 px-4\">\n\n  <div #photoDiv\n       class=\"photo\">\n\n    <span #spinner>\n      <app-spinner></app-spinner>\n    </span>\n\n    <img src=\"../../../assets/about.jpg\"\n         (load)=\"photoDiv.style.backgroundColor = 'saddlebrown'; spinner.style.display = 'none'\"/>\n  </div>\n\n  <div class=\"desc pt-3\">\n    <p>I am interior crocodile alligator</p>\n\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -631,7 +646,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  width: 100%;\n  background: radial-gradient(#000, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  border: 2px solid #343a40;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  background: saddlebrown;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  color: #fff !important;\n  cursor: pointer;\n  line-height: 2rem; }\n  .desc-link:hover {\n    text-shadow: 1px 1px 1px;\n    text-decoration: none; }\n\n@media (min-width: 992px) {\n  .row {\n    margin-top: 6rem;\n    min-height: 700px; }\n  .photo {\n    width: 30vw;\n    height: 30vw; } }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  background: radial-gradient(#000, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  border: 2px solid #343a40;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  color: #fff !important;\n  cursor: pointer;\n  line-height: 2rem; }\n  .desc-link:hover {\n    text-shadow: 1px 1px 1px;\n    text-decoration: none; }\n\n@media (min-width: 992px) {\n  .row {\n    margin-top: 6rem;\n    min-height: 700px; }\n  .photo {\n    width: 30vw;\n    height: 30vw; } }\n", ""]);
 
 // exports
 
@@ -807,7 +822,7 @@ HomeComponent = __decorate([
 /***/ "../../../../../src/app/pages/photos/album-thumb.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"album-thumb-container rounded\" #thumb>\n\n  <a class=\"album-thumb rounded p-2\"\n     [routerLink]=\"album.album_id\">\n    <p class=\"album-title\">{{album.name}}</p>\n  </a>\n\n  <img [src]=\"path\" (load)=\"thumb.style.backgroundImage = 'url(' + path + ')'\" hidden>\n\n</div>\n"
+module.exports = "<div class=\"album-thumb-container rounded\" #thumb>\n\n  <a class=\"album-thumb rounded p-2\"\n     [routerLink]=\"album.album_id\">\n    <p class=\"album-title\">{{album.name}}</p>\n  </a>\n\n  <img [src]=\"path\" (load)=\"setBackground(thumb)\" hidden>\n\n</div>\n"
 
 /***/ }),
 
@@ -849,10 +864,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var AlbumThumbComponent = (function () {
-    function AlbumThumbComponent() {
+    function AlbumThumbComponent(renderer) {
+        this.renderer = renderer;
+        this.addBackground = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     AlbumThumbComponent.prototype.ngOnInit = function () {
         this.path = "../../assets/" + this.album.filename;
+    };
+    AlbumThumbComponent.prototype.setBackground = function (el) {
+        this.renderer.setStyle(el, 'backgroundImage', "url(" + this.path + ")");
+        this.addBackground.emit();
     };
     return AlbumThumbComponent;
 }());
@@ -860,16 +881,20 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__gallery_album__["Album"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__gallery_album__["Album"]) === "function" && _a || Object)
 ], AlbumThumbComponent.prototype, "album", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+], AlbumThumbComponent.prototype, "addBackground", void 0);
 AlbumThumbComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-album-thumb',
         template: __webpack_require__("../../../../../src/app/pages/photos/album-thumb.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/photos/album-thumb.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Renderer2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Renderer2 */]) === "function" && _c || Object])
 ], AlbumThumbComponent);
 
-var _a;
+var _a, _b, _c;
 //# sourceMappingURL=album-thumb.component.js.map
 
 /***/ }),
@@ -944,7 +969,7 @@ var _a;
 /***/ "../../../../../src/app/pages/photos/photos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-spinner *ngIf=\"!albumsLoaded\"></app-spinner>\n\n<ng-container *ngIf=\"albumsLoaded\">\n\n  <div class=\"gallery-wrapper mt-4 mt-md-5 pt-4 px-5 d-flex justify-content-center\">\n\n    <div class=\"row justify-content-center\">\n\n      <app-album-thumb *ngFor=\"let album of albums; let i = index\" [album]=\"album\"></app-album-thumb>\n\n    </div>\n\n  </div>\n\n  <app-scroll></app-scroll>\n\n</ng-container>\n\n\n"
+module.exports = "<app-spinner *ngIf=\"!albumsLoaded\"></app-spinner>\n\n<div [style.visibility]=\"(albumsLoaded)? 'visible' : 'hidden'\">\n\n  <div class=\"gallery-wrapper mt-4 mt-md-5 pt-4 px-5 d-flex justify-content-center\">\n\n    <div class=\"row justify-content-center\">\n\n      <app-album-thumb *ngFor=\"let album of albums; let i = index\" [album]=\"album\" (addBackground)=\"addThumb()\"></app-album-thumb>\n\n    </div>\n\n  </div>\n\n  <app-scroll></app-scroll>\n\n</div>\n\n\n"
 
 /***/ }),
 
@@ -985,16 +1010,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var PhotosComponent = (function () {
-    function PhotosComponent(albumsService, cd) {
+    function PhotosComponent(albumsService) {
         this.albumsService = albumsService;
-        this.cd = cd;
+        this.backgroundsLoaded = 0;
     }
     PhotosComponent.prototype.ngOnInit = function () {
         this.albums = this.albumsService.getPhotos();
     };
-    PhotosComponent.prototype.ngAfterViewInit = function () {
-        this.albumsLoaded = true;
-        this.cd.detectChanges();
+    PhotosComponent.prototype.addThumb = function () {
+        if (++this.backgroundsLoaded === this.albums.length) {
+            this.albumsLoaded = true;
+        }
     };
     return PhotosComponent;
 }());
@@ -1004,10 +1030,10 @@ PhotosComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/photos/photos.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/photos/photos.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* ChangeDetectorRef */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__gallery_albums_service__["a" /* AlbumsService */]) === "function" && _a || Object])
 ], PhotosComponent);
 
-var _a, _b;
+var _a;
 //# sourceMappingURL=photos.component.js.map
 
 /***/ }),
