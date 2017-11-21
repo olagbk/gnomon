@@ -4,6 +4,13 @@
   width: 100%;
   background: radial-gradient($black, rgba($black, 0.8), rgba($black, 0.6));
 }
+.spinner {
+  display: flex;
+  justify-content: center;
+}
+app-spinner {
+  position: absolute;
+}
 .row {
   margin: auto;
   justify-content: space-evenly;
