@@ -1,8 +1,16 @@
 <div class="gallery-wrapper my-4 my-md-5 px-5">
 
-  <div [style.visibility]="(galleryLoaded)? 'visible' : 'hidden'">
+  <div [ngSwitch]="true" class="d-flex justify-content-center">
 
-    <app-pagination [pages]="pages"></app-pagination>
+    <app-pagination *ngSwitchCase="galleryLoaded" [pages]="pages"></app-pagination>
+
+    <p *ngSwitchCase="galleryError" class="error-message p-3">Couldn't fetch images :(</p>
+
+    <app-spinner *ngSwitchDefault></app-spinner>
+
+  </div>
+
+  <div [style.visibility]="(galleryLoaded)? 'visible' : 'hidden'">
 
     <div class="row justify-content-center">
 
@@ -19,13 +27,6 @@
 
   </div>
 
-  <div class="d-flex justify-content-center">
-
-    <p class="error-message p-3" *ngIf="galleryError">Couldn't fetch images :(</p>
-
-    <app-spinner *ngIf="!galleryLoaded && !galleryError"></app-spinner>
-
-  </div>
 
 </div>
 
