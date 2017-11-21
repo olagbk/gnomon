@@ -5,6 +5,6 @@
     <p class="album-title">{{album.name}}</p>
   </a>
 
-  <img [src]="path" (load)="thumb.style.backgroundImage = 'url(' + path + ')'" hidden>
+  <img [src]="path" (load)="setBackground(thumb)" hidden>
 
 </div>

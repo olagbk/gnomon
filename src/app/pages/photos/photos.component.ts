@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlbumsService } from '../../gallery/albums.service';
 import { Album } from '../../gallery/album';
 
@@ -7,17 +7,17 @@ import { Album } from '../../gallery/album';
   templateUrl: './photos.component.html',
   styleUrls: ['./photos.component.scss']
 })
-export class PhotosComponent implements OnInit, AfterViewInit {
+export class PhotosComponent implements OnInit {
   albums: Album[];
   albumsLoaded: boolean;
+  backgroundsLoaded = 0;
 
-  constructor(private albumsService: AlbumsService, private cd: ChangeDetectorRef) { }
+  constructor(private albumsService: AlbumsService) { }
 
   ngOnInit() {
     this.albums = this.albumsService.getPhotos();
   }
-  ngAfterViewInit() {
-    this.albumsLoaded = true;
-    this.cd.detectChanges();
+  addThumb() {
+    if (++this.backgroundsLoaded === this.albums.length) { this.albumsLoaded = true; }
   }
 }

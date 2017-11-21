@@ -1,30 +1,31 @@
 <div class="gallery-wrapper my-4 my-md-5 px-5">
 
-  <ng-container [ngSwitch]="true">
+  <div [style.visibility]="(galleryLoaded)? 'visible' : 'hidden'">
 
-    <ng-container *ngSwitchCase="galleryLoaded">
+    <app-pagination [pages]="pages"></app-pagination>
 
-      <app-pagination [pages]="pages"></app-pagination>
+    <div class="row justify-content-center">
 
-      <div class="row justify-content-center">
+      <app-gallery-thumb *ngFor="let image of images; let i = index"
+                         [image]="image"
+                         [index]="i"
+                         (addBackground)="addThumb()">
 
-        <app-gallery-thumb *ngFor="let image of images; let i = index" [image]="image" [index]="i"></app-gallery-thumb>
-
-      </div>
-
-      <app-scroll></app-scroll>
-
-    </ng-container>
-
-    <div class="d-flex justify-content-center">
-
-      <p class="error-message p-3" *ngSwitchCase="galleryError">Couldn't fetch images :(</p>
-
-      <app-spinner *ngSwitchDefault></app-spinner>
+      </app-gallery-thumb>
 
     </div>
 
-  </ng-container>
+    <app-scroll></app-scroll>
+
+  </div>
+
+  <div class="d-flex justify-content-center">
+
+    <p class="error-message p-3" *ngIf="galleryError">Couldn't fetch images :(</p>
+
+    <app-spinner *ngIf="!galleryLoaded && !galleryError"></app-spinner>
+
+  </div>
 
 </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, Renderer2 } from '@angular/core';
 import {GalleryImage, GalleryService} from 'ng-gallery';
 
 @Component({
@@ -9,13 +9,18 @@ import {GalleryImage, GalleryService} from 'ng-gallery';
 export class GalleryThumbComponent implements OnInit {
   @Input() image: GalleryImage;
   @Input() index: number;
+  @Output() addBackground: EventEmitter<{}> = new EventEmitter();
 
-  constructor(private gallery: GalleryService) { }
+  constructor(private gallery: GalleryService, private renderer: Renderer2) { }
 
   ngOnInit() {
   }
   openGallery() {
     this.gallery.set(this.index);
+  }
+  setBackground(el: ElementRef) {
+    this.renderer.setStyle(el, 'backgroundImage', `url(${this.image.thumbnail})`);
+    this.addBackground.emit();
   }
 
 }

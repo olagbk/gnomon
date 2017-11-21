@@ -10,6 +10,7 @@ import { FlickrService } from './flickr.service';
 })
 export class GalleryComponent implements OnInit {
   perPage = 24;
+  thumbsLoaded: number;
   galleryLoaded: boolean;
   galleryError: boolean;
   pages: number;
@@ -24,6 +25,7 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
+      this.thumbsLoaded = 0;
       this.galleryLoaded = false;
       this.galleryError = false;
       this.currentPage = Number(params['page']) || 1;
@@ -36,8 +38,10 @@ export class GalleryComponent implements OnInit {
         this.pages = Math.ceil(data.count / this.perPage);
         this.images = data.images;
         this.gallery.load(this.images);
-        this.galleryLoaded = true;
       })
       .catch(err => this.galleryError = true);
+  }
+  addThumb() {
+    if (++this.thumbsLoaded === this.images.length) { this.galleryLoaded = true; }
   }
 }
