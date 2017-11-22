@@ -5,12 +5,9 @@ nav {
   background-color: rgba(0,0,0,0.75);
 }
 .nav-item {
-  padding: 0.5rem 0;
+  padding: 0 0.5rem;
   margin: auto;
   opacity: 0.8;
-  @include media-breakpoint-up(md) {
-    padding: 0 0.5rem;
-  }
 }
 .nav-link {
   font-size: $navbar-font;
@@ -47,10 +44,10 @@ nav {
   }
 }
 .home-button {
-  @include media-breakpoint-up(md) {
-    position: absolute;
-    left: 1rem;
-  }
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0.75rem;
   border: 1px solid $gray-900;
   border-radius: 0.3rem;
   transition: 0.25s ease;
@@ -71,7 +68,19 @@ nav {
     }
   }
 }
-@include media-breakpoint-only(md) {
+@include media-breakpoint-down(md) {
+  .navbar-nav {
+    max-height: 90vh;
+    max-height: -webkit-fill-available;
+    flex-wrap: wrap;
+  }
+  .home-button {
+    left: auto;
+    right: 0;
+  }
+  .nav-item {
+    padding: 0.5rem 0;
+  }
   .nav-link {
     font-size: $navbar-font-md;
     &.active:after {

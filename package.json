@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "reinstall": "rm -rf node_modules && npm install",
-    "heroku": "git merge && gulp build && git add dist -f && git commit -am 'staging' && git push heroku heroku:master"
+    "heroku": "git merge master && gulp build && git add dist -f && git commit -am 'staging' && git push heroku heroku:master"
   },
   "private": true,
   "dependencies": {
