@@ -27,27 +27,21 @@ app-spinner {
   }
 }
 .desc {
+  width: 100%;
   text-align: center;
   color: $gray-500;
   letter-spacing: 3px;
   font-weight: 300;
 }
 .desc-link {
-  color: $white !important;
-  cursor: pointer;
   line-height: 2rem;
-  &:hover {
-    text-shadow: 1px 1px 1px;
-    text-decoration: none;
-  }
 }
 @include media-breakpoint-up(lg){
-  .row {
-    margin-top: 6rem;
-    min-height: 700px;
-  }
   .photo {
     width: 30vw;
     height: 30vw;
+  }
+  .desc {
+    width: 40vw;
   }
 }

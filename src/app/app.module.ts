@@ -7,14 +7,20 @@ import { HttpModule } from '@angular/http';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+
 
 import { GalleryModule } from 'ng-gallery';
+
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AboutComponent } from './pages/about/about.component';
 import { AlbumThumbComponent } from './pages/photos/album-thumb.component';
 import { AppComponent } from './app.component';
+import { ContactFormComponent } from './widgets/contact-form/contact-form.component';
 import { DrawingsComponent } from './pages/drawings/drawings.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { GalleryThumbComponent } from './gallery/gallery-thumb.component';
@@ -48,6 +54,7 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     PaginationComponent,
     SpinnerComponent,
     ScrollComponent,
+    ContactFormComponent,
 
     HomeComponent,
     PostsComponent,
@@ -71,7 +78,10 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     HttpModule,
     CollapseModule.forRoot(),
     PaginationModule.forRoot(),
-    GalleryModule.forRoot(galleryConfig)
+    PopoverModule.forRoot(),
+    GalleryModule.forRoot(galleryConfig),
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule
   ],
   providers: [
     AlbumsService,
@@ -82,7 +92,11 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
       multi: true
     },
     FlickrService,
-    PostsService
+    PostsService,
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: { siteKey: '6LfB2jkUAAAAAAM_uaJSpcoLZk3mEe1Sh17ShDcN' } as RecaptchaSettings,
+    },
   ],
   bootstrap: [AppComponent]
 })

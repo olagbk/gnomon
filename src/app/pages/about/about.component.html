@@ -1,4 +1,4 @@
-<div class="row pt-5 px-4">
+<div class="row pt-5 mt-lg-5 px-4">
 
   <div #photoDiv
        class="photo">
@@ -11,14 +11,15 @@
          (load)="photoDiv.style.backgroundColor = 'saddlebrown'; spinner.style.display = 'none'"/>
   </div>
 
-  <div class="desc pt-3">
+  <div class="desc pt-3 mb-4">
     <p>I am interior crocodile alligator</p>
 
-    <div class="desc-links">
-      <a class="desc-link" href="https://www.facebook.com/BoguOs-Gnomon-689909394425813/" target="_blank">facebook</a> /
-      <a class="desc-link" href="https://www.flickr.com/photos/99486946@N05/" target="_blank">flickr</a><br>
-      <a class="desc-link contact-link">contact me</a>
+    <div class="desc-links mb-2">
+      <a class="link desc-link" href="https://www.facebook.com/BoguOs-Gnomon-689909394425813/" target="_blank">facebook</a> /
+      <a class="link desc-link" href="https://www.flickr.com/photos/99486946@N05/" target="_blank">flickr</a>
     </div>
+
+    <app-contact-form></app-contact-form>
 
   </div>
 </div>
