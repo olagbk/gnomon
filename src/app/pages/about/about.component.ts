@@ -6,11 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  imageLoaded: boolean;
+  formVisible = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+  toggleForm() {
+    this.formVisible = !this.formVisible;
   }
 
 }
