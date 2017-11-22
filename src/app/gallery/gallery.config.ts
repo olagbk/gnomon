@@ -15,7 +15,7 @@ export const galleryConfig: GalleryConfig = {
       'letter-spacing': '2px',
       'margin-bottom': '3px',
     },
-    'prefixes': ['IMG', 'DSCI']
+    'prefixes': ['IMG', 'DSC']
   },
   'animation': 'fade',
   'thumbnails': {
