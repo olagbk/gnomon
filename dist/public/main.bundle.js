@@ -81,7 +81,7 @@ var AppRoutingModule = (function () {
     return AppRoutingModule;
 }());
 AppRoutingModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* RouterModule */].forRoot(ROUTES)
         ],
@@ -152,7 +152,7 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 AppComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-root',
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.scss")]
@@ -177,34 +177,44 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_collapse__ = __webpack_require__("../../../../ngx-bootstrap/collapse/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ngx_bootstrap_pagination__ = __webpack_require__("../../../../ngx-bootstrap/pagination/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng_gallery__ = __webpack_require__("../../../../ng-gallery/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_about_about_component__ = __webpack_require__("../../../../../src/app/pages/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_photos_album_thumb_component__ = __webpack_require__("../../../../../src/app/pages/photos/album-thumb.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_drawings_drawings_component__ = __webpack_require__("../../../../../src/app/pages/drawings/drawings.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__gallery_gallery_component__ = __webpack_require__("../../../../../src/app/gallery/gallery.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__gallery_gallery_thumb_component__ = __webpack_require__("../../../../../src/app/gallery/gallery-thumb.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_home_home_component__ = __webpack_require__("../../../../../src/app/pages/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__widgets_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/widgets/navbar/navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__widgets_pagination_pagination_component__ = __webpack_require__("../../../../../src/app/widgets/pagination/pagination.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_photos_photo_album_component__ = __webpack_require__("../../../../../src/app/pages/photos/photo-album.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_photos_photos_component__ = __webpack_require__("../../../../../src/app/pages/photos/photos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_posts_posts_component__ = __webpack_require__("../../../../../src/app/pages/posts/posts.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_sketches_sketches_component__ = __webpack_require__("../../../../../src/app/pages/sketches/sketches.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__widgets_spinner_spinner_component__ = __webpack_require__("../../../../../src/app/widgets/spinner/spinner.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__widgets_scroll_scroll_component__ = __webpack_require__("../../../../../src/app/widgets/scroll/scroll.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_posts_posts_service__ = __webpack_require__("../../../../../src/app/pages/posts/posts.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__gallery_flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pipes_times_pipe__ = __webpack_require__("../../../../../src/app/pipes/times.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__gallery_gallery_config__ = __webpack_require__("../../../../../src/app/gallery/gallery.config.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_bootstrap_popover__ = __webpack_require__("../../../../ngx-bootstrap/popover/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng_gallery__ = __webpack_require__("../../../../ng-gallery/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng_recaptcha__ = __webpack_require__("../../../../ng-recaptcha/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng_recaptcha___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_ng_recaptcha__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ng_recaptcha_forms__ = __webpack_require__("../../../../ng-recaptcha/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ng_recaptcha_forms___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_ng_recaptcha_forms__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_about_about_component__ = __webpack_require__("../../../../../src/app/pages/about/about.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_photos_album_thumb_component__ = __webpack_require__("../../../../../src/app/pages/photos/album-thumb.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__widgets_contact_form_contact_form_component__ = __webpack_require__("../../../../../src/app/widgets/contact-form/contact-form.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_drawings_drawings_component__ = __webpack_require__("../../../../../src/app/pages/drawings/drawings.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__gallery_gallery_component__ = __webpack_require__("../../../../../src/app/gallery/gallery.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__gallery_gallery_thumb_component__ = __webpack_require__("../../../../../src/app/gallery/gallery-thumb.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_home_home_component__ = __webpack_require__("../../../../../src/app/pages/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__widgets_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/widgets/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__widgets_pagination_pagination_component__ = __webpack_require__("../../../../../src/app/widgets/pagination/pagination.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_photos_photo_album_component__ = __webpack_require__("../../../../../src/app/pages/photos/photo-album.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_photos_photos_component__ = __webpack_require__("../../../../../src/app/pages/photos/photos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_posts_posts_component__ = __webpack_require__("../../../../../src/app/pages/posts/posts.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_sketches_sketches_component__ = __webpack_require__("../../../../../src/app/pages/sketches/sketches.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__widgets_spinner_spinner_component__ = __webpack_require__("../../../../../src/app/widgets/spinner/spinner.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__widgets_scroll_scroll_component__ = __webpack_require__("../../../../../src/app/widgets/scroll/scroll.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_posts_posts_service__ = __webpack_require__("../../../../../src/app/pages/posts/posts.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__gallery_flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pipes_times_pipe__ = __webpack_require__("../../../../../src/app/pipes/times.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__gallery_gallery_config__ = __webpack_require__("../../../../../src/app/gallery/gallery.config.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
 
 
 
@@ -243,47 +253,55 @@ var AppModule = (function () {
     return AppModule;
 }());
 AppModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__widgets_navbar_navbar_component__["a" /* NavbarComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__widgets_pagination_pagination_component__["a" /* PaginationComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__widgets_spinner_spinner_component__["a" /* SpinnerComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__widgets_scroll_scroll_component__["a" /* ScrollComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__pages_home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__pages_posts_posts_component__["a" /* PostsComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__pages_about_about_component__["a" /* AboutComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__pages_sketches_sketches_component__["a" /* SketchesComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__pages_drawings_drawings_component__["a" /* DrawingsComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__pages_photos_photos_component__["a" /* PhotosComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__pages_photos_photo_album_component__["a" /* PhotoAlbumComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__pages_photos_album_thumb_component__["a" /* AlbumThumbComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__gallery_gallery_component__["a" /* GalleryComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__gallery_gallery_thumb_component__["a" /* GalleryThumbComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__pipes_times_pipe__["a" /* TimesPipe */]
+            __WEBPACK_IMPORTED_MODULE_14__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__widgets_navbar_navbar_component__["a" /* NavbarComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__widgets_pagination_pagination_component__["a" /* PaginationComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__widgets_spinner_spinner_component__["a" /* SpinnerComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__widgets_scroll_scroll_component__["a" /* ScrollComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__widgets_contact_form_contact_form_component__["a" /* ContactFormComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__pages_home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__pages_posts_posts_component__["a" /* PostsComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__pages_about_about_component__["a" /* AboutComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__pages_sketches_sketches_component__["a" /* SketchesComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__pages_drawings_drawings_component__["a" /* DrawingsComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__pages_photos_photos_component__["a" /* PhotosComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__pages_photos_photo_album_component__["a" /* PhotoAlbumComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__pages_photos_album_thumb_component__["a" /* AlbumThumbComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__gallery_gallery_component__["a" /* GalleryComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__gallery_gallery_thumb_component__["a" /* GalleryThumbComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__pipes_times_pipe__["a" /* TimesPipe */]
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_8__app_routing_module__["a" /* AppRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_11__app_routing_module__["a" /* AppRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_collapse__["a" /* CollapseModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_6_ngx_bootstrap_pagination__["a" /* PaginationModule */].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_7_ng_gallery__["b" /* GalleryModule */].forRoot(__WEBPACK_IMPORTED_MODULE_28__gallery_gallery_config__["a" /* galleryConfig */])
+            __WEBPACK_IMPORTED_MODULE_7_ngx_bootstrap_popover__["a" /* PopoverModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_8_ng_gallery__["b" /* GalleryModule */].forRoot(__WEBPACK_IMPORTED_MODULE_32__gallery_gallery_config__["a" /* galleryConfig */]),
+            __WEBPACK_IMPORTED_MODULE_9_ng_recaptcha__["RecaptchaModule"].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_10_ng_recaptcha_forms__["RecaptchaFormsModule"]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_26__gallery_albums_service__["a" /* AlbumsService */],
+            __WEBPACK_IMPORTED_MODULE_30__gallery_albums_service__["a" /* AlbumsService */],
             {
-                provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* APP_INITIALIZER */],
+                provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["APP_INITIALIZER"],
                 useFactory: startupServiceFactory,
-                deps: [__WEBPACK_IMPORTED_MODULE_26__gallery_albums_service__["a" /* AlbumsService */]],
+                deps: [__WEBPACK_IMPORTED_MODULE_30__gallery_albums_service__["a" /* AlbumsService */]],
                 multi: true
             },
-            __WEBPACK_IMPORTED_MODULE_25__gallery_flickr_service__["a" /* FlickrService */],
-            __WEBPACK_IMPORTED_MODULE_24__pages_posts_posts_service__["a" /* PostsService */]
+            __WEBPACK_IMPORTED_MODULE_29__gallery_flickr_service__["a" /* FlickrService */],
+            __WEBPACK_IMPORTED_MODULE_28__pages_posts_posts_service__["a" /* PostsService */],
+            {
+                provide: __WEBPACK_IMPORTED_MODULE_9_ng_recaptcha__["RECAPTCHA_SETTINGS"],
+                useValue: { siteKey: '6LfB2jkUAAAAAAM_uaJSpcoLZk3mEe1Sh17ShDcN' },
+            },
         ],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]]
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_14__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
@@ -353,7 +371,7 @@ var AlbumsService = (function () {
     return AlbumsService;
 }());
 AlbumsService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], AlbumsService);
 
@@ -402,7 +420,7 @@ var FlickrService = FlickrService_1 = (function () {
     return FlickrService;
 }());
 FlickrService = FlickrService_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__albums_service__["a" /* AlbumsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__albums_service__["a" /* AlbumsService */]) === "function" && _b || Object])
 ], FlickrService);
 
@@ -458,7 +476,7 @@ var GalleryThumbComponent = (function () {
     function GalleryThumbComponent(gallery, renderer) {
         this.gallery = gallery;
         this.renderer = renderer;
-        this.addBackground = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.addBackground = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     GalleryThumbComponent.prototype.ngOnInit = function () {
     };
@@ -472,24 +490,24 @@ var GalleryThumbComponent = (function () {
     return GalleryThumbComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["GalleryImage"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["GalleryImage"]) === "function" && _a || Object)
 ], GalleryThumbComponent.prototype, "image", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Number)
 ], GalleryThumbComponent.prototype, "index", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
-    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _b || Object)
 ], GalleryThumbComponent.prototype, "addBackground", void 0);
 GalleryThumbComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-gallery-thumb',
         template: __webpack_require__("../../../../../src/app/gallery/gallery-thumb.component.html"),
         styles: [__webpack_require__("../../../../../src/app/gallery/gallery-thumb.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["c" /* GalleryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["c" /* GalleryService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Renderer2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Renderer2 */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["c" /* GalleryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ng_gallery__["c" /* GalleryService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"]) === "function" && _d || Object])
 ], GalleryThumbComponent);
 
 var _a, _b, _c, _d;
@@ -579,11 +597,11 @@ var GalleryComponent = (function () {
     return GalleryComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", String)
 ], GalleryComponent.prototype, "album", void 0);
 GalleryComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-gallery',
         template: __webpack_require__("../../../../../src/app/gallery/gallery.component.html"),
         styles: [__webpack_require__("../../../../../src/app/gallery/gallery.component.scss")]
@@ -634,7 +652,7 @@ var galleryConfig = {
 /***/ "../../../../../src/app/pages/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row pt-5 px-4\">\n\n  <div #photoDiv\n       class=\"photo\">\n\n    <span #spinner class=\"spinner\">\n      <app-spinner></app-spinner>\n    </span>\n\n    <img src=\"../../../assets/about.jpg\"\n         (load)=\"photoDiv.style.backgroundColor = 'saddlebrown'; spinner.style.display = 'none'\"/>\n  </div>\n\n  <div class=\"desc pt-3\">\n    <p>I am interior crocodile alligator</p>\n\n    <div class=\"desc-links\">\n      <a class=\"desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a><br>\n      <a class=\"desc-link contact-link\">contact me</a>\n    </div>\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"row pt-5 mt-lg-5 px-4\">\n\n  <div #photoDiv\n       class=\"photo\">\n\n    <span #spinner class=\"spinner\">\n      <app-spinner></app-spinner>\n    </span>\n\n    <img src=\"../../../assets/about.jpg\"\n         (load)=\"photoDiv.style.backgroundColor = 'saddlebrown'; spinner.style.display = 'none'\"/>\n  </div>\n\n  <div class=\"desc pt-3 mb-4\">\n    <p>I am interior crocodile alligator</p>\n\n    <div class=\"desc-links mb-2\">\n      <a class=\"link desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"link desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a>\n    </div>\n\n    <app-contact-form></app-contact-form>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -646,7 +664,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  width: 100%;\n  background: radial-gradient(#000, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); }\n\n.spinner {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n\napp-spinner {\n  position: absolute; }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  border: 2px solid #343a40;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  color: #fff !important;\n  cursor: pointer;\n  line-height: 2rem; }\n  .desc-link:hover {\n    text-shadow: 1px 1px 1px;\n    text-decoration: none; }\n\n@media (min-width: 992px) {\n  .row {\n    margin-top: 6rem;\n    min-height: 700px; }\n  .photo {\n    width: 30vw;\n    height: 30vw; } }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  background: radial-gradient(#000, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); }\n\n.spinner {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n\napp-spinner {\n  position: absolute; }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  border: 2px solid #343a40;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  width: 100%;\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  line-height: 2rem; }\n\n@media (min-width: 992px) {\n  .photo {\n    width: 30vw;\n    height: 30vw; }\n  .desc {\n    width: 40vw; } }\n", ""]);
 
 // exports
 
@@ -674,13 +692,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AboutComponent = (function () {
     function AboutComponent() {
+        this.formVisible = false;
     }
     AboutComponent.prototype.ngOnInit = function () {
+    };
+    AboutComponent.prototype.toggleForm = function () {
+        this.formVisible = !this.formVisible;
     };
     return AboutComponent;
 }());
 AboutComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-about',
         template: __webpack_require__("../../../../../src/app/pages/about/about.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/about/about.component.scss")]
@@ -745,7 +767,7 @@ var DrawingsComponent = (function () {
     return DrawingsComponent;
 }());
 DrawingsComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-drawings',
         template: __webpack_require__("../../../../../src/app/pages/drawings/drawings.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/drawings/drawings.component.scss")]
@@ -807,7 +829,7 @@ var HomeComponent = (function () {
     return HomeComponent;
 }());
 HomeComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-home',
         template: __webpack_require__("../../../../../src/app/pages/home/home.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/home/home.component.scss")]
@@ -866,7 +888,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AlbumThumbComponent = (function () {
     function AlbumThumbComponent(renderer) {
         this.renderer = renderer;
-        this.addBackground = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.addBackground = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     AlbumThumbComponent.prototype.ngOnInit = function () {
         this.path = "../../assets/" + this.album.filename;
@@ -878,20 +900,20 @@ var AlbumThumbComponent = (function () {
     return AlbumThumbComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__gallery_album__["Album"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__gallery_album__["Album"]) === "function" && _a || Object)
 ], AlbumThumbComponent.prototype, "album", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
-    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _b || Object)
 ], AlbumThumbComponent.prototype, "addBackground", void 0);
 AlbumThumbComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-album-thumb',
         template: __webpack_require__("../../../../../src/app/pages/photos/album-thumb.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/photos/album-thumb.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Renderer2 */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Renderer2 */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"]) === "function" && _c || Object])
 ], AlbumThumbComponent);
 
 var _a, _b, _c;
@@ -953,7 +975,7 @@ var PhotoAlbumComponent = (function () {
     return PhotoAlbumComponent;
 }());
 PhotoAlbumComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-photo-album',
         template: __webpack_require__("../../../../../src/app/pages/photos/photo-album.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/photos/photo-album.component.scss")]
@@ -1025,7 +1047,7 @@ var PhotosComponent = (function () {
     return PhotosComponent;
 }());
 PhotosComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-photos',
         template: __webpack_require__("../../../../../src/app/pages/photos/photos.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/photos/photos.component.scss")]
@@ -1097,7 +1119,7 @@ var PostsComponent = (function () {
     return PostsComponent;
 }());
 PostsComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-posts',
         template: __webpack_require__("../../../../../src/app/pages/posts/posts.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/posts/posts.component.css")]
@@ -1143,7 +1165,7 @@ var PostsService = (function () {
     return PostsService;
 }());
 PostsService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
 ], PostsService);
 
@@ -1205,7 +1227,7 @@ var SketchesComponent = (function () {
     return SketchesComponent;
 }());
 SketchesComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-sketches',
         template: __webpack_require__("../../../../../src/app/pages/sketches/sketches.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/sketches/sketches.component.scss")]
@@ -1285,10 +1307,81 @@ var TimesPipe = (function () {
     return TimesPipe;
 }());
 TimesPipe = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({ name: 'times' })
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: 'times' })
 ], TimesPipe);
 
 //# sourceMappingURL=times.pipe.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/widgets/contact-form/contact-form.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<a class=\"link form-link\" *ngIf=\"!submitted\"\n   [innerHTML]=\"(formVisible)? '[ hide ]' : '[ contact me ]'\"\n   (click)=\"toggleForm()\">\n</a>\n<p *ngIf=\"submitted\">Your message has been sent.</p>\n\n<div class=\"container mt-3\" *ngIf=\"!submitted\" [hidden]=\"!formVisible\">\n\n  <form #contactForm=\"ngForm\" (ngSubmit)=\"sendEmail()\">\n\n    <div class=\"form-group\">\n      <label for=\"name\">Name</label>\n      <input type=\"text\" class=\"form-control\" id=\"name\" [(ngModel)]=\"model.name\" name=\"name\" required>\n    </div>\n\n    <div class=\"form-group\">\n      <label for=\"email\">Email</label>\n      <input type=\"email\" class=\"form-control\" id=\"email\" [(ngModel)]=\"model.email\" name=\"email\" required email>\n    </div>\n\n    <div class=\"form-group\">\n      <label for=\"message\">Message</label>\n      <textarea class=\"form-control\" id=\"message\" [(ngModel)]=\"model.message\" name=\"message\" required></textarea>\n    </div>\n\n    <div class=\"recaptcha d-flex justify-content-start justify-content-sm-center\">\n      <re-captcha [(ngModel)]=\"captcha\" name=\"captcha\" required></re-captcha>\n    </div>\n\n    <div class=\"button-wrapper\">\n\n      <button type=\"submit\"\n              class=\"btn btn-outline-secondary submit-button\"\n              [disabled]=\"!contactForm.form.valid\">Send\n      </button>\n\n      <div *ngIf=\"!contactForm.form.valid\"\n           class=\"popover-wrapper\"\n           popover=\"All fields are required.\"\n           triggers=\"mouseenter:mouseleave\"\n           placement=\"top\">\n      </div>\n\n    </div>\n  </form>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/widgets/contact-form/contact-form.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactFormComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__email__ = __webpack_require__("../../../../../src/app/widgets/contact-form/email.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ContactFormComponent = (function () {
+    function ContactFormComponent() {
+        this.model = new __WEBPACK_IMPORTED_MODULE_1__email__["a" /* Email */]();
+        this.submitted = false;
+        this.formVisible = false;
+    }
+    ContactFormComponent.prototype.ngOnInit = function () { };
+    ContactFormComponent.prototype.sendEmail = function () {
+        this.submitted = true;
+    };
+    ContactFormComponent.prototype.toggleForm = function () {
+        this.formVisible = !this.formVisible;
+    };
+    return ContactFormComponent;
+}());
+ContactFormComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-contact-form',
+        template: __webpack_require__("../../../../../src/app/widgets/contact-form/contact-form.component.html"),
+        styles: ["\n    :host >>> .popover {\n      background-color: rgba(0,0,0,0.9);\n    }\n    :host >>> .popover > .arrow:after {\n      border-top-color: rgba(0,0,0,0.9);\n    }\n    :host >>> .popover > .popover-body {\n      color: #f8f9fa\n    }\n    .button-wrapper {\n      position: relative;\n      width: fit-content;\n      margin: auto;\n    }\n    .popover-wrapper {\n      position: absolute;\n      left: 0;\n      top: 0;\n      width: 100%;\n      height: 100%;\n    }\n    .submit-button:hover {\n      background: transparent;\n      color: #f8f9fa;\n      border-color: #f8f9fa;\n      cursor: pointer;\n    }\n    #message {\n      height: 225px;\n    }\n    .ng-invalid.ng-touched[required]:not(re-captcha) {\n      border-left: 6px solid #91232d;\n    }\n    .recaptcha {\n      margin: 2rem 0;\n      overflow: hidden;\n    }\n    .form-link {\n      text-decoration: none;\n    }\n  "]
+    }),
+    __metadata("design:paramtypes", [])
+], ContactFormComponent);
+
+//# sourceMappingURL=contact-form.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/widgets/contact-form/email.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Email; });
+var Email = (function () {
+    function Email(name, email, message) {
+        this.name = name;
+        this.email = email;
+        this.message = message;
+    }
+    return Email;
+}());
+
+//# sourceMappingURL=email.js.map
 
 /***/ }),
 
@@ -1345,7 +1438,7 @@ var NavbarComponent = (function () {
     return NavbarComponent;
 }());
 NavbarComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-navbar',
         template: __webpack_require__("../../../../../src/app/widgets/navbar/navbar.component.html"),
         styles: [__webpack_require__("../../../../../src/app/widgets/navbar/navbar.component.scss")]
@@ -1401,11 +1494,11 @@ var PaginationComponent = (function () {
     return PaginationComponent;
 }());
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Number)
 ], PaginationComponent.prototype, "pages", void 0);
 PaginationComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-pagination',
         template: __webpack_require__("../../../../../src/app/widgets/pagination/pagination.component.html")
     }),
@@ -1466,7 +1559,7 @@ var ScrollComponent = (function () {
     return ScrollComponent;
 }());
 ScrollComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-scroll',
         template: __webpack_require__("../../../../../src/app/widgets/scroll/scroll.component.html"),
         styles: [__webpack_require__("../../../../../src/app/widgets/scroll/scroll.component.scss")]
@@ -1527,7 +1620,7 @@ var SpinnerComponent = (function () {
     return SpinnerComponent;
 }());
 SpinnerComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-spinner',
         template: __webpack_require__("../../../../../src/app/widgets/spinner/spinner.component.html"),
         styles: [__webpack_require__("../../../../../src/app/widgets/spinner/spinner.component.scss")]
@@ -1570,7 +1663,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_23" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
 //# sourceMappingURL=main.js.map
