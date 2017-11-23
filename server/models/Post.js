@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       type: Sequelize.STRING,
       allowNull: false
     },
-    body: Sequelize.STRING
+    body: Sequelize.TEXT
   });
 };
 

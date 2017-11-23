@@ -3,12 +3,12 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class PostsService {
+export class BlogService {
 
   constructor(private http: Http) { }
 
-  // Get all posts from the API
-  getAllPosts() {
+  // Get all blog from the API
+  getPosts() {
     return this.http.get('/api/posts')
       .map(res => res.json());
   }

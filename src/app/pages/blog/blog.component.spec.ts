@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
-import { PostsComponent } from './posts.component';
-import { PostsService } from './posts.service';
+import { PostsComponent } from './blog.component';
+import { PostsService } from './blog.service';
 
 describe('PostsComponent', () => {
   let component: PostsComponent;

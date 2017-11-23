@@ -14,7 +14,8 @@ export const galleryConfig: GalleryConfig = {
       'font-size': '3vmin',
       'letter-spacing': '2px',
       'margin-bottom': '3px',
-    }
+    },
+    'prefixes': ['IMG', 'DSC']
   },
   'animation': 'fade',
   'thumbnails': {

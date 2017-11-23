@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/do';
 
 
-import { PostsService } from './posts.service';
+import { PostsService } from './blog.service';
 
 describe('PostsService', () => {
   beforeEach(() => {
@@ -22,7 +22,7 @@ describe('PostsService', () => {
   it('should be created', inject([PostsService], (service: PostsService) => {
     should().exist(service);
   }));
-  it('should return an Observable of posts',
+  it('should return an Observable of blog',
     inject([PostsService, XHRBackend], (service: PostsService, mockBackend: MockBackend) => {
       const mockResponse = [
         { id: 1, title: 'Post title', body: 'Post body' }
