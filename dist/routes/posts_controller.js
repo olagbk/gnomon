@@ -23,7 +23,7 @@ module.exports = function (router, sequelize) {
     });
   });
 
-  router.route('/posts/:id').get(function (req, res) {
+  router.route('/blog/:id').get(function (req, res) {
     sequelize.models.posts.findById(req.params.id).then(function (post) {
       return res.json(post);
     }).catch(function (err) {

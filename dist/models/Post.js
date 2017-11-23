@@ -13,6 +13,6 @@ module.exports = function (sequelize) {
       type: _sequelize2.default.STRING,
       allowNull: false
     },
-    body: _sequelize2.default.STRING
+    body: _sequelize2.default.TEXT
   });
 };
