@@ -21,9 +21,16 @@ module.exports = (router, sequelize) => {
       })
 
     .get((req, res) => {
-
+      const numWords = 150;
       sequelize.models.posts.findAll()
-        .then(posts => res.json(posts))
+        .then(posts => res.json(posts.map(post => {
+          if (!post.body) return post;
+          const words = post.body.split(" ");
+          if (words.length <= numWords) return post;
+          post.dataValues.cutoff = true;
+          post.body = words.slice(0, numWords).join(" ");
+          return post;
+        })))
         .catch(err => res.send(err));
     });
 

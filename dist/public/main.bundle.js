@@ -724,7 +724,7 @@ AboutComponent = __decorate([
 /***/ "../../../../../src/app/pages/blog/blog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container mt-5\">\n  <div class=\"post p-4 my-4\" *ngFor=\"let post of posts\">\n    <h4 class=\"post-title text-light p-3\">{{ post.title }}</h4>\n    <p class=\"post-text\">{{post.body}}</p>\n    <div class=\"shadow-wrapper\"></div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container mt-5\">\n  <div class=\"post p-4 my-4\" *ngFor=\"let post of posts\">\n    <h4 class=\"post-title text-light p-3\">{{ post.title }}</h4>\n    <p class=\"post-text\">{{post.body}}\n      <a class=\"link\" *ngIf=\"post.cutoff\">...</a>\n    </p>\n    <div class=\"shadow-wrapper\" *ngIf=\"post.cutoff\"></div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -736,7 +736,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post {\n  position: relative;\n  background: rgba(0, 0, 0, 0.6);\n  color: rgba(255, 255, 255, 0.9);\n  border: 1px solid #212529;\n  line-height: 2rem;\n  text-align: center;\n  letter-spacing: 2px;\n  max-height: 400px;\n  overflow: hidden; }\n\n.post-text {\n  font-size: 14px; }\n\n.shadow-wrapper {\n  position: absolute;\n  width: 100%;\n  height: 1px;\n  bottom: 0;\n  box-shadow: 5px 0px 10px 10px rgba(0, 0, 0, 0.5);\n  border-bottom: 1px solid black; }\n", ""]);
+exports.push([module.i, ".post {\n  position: relative;\n  padding: 2rem 2rem .5rem 2rem;\n  background: rgba(0, 0, 0, 0.6);\n  color: rgba(255, 255, 255, 0.9);\n  border: 1px solid #212529;\n  line-height: 2rem;\n  text-align: center;\n  letter-spacing: 2px; }\n\n.post-text {\n  font-size: 14px; }\n\n.shadow-wrapper {\n  position: absolute;\n  width: 90%;\n  height: 1px;\n  left: 5%;\n  bottom: 5px;\n  box-shadow: 0px -30px 10px 25px rgba(0, 0, 0, 0.5); }\n\n.link {\n  text-decoration: underline !important; }\n\n@media (min-width: 768px) {\n  .post-text {\n    font-size: 16px; } }\n", ""]);
 
 // exports
 

@@ -15,9 +15,16 @@ module.exports = function (router, sequelize) {
       res.send(err);
     });
   }).get(function (req, res) {
-
+    var numWords = 150;
     sequelize.models.posts.findAll().then(function (posts) {
-      return res.json(posts);
+      return res.json(posts.map(function (post) {
+        if (!post.body) return post;
+        var words = post.body.split(" ");
+        if (words.length <= numWords) return post;
+        post.dataValues.cutoff = true;
+        post.body = words.slice(0, numWords).join(" ");
+        return post;
+      }));
     }).catch(function (err) {
       return res.send(err);
     });
