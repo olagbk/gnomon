@@ -27,7 +27,7 @@ module.exports = (router, sequelize) => {
         .catch(err => res.send(err));
     });
 
-  router.route('/posts/:id')
+  router.route('/blog/:id')
     .get((req, res) => {
     sequelize.models.posts.findById(req.params.id)
       .then(post => res.json(post))

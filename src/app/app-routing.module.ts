@@ -7,6 +7,7 @@ import { DrawingsComponent } from './pages/drawings/drawings.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { PhotoAlbumComponent } from './pages/photos/photo-album.component';
 import { AboutComponent } from './pages/about/about.component';
+import {BlogComponent} from './pages/blog/blog.component';
 
 const ROUTES = [
   {
@@ -37,6 +38,10 @@ const ROUTES = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'blog',
+    component: BlogComponent
   },
   {
     path: '**',
