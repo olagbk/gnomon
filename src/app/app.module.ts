@@ -9,6 +9,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 
+import { DisqusModule } from 'ngx-disqus';
+
 import { GalleryModule } from 'ng-gallery';
 
 import { EllipsisModule } from 'ngx-ellipsis';
@@ -81,6 +83,7 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     HttpModule,
     EllipsisModule,
     CollapseModule.forRoot(),
+    DisqusModule.forRoot('gnomon'),
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),
     GalleryModule.forRoot(galleryConfig),

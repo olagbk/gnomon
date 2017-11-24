@@ -1,4 +1,4 @@
-<div class="post m-2 m-md-3 m-lg-4">
+<div class="post m-md-2 m-lg-3">
   <a class="back link" routerLink="/blog">&larr; back</a>
   <h4 class="title text-light">{{post?.title}}</h4>
   <span class="created-at p-2">{{post?.createdAt | date:'longDate' }}</span>
@@ -6,3 +6,4 @@
   <p class="text mt-3">{{post?.body}}</p>
   <a class="back link" routerLink="/blog">&larr; back</a>
 </div>
+<disqus [identifier]="'/blog/' + post?.id"></disqus>

@@ -190,42 +190,44 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_collapse__ = __webpack_require__("../../../../ngx-bootstrap/collapse/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ngx_bootstrap_pagination__ = __webpack_require__("../../../../ngx-bootstrap/pagination/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_bootstrap_popover__ = __webpack_require__("../../../../ngx-bootstrap/popover/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng_gallery__ = __webpack_require__("../../../../ng-gallery/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ngx_ellipsis__ = __webpack_require__("../../../../ngx-ellipsis/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ngx_ellipsis___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_ngx_ellipsis__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ng_recaptcha__ = __webpack_require__("../../../../ng-recaptcha/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ng_recaptcha___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_ng_recaptcha__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ng_recaptcha_forms__ = __webpack_require__("../../../../ng-recaptcha/forms.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ng_recaptcha_forms___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_ng_recaptcha_forms__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_about_about_component__ = __webpack_require__("../../../../../src/app/pages/about/about.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_photos_album_thumb_component__ = __webpack_require__("../../../../../src/app/pages/photos/album-thumb.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_blog_blog_component__ = __webpack_require__("../../../../../src/app/pages/blog/blog.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_blog_blog_entry_component__ = __webpack_require__("../../../../../src/app/pages/blog/blog-entry.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__widgets_contact_form_contact_form_component__ = __webpack_require__("../../../../../src/app/widgets/contact-form/contact-form.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_drawings_drawings_component__ = __webpack_require__("../../../../../src/app/pages/drawings/drawings.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__gallery_gallery_component__ = __webpack_require__("../../../../../src/app/gallery/gallery.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__gallery_gallery_thumb_component__ = __webpack_require__("../../../../../src/app/gallery/gallery-thumb.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_home_home_component__ = __webpack_require__("../../../../../src/app/pages/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__widgets_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/widgets/navbar/navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__widgets_pagination_pagination_component__ = __webpack_require__("../../../../../src/app/widgets/pagination/pagination.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_photos_photo_album_component__ = __webpack_require__("../../../../../src/app/pages/photos/photo-album.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_photos_photos_component__ = __webpack_require__("../../../../../src/app/pages/photos/photos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_sketches_sketches_component__ = __webpack_require__("../../../../../src/app/pages/sketches/sketches.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__widgets_spinner_spinner_component__ = __webpack_require__("../../../../../src/app/widgets/spinner/spinner.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__widgets_scroll_scroll_component__ = __webpack_require__("../../../../../src/app/widgets/scroll/scroll.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_blog_blog_service__ = __webpack_require__("../../../../../src/app/pages/blog/blog.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__gallery_flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pipes_times_pipe__ = __webpack_require__("../../../../../src/app/pipes/times.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__gallery_gallery_config__ = __webpack_require__("../../../../../src/app/gallery/gallery.config.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ngx_disqus__ = __webpack_require__("../../../../ngx-disqus/ngx-disqus.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng_gallery__ = __webpack_require__("../../../../ng-gallery/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ngx_ellipsis__ = __webpack_require__("../../../../ngx-ellipsis/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ngx_ellipsis___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_ngx_ellipsis__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ng_recaptcha__ = __webpack_require__("../../../../ng-recaptcha/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ng_recaptcha___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_ng_recaptcha__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ng_recaptcha_forms__ = __webpack_require__("../../../../ng-recaptcha/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ng_recaptcha_forms___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_ng_recaptcha_forms__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_routing_module__ = __webpack_require__("../../../../../src/app/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_about_about_component__ = __webpack_require__("../../../../../src/app/pages/about/about.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_photos_album_thumb_component__ = __webpack_require__("../../../../../src/app/pages/photos/album-thumb.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_blog_blog_component__ = __webpack_require__("../../../../../src/app/pages/blog/blog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_blog_blog_entry_component__ = __webpack_require__("../../../../../src/app/pages/blog/blog-entry.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__widgets_contact_form_contact_form_component__ = __webpack_require__("../../../../../src/app/widgets/contact-form/contact-form.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_drawings_drawings_component__ = __webpack_require__("../../../../../src/app/pages/drawings/drawings.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__gallery_gallery_component__ = __webpack_require__("../../../../../src/app/gallery/gallery.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__gallery_gallery_thumb_component__ = __webpack_require__("../../../../../src/app/gallery/gallery-thumb.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_home_home_component__ = __webpack_require__("../../../../../src/app/pages/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__widgets_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/widgets/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__widgets_pagination_pagination_component__ = __webpack_require__("../../../../../src/app/widgets/pagination/pagination.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_photos_photo_album_component__ = __webpack_require__("../../../../../src/app/pages/photos/photo-album.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_photos_photos_component__ = __webpack_require__("../../../../../src/app/pages/photos/photos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_sketches_sketches_component__ = __webpack_require__("../../../../../src/app/pages/sketches/sketches.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__widgets_spinner_spinner_component__ = __webpack_require__("../../../../../src/app/widgets/spinner/spinner.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__widgets_scroll_scroll_component__ = __webpack_require__("../../../../../src/app/widgets/scroll/scroll.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_blog_blog_service__ = __webpack_require__("../../../../../src/app/pages/blog/blog.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__gallery_flickr_service__ = __webpack_require__("../../../../../src/app/gallery/flickr.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pipes_times_pipe__ = __webpack_require__("../../../../../src/app/pipes/times.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__gallery_gallery_config__ = __webpack_require__("../../../../../src/app/gallery/gallery.config.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -272,55 +274,56 @@ var AppModule = (function () {
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_15__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__widgets_navbar_navbar_component__["a" /* NavbarComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__widgets_pagination_pagination_component__["a" /* PaginationComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__widgets_spinner_spinner_component__["a" /* SpinnerComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__widgets_scroll_scroll_component__["a" /* ScrollComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__widgets_contact_form_contact_form_component__["a" /* ContactFormComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__pages_home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__pages_blog_blog_component__["a" /* BlogComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__pages_blog_blog_entry_component__["a" /* BlogEntryComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__pages_about_about_component__["a" /* AboutComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__pages_sketches_sketches_component__["a" /* SketchesComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__pages_drawings_drawings_component__["a" /* DrawingsComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__pages_photos_photos_component__["a" /* PhotosComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__pages_photos_photo_album_component__["a" /* PhotoAlbumComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__pages_photos_album_thumb_component__["a" /* AlbumThumbComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__gallery_gallery_component__["a" /* GalleryComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__gallery_gallery_thumb_component__["a" /* GalleryThumbComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__pipes_times_pipe__["a" /* TimesPipe */]
+            __WEBPACK_IMPORTED_MODULE_16__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__widgets_navbar_navbar_component__["a" /* NavbarComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__widgets_pagination_pagination_component__["a" /* PaginationComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__widgets_spinner_spinner_component__["a" /* SpinnerComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__widgets_scroll_scroll_component__["a" /* ScrollComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__widgets_contact_form_contact_form_component__["a" /* ContactFormComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__pages_home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__pages_blog_blog_component__["a" /* BlogComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__pages_blog_blog_entry_component__["a" /* BlogEntryComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__pages_about_about_component__["a" /* AboutComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__pages_sketches_sketches_component__["a" /* SketchesComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__pages_drawings_drawings_component__["a" /* DrawingsComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__pages_photos_photos_component__["a" /* PhotosComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__pages_photos_photo_album_component__["a" /* PhotoAlbumComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__pages_photos_album_thumb_component__["a" /* AlbumThumbComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__gallery_gallery_component__["a" /* GalleryComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__gallery_gallery_thumb_component__["a" /* GalleryThumbComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__pipes_times_pipe__["a" /* TimesPipe */]
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_12__app_routing_module__["a" /* AppRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_13__app_routing_module__["a" /* AppRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormsModule"],
             __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_9_ngx_ellipsis__["EllipsisModule"],
+            __WEBPACK_IMPORTED_MODULE_10_ngx_ellipsis__["EllipsisModule"],
             __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_collapse__["a" /* CollapseModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_8_ngx_disqus__["a" /* DisqusModule */].forRoot('gnomon'),
             __WEBPACK_IMPORTED_MODULE_6_ngx_bootstrap_pagination__["a" /* PaginationModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_7_ngx_bootstrap_popover__["a" /* PopoverModule */].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_8_ng_gallery__["b" /* GalleryModule */].forRoot(__WEBPACK_IMPORTED_MODULE_34__gallery_gallery_config__["a" /* galleryConfig */]),
-            __WEBPACK_IMPORTED_MODULE_10_ng_recaptcha__["RecaptchaModule"].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_11_ng_recaptcha_forms__["RecaptchaFormsModule"]
+            __WEBPACK_IMPORTED_MODULE_9_ng_gallery__["b" /* GalleryModule */].forRoot(__WEBPACK_IMPORTED_MODULE_35__gallery_gallery_config__["a" /* galleryConfig */]),
+            __WEBPACK_IMPORTED_MODULE_11_ng_recaptcha__["RecaptchaModule"].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_12_ng_recaptcha_forms__["RecaptchaFormsModule"]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_32__gallery_albums_service__["a" /* AlbumsService */],
+            __WEBPACK_IMPORTED_MODULE_33__gallery_albums_service__["a" /* AlbumsService */],
             {
                 provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["APP_INITIALIZER"],
                 useFactory: startupServiceFactory,
-                deps: [__WEBPACK_IMPORTED_MODULE_32__gallery_albums_service__["a" /* AlbumsService */]],
+                deps: [__WEBPACK_IMPORTED_MODULE_33__gallery_albums_service__["a" /* AlbumsService */]],
                 multi: true
             },
-            __WEBPACK_IMPORTED_MODULE_30__pages_blog_blog_service__["a" /* BlogService */],
-            __WEBPACK_IMPORTED_MODULE_31__gallery_flickr_service__["a" /* FlickrService */],
+            __WEBPACK_IMPORTED_MODULE_31__pages_blog_blog_service__["a" /* BlogService */],
+            __WEBPACK_IMPORTED_MODULE_32__gallery_flickr_service__["a" /* FlickrService */],
             {
-                provide: __WEBPACK_IMPORTED_MODULE_10_ng_recaptcha__["RECAPTCHA_SETTINGS"],
+                provide: __WEBPACK_IMPORTED_MODULE_11_ng_recaptcha__["RECAPTCHA_SETTINGS"],
                 useValue: { siteKey: '6LfB2jkUAAAAAAM_uaJSpcoLZk3mEe1Sh17ShDcN' },
             },
         ],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_15__app_component__["a" /* AppComponent */]]
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_16__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
@@ -737,7 +740,7 @@ AboutComponent = __decorate([
 /***/ "../../../../../src/app/pages/blog/blog-entry.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"post m-2 m-md-3 m-lg-4\">\n  <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n  <h4 class=\"title text-light\">{{post?.title}}</h4>\n  <span class=\"created-at p-2\">{{post?.createdAt | date:'longDate' }}</span>\n  <span class=\"updated-at\" *ngIf=\"post?.createdAt === post?.updatedAt\">Last updated on {{post?.updatedAt | date:'longDate'}}</span>\n  <p class=\"text mt-3\">{{post?.body}}</p>\n  <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n</div>\n"
+module.exports = "<div class=\"post m-md-2 m-lg-3\">\n  <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n  <h4 class=\"title text-light\">{{post?.title}}</h4>\n  <span class=\"created-at p-2\">{{post?.createdAt | date:'longDate' }}</span>\n  <span class=\"updated-at\" *ngIf=\"post?.createdAt === post?.updatedAt\">Last updated on {{post?.updatedAt | date:'longDate'}}</span>\n  <p class=\"text mt-3\">{{post?.body}}</p>\n  <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n</div>\n<disqus [identifier]=\"'/blog/' + post?.id\"></disqus>\n"
 
 /***/ }),
 
@@ -749,7 +752,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post {\n  max-width: 1200px;\n  padding: 1rem 2rem; }\n\n.text, .updated-at, .back {\n  font-size: 14px; }\n\n.created-at {\n  text-align: center;\n  color: #868e96; }\n\n.updated-at {\n  text-align: center;\n  color: #495057;\n  line-height: 1.5rem; }\n\n.back {\n  margin: 1rem 0;\n  text-decoration: underline; }\n\n@media (min-width: 768px) {\n  .post {\n    padding: 1rem 3rem;\n    line-height: 2.5rem; }\n  .text {\n    font-size: 18px; }\n  .title {\n    font-size: 2.5rem; }\n  .created-at {\n    font-size: 18px; }\n  .updated-at, .back {\n    font-size: 16px; } }\n", ""]);
+exports.push([module.i, ":host {\n  padding: 1rem; }\n\n.post {\n  max-width: 1200px;\n  padding: 1rem 2rem; }\n\n.text, .updated-at, .back {\n  font-size: 14px; }\n\n.created-at {\n  text-align: center;\n  color: #868e96; }\n\n.updated-at {\n  text-align: center;\n  color: #495057;\n  line-height: 1.5rem; }\n\n.back {\n  margin: 1rem 0;\n  text-decoration: underline; }\n\n@media (min-width: 768px) {\n  .post {\n    padding: 1rem 3rem;\n    line-height: 2.5rem; }\n  .text {\n    font-size: 18px; }\n  .title {\n    font-size: 2.5rem; }\n  .created-at {\n    font-size: 18px; }\n  .updated-at, .back {\n    font-size: 16px; } }\n", ""]);
 
 // exports
 
