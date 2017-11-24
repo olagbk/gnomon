@@ -9,8 +9,9 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 
-
 import { GalleryModule } from 'ng-gallery';
+
+import { EllipsisModule } from 'ngx-ellipsis';
 
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
@@ -21,6 +22,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { AlbumThumbComponent } from './pages/photos/album-thumb.component';
 import { AppComponent } from './app.component';
 import { BlogComponent } from './pages/blog/blog.component';
+import { BlogEntryComponent } from './pages/blog/blog-entry.component';
 import { ContactFormComponent } from './widgets/contact-form/contact-form.component';
 import { DrawingsComponent } from './pages/drawings/drawings.component';
 import { GalleryComponent } from './gallery/gallery.component';
@@ -58,6 +60,7 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
 
     HomeComponent,
     BlogComponent,
+    BlogEntryComponent,
     AboutComponent,
     SketchesComponent,
     DrawingsComponent,
@@ -76,6 +79,7 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    EllipsisModule,
     CollapseModule.forRoot(),
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),

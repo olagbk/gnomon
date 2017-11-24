@@ -2,7 +2,7 @@
   <img [src]="imgPreloadUrl" (load)="backgroundUrl = imgPreloadUrl" hidden>
   <app-spinner *ngIf="!backgroundUrl"></app-spinner>
 </div>
-<div *ngIf="backgroundUrl" class="wrapper d-flex pt-5 justify-content-center">
+<div *ngIf="backgroundUrl" class="wrapper d-flex justify-content-center">
   <app-navbar></app-navbar>
   <router-outlet (deactivate)="scrollToTop()"></router-outlet>
 </div>

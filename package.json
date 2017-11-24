@@ -34,6 +34,7 @@
     "ng-gallery": "github:olagbk/ng-gallery-build",
     "ng-recaptcha": "^3.0.2",
     "ngx-bootstrap": "^1.9.3",
+    "ngx-ellipsis": "^1.0.6",
     "npm": "^5.5.1",
     "pg": "^7.4.0",
     "rxjs": "^5.5.2",

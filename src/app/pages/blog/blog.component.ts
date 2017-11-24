@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BlogService } from './blog.service';
 import { Post } from './post';
 
@@ -8,15 +9,17 @@ import { Post } from './post';
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
-  // instantiate blog to an empty array
   posts: Post[];
 
-  constructor(private blog: BlogService) { }
+  constructor(private blog: BlogService, private router: Router) { }
 
   ngOnInit() {
-    // Retrieve blog from the API
     this.blog.getPosts().subscribe(posts => {
       this.posts = posts;
     });
   }
+  goToPost(id) {
+    this.router.navigate(['blog', id]);
+  }
+
 }

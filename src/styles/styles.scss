@@ -9,10 +9,26 @@ body {
   margin: auto;
   max-width: 1500px;
 }
+.post {
+  display: flex;
+  flex-direction: column;
+  background: rgba($black, 0.6);
+  color: rgba($white, 0.9);
+  border: 1px solid $gray-900;
+  letter-spacing: 2px;
+  line-height: 2rem;
+  .title {
+    text-align: center;
+  }
+}
 .link {
   color: $white !important;
   cursor: pointer;
   &:hover {
     text-shadow: 1px 1px 1px;
   }
+}
+.ngx-ellipsis-more {
+  @extend .link;
+  text-decoration: underline;
 }

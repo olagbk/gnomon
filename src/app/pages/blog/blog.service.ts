@@ -7,9 +7,12 @@ export class BlogService {
 
   constructor(private http: Http) { }
 
-  // Get all blog from the API
   getPosts() {
     return this.http.get('/api/posts')
       .map(res => res.json());
+  }
+  getPost(id) {
+    return this.http.get(`/api/posts/${id}`).toPromise()
+      .then(res => res.json());
   }
 }

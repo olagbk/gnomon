@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = (router, sequelize) => {
+
   router.route('/posts')
 
     .post((req, res) => {
@@ -21,24 +22,15 @@ module.exports = (router, sequelize) => {
       })
 
     .get((req, res) => {
-      const numWords = 150;
       sequelize.models.posts.findAll()
-        .then(posts => res.json(posts.map(post => {
-          if (!post.body) return post;
-          const words = post.body.split(" ");
-          if (words.length <= numWords) return post;
-          post.dataValues.cutoff = true;
-          post.body = words.slice(0, numWords).join(" ");
-          return post;
-        })))
+        .then(posts => res.json(posts))
         .catch(err => res.send(err));
     });
-
-  router.route('/blog/:id')
+  router.route('/posts/:id')
     .get((req, res) => {
-    sequelize.models.posts.findById(req.params.id)
-      .then(post => res.json(post))
-      .catch(err => res.send(err));
+      sequelize.models.posts.findById(req.params.id)
+        .then(post => res.json(post))
+        .catch(err => res.send(err));
     })
     .put((req, res) => {
       sequelize.models.posts.findById(req.params.id)
@@ -61,5 +53,4 @@ module.exports = (router, sequelize) => {
         })
         .catch(err => res.send(err));
     })
-
 };

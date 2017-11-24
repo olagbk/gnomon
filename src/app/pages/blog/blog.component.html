@@ -1,9 +1,15 @@
-<div class="container mt-5">
-  <div class="post p-4 my-4" *ngFor="let post of posts">
-    <h4 class="post-title text-light p-3">{{ post.title }}</h4>
-    <p class="post-text">{{post.body}}
-      <a class="link" *ngIf="post.cutoff">...</a>
+<div class="container">
+  <div class="post my-4" *ngFor="let post of posts">
+
+    <a class="link title" [routerLink]="post.id">{{ post.title }}</a>
+    <span class="created-at p-2">{{post.createdAt | date }}</span>
+
+    <p class="text pl-md-3"
+       ellipsis=" (...)"
+       [ellipsis-word-boundaries]="' \n'"
+       (ellipsis-click-more)="goToPost(post.id)">{{post.body}}
     </p>
-    <div class="shadow-wrapper" *ngIf="post.cutoff"></div>
+
+    <div class="shadow-wrapper"></div>
   </div>
 </div>
