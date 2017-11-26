@@ -1,0 +1,12 @@
+@import '../../../styles/common';
+
+.badge {
+  &:hover {
+  cursor: pointer;
+  background: $gray-100;
+  color: $gray-900 !important;
+  }
+  &.to-delete:hover {
+    text-decoration: line-through;
+  }
+}

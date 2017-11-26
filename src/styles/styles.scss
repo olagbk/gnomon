@@ -9,9 +9,10 @@ body {
   margin: auto;
   max-width: 1500px;
 }
-.post {
+.dark-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   background: rgba($black, 0.6);
   color: rgba($white, 0.9);
   border: 1px solid $gray-900;
@@ -21,9 +22,16 @@ body {
     text-align: center;
   }
 }
+.post {
+  @extend .dark-container;
+  flex-direction: column;
+}
 .link {
   color: $white !important;
   cursor: pointer;
+  &.active {
+    font-weight: 600;
+  }
   &:hover {
     text-shadow: 1px 1px 1px;
   }
