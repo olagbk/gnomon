@@ -16,7 +16,7 @@ module.exports = function (router, sequelize) {
       res.send(err);
     });
   }).get(function (req, res) {
-    sequelize.models.posts.findAll({ include: { model: sequelize.models.tags } }).then(function (posts) {
+    sequelize.models.posts.findAll({ include: { model: sequelize.models.tags, attributes: ['name'] } }).then(function (posts) {
       return res.json(posts);
     }).catch(function (err) {
       return res.send(err);
