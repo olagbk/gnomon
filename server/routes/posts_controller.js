@@ -22,13 +22,13 @@ module.exports = (router, sequelize) => {
       })
 
     .get((req, res) => {
-      sequelize.models.posts.findAll()
+      sequelize.models.posts.findAll({include: {model: sequelize.models.tags}})
         .then(posts => res.json(posts))
         .catch(err => res.send(err));
     });
   router.route('/posts/:id')
     .get((req, res) => {
-      sequelize.models.posts.findById(req.params.id)
+      sequelize.models.posts.findById(req.params.id, {include: {model: sequelize.models.tags}})
         .then(post => res.json(post))
         .catch(err => res.send(err));
     })

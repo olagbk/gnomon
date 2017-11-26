@@ -37,6 +37,7 @@ import { PhotosComponent } from './pages/photos/photos.component';
 import { SketchesComponent } from './pages/sketches/sketches.component';
 import { SpinnerComponent } from './widgets/spinner/spinner.component';
 import { ScrollComponent } from './widgets/scroll/scroll.component';
+import { TagsComponent } from './widgets/tags/tags.component';
 
 import { BlogService } from './pages/blog/blog.service';
 import { FlickrService } from './gallery/flickr.service';
@@ -59,6 +60,7 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     SpinnerComponent,
     ScrollComponent,
     ContactFormComponent,
+    TagsComponent,
 
     HomeComponent,
     BlogComponent,

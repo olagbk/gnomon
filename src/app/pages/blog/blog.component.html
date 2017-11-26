@@ -1,10 +1,11 @@
 <div class="container">
   <div class="post my-4" *ngFor="let post of posts">
 
-    <a class="link title" [routerLink]="post.id">{{ post.title }}</a>
-    <span class="created-at p-2">{{post.createdAt | date }}</span>
+    <a class="link title mb-2" [routerLink]="post.id">{{ post.title }}</a>
+    <span class="created-at">{{post.createdAt | date }}</span>
+    <app-tags [tags]="post.tags"></app-tags>
 
-    <p class="text pl-md-3"
+    <p class="text pl-md-3 mt-2"
        ellipsis=" (...)"
        [ellipsis-word-boundaries]="' \n'"
        (ellipsis-click-more)="goToPost(post.id)">{{post.body}}

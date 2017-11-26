@@ -1,7 +1,10 @@
+'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('posts', [
       {
+        id: 1,
         title: 'Howl, Part I',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -251,17 +254,20 @@ with the absolute heart of the poem of life butchered out of their
      own bodies good to eat a thousand years.`
       },
       {
+        id: 2,
         title: 'The victor will never be asked if he told the truth',
         createdAt: new Date(),
         updatedAt: new Date(),
         body: `The stronger must dominate and not mate with the weaker, which would signify the sacrifice of its own higher nature. Only the born weakling can look upon this principle as cruel, and if he does so it is merely because he is of a feebler nature and narrower mind; for if such a law did not direct the process of evolution then the higher development of organic life would not be conceivable at all.`
       },
       {
+        id: 3,
         title: 'Words build bridges into unexplored regions.',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
+        id: 4,
         title: 'pierdolnie',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -274,12 +280,14 @@ nooo, teraz to już na pewno to wszystko pierdolnie
 a nie mówiłem, że to wszystko pierdolnie?`
       },
       {
+        id: 5,
         title: 'RIGCZ',
         createdAt: new Date(),
         updatedAt: new Date(),
         body:`No i ja się pytam człowieku dumny ty jesteś z siebie zdajesz sobie sprawę z tego co robisz?masz ty wogóle rozum i godność człowieka?Ja nie wiem ale żałosny typek z ciebie, chyba nie pomyślałes nawet co robisz i kogo obrażasz, możesz sobie obrażac tych co na to zasłużyli sobie ale nie naszego papieża polaka naszego rodaka wielką osobę ,i tak wyjątkowa i ważną bo to nie jest ktoś tam taki sobie że możesz go sobie wyśmiać bo tak ci się podoba nie wiem w jakiej ty się wychowałes rodzinie ale chyba ty nie wiem nie rozumiesz co to jest wiara`
       },
       {
+        id: 6,
         title: 'The true knowledge',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -291,8 +299,120 @@ This is the true knowledge.
 We had founded our idealism on the most nihilistic implications of science, our socialism on crass self-interest, our peace on our capacity for mutual destruction, and our liberty on determinism. We had replaced morality with convention, bravery with safety, frugality with plenty, philosophy with science, stoicism with anaesthetics and piety with immortality. The universal acid of the true knowledge had burned away a world of words, and exposed a universe of things.
 
 Things we could use.`}], {})
+      .then(() => {
+      return queryInterface.bulkInsert('tags', [
+        {
+          id: 1,
+          name: 'hitler',
+          count: 2
+        },
+        {
+          id: 2,
+          name: 'copypasta',
+          count: '2'
+        },
+        {
+          id: 3,
+          name: 'poetry',
+          count: 2
+        },
+        {
+          id: 4,
+          name: 'NSFK',
+          count: 2
+        },
+        {
+          id: 5,
+          name: 'PL',
+          count: 2
+        },
+        {
+          id: 6,
+          name: 'politics',
+          count: 1
+        }
+
+      ], {})
+        .then(() => {
+          return queryInterface.bulkInsert('PostTags', [
+            {
+              postId: 1,
+              tagId: 3,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              postId: 1,
+              tagId: 4,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              postId: 2,
+              tagId: 1,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              postId: 3,
+              tagId: 1,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              postId: 4,
+              tagId: 2,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              postId: 4,
+              tagId: 3,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              postId: 4,
+              tagId: 4,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              postId: 4,
+              tagId: 5,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              postId: 4,
+              tagId: 6,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              postId: 5,
+              tagId: 2,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              postId: 5,
+              tagId: 5,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+            {
+              postId: 6,
+              tagId: 6,
+              createdAt: new Date(),
+              updatedAt: new Date()
+            },
+
+          ], {});
+      })
+    })
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('albums', null, {});
+    return Promise.all([queryInterface.bulkDelete('posts', null, {}), queryInterface.bulkDelete('tags', null, {}), queryInterface.bulkDelete('PostTags', null, {})]);
   }
 };

@@ -1,3 +1,8 @@
+export interface Tag {
+  name: string;
+  count: number;
+}
+
 export interface Post {
   id: string;
   title: string;
@@ -5,4 +10,5 @@ export interface Post {
   cutoff?: boolean;
   createdAt: string;
   updatedAt: string;
+  tags: Tag[];
 }
