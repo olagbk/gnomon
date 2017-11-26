@@ -9,6 +9,9 @@
 .text, .updated-at, .back {
   font-size: 14px;
 }
+.text {
+  overflow: hidden;
+}
 .created-at {
   text-align: center;
   color: $gray-600;

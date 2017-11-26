@@ -32,6 +32,11 @@
   bottom: 5px;
   box-shadow: 0px -20px 10px 20px rgba(0, 0, 0, 0.5);
 }
+.tags-desc {
+  margin-top: 1px;
+  font-size: 14px;
+  color: $gray-300;
+}
 
 @include media-breakpoint-up(md){
   .text {

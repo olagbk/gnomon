@@ -22,7 +22,7 @@ module.exports = (router, sequelize) => {
       })
 
     .get((req, res) => {
-      sequelize.models.posts.findAll({include: {model: sequelize.models.tags}})
+      sequelize.models.posts.findAll({include: {model: sequelize.models.tags, attributes: ['name']}})
         .then(posts => res.json(posts))
         .catch(err => res.send(err));
     });
