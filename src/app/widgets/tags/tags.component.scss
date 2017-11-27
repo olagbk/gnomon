@@ -1,18 +1,19 @@
 @import '../../../styles/common';
-
-.badge.selectable {
+:host {
+  max-width: 450px;
+  margin: auto;
+}
+.badge {
   &.selected {
   background: $gray-600;
     &:hover {
       color: $gray-600 !important;
+      text-decoration: line-through;
     }
   }
   &:hover {
   cursor: pointer;
   background: $gray-100;
   color: $gray-900 !important;
-  }
-  &.to-delete:hover {
-    text-decoration: line-through;
   }
 }

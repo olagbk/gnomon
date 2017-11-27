@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/filter';
 import { BlogService } from './blog.service';
@@ -12,17 +12,28 @@ import { Post, Tag } from './post';
 })
 export class BlogComponent implements OnInit, OnDestroy {
   filteredPosts: BehaviorSubject<Post[]>;
-  selectedTagsSubject: BehaviorSubject<Tag[]> = new BehaviorSubject([]);
-  selectedTags: Tag[] = [];
+  selectedTags: BehaviorSubject<Tag[]> = new BehaviorSubject([]);
+  activeTags: Tag[] = [];
+  inactiveTags: Tag[];
+  searchedTag: string;
   tagsAllMode = false;
+  tagsExpanded = false;
 
-  constructor(private blog: BlogService, private router: Router) { }
+  constructor(private blog: BlogService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getTags();
+    this.getPosts();
+  }
+  ngOnDestroy(): void {
+    this.selectedTags.unsubscribe();
+    this.filteredPosts.unsubscribe();
+  }
+  getPosts(): void {
     this.blog.getPosts().then(posts => {
       this.filteredPosts = new BehaviorSubject(posts);
 
-      this.selectedTagsSubject.subscribe(tags => {
+      this.selectedTags.subscribe(tags => {
         this.filteredPosts.next(tags.length === 0
           ? posts
           : posts
@@ -39,29 +50,42 @@ export class BlogComponent implements OnInit, OnDestroy {
                   if ( post.tags.some(postTag => postTag.name === tag.name) ) { return true; }
                 }
               }
-          })
+            })
         );
       });
     });
   }
-  ngOnDestroy() {
-    this.filteredPosts.unsubscribe();
-    this.selectedTagsSubject.unsubscribe();
+  getTags(): void {
+    this.blog.getTags().then(tags => {
+      this.inactiveTags = tags;
+      const queriedTagName = this.activatedRoute.snapshot.queryParams.tag;
+      if (queriedTagName) {
+        const queriedTag = tags.find(t => t.name = queriedTagName);
+        if (!queriedTag) {return;}
+        this.addTag(queriedTag);
+      }
+    });
   }
-  goToPost(id) {
-    this.router.navigate(['blog', id]);
+  addSearchedTag($event): void {
+    this.searchedTag = null;
+    this.addTag($event.item);
   }
-  addTag($event) {
-    if (this.selectedTags.indexOf($event) !== -1) { return; }
-    this.selectedTags.push($event);
-    this.selectedTagsSubject.next(this.selectedTags);
+  addTag($event): void {
+    if ( this.activeTags.some(tag => tag.name === $event.name) ) { return; }
+    this.activeTags.push($event);
+    this.inactiveTags = this.inactiveTags.filter(tag => tag.name !== $event.name);
+    this.selectedTags.next(this.activeTags);
   }
-  deleteTag($event) {
-    this.selectedTags = this.selectedTags.filter(tag => tag !== $event);
-    this.selectedTagsSubject.next(this.selectedTags);
+  deleteTag($event): void {
+    this.activeTags = this.activeTags.filter(tag => tag.name !== $event.name);
+    this.inactiveTags.push($event);
+    this.selectedTags.next(this.activeTags);
   }
-  toggleTagMode() {
+  toggleTagMode(): void {
     this.tagsAllMode = !this.tagsAllMode;
-    this.selectedTagsSubject.next(this.selectedTags);
+    this.selectedTags.next(this.activeTags);
+  }
+  goToPost(id): void {
+    this.router.navigate(['blog', id]);
   }
 }

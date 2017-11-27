@@ -7,13 +7,13 @@ import { Tag } from '../../pages/blog/post';
   styleUrls: ['./tags.component.scss']
 })
 export class TagsComponent implements OnInit {
+  abbrNumTags = 5;
   @Input() tags: Tag[];
-  @Input() deleteOnClick = false;
+  @Input() abbr = false;
   @Input() selected = false;
-  @Input() selectable = true;
   @Output() tagSelected: EventEmitter<string> = new EventEmitter();
 
-  constructor(private renderer: Renderer2) { }
+  constructor() { }
 
   ngOnInit() {
   }

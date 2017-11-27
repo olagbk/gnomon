@@ -4,9 +4,6 @@
   width: 100%;
   background: rgba($black, 0.3);
 }
-.row {
-  width: 100%;
-}
 .post {
   position: relative;
   padding: 2rem 2rem 1rem 2rem;
@@ -38,10 +35,24 @@
   bottom: 5px;
   box-shadow: 0px -20px 10px 20px rgba(0, 0, 0, 0.5);
 }
-.tags-desc {
-  margin-top: 1px;
+.tags {
+  text-align: center;
+}
+.tags-opts {
   font-size: 14px;
-  color: $gray-300;
+}
+
+.tags-link {
+  font-size: 12px;
+  color: $gray-500 !important;
+  width: max-content;
+  margin: auto;
+}
+.tag-search {
+  width: 200px;
+  background: rgba($white, 0.9);
+  padding: 0.25rem;
+  margin: .5rem auto;
 }
 
 @include media-breakpoint-up(md){

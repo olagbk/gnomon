@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 import { DisqusModule } from 'ngx-disqus';
 
@@ -46,7 +47,6 @@ import { AlbumsService } from './gallery/albums.service';
 import { TimesPipe } from './pipes/times.pipe';
 
 import { galleryConfig } from './gallery/gallery.config';
-import { TagSelectComponent } from './widgets/tag-select/tag-select.component';
 
 export function startupServiceFactory(albumsService: AlbumsService): Function {
   return () => albumsService.loadAll();
@@ -76,9 +76,7 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     GalleryComponent,
     GalleryThumbComponent,
 
-    TimesPipe,
-
-    TagSelectComponent
+    TimesPipe
   ],
   imports: [
     AppRoutingModule,
@@ -91,6 +89,7 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     DisqusModule.forRoot('gnomon'),
     PaginationModule.forRoot(),
     PopoverModule.forRoot(),
+    TypeaheadModule.forRoot(),
     GalleryModule.forRoot(galleryConfig),
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule
