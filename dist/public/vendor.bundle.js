@@ -5068,6 +5068,1556 @@ var PositioningService = (function () {
 
 /***/ }),
 
+/***/ "../../../../ngx-bootstrap/typeahead/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__latin_map__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/latin-map.js");
+/* unused harmony reexport latinMap */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__typeahead_options_class__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead-options.class.js");
+/* unused harmony reexport TypeaheadOptions */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__typeahead_match_class__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead-match.class.js");
+/* unused harmony reexport TypeaheadMatch */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__typeahead_utils__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead-utils.js");
+/* unused harmony reexport escapeRegexp */
+/* unused harmony reexport getValueFromObject */
+/* unused harmony reexport tokenize */
+/* unused harmony reexport latinize */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__typeahead_container_component__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead-container.component.js");
+/* unused harmony reexport TypeaheadContainerComponent */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__typeahead_directive__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead.directive.js");
+/* unused harmony reexport TypeaheadDirective */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__typeahead_module__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead.module.js");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_6__typeahead_module__["a"]; });
+
+
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../ngx-bootstrap/typeahead/latin-map.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return latinMap; });
+/* tslint:disable:max-file-line-count */
+var latinMap = {
+    'Á': 'A',
+    'Ă': 'A',
+    'Ắ': 'A',
+    'Ặ': 'A',
+    'Ằ': 'A',
+    'Ẳ': 'A',
+    'Ẵ': 'A',
+    'Ǎ': 'A',
+    'Â': 'A',
+    'Ấ': 'A',
+    'Ậ': 'A',
+    'Ầ': 'A',
+    'Ẩ': 'A',
+    'Ẫ': 'A',
+    'Ä': 'A',
+    'Ǟ': 'A',
+    'Ȧ': 'A',
+    'Ǡ': 'A',
+    'Ạ': 'A',
+    'Ȁ': 'A',
+    'À': 'A',
+    'Ả': 'A',
+    'Ȃ': 'A',
+    'Ā': 'A',
+    'Ą': 'A',
+    'Å': 'A',
+    'Ǻ': 'A',
+    'Ḁ': 'A',
+    'Ⱥ': 'A',
+    'Ã': 'A',
+    'Ꜳ': 'AA',
+    'Æ': 'AE',
+    'Ǽ': 'AE',
+    'Ǣ': 'AE',
+    'Ꜵ': 'AO',
+    'Ꜷ': 'AU',
+    'Ꜹ': 'AV',
+    'Ꜻ': 'AV',
+    'Ꜽ': 'AY',
+    'Ḃ': 'B',
+    'Ḅ': 'B',
+    'Ɓ': 'B',
+    'Ḇ': 'B',
+    'Ƀ': 'B',
+    'Ƃ': 'B',
+    'Ć': 'C',
+    'Č': 'C',
+    'Ç': 'C',
+    'Ḉ': 'C',
+    'Ĉ': 'C',
+    'Ċ': 'C',
+    'Ƈ': 'C',
+    'Ȼ': 'C',
+    'Ď': 'D',
+    'Ḑ': 'D',
+    'Ḓ': 'D',
+    'Ḋ': 'D',
+    'Ḍ': 'D',
+    'Ɗ': 'D',
+    'Ḏ': 'D',
+    'ǲ': 'D',
+    'ǅ': 'D',
+    'Đ': 'D',
+    'Ƌ': 'D',
+    'Ǳ': 'DZ',
+    'Ǆ': 'DZ',
+    'É': 'E',
+    'Ĕ': 'E',
+    'Ě': 'E',
+    'Ȩ': 'E',
+    'Ḝ': 'E',
+    'Ê': 'E',
+    'Ế': 'E',
+    'Ệ': 'E',
+    'Ề': 'E',
+    'Ể': 'E',
+    'Ễ': 'E',
+    'Ḙ': 'E',
+    'Ë': 'E',
+    'Ė': 'E',
+    'Ẹ': 'E',
+    'Ȅ': 'E',
+    'È': 'E',
+    'Ẻ': 'E',
+    'Ȇ': 'E',
+    'Ē': 'E',
+    'Ḗ': 'E',
+    'Ḕ': 'E',
+    'Ę': 'E',
+    'Ɇ': 'E',
+    'Ẽ': 'E',
+    'Ḛ': 'E',
+    'Ꝫ': 'ET',
+    'Ḟ': 'F',
+    'Ƒ': 'F',
+    'Ǵ': 'G',
+    'Ğ': 'G',
+    'Ǧ': 'G',
+    'Ģ': 'G',
+    'Ĝ': 'G',
+    'Ġ': 'G',
+    'Ɠ': 'G',
+    'Ḡ': 'G',
+    'Ǥ': 'G',
+    'Ḫ': 'H',
+    'Ȟ': 'H',
+    'Ḩ': 'H',
+    'Ĥ': 'H',
+    'Ⱨ': 'H',
+    'Ḧ': 'H',
+    'Ḣ': 'H',
+    'Ḥ': 'H',
+    'Ħ': 'H',
+    'Í': 'I',
+    'Ĭ': 'I',
+    'Ǐ': 'I',
+    'Î': 'I',
+    'Ï': 'I',
+    'Ḯ': 'I',
+    'İ': 'I',
+    'Ị': 'I',
+    'Ȉ': 'I',
+    'Ì': 'I',
+    'Ỉ': 'I',
+    'Ȋ': 'I',
+    'Ī': 'I',
+    'Į': 'I',
+    'Ɨ': 'I',
+    'Ĩ': 'I',
+    'Ḭ': 'I',
+    'Ꝺ': 'D',
+    'Ꝼ': 'F',
+    'Ᵹ': 'G',
+    'Ꞃ': 'R',
+    'Ꞅ': 'S',
+    'Ꞇ': 'T',
+    'Ꝭ': 'IS',
+    'Ĵ': 'J',
+    'Ɉ': 'J',
+    'Ḱ': 'K',
+    'Ǩ': 'K',
+    'Ķ': 'K',
+    'Ⱪ': 'K',
+    'Ꝃ': 'K',
+    'Ḳ': 'K',
+    'Ƙ': 'K',
+    'Ḵ': 'K',
+    'Ꝁ': 'K',
+    'Ꝅ': 'K',
+    'Ĺ': 'L',
+    'Ƚ': 'L',
+    'Ľ': 'L',
+    'Ļ': 'L',
+    'Ḽ': 'L',
+    'Ḷ': 'L',
+    'Ḹ': 'L',
+    'Ⱡ': 'L',
+    'Ꝉ': 'L',
+    'Ḻ': 'L',
+    'Ŀ': 'L',
+    'Ɫ': 'L',
+    'ǈ': 'L',
+    'Ł': 'L',
+    'Ǉ': 'LJ',
+    'Ḿ': 'M',
+    'Ṁ': 'M',
+    'Ṃ': 'M',
+    'Ɱ': 'M',
+    'Ń': 'N',
+    'Ň': 'N',
+    'Ņ': 'N',
+    'Ṋ': 'N',
+    'Ṅ': 'N',
+    'Ṇ': 'N',
+    'Ǹ': 'N',
+    'Ɲ': 'N',
+    'Ṉ': 'N',
+    'Ƞ': 'N',
+    'ǋ': 'N',
+    'Ñ': 'N',
+    'Ǌ': 'NJ',
+    'Ó': 'O',
+    'Ŏ': 'O',
+    'Ǒ': 'O',
+    'Ô': 'O',
+    'Ố': 'O',
+    'Ộ': 'O',
+    'Ồ': 'O',
+    'Ổ': 'O',
+    'Ỗ': 'O',
+    'Ö': 'O',
+    'Ȫ': 'O',
+    'Ȯ': 'O',
+    'Ȱ': 'O',
+    'Ọ': 'O',
+    'Ő': 'O',
+    'Ȍ': 'O',
+    'Ò': 'O',
+    'Ỏ': 'O',
+    'Ơ': 'O',
+    'Ớ': 'O',
+    'Ợ': 'O',
+    'Ờ': 'O',
+    'Ở': 'O',
+    'Ỡ': 'O',
+    'Ȏ': 'O',
+    'Ꝋ': 'O',
+    'Ꝍ': 'O',
+    'Ō': 'O',
+    'Ṓ': 'O',
+    'Ṑ': 'O',
+    'Ɵ': 'O',
+    'Ǫ': 'O',
+    'Ǭ': 'O',
+    'Ø': 'O',
+    'Ǿ': 'O',
+    'Õ': 'O',
+    'Ṍ': 'O',
+    'Ṏ': 'O',
+    'Ȭ': 'O',
+    'Ƣ': 'OI',
+    'Ꝏ': 'OO',
+    'Ɛ': 'E',
+    'Ɔ': 'O',
+    'Ȣ': 'OU',
+    'Ṕ': 'P',
+    'Ṗ': 'P',
+    'Ꝓ': 'P',
+    'Ƥ': 'P',
+    'Ꝕ': 'P',
+    'Ᵽ': 'P',
+    'Ꝑ': 'P',
+    'Ꝙ': 'Q',
+    'Ꝗ': 'Q',
+    'Ŕ': 'R',
+    'Ř': 'R',
+    'Ŗ': 'R',
+    'Ṙ': 'R',
+    'Ṛ': 'R',
+    'Ṝ': 'R',
+    'Ȑ': 'R',
+    'Ȓ': 'R',
+    'Ṟ': 'R',
+    'Ɍ': 'R',
+    'Ɽ': 'R',
+    'Ꜿ': 'C',
+    'Ǝ': 'E',
+    'Ś': 'S',
+    'Ṥ': 'S',
+    'Š': 'S',
+    'Ṧ': 'S',
+    'Ş': 'S',
+    'Ŝ': 'S',
+    'Ș': 'S',
+    'Ṡ': 'S',
+    'Ṣ': 'S',
+    'Ṩ': 'S',
+    'Ť': 'T',
+    'Ţ': 'T',
+    'Ṱ': 'T',
+    'Ț': 'T',
+    'Ⱦ': 'T',
+    'Ṫ': 'T',
+    'Ṭ': 'T',
+    'Ƭ': 'T',
+    'Ṯ': 'T',
+    'Ʈ': 'T',
+    'Ŧ': 'T',
+    'Ɐ': 'A',
+    'Ꞁ': 'L',
+    'Ɯ': 'M',
+    'Ʌ': 'V',
+    'Ꜩ': 'TZ',
+    'Ú': 'U',
+    'Ŭ': 'U',
+    'Ǔ': 'U',
+    'Û': 'U',
+    'Ṷ': 'U',
+    'Ü': 'U',
+    'Ǘ': 'U',
+    'Ǚ': 'U',
+    'Ǜ': 'U',
+    'Ǖ': 'U',
+    'Ṳ': 'U',
+    'Ụ': 'U',
+    'Ű': 'U',
+    'Ȕ': 'U',
+    'Ù': 'U',
+    'Ủ': 'U',
+    'Ư': 'U',
+    'Ứ': 'U',
+    'Ự': 'U',
+    'Ừ': 'U',
+    'Ử': 'U',
+    'Ữ': 'U',
+    'Ȗ': 'U',
+    'Ū': 'U',
+    'Ṻ': 'U',
+    'Ų': 'U',
+    'Ů': 'U',
+    'Ũ': 'U',
+    'Ṹ': 'U',
+    'Ṵ': 'U',
+    'Ꝟ': 'V',
+    'Ṿ': 'V',
+    'Ʋ': 'V',
+    'Ṽ': 'V',
+    'Ꝡ': 'VY',
+    'Ẃ': 'W',
+    'Ŵ': 'W',
+    'Ẅ': 'W',
+    'Ẇ': 'W',
+    'Ẉ': 'W',
+    'Ẁ': 'W',
+    'Ⱳ': 'W',
+    'Ẍ': 'X',
+    'Ẋ': 'X',
+    'Ý': 'Y',
+    'Ŷ': 'Y',
+    'Ÿ': 'Y',
+    'Ẏ': 'Y',
+    'Ỵ': 'Y',
+    'Ỳ': 'Y',
+    'Ƴ': 'Y',
+    'Ỷ': 'Y',
+    'Ỿ': 'Y',
+    'Ȳ': 'Y',
+    'Ɏ': 'Y',
+    'Ỹ': 'Y',
+    'Ź': 'Z',
+    'Ž': 'Z',
+    'Ẑ': 'Z',
+    'Ⱬ': 'Z',
+    'Ż': 'Z',
+    'Ẓ': 'Z',
+    'Ȥ': 'Z',
+    'Ẕ': 'Z',
+    'Ƶ': 'Z',
+    'Ĳ': 'IJ',
+    'Œ': 'OE',
+    'ᴀ': 'A',
+    'ᴁ': 'AE',
+    'ʙ': 'B',
+    'ᴃ': 'B',
+    'ᴄ': 'C',
+    'ᴅ': 'D',
+    'ᴇ': 'E',
+    'ꜰ': 'F',
+    'ɢ': 'G',
+    'ʛ': 'G',
+    'ʜ': 'H',
+    'ɪ': 'I',
+    'ʁ': 'R',
+    'ᴊ': 'J',
+    'ᴋ': 'K',
+    'ʟ': 'L',
+    'ᴌ': 'L',
+    'ᴍ': 'M',
+    'ɴ': 'N',
+    'ᴏ': 'O',
+    'ɶ': 'OE',
+    'ᴐ': 'O',
+    'ᴕ': 'OU',
+    'ᴘ': 'P',
+    'ʀ': 'R',
+    'ᴎ': 'N',
+    'ᴙ': 'R',
+    'ꜱ': 'S',
+    'ᴛ': 'T',
+    'ⱻ': 'E',
+    'ᴚ': 'R',
+    'ᴜ': 'U',
+    'ᴠ': 'V',
+    'ᴡ': 'W',
+    'ʏ': 'Y',
+    'ᴢ': 'Z',
+    'á': 'a',
+    'ă': 'a',
+    'ắ': 'a',
+    'ặ': 'a',
+    'ằ': 'a',
+    'ẳ': 'a',
+    'ẵ': 'a',
+    'ǎ': 'a',
+    'â': 'a',
+    'ấ': 'a',
+    'ậ': 'a',
+    'ầ': 'a',
+    'ẩ': 'a',
+    'ẫ': 'a',
+    'ä': 'a',
+    'ǟ': 'a',
+    'ȧ': 'a',
+    'ǡ': 'a',
+    'ạ': 'a',
+    'ȁ': 'a',
+    'à': 'a',
+    'ả': 'a',
+    'ȃ': 'a',
+    'ā': 'a',
+    'ą': 'a',
+    'ᶏ': 'a',
+    'ẚ': 'a',
+    'å': 'a',
+    'ǻ': 'a',
+    'ḁ': 'a',
+    'ⱥ': 'a',
+    'ã': 'a',
+    'ꜳ': 'aa',
+    'æ': 'ae',
+    'ǽ': 'ae',
+    'ǣ': 'ae',
+    'ꜵ': 'ao',
+    'ꜷ': 'au',
+    'ꜹ': 'av',
+    'ꜻ': 'av',
+    'ꜽ': 'ay',
+    'ḃ': 'b',
+    'ḅ': 'b',
+    'ɓ': 'b',
+    'ḇ': 'b',
+    'ᵬ': 'b',
+    'ᶀ': 'b',
+    'ƀ': 'b',
+    'ƃ': 'b',
+    'ɵ': 'o',
+    'ć': 'c',
+    'č': 'c',
+    'ç': 'c',
+    'ḉ': 'c',
+    'ĉ': 'c',
+    'ɕ': 'c',
+    'ċ': 'c',
+    'ƈ': 'c',
+    'ȼ': 'c',
+    'ď': 'd',
+    'ḑ': 'd',
+    'ḓ': 'd',
+    'ȡ': 'd',
+    'ḋ': 'd',
+    'ḍ': 'd',
+    'ɗ': 'd',
+    'ᶑ': 'd',
+    'ḏ': 'd',
+    'ᵭ': 'd',
+    'ᶁ': 'd',
+    'đ': 'd',
+    'ɖ': 'd',
+    'ƌ': 'd',
+    'ı': 'i',
+    'ȷ': 'j',
+    'ɟ': 'j',
+    'ʄ': 'j',
+    'ǳ': 'dz',
+    'ǆ': 'dz',
+    'é': 'e',
+    'ĕ': 'e',
+    'ě': 'e',
+    'ȩ': 'e',
+    'ḝ': 'e',
+    'ê': 'e',
+    'ế': 'e',
+    'ệ': 'e',
+    'ề': 'e',
+    'ể': 'e',
+    'ễ': 'e',
+    'ḙ': 'e',
+    'ë': 'e',
+    'ė': 'e',
+    'ẹ': 'e',
+    'ȅ': 'e',
+    'è': 'e',
+    'ẻ': 'e',
+    'ȇ': 'e',
+    'ē': 'e',
+    'ḗ': 'e',
+    'ḕ': 'e',
+    'ⱸ': 'e',
+    'ę': 'e',
+    'ᶒ': 'e',
+    'ɇ': 'e',
+    'ẽ': 'e',
+    'ḛ': 'e',
+    'ꝫ': 'et',
+    'ḟ': 'f',
+    'ƒ': 'f',
+    'ᵮ': 'f',
+    'ᶂ': 'f',
+    'ǵ': 'g',
+    'ğ': 'g',
+    'ǧ': 'g',
+    'ģ': 'g',
+    'ĝ': 'g',
+    'ġ': 'g',
+    'ɠ': 'g',
+    'ḡ': 'g',
+    'ᶃ': 'g',
+    'ǥ': 'g',
+    'ḫ': 'h',
+    'ȟ': 'h',
+    'ḩ': 'h',
+    'ĥ': 'h',
+    'ⱨ': 'h',
+    'ḧ': 'h',
+    'ḣ': 'h',
+    'ḥ': 'h',
+    'ɦ': 'h',
+    'ẖ': 'h',
+    'ħ': 'h',
+    'ƕ': 'hv',
+    'í': 'i',
+    'ĭ': 'i',
+    'ǐ': 'i',
+    'î': 'i',
+    'ï': 'i',
+    'ḯ': 'i',
+    'ị': 'i',
+    'ȉ': 'i',
+    'ì': 'i',
+    'ỉ': 'i',
+    'ȋ': 'i',
+    'ī': 'i',
+    'į': 'i',
+    'ᶖ': 'i',
+    'ɨ': 'i',
+    'ĩ': 'i',
+    'ḭ': 'i',
+    'ꝺ': 'd',
+    'ꝼ': 'f',
+    'ᵹ': 'g',
+    'ꞃ': 'r',
+    'ꞅ': 's',
+    'ꞇ': 't',
+    'ꝭ': 'is',
+    'ǰ': 'j',
+    'ĵ': 'j',
+    'ʝ': 'j',
+    'ɉ': 'j',
+    'ḱ': 'k',
+    'ǩ': 'k',
+    'ķ': 'k',
+    'ⱪ': 'k',
+    'ꝃ': 'k',
+    'ḳ': 'k',
+    'ƙ': 'k',
+    'ḵ': 'k',
+    'ᶄ': 'k',
+    'ꝁ': 'k',
+    'ꝅ': 'k',
+    'ĺ': 'l',
+    'ƚ': 'l',
+    'ɬ': 'l',
+    'ľ': 'l',
+    'ļ': 'l',
+    'ḽ': 'l',
+    'ȴ': 'l',
+    'ḷ': 'l',
+    'ḹ': 'l',
+    'ⱡ': 'l',
+    'ꝉ': 'l',
+    'ḻ': 'l',
+    'ŀ': 'l',
+    'ɫ': 'l',
+    'ᶅ': 'l',
+    'ɭ': 'l',
+    'ł': 'l',
+    'ǉ': 'lj',
+    'ſ': 's',
+    'ẜ': 's',
+    'ẛ': 's',
+    'ẝ': 's',
+    'ḿ': 'm',
+    'ṁ': 'm',
+    'ṃ': 'm',
+    'ɱ': 'm',
+    'ᵯ': 'm',
+    'ᶆ': 'm',
+    'ń': 'n',
+    'ň': 'n',
+    'ņ': 'n',
+    'ṋ': 'n',
+    'ȵ': 'n',
+    'ṅ': 'n',
+    'ṇ': 'n',
+    'ǹ': 'n',
+    'ɲ': 'n',
+    'ṉ': 'n',
+    'ƞ': 'n',
+    'ᵰ': 'n',
+    'ᶇ': 'n',
+    'ɳ': 'n',
+    'ñ': 'n',
+    'ǌ': 'nj',
+    'ó': 'o',
+    'ŏ': 'o',
+    'ǒ': 'o',
+    'ô': 'o',
+    'ố': 'o',
+    'ộ': 'o',
+    'ồ': 'o',
+    'ổ': 'o',
+    'ỗ': 'o',
+    'ö': 'o',
+    'ȫ': 'o',
+    'ȯ': 'o',
+    'ȱ': 'o',
+    'ọ': 'o',
+    'ő': 'o',
+    'ȍ': 'o',
+    'ò': 'o',
+    'ỏ': 'o',
+    'ơ': 'o',
+    'ớ': 'o',
+    'ợ': 'o',
+    'ờ': 'o',
+    'ở': 'o',
+    'ỡ': 'o',
+    'ȏ': 'o',
+    'ꝋ': 'o',
+    'ꝍ': 'o',
+    'ⱺ': 'o',
+    'ō': 'o',
+    'ṓ': 'o',
+    'ṑ': 'o',
+    'ǫ': 'o',
+    'ǭ': 'o',
+    'ø': 'o',
+    'ǿ': 'o',
+    'õ': 'o',
+    'ṍ': 'o',
+    'ṏ': 'o',
+    'ȭ': 'o',
+    'ƣ': 'oi',
+    'ꝏ': 'oo',
+    'ɛ': 'e',
+    'ᶓ': 'e',
+    'ɔ': 'o',
+    'ᶗ': 'o',
+    'ȣ': 'ou',
+    'ṕ': 'p',
+    'ṗ': 'p',
+    'ꝓ': 'p',
+    'ƥ': 'p',
+    'ᵱ': 'p',
+    'ᶈ': 'p',
+    'ꝕ': 'p',
+    'ᵽ': 'p',
+    'ꝑ': 'p',
+    'ꝙ': 'q',
+    'ʠ': 'q',
+    'ɋ': 'q',
+    'ꝗ': 'q',
+    'ŕ': 'r',
+    'ř': 'r',
+    'ŗ': 'r',
+    'ṙ': 'r',
+    'ṛ': 'r',
+    'ṝ': 'r',
+    'ȑ': 'r',
+    'ɾ': 'r',
+    'ᵳ': 'r',
+    'ȓ': 'r',
+    'ṟ': 'r',
+    'ɼ': 'r',
+    'ᵲ': 'r',
+    'ᶉ': 'r',
+    'ɍ': 'r',
+    'ɽ': 'r',
+    'ↄ': 'c',
+    'ꜿ': 'c',
+    'ɘ': 'e',
+    'ɿ': 'r',
+    'ś': 's',
+    'ṥ': 's',
+    'š': 's',
+    'ṧ': 's',
+    'ş': 's',
+    'ŝ': 's',
+    'ș': 's',
+    'ṡ': 's',
+    'ṣ': 's',
+    'ṩ': 's',
+    'ʂ': 's',
+    'ᵴ': 's',
+    'ᶊ': 's',
+    'ȿ': 's',
+    'ɡ': 'g',
+    'ᴑ': 'o',
+    'ᴓ': 'o',
+    'ᴝ': 'u',
+    'ť': 't',
+    'ţ': 't',
+    'ṱ': 't',
+    'ț': 't',
+    'ȶ': 't',
+    'ẗ': 't',
+    'ⱦ': 't',
+    'ṫ': 't',
+    'ṭ': 't',
+    'ƭ': 't',
+    'ṯ': 't',
+    'ᵵ': 't',
+    'ƫ': 't',
+    'ʈ': 't',
+    'ŧ': 't',
+    'ᵺ': 'th',
+    'ɐ': 'a',
+    'ᴂ': 'ae',
+    'ǝ': 'e',
+    'ᵷ': 'g',
+    'ɥ': 'h',
+    'ʮ': 'h',
+    'ʯ': 'h',
+    'ᴉ': 'i',
+    'ʞ': 'k',
+    'ꞁ': 'l',
+    'ɯ': 'm',
+    'ɰ': 'm',
+    'ᴔ': 'oe',
+    'ɹ': 'r',
+    'ɻ': 'r',
+    'ɺ': 'r',
+    'ⱹ': 'r',
+    'ʇ': 't',
+    'ʌ': 'v',
+    'ʍ': 'w',
+    'ʎ': 'y',
+    'ꜩ': 'tz',
+    'ú': 'u',
+    'ŭ': 'u',
+    'ǔ': 'u',
+    'û': 'u',
+    'ṷ': 'u',
+    'ü': 'u',
+    'ǘ': 'u',
+    'ǚ': 'u',
+    'ǜ': 'u',
+    'ǖ': 'u',
+    'ṳ': 'u',
+    'ụ': 'u',
+    'ű': 'u',
+    'ȕ': 'u',
+    'ù': 'u',
+    'ủ': 'u',
+    'ư': 'u',
+    'ứ': 'u',
+    'ự': 'u',
+    'ừ': 'u',
+    'ử': 'u',
+    'ữ': 'u',
+    'ȗ': 'u',
+    'ū': 'u',
+    'ṻ': 'u',
+    'ų': 'u',
+    'ᶙ': 'u',
+    'ů': 'u',
+    'ũ': 'u',
+    'ṹ': 'u',
+    'ṵ': 'u',
+    'ᵫ': 'ue',
+    'ꝸ': 'um',
+    'ⱴ': 'v',
+    'ꝟ': 'v',
+    'ṿ': 'v',
+    'ʋ': 'v',
+    'ᶌ': 'v',
+    'ⱱ': 'v',
+    'ṽ': 'v',
+    'ꝡ': 'vy',
+    'ẃ': 'w',
+    'ŵ': 'w',
+    'ẅ': 'w',
+    'ẇ': 'w',
+    'ẉ': 'w',
+    'ẁ': 'w',
+    'ⱳ': 'w',
+    'ẘ': 'w',
+    'ẍ': 'x',
+    'ẋ': 'x',
+    'ᶍ': 'x',
+    'ý': 'y',
+    'ŷ': 'y',
+    'ÿ': 'y',
+    'ẏ': 'y',
+    'ỵ': 'y',
+    'ỳ': 'y',
+    'ƴ': 'y',
+    'ỷ': 'y',
+    'ỿ': 'y',
+    'ȳ': 'y',
+    'ẙ': 'y',
+    'ɏ': 'y',
+    'ỹ': 'y',
+    'ź': 'z',
+    'ž': 'z',
+    'ẑ': 'z',
+    'ʑ': 'z',
+    'ⱬ': 'z',
+    'ż': 'z',
+    'ẓ': 'z',
+    'ȥ': 'z',
+    'ẕ': 'z',
+    'ᵶ': 'z',
+    'ᶎ': 'z',
+    'ʐ': 'z',
+    'ƶ': 'z',
+    'ɀ': 'z',
+    'ﬀ': 'ff',
+    'ﬃ': 'ffi',
+    'ﬄ': 'ffl',
+    'ﬁ': 'fi',
+    'ﬂ': 'fl',
+    'ĳ': 'ij',
+    'œ': 'oe',
+    'ﬆ': 'st',
+    'ₐ': 'a',
+    'ₑ': 'e',
+    'ᵢ': 'i',
+    'ⱼ': 'j',
+    'ₒ': 'o',
+    'ᵣ': 'r',
+    'ᵤ': 'u',
+    'ᵥ': 'v',
+    'ₓ': 'x'
+};
+//# sourceMappingURL=latin-map.js.map
+
+/***/ }),
+
+/***/ "../../../../ngx-bootstrap/typeahead/typeahead-container.component.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TypeaheadContainerComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_ng2_bootstrap_config__ = __webpack_require__("../../../../ngx-bootstrap/utils/ng2-bootstrap-config.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__typeahead_utils__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead-utils.js");
+
+
+
+var TypeaheadContainerComponent = (function () {
+    function TypeaheadContainerComponent(element) {
+        this.isFocused = false;
+        this._matches = [];
+        this.element = element;
+    }
+    Object.defineProperty(TypeaheadContainerComponent.prototype, "isBs4", {
+        get: function () {
+            return !Object(__WEBPACK_IMPORTED_MODULE_1__utils_ng2_bootstrap_config__["a" /* isBs3 */])();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TypeaheadContainerComponent.prototype, "active", {
+        get: function () {
+            return this._active;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TypeaheadContainerComponent.prototype, "matches", {
+        get: function () {
+            return this._matches;
+        },
+        set: function (value) {
+            this._matches = value;
+            if (this._matches.length > 0) {
+                this._active = this._matches[0];
+                if (this._active.isHeader()) {
+                    this.nextActiveMatch();
+                }
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TypeaheadContainerComponent.prototype, "optionsListTemplate", {
+        get: function () {
+            return this.parent ? this.parent.optionsListTemplate : undefined;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TypeaheadContainerComponent.prototype, "itemTemplate", {
+        get: function () {
+            return this.parent ? this.parent.typeaheadItemTemplate : undefined;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TypeaheadContainerComponent.prototype.selectActiveMatch = function () {
+        this.selectMatch(this._active);
+    };
+    TypeaheadContainerComponent.prototype.prevActiveMatch = function () {
+        var index = this.matches.indexOf(this._active);
+        this._active = this.matches[index - 1 < 0
+            ? this.matches.length - 1
+            : index - 1];
+        if (this._active.isHeader()) {
+            this.prevActiveMatch();
+        }
+    };
+    TypeaheadContainerComponent.prototype.nextActiveMatch = function () {
+        var index = this.matches.indexOf(this._active);
+        this._active = this.matches[index + 1 > this.matches.length - 1
+            ? 0
+            : index + 1];
+        if (this._active.isHeader()) {
+            this.nextActiveMatch();
+        }
+    };
+    TypeaheadContainerComponent.prototype.selectActive = function (value) {
+        this.isFocused = true;
+        this._active = value;
+    };
+    TypeaheadContainerComponent.prototype.hightlight = function (match, query) {
+        var itemStr = match.value;
+        var itemStrHelper = (this.parent && this.parent.typeaheadLatinize
+            ? Object(__WEBPACK_IMPORTED_MODULE_2__typeahead_utils__["b" /* latinize */])(itemStr)
+            : itemStr).toLowerCase();
+        var startIdx;
+        var tokenLen;
+        // Replaces the capture string with the same string inside of a "strong" tag
+        if (typeof query === 'object') {
+            var queryLen = query.length;
+            for (var i = 0; i < queryLen; i += 1) {
+                // query[i] is already latinized and lower case
+                startIdx = itemStrHelper.indexOf(query[i]);
+                tokenLen = query[i].length;
+                if (startIdx >= 0 && tokenLen > 0) {
+                    itemStr = itemStr.substring(0, startIdx) + '<strong>' + itemStr.substring(startIdx, startIdx + tokenLen) + '</strong>' + itemStr.substring(startIdx + tokenLen);
+                    itemStrHelper = itemStrHelper.substring(0, startIdx) + '        ' + ' '.repeat(tokenLen) + '         ' + itemStrHelper.substring(startIdx + tokenLen);
+                }
+            }
+        }
+        else if (query) {
+            // query is already latinized and lower case
+            startIdx = itemStrHelper.indexOf(query);
+            tokenLen = query.length;
+            if (startIdx >= 0 && tokenLen > 0) {
+                itemStr = itemStr.substring(0, startIdx) + '<strong>' + itemStr.substring(startIdx, startIdx + tokenLen) + '</strong>' + itemStr.substring(startIdx + tokenLen);
+            }
+        }
+        return itemStr;
+    };
+    TypeaheadContainerComponent.prototype.focusLost = function () {
+        this.isFocused = false;
+    };
+    TypeaheadContainerComponent.prototype.isActive = function (value) {
+        return this._active === value;
+    };
+    TypeaheadContainerComponent.prototype.selectMatch = function (value, e) {
+        var _this = this;
+        if (e === void 0) { e = void 0; }
+        if (e) {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+        this.parent.changeModel(value);
+        setTimeout(function () {
+            return _this.parent.typeaheadOnSelect.emit(value);
+        }, 0);
+        return false;
+    };
+    TypeaheadContainerComponent.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
+                    selector: 'typeahead-container',
+                    // tslint:disable-next-line
+                    template: "\n<!-- inject options list template -->\n<template [ngTemplateOutlet]=\"optionsListTemplate || (isBs4 ? bs4Template : bs3Template)\"\n  [ngOutletContext]=\"{matches:matches, itemTemplate:itemTemplate, query:query}\"></template>\n\n<!-- default options item template -->\n<template #bsItemTemplate let-match=\"match\" let-query=\"query\"><span [innerHtml]=\"hightlight(match, query)\"></span></template>\n\n<!-- Bootstrap 3 options list template -->\n<template #bs3Template>\n<ul class=\"dropdown-menu\">\n  <template ngFor let-match let-i=\"index\" [ngForOf]=\"matches\">\n    <li *ngIf=\"match.isHeader()\" class=\"dropdown-header\">{{match}}</li>\n    <li *ngIf=\"!match.isHeader()\" [class.active]=\"isActive(match)\" (mouseenter)=\"selectActive(match)\">\n      <a href=\"#\" (click)=\"selectMatch(match, $event)\" tabindex=\"-1\">\n        <template [ngTemplateOutlet]=\"itemTemplate || bsItemTemplate\" \n          [ngOutletContext]=\"{item:match.item, index:i, match:match, query:query}\"></template>\n      </a>\n    </li>\n  </template>\n</ul>\n</template>\n\n<!-- Bootstrap 4 options list template -->\n<template #bs4Template >\n<template ngFor let-match let-i=\"index\" [ngForOf]=\"matches\">\n   <h6 *ngIf=\"match.isHeader()\" class=\"dropdown-header\">{{match}}</h6>\n   <template [ngIf]=\"!match.isHeader()\">\n      <button\n        class=\"dropdown-item\"\n        (click)=\"selectMatch(match, $event)\"\n        (mouseenter)=\"selectActive(match)\"\n        [class.active]=\"isActive(match)\">\n          <template [ngTemplateOutlet]=\"itemTemplate || bsItemTemplate\" \n            [ngOutletContext]=\"{item:match.item, index:i, match:match, query:query}\"></template>\n      </button>\n  </template>\n</template>\n</template>\n",
+                    // tslint:disable
+                    host: {
+                        'class': 'dropdown open',
+                        '[class.dropdown-menu]': 'isBs4',
+                        '[class.dropup]': 'dropup',
+                        style: 'position: absolute;display: block;'
+                    },
+                    // tslint: enable
+                    encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None
+                },] },
+    ];
+    /** @nocollapse */
+    TypeaheadContainerComponent.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+    ]; };
+    TypeaheadContainerComponent.propDecorators = {
+        'focusLost': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ['mouseleave',] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ['blur',] },],
+    };
+    return TypeaheadContainerComponent;
+}());
+
+//# sourceMappingURL=typeahead-container.component.js.map
+
+/***/ }),
+
+/***/ "../../../../ngx-bootstrap/typeahead/typeahead-match.class.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TypeaheadMatch; });
+var TypeaheadMatch = (function () {
+    function TypeaheadMatch(item, value, header) {
+        if (value === void 0) { value = item; }
+        if (header === void 0) { header = false; }
+        this.item = item;
+        this.value = value;
+        this.header = header;
+    }
+    TypeaheadMatch.prototype.isHeader = function () {
+        return this.header;
+    };
+    TypeaheadMatch.prototype.toString = function () {
+        return this.value;
+    };
+    return TypeaheadMatch;
+}());
+
+//# sourceMappingURL=typeahead-match.class.js.map
+
+/***/ }),
+
+/***/ "../../../../ngx-bootstrap/typeahead/typeahead-options.class.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export TypeaheadOptions */
+var TypeaheadOptions = (function () {
+    function TypeaheadOptions(options) {
+        Object.assign(this, options);
+    }
+    return TypeaheadOptions;
+}());
+
+//# sourceMappingURL=typeahead-options.class.js.map
+
+/***/ }),
+
+/***/ "../../../../ngx-bootstrap/typeahead/typeahead-utils.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["b"] = latinize;
+/* unused harmony export escapeRegexp */
+/* harmony export (immutable) */ __webpack_exports__["c"] = tokenize;
+/* harmony export (immutable) */ __webpack_exports__["a"] = getValueFromObject;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__latin_map__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/latin-map.js");
+
+function latinize(str) {
+    if (!str) {
+        return '';
+    }
+    return str.replace(/[^A-Za-z0-9\[\] ]/g, function (a) {
+        return __WEBPACK_IMPORTED_MODULE_0__latin_map__["a" /* latinMap */][a] || a;
+    });
+}
+function escapeRegexp(queryToEscape) {
+    // Regex: capture the whole query string and replace it with the string
+    // that will be used to match the results, for example if the capture is
+    // 'a' the result will be \a
+    return queryToEscape.replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1');
+}
+/* tslint:disable */
+function tokenize(str, wordRegexDelimiters, phraseRegexDelimiters) {
+    if (wordRegexDelimiters === void 0) { wordRegexDelimiters = ' '; }
+    if (phraseRegexDelimiters === void 0) { phraseRegexDelimiters = ''; }
+    /* tslint:enable */
+    var regexStr = '(?:[' + phraseRegexDelimiters + '])([^' + phraseRegexDelimiters + ']+)(?:[' + phraseRegexDelimiters + '])|([^' + wordRegexDelimiters + ']+)';
+    var preTokenized = str.split(new RegExp(regexStr, 'g'));
+    var result = [];
+    var preTokenizedLength = preTokenized.length;
+    var token;
+    var replacePhraseDelimiters = new RegExp('[' + phraseRegexDelimiters + ']+', 'g');
+    for (var i = 0; i < preTokenizedLength; i += 1) {
+        token = preTokenized[i];
+        if (token && token.length && token !== wordRegexDelimiters) {
+            result.push(token.replace(replacePhraseDelimiters, ''));
+        }
+    }
+    return result;
+}
+function getValueFromObject(object, option) {
+    if (!option || typeof object !== 'object') {
+        return object.toString();
+    }
+    if (option.endsWith('()')) {
+        var functionName = option.slice(0, option.length - 2);
+        return object[functionName]().toString();
+    }
+    var properties = option.replace(/\[(\w+)\]/g, '.$1')
+        .replace(/^\./, '');
+    var propertiesArray = properties.split('.');
+    for (var _i = 0, propertiesArray_1 = propertiesArray; _i < propertiesArray_1.length; _i++) {
+        var property = propertiesArray_1[_i];
+        if (property in object) {
+            object = object[property];
+        }
+    }
+    if (!object)
+        return "";
+    return object.toString();
+}
+//# sourceMappingURL=typeahead-utils.js.map
+
+/***/ }),
+
+/***/ "../../../../ngx-bootstrap/typeahead/typeahead.directive.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TypeaheadDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__typeahead_container_component__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead-container.component.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__typeahead_utils__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead-utils.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_from__ = __webpack_require__("../../../../rxjs/add/observable/from.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_from___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_from__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime__ = __webpack_require__("../../../../rxjs/add/operator/debounceTime.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_filter__ = __webpack_require__("../../../../rxjs/add/operator/filter.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_filter__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_mergeMap__ = __webpack_require__("../../../../rxjs/add/operator/mergeMap.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_mergeMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_mergeMap__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_add_operator_toArray__ = __webpack_require__("../../../../rxjs/add/operator/toArray.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_add_operator_toArray___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_rxjs_add_operator_toArray__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__typeahead_match_class__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead-match.class.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__component_loader__ = __webpack_require__("../../../../ngx-bootstrap/component-loader/index.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+var TypeaheadDirective = (function () {
+    function TypeaheadDirective(control, viewContainerRef, element, renderer, cis) {
+        /** minimal no of characters that needs to be entered before typeahead kicks-in. When set to 0, typeahead shows on focus with full list of options (limited as normal by typeaheadOptionsLimit) */
+        this.typeaheadMinLength = void 0;
+        /** should be used only in case of typeahead attribute is array. If true - loading of options will be async, otherwise - sync. true make sense if options array is large. */
+        this.typeaheadAsync = void 0;
+        /** match latin symbols. If true the word súper would match super and vice versa. */
+        this.typeaheadLatinize = true;
+        /** break words with spaces. If true the text "exact phrase" here match would match with match exact phrase here but not with phrase here exact match (kind of "google style"). */
+        this.typeaheadSingleWords = true;
+        /** should be used only in case typeaheadSingleWords attribute is true. Sets the word delimiter to break words. Defaults to space. */
+        this.typeaheadWordDelimiters = ' ';
+        /** should be used only in case typeaheadSingleWords attribute is true. Sets the word delimiter to match exact phrase. Defaults to simple and double quotes. */
+        this.typeaheadPhraseDelimiters = '\'"';
+        /** fired when 'busy' state of this component was changed, fired on async mode only, returns boolean */
+        this.typeaheadLoading = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        /** fired on every key event and returns true in case of matches are not detected */
+        this.typeaheadNoResults = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        /** fired when option was selected, return object with data of this option */
+        this.typeaheadOnSelect = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        /** fired when blur event occurres. returns the active item */
+        this.typeaheadOnBlur = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        /** This attribute indicates that the dropdown should be opened upwards */
+        this.dropup = false;
+        this.isTypeaheadOptionsListActive = false;
+        this.keyUpEventEmitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.placement = 'bottom-left';
+        this._subscriptions = [];
+        this.element = element;
+        this.ngControl = control;
+        this.viewContainerRef = viewContainerRef;
+        this.renderer = renderer;
+        this._typeahead = cis
+            .createLoader(element, viewContainerRef, renderer);
+    }
+    TypeaheadDirective.prototype.onChange = function (e) {
+        if (this._container) {
+            // esc
+            if (e.keyCode === 27) {
+                this.hide();
+                return;
+            }
+            // up
+            if (e.keyCode === 38) {
+                this._container.prevActiveMatch();
+                return;
+            }
+            // down
+            if (e.keyCode === 40) {
+                this._container.nextActiveMatch();
+                return;
+            }
+            // enter
+            if (e.keyCode === 13) {
+                this._container.selectActiveMatch();
+                return;
+            }
+        }
+        // For `<input>`s, use the `value` property. For others that don't have a
+        // `value` (such as `<span contenteditable="true">`), use either
+        // `textContent` or `innerText` (depending on which one is supported, i.e.
+        // Firefox or IE).
+        var value = e.target.value !== undefined
+            ? e.target.value
+            : e.target.textContent !== undefined
+                ? e.target.textContent
+                : e.target.innerText;
+        if (value != null && value.trim().length >= this.typeaheadMinLength) {
+            this.typeaheadLoading.emit(true);
+            this.keyUpEventEmitter.emit(e.target.value);
+        }
+        else {
+            this.typeaheadLoading.emit(false);
+            this.typeaheadNoResults.emit(false);
+            this.hide();
+        }
+    };
+    TypeaheadDirective.prototype.onFocus = function () {
+        if (this.typeaheadMinLength === 0) {
+            this.typeaheadLoading.emit(true);
+            this.keyUpEventEmitter.emit('');
+        }
+    };
+    TypeaheadDirective.prototype.onBlur = function () {
+        if (this._container && !this._container.isFocused) {
+            this.typeaheadOnBlur.emit(this._container.active);
+            this.hide();
+        }
+    };
+    TypeaheadDirective.prototype.onKeydown = function (e) {
+        // no container - no problems
+        if (!this._container) {
+            return;
+        }
+        // if items is visible - prevent form submition
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            return;
+        }
+    };
+    TypeaheadDirective.prototype.ngOnInit = function () {
+        this.typeaheadOptionsLimit = this.typeaheadOptionsLimit || 20;
+        this.typeaheadMinLength = this.typeaheadMinLength === void 0
+            ? 1
+            : this.typeaheadMinLength;
+        this.typeaheadWaitMs = this.typeaheadWaitMs || 0;
+        // async should be false in case of array
+        if (this.typeaheadAsync === undefined && !(this.typeahead instanceof __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"])) {
+            this.typeaheadAsync = false;
+        }
+        if (this.typeahead instanceof __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"]) {
+            this.typeaheadAsync = true;
+        }
+        if (this.typeaheadAsync) {
+            this.asyncActions();
+        }
+        else {
+            this.syncActions();
+        }
+    };
+    TypeaheadDirective.prototype.changeModel = function (match) {
+        var valueStr = match.value;
+        this.ngControl.viewToModelUpdate(valueStr);
+        this.ngControl.control.setValue(valueStr);
+        this.hide();
+    };
+    Object.defineProperty(TypeaheadDirective.prototype, "matches", {
+        get: function () {
+            return this._matches;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TypeaheadDirective.prototype.show = function () {
+        this._typeahead
+            .attach(__WEBPACK_IMPORTED_MODULE_2__typeahead_container_component__["a" /* TypeaheadContainerComponent */])
+            .to(this.container)
+            .position({ attachment: (this.dropup ? 'top' : 'bottom') + " left" })
+            .show({
+            typeaheadRef: this,
+            placement: this.placement,
+            animation: false,
+            dropup: this.dropup
+        });
+        this._container = this._typeahead.instance;
+        this._container.parent = this;
+        // This improves the speed as it won't have to be done for each list item
+        var normalizedQuery = (this.typeaheadLatinize
+            ? Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["b" /* latinize */])(this.ngControl.control.value)
+            : this.ngControl.control.value).toString()
+            .toLowerCase();
+        this._container.query = this.typeaheadSingleWords
+            ? Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["c" /* tokenize */])(normalizedQuery, this.typeaheadWordDelimiters, this.typeaheadPhraseDelimiters)
+            : normalizedQuery;
+        this._container.matches = this._matches;
+        this.element.nativeElement.focus();
+    };
+    TypeaheadDirective.prototype.hide = function () {
+        if (this._typeahead.isShown) {
+            this._typeahead.hide();
+            this._container = null;
+        }
+    };
+    TypeaheadDirective.prototype.ngOnDestroy = function () {
+        // clean up subscriptions
+        for (var _i = 0, _a = this._subscriptions; _i < _a.length; _i++) {
+            var sub = _a[_i];
+            sub.unsubscribe();
+        }
+        this._typeahead.dispose();
+    };
+    TypeaheadDirective.prototype.asyncActions = function () {
+        var _this = this;
+        this._subscriptions.push(this.keyUpEventEmitter
+            .debounceTime(this.typeaheadWaitMs)
+            .mergeMap(function () { return _this.typeahead; })
+            .subscribe(function (matches) {
+            _this.finalizeAsyncCall(matches);
+        }, function (err) {
+            console.error(err);
+        }));
+    };
+    TypeaheadDirective.prototype.syncActions = function () {
+        var _this = this;
+        this._subscriptions.push(this.keyUpEventEmitter
+            .debounceTime(this.typeaheadWaitMs)
+            .mergeMap(function (value) {
+            var normalizedQuery = _this.normalizeQuery(value);
+            return __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].from(_this.typeahead)
+                .filter(function (option) {
+                return option && _this.testMatch(_this.normalizeOption(option), normalizedQuery);
+            })
+                .toArray();
+        })
+            .subscribe(function (matches) {
+            _this.finalizeAsyncCall(matches);
+        }, function (err) {
+            console.error(err);
+        }));
+    };
+    TypeaheadDirective.prototype.normalizeOption = function (option) {
+        var optionValue = Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["a" /* getValueFromObject */])(option, this.typeaheadOptionField);
+        var normalizedOption = this.typeaheadLatinize
+            ? Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["b" /* latinize */])(optionValue)
+            : optionValue;
+        return normalizedOption.toLowerCase();
+    };
+    TypeaheadDirective.prototype.normalizeQuery = function (value) {
+        // If singleWords, break model here to not be doing extra work on each
+        // iteration
+        var normalizedQuery = (this.typeaheadLatinize ? Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["b" /* latinize */])(value) : value)
+            .toString()
+            .toLowerCase();
+        normalizedQuery = this.typeaheadSingleWords
+            ? Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["c" /* tokenize */])(normalizedQuery, this.typeaheadWordDelimiters, this.typeaheadPhraseDelimiters)
+            : normalizedQuery;
+        return normalizedQuery;
+    };
+    TypeaheadDirective.prototype.testMatch = function (match, test) {
+        var spaceLength;
+        if (typeof test === 'object') {
+            spaceLength = test.length;
+            for (var i = 0; i < spaceLength; i += 1) {
+                if (test[i].length > 0 && match.indexOf(test[i]) < 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else {
+            return match.indexOf(test) >= 0;
+        }
+    };
+    TypeaheadDirective.prototype.finalizeAsyncCall = function (matches) {
+        this.prepareMatches(matches);
+        this.typeaheadLoading.emit(false);
+        this.typeaheadNoResults.emit(!this.hasMatches());
+        if (!this.hasMatches()) {
+            this.hide();
+            return;
+        }
+        if (this._container) {
+            // This improves the speed as it won't have to be done for each list item
+            var normalizedQuery = (this.typeaheadLatinize
+                ? Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["b" /* latinize */])(this.ngControl.control.value)
+                : this.ngControl.control.value).toString()
+                .toLowerCase();
+            this._container.query = this.typeaheadSingleWords
+                ? Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["c" /* tokenize */])(normalizedQuery, this.typeaheadWordDelimiters, this.typeaheadPhraseDelimiters)
+                : normalizedQuery;
+            this._container.matches = this._matches;
+        }
+        else {
+            this.show();
+        }
+    };
+    TypeaheadDirective.prototype.prepareMatches = function (options) {
+        var _this = this;
+        var limited = options.slice(0, this.typeaheadOptionsLimit);
+        if (this.typeaheadGroupField) {
+            var matches_1 = [];
+            // extract all group names
+            var groups = limited
+                .map(function (option) { return Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["a" /* getValueFromObject */])(option, _this.typeaheadGroupField); })
+                .filter(function (v, i, a) { return a.indexOf(v) === i; });
+            groups.forEach(function (group) {
+                // add group header to array of matches
+                matches_1.push(new __WEBPACK_IMPORTED_MODULE_11__typeahead_match_class__["a" /* TypeaheadMatch */](group, group, true));
+                // add each item of group to array of matches
+                matches_1 = matches_1.concat(limited
+                    .filter(function (option) { return Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["a" /* getValueFromObject */])(option, _this.typeaheadGroupField) === group; })
+                    .map(function (option) { return new __WEBPACK_IMPORTED_MODULE_11__typeahead_match_class__["a" /* TypeaheadMatch */](option, Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["a" /* getValueFromObject */])(option, _this.typeaheadOptionField)); }));
+            });
+            this._matches = matches_1;
+        }
+        else {
+            this._matches = limited.map(function (option) { return new __WEBPACK_IMPORTED_MODULE_11__typeahead_match_class__["a" /* TypeaheadMatch */](option, Object(__WEBPACK_IMPORTED_MODULE_3__typeahead_utils__["a" /* getValueFromObject */])(option, _this.typeaheadOptionField)); });
+        }
+    };
+    TypeaheadDirective.prototype.hasMatches = function () {
+        return this._matches.length > 0;
+    };
+    TypeaheadDirective.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"], args: [{ selector: '[typeahead]', exportAs: 'bs-typeahead' },] },
+    ];
+    /** @nocollapse */
+    TypeaheadDirective.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["NgControl"], },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewContainerRef"], },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"], },
+        { type: __WEBPACK_IMPORTED_MODULE_12__component_loader__["a" /* ComponentLoaderFactory */], },
+    ]; };
+    TypeaheadDirective.propDecorators = {
+        'typeahead': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadMinLength': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadWaitMs': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadOptionsLimit': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadOptionField': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadGroupField': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadAsync': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadLatinize': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadSingleWords': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadWordDelimiters': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadPhraseDelimiters': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadItemTemplate': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'optionsListTemplate': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'typeaheadLoading': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'typeaheadNoResults': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'typeaheadOnSelect': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'typeaheadOnBlur': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'container': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'dropup': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'onChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ['keyup', ['$event'],] },],
+        'onFocus': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ['focus',] },],
+        'onBlur': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ['blur',] },],
+        'onKeydown': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostListener"], args: ['keydown', ['$event'],] },],
+    };
+    return TypeaheadDirective;
+}());
+
+//# sourceMappingURL=typeahead.directive.js.map
+
+/***/ }),
+
+/***/ "../../../../ngx-bootstrap/typeahead/typeahead.module.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TypeaheadModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__typeahead_container_component__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead-container.component.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__typeahead_directive__ = __webpack_require__("../../../../ngx-bootstrap/typeahead/typeahead.directive.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__component_loader__ = __webpack_require__("../../../../ngx-bootstrap/component-loader/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__positioning__ = __webpack_require__("../../../../ngx-bootstrap/positioning/index.js");
+
+
+
+
+
+
+var TypeaheadModule = (function () {
+    function TypeaheadModule() {
+    }
+    TypeaheadModule.forRoot = function () {
+        return {
+            ngModule: TypeaheadModule,
+            providers: [__WEBPACK_IMPORTED_MODULE_4__component_loader__["a" /* ComponentLoaderFactory */], __WEBPACK_IMPORTED_MODULE_5__positioning__["a" /* PositioningService */]]
+        };
+    };
+    ;
+    TypeaheadModule.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"], args: [{
+                    imports: [__WEBPACK_IMPORTED_MODULE_0__angular_common__["CommonModule"]],
+                    declarations: [__WEBPACK_IMPORTED_MODULE_2__typeahead_container_component__["a" /* TypeaheadContainerComponent */], __WEBPACK_IMPORTED_MODULE_3__typeahead_directive__["a" /* TypeaheadDirective */]],
+                    exports: [__WEBPACK_IMPORTED_MODULE_2__typeahead_container_component__["a" /* TypeaheadContainerComponent */], __WEBPACK_IMPORTED_MODULE_3__typeahead_directive__["a" /* TypeaheadDirective */]],
+                    entryComponents: [__WEBPACK_IMPORTED_MODULE_2__typeahead_container_component__["a" /* TypeaheadContainerComponent */]]
+                },] },
+    ];
+    /** @nocollapse */
+    TypeaheadModule.ctorParameters = function () { return []; };
+    return TypeaheadModule;
+}());
+
+//# sourceMappingURL=typeahead.module.js.map
+
+/***/ }),
+
 /***/ "../../../../ngx-bootstrap/utils/facade/browser.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7233,6 +8783,18 @@ Observable_1.Observable.of = of_1.of;
 
 /***/ }),
 
+/***/ "../../../../rxjs/add/operator/debounceTime.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__("../../../../rxjs/Observable.js");
+var debounceTime_1 = __webpack_require__("../../../../rxjs/operator/debounceTime.js");
+Observable_1.Observable.prototype.debounceTime = debounceTime_1.debounceTime;
+//# sourceMappingURL=debounceTime.js.map
+
+/***/ }),
+
 /***/ "../../../../rxjs/add/operator/do.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7283,6 +8845,19 @@ Observable_1.Observable.prototype.map = map_1.map;
 
 /***/ }),
 
+/***/ "../../../../rxjs/add/operator/mergeMap.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__("../../../../rxjs/Observable.js");
+var mergeMap_1 = __webpack_require__("../../../../rxjs/operator/mergeMap.js");
+Observable_1.Observable.prototype.mergeMap = mergeMap_1.mergeMap;
+Observable_1.Observable.prototype.flatMap = mergeMap_1.mergeMap;
+//# sourceMappingURL=mergeMap.js.map
+
+/***/ }),
+
 /***/ "../../../../rxjs/add/operator/switchMap.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7316,6 +8891,18 @@ var Observable_1 = __webpack_require__("../../../../rxjs/Observable.js");
 var takeWhile_1 = __webpack_require__("../../../../rxjs/operator/takeWhile.js");
 Observable_1.Observable.prototype.takeWhile = takeWhile_1.takeWhile;
 //# sourceMappingURL=takeWhile.js.map
+
+/***/ }),
+
+/***/ "../../../../rxjs/add/operator/toArray.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__("../../../../rxjs/Observable.js");
+var toArray_1 = __webpack_require__("../../../../rxjs/operator/toArray.js");
+Observable_1.Observable.prototype.toArray = toArray_1.toArray;
+//# sourceMappingURL=toArray.js.map
 
 /***/ }),
 
@@ -9105,6 +10692,68 @@ exports.concatMap = concatMap;
 
 /***/ }),
 
+/***/ "../../../../rxjs/operator/debounceTime.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var async_1 = __webpack_require__("../../../../rxjs/scheduler/async.js");
+var debounceTime_1 = __webpack_require__("../../../../rxjs/operators/debounceTime.js");
+/**
+ * Emits a value from the source Observable only after a particular time span
+ * has passed without another source emission.
+ *
+ * <span class="informal">It's like {@link delay}, but passes only the most
+ * recent value from each burst of emissions.</span>
+ *
+ * <img src="./img/debounceTime.png" width="100%">
+ *
+ * `debounceTime` delays values emitted by the source Observable, but drops
+ * previous pending delayed emissions if a new value arrives on the source
+ * Observable. This operator keeps track of the most recent value from the
+ * source Observable, and emits that only when `dueTime` enough time has passed
+ * without any other value appearing on the source Observable. If a new value
+ * appears before `dueTime` silence occurs, the previous value will be dropped
+ * and will not be emitted on the output Observable.
+ *
+ * This is a rate-limiting operator, because it is impossible for more than one
+ * value to be emitted in any time window of duration `dueTime`, but it is also
+ * a delay-like operator since output emissions do not occur at the same time as
+ * they did on the source Observable. Optionally takes a {@link IScheduler} for
+ * managing timers.
+ *
+ * @example <caption>Emit the most recent click after a burst of clicks</caption>
+ * var clicks = Rx.Observable.fromEvent(document, 'click');
+ * var result = clicks.debounceTime(1000);
+ * result.subscribe(x => console.log(x));
+ *
+ * @see {@link auditTime}
+ * @see {@link debounce}
+ * @see {@link delay}
+ * @see {@link sampleTime}
+ * @see {@link throttleTime}
+ *
+ * @param {number} dueTime The timeout duration in milliseconds (or the time
+ * unit determined internally by the optional `scheduler`) for the window of
+ * time required to wait for emission silence before emitting the most recent
+ * source value.
+ * @param {Scheduler} [scheduler=async] The {@link IScheduler} to use for
+ * managing the timers that handle the timeout for each value.
+ * @return {Observable} An Observable that delays the emissions of the source
+ * Observable by the specified `dueTime`, and may drop some values if they occur
+ * too frequently.
+ * @method debounceTime
+ * @owner Observable
+ */
+function debounceTime(dueTime, scheduler) {
+    if (scheduler === void 0) { scheduler = async_1.async; }
+    return debounceTime_1.debounceTime(dueTime, scheduler)(this);
+}
+exports.debounceTime = debounceTime;
+//# sourceMappingURL=debounceTime.js.map
+
+/***/ }),
+
 /***/ "../../../../rxjs/operator/do.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9866,6 +11515,43 @@ exports.takeWhile = takeWhile;
 
 /***/ }),
 
+/***/ "../../../../rxjs/operator/toArray.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var toArray_1 = __webpack_require__("../../../../rxjs/operators/toArray.js");
+/**
+ * Collects all source emissions and emits them as an array when the source completes.
+ *
+ * <span class="informal">Get all values inside an array when the source completes</span>
+ *
+ * <img src="./img/toArray.png" width="100%">
+ *
+ * `toArray` will wait until the source Observable completes
+ * before emitting the array containing all emissions.
+ * When the source Observable errors no array will be emitted.
+ *
+ * @example <caption>Create array from input</caption>
+ * const input = Rx.Observable.interval(100).take(4);
+ *
+ * input.toArray()
+ *   .subscribe(arr => console.log(arr)); // [0,1,2,3]
+ *
+ * @see {@link buffer}
+ *
+ * @return {Observable<any[]>|WebSocketSubject<T>|Observable<T>}
+ * @method toArray
+ * @owner Observable
+ */
+function toArray() {
+    return toArray_1.toArray()(this);
+}
+exports.toArray = toArray;
+//# sourceMappingURL=toArray.js.map
+
+/***/ }),
+
 /***/ "../../../../rxjs/operators/catchError.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10122,6 +11808,129 @@ function concatMap(project, resultSelector) {
 }
 exports.concatMap = concatMap;
 //# sourceMappingURL=concatMap.js.map
+
+/***/ }),
+
+/***/ "../../../../rxjs/operators/debounceTime.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Subscriber_1 = __webpack_require__("../../../../rxjs/Subscriber.js");
+var async_1 = __webpack_require__("../../../../rxjs/scheduler/async.js");
+/**
+ * Emits a value from the source Observable only after a particular time span
+ * has passed without another source emission.
+ *
+ * <span class="informal">It's like {@link delay}, but passes only the most
+ * recent value from each burst of emissions.</span>
+ *
+ * <img src="./img/debounceTime.png" width="100%">
+ *
+ * `debounceTime` delays values emitted by the source Observable, but drops
+ * previous pending delayed emissions if a new value arrives on the source
+ * Observable. This operator keeps track of the most recent value from the
+ * source Observable, and emits that only when `dueTime` enough time has passed
+ * without any other value appearing on the source Observable. If a new value
+ * appears before `dueTime` silence occurs, the previous value will be dropped
+ * and will not be emitted on the output Observable.
+ *
+ * This is a rate-limiting operator, because it is impossible for more than one
+ * value to be emitted in any time window of duration `dueTime`, but it is also
+ * a delay-like operator since output emissions do not occur at the same time as
+ * they did on the source Observable. Optionally takes a {@link IScheduler} for
+ * managing timers.
+ *
+ * @example <caption>Emit the most recent click after a burst of clicks</caption>
+ * var clicks = Rx.Observable.fromEvent(document, 'click');
+ * var result = clicks.debounceTime(1000);
+ * result.subscribe(x => console.log(x));
+ *
+ * @see {@link auditTime}
+ * @see {@link debounce}
+ * @see {@link delay}
+ * @see {@link sampleTime}
+ * @see {@link throttleTime}
+ *
+ * @param {number} dueTime The timeout duration in milliseconds (or the time
+ * unit determined internally by the optional `scheduler`) for the window of
+ * time required to wait for emission silence before emitting the most recent
+ * source value.
+ * @param {Scheduler} [scheduler=async] The {@link IScheduler} to use for
+ * managing the timers that handle the timeout for each value.
+ * @return {Observable} An Observable that delays the emissions of the source
+ * Observable by the specified `dueTime`, and may drop some values if they occur
+ * too frequently.
+ * @method debounceTime
+ * @owner Observable
+ */
+function debounceTime(dueTime, scheduler) {
+    if (scheduler === void 0) { scheduler = async_1.async; }
+    return function (source) { return source.lift(new DebounceTimeOperator(dueTime, scheduler)); };
+}
+exports.debounceTime = debounceTime;
+var DebounceTimeOperator = (function () {
+    function DebounceTimeOperator(dueTime, scheduler) {
+        this.dueTime = dueTime;
+        this.scheduler = scheduler;
+    }
+    DebounceTimeOperator.prototype.call = function (subscriber, source) {
+        return source.subscribe(new DebounceTimeSubscriber(subscriber, this.dueTime, this.scheduler));
+    };
+    return DebounceTimeOperator;
+}());
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @ignore
+ * @extends {Ignored}
+ */
+var DebounceTimeSubscriber = (function (_super) {
+    __extends(DebounceTimeSubscriber, _super);
+    function DebounceTimeSubscriber(destination, dueTime, scheduler) {
+        _super.call(this, destination);
+        this.dueTime = dueTime;
+        this.scheduler = scheduler;
+        this.debouncedSubscription = null;
+        this.lastValue = null;
+        this.hasValue = false;
+    }
+    DebounceTimeSubscriber.prototype._next = function (value) {
+        this.clearDebounce();
+        this.lastValue = value;
+        this.hasValue = true;
+        this.add(this.debouncedSubscription = this.scheduler.schedule(dispatchNext, this.dueTime, this));
+    };
+    DebounceTimeSubscriber.prototype._complete = function () {
+        this.debouncedNext();
+        this.destination.complete();
+    };
+    DebounceTimeSubscriber.prototype.debouncedNext = function () {
+        this.clearDebounce();
+        if (this.hasValue) {
+            this.destination.next(this.lastValue);
+            this.lastValue = null;
+            this.hasValue = false;
+        }
+    };
+    DebounceTimeSubscriber.prototype.clearDebounce = function () {
+        var debouncedSubscription = this.debouncedSubscription;
+        if (debouncedSubscription !== null) {
+            this.remove(debouncedSubscription);
+            debouncedSubscription.unsubscribe();
+            this.debouncedSubscription = null;
+        }
+    };
+    return DebounceTimeSubscriber;
+}(Subscriber_1.Subscriber));
+function dispatchNext(subscriber) {
+    subscriber.debouncedNext();
+}
+//# sourceMappingURL=debounceTime.js.map
 
 /***/ }),
 
@@ -12263,6 +14072,24 @@ var DoSubscriber = (function (_super) {
     return DoSubscriber;
 }(Subscriber_1.Subscriber));
 //# sourceMappingURL=tap.js.map
+
+/***/ }),
+
+/***/ "../../../../rxjs/operators/toArray.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var reduce_1 = __webpack_require__("../../../../rxjs/operators/reduce.js");
+function toArrayReducer(arr, item, index) {
+    arr.push(item);
+    return arr;
+}
+function toArray() {
+    return reduce_1.reduce(toArrayReducer, []);
+}
+exports.toArray = toArray;
+//# sourceMappingURL=toArray.js.map
 
 /***/ }),
 
