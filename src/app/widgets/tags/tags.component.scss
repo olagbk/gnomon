@@ -1,6 +1,12 @@
 @import '../../../styles/common';
 
-.badge {
+.badge.selectable {
+  &.selected {
+  background: $gray-600;
+    &:hover {
+      color: $gray-600 !important;
+    }
+  }
   &:hover {
   cursor: pointer;
   background: $gray-100;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Post } from './post';
+import { Post, Tag } from './post';
 
 @Injectable()
 export class BlogService {
@@ -14,6 +14,10 @@ export class BlogService {
   }
   getPost(id): Promise<Post> {
     return this.http.get(`/api/posts/${id}`).toPromise()
+      .then((res: Response) => res.json());
+  }
+  getTags(): Promise<Tag[]> {
+    return this.http.get('/api/tags').toPromise()
       .then((res: Response) => res.json());
   }
 }
