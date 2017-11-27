@@ -1,29 +1,37 @@
-<div class="container">
-  <div class="dark-container tags-header mt-4 p-3" *ngIf="selectedTags?.length > 0">
-    <span class="tags-desc">Selected tag(s):</span>
+<div class="row m-auto pl-md-5">
 
-    <app-tags [tags]="selectedTags" [deleteOnClick]="true" (tagSelected)="deleteTag($event)"></app-tags>
+  <div class="container col-12 col-md-9 pr-md-5">
+    <div class="dark-container tags-header mt-4 p-3" *ngIf="selectedTags?.length > 0">
+      <span class="tags-desc">Selected tag(s):</span>
 
-    <span class="tags-opts" *ngIf="selectedTags?.length > 1">(
-      <a class="link tags-desc" [class.active]="!tagsAll" (click)="toggleTagMode()">any</a> /
-      <a class="link tags-desc" [class.active]="tagsAll" (click)="toggleTagMode()">all</a>)
+      <app-tags [tags]="selectedTags" [deleteOnClick]="true" (tagSelected)="deleteTag($event)"></app-tags>
+
+      <span class="tags-opts" *ngIf="selectedTags?.length > 1">(
+      <a class="link tags-desc" [class.active]="!tagsAllMode" (click)="toggleTagMode()">any</a> /
+      <a class="link tags-desc" [class.active]="tagsAllMode" (click)="toggleTagMode()">all</a>)
     </span>
 
+    </div>
+    <div class="post my-4" *ngFor="let post of filteredPosts | async">
+
+      <a class="link title mb-2" [routerLink]="post.id">{{ post.title }}</a>
+      <span class="created-at">{{post.createdAt | date }}</span>
+      <app-tags [tags]="post.tags" [selectable]="false"></app-tags>
+
+      <p class="text pl-md-3 mt-2"
+         ellipsis=" (...)"
+         [ellipsis-word-boundaries]="' \n'"
+         (ellipsis-click-more)="goToPost(post.id)">{{post.body}}
+      </p>
+
+      <div class="shadow-wrapper"></div>
+    </div>
   </div>
-  <div class="post my-4" *ngFor="let post of filteredPosts | async">
 
-    <a class="link title mb-2" [routerLink]="post.id">{{ post.title }}</a>
-    <span class="created-at">{{post.createdAt | date }}</span>
-    <app-tags [tags]="post.tags" (tagSelected)="addTag($event)"></app-tags>
 
-    <p class="text pl-md-3 mt-2"
-       ellipsis=" (...)"
-       [ellipsis-word-boundaries]="' \n'"
-       (ellipsis-click-more)="goToPost(post.id)">{{post.body}}
-    </p>
-
-    <div class="shadow-wrapper"></div>
+  <div class="tags dark-container align-self-start col-12 col-md-2 p-4">
+    <app-tag-select (selected)="addTag($event)" (deselected)="deleteTag($event)"></app-tag-select>
   </div>
+
 </div>
-<div class="tags">
-</div>
+

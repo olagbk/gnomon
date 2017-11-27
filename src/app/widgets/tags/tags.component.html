@@ -1,6 +1,8 @@
 <div class="tags text-center">
-  <a class="badge badge-dark mx-1"
+  <a #tagEl class="badge badge-dark mx-1"
      [class.to-delete]="deleteOnClick"
+     [class.selected]="selected"
+     [class.selectable]="selectable"
      *ngFor="let tag of tags"
-     (click)="selectTag(tag.name || tag)">{{tag.name || tag}}</a>
+     (click)="selectTag(tag, tagEl)">{{tag.name}}</a>
 </div>
