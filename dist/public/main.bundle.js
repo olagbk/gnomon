@@ -222,12 +222,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__gallery_albums_service__ = __webpack_require__("../../../../../src/app/gallery/albums.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pipes_times_pipe__ = __webpack_require__("../../../../../src/app/pipes/times.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__gallery_gallery_config__ = __webpack_require__("../../../../../src/app/gallery/gallery.config.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__widgets_tag_select_tag_select_component__ = __webpack_require__("../../../../../src/app/widgets/tag-select/tag-select.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -294,7 +296,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_15__pages_photos_album_thumb_component__["a" /* AlbumThumbComponent */],
             __WEBPACK_IMPORTED_MODULE_21__gallery_gallery_component__["a" /* GalleryComponent */],
             __WEBPACK_IMPORTED_MODULE_22__gallery_gallery_thumb_component__["a" /* GalleryThumbComponent */],
-            __WEBPACK_IMPORTED_MODULE_35__pipes_times_pipe__["a" /* TimesPipe */]
+            __WEBPACK_IMPORTED_MODULE_35__pipes_times_pipe__["a" /* TimesPipe */],
+            __WEBPACK_IMPORTED_MODULE_37__widgets_tag_select_tag_select_component__["a" /* TagSelectComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_13__app_routing_module__["a" /* AppRoutingModule */],
@@ -821,7 +824,7 @@ var _a, _b, _c;
 /***/ "../../../../../src/app/pages/blog/blog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"dark-container tags-header mt-4 p-3\" *ngIf=\"selectedTags?.length > 0\">\n    <span class=\"tags-desc\">Selected tag(s):</span>\n\n    <app-tags [tags]=\"selectedTags\" [deleteOnClick]=\"true\" (tagSelected)=\"deleteTag($event)\"></app-tags>\n\n    <span class=\"tags-opts\" *ngIf=\"selectedTags?.length > 1\">(\n      <a class=\"link tags-desc\" [class.active]=\"!tagsAll\" (click)=\"toggleTagMode()\">any</a> /\n      <a class=\"link tags-desc\" [class.active]=\"tagsAll\" (click)=\"toggleTagMode()\">all</a>)\n    </span>\n\n  </div>\n  <div class=\"post my-4\" *ngFor=\"let post of filteredPosts | async\">\n\n    <a class=\"link title mb-2\" [routerLink]=\"post.id\">{{ post.title }}</a>\n    <span class=\"created-at\">{{post.createdAt | date }}</span>\n    <app-tags [tags]=\"post.tags\" (tagSelected)=\"addTag($event)\"></app-tags>\n\n    <p class=\"text pl-md-3 mt-2\"\n       ellipsis=\" (...)\"\n       [ellipsis-word-boundaries]=\"' \\n'\"\n       (ellipsis-click-more)=\"goToPost(post.id)\">{{post.body}}\n    </p>\n\n    <div class=\"shadow-wrapper\"></div>\n  </div>\n</div>\n<div class=\"tags\">\n</div>\n"
+module.exports = "<div class=\"row m-auto pl-md-5\">\n\n  <div class=\"container col-12 col-md-9 pr-md-5\">\n    <div class=\"dark-container tags-header mt-4 p-3\" *ngIf=\"selectedTags?.length > 0\">\n      <span class=\"tags-desc\">Selected tag(s):</span>\n\n      <app-tags [tags]=\"selectedTags\" [deleteOnClick]=\"true\" (tagSelected)=\"deleteTag($event)\"></app-tags>\n\n      <span class=\"tags-opts\" *ngIf=\"selectedTags?.length > 1\">(\n      <a class=\"link tags-desc\" [class.active]=\"!tagsAllMode\" (click)=\"toggleTagMode()\">any</a> /\n      <a class=\"link tags-desc\" [class.active]=\"tagsAllMode\" (click)=\"toggleTagMode()\">all</a>)\n    </span>\n\n    </div>\n    <div class=\"post my-4\" *ngFor=\"let post of filteredPosts | async\">\n\n      <a class=\"link title mb-2\" [routerLink]=\"post.id\">{{ post.title }}</a>\n      <span class=\"created-at\">{{post.createdAt | date }}</span>\n      <app-tags [tags]=\"post.tags\" [selectable]=\"false\"></app-tags>\n\n      <p class=\"text pl-md-3 mt-2\"\n         ellipsis=\" (...)\"\n         [ellipsis-word-boundaries]=\"' \\n'\"\n         (ellipsis-click-more)=\"goToPost(post.id)\">{{post.body}}\n      </p>\n\n      <div class=\"shadow-wrapper\"></div>\n    </div>\n  </div>\n\n\n  <div class=\"tags dark-container align-self-start col-12 col-md-2 p-4\">\n    <app-tag-select (selected)=\"addTag($event)\" (deselected)=\"deleteTag($event)\"></app-tag-select>\n  </div>\n\n</div>\n\n"
 
 /***/ }),
 
@@ -833,7 +836,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post {\n  position: relative;\n  max-width: 1000px;\n  padding: 2rem 2rem 1rem 2rem; }\n\n.text {\n  font-size: 14px;\n  max-height: 250px; }\n\n.title {\n  font-size: 1.5rem;\n  text-decoration: underline;\n  text-underline-position: under; }\n  .title:hover {\n    letter-spacing: 2.5px; }\n  .title:not(:hover) {\n    font-weight: 500; }\n\n.created-at {\n  text-align: center;\n  color: #868e96; }\n\n.shadow-wrapper {\n  position: absolute;\n  width: 90%;\n  height: 1px;\n  left: 5%;\n  bottom: 5px;\n  box-shadow: 0px -20px 10px 20px rgba(0, 0, 0, 0.5); }\n\n.tags-desc {\n  margin-top: 1px;\n  font-size: 14px;\n  color: #dee2e6; }\n\n@media (min-width: 768px) {\n  .text {\n    font-size: 16px; } }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  background: rgba(0, 0, 0, 0.3); }\n\n.row {\n  width: 100%; }\n\n.post {\n  position: relative;\n  padding: 2rem 2rem 1rem 2rem; }\n\n.text {\n  font-size: 14px;\n  max-height: 250px; }\n\n.title {\n  font-size: 1.5rem;\n  text-decoration: underline;\n  text-underline-position: under; }\n  .title:hover {\n    letter-spacing: 2.5px; }\n  .title:not(:hover) {\n    font-weight: 500; }\n\n.created-at {\n  text-align: center;\n  color: #868e96; }\n\n.shadow-wrapper {\n  position: absolute;\n  width: 90%;\n  height: 1px;\n  left: 5%;\n  bottom: 5px;\n  box-shadow: 0px -20px 10px 20px rgba(0, 0, 0, 0.5); }\n\n.tags-desc {\n  margin-top: 1px;\n  font-size: 14px;\n  color: #dee2e6; }\n\n@media (min-width: 768px) {\n  .text {\n    font-size: 16px; } }\n", ""]);
 
 // exports
 
@@ -870,40 +873,47 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var BlogComponent = (function () {
-    function BlogComponent(blog, router, activatedRoute) {
+    function BlogComponent(blog, router) {
         this.blog = blog;
         this.router = router;
-        this.activatedRoute = activatedRoute;
         this.selectedTagsSubject = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"]([]);
         this.selectedTags = [];
-        this.tagsAll = false;
+        this.tagsAllMode = false;
     }
     BlogComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.blog.getPosts().then(function (posts) {
-            _this.posts = posts;
             _this.filteredPosts = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"](posts);
             _this.selectedTagsSubject.subscribe(function (tags) {
                 _this.filteredPosts.next(tags.length === 0
-                    ? _this.posts
-                    : _this.posts
+                    ? posts
+                    : posts
                         .filter(function (post) {
-                        var postTagNames = post.tags.map(function (tag) { return tag.name; });
-                        if (_this.tagsAll) {
+                        if (_this.tagsAllMode) {
+                            var _loop_1 = function (tag) {
+                                if (!post.tags.some(function (postTag) { return postTag.name === tag.name; })) {
+                                    return { value: false };
+                                }
+                            };
                             for (var _i = 0, tags_1 = tags; _i < tags_1.length; _i++) {
                                 var tag = tags_1[_i];
-                                if (postTagNames.indexOf(tag) === -1) {
-                                    return false;
-                                }
+                                var state_1 = _loop_1(tag);
+                                if (typeof state_1 === "object")
+                                    return state_1.value;
                             }
                             return true;
                         }
                         else {
+                            var _loop_2 = function (tag) {
+                                if (post.tags.some(function (postTag) { return postTag.name === tag.name; })) {
+                                    return { value: true };
+                                }
+                            };
                             for (var _a = 0, tags_2 = tags; _a < tags_2.length; _a++) {
                                 var tag = tags_2[_a];
-                                if (postTagNames.indexOf(tag) !== -1) {
-                                    return true;
-                                }
+                                var state_2 = _loop_2(tag);
+                                if (typeof state_2 === "object")
+                                    return state_2.value;
                             }
                         }
                     }));
@@ -929,7 +939,7 @@ var BlogComponent = (function () {
         this.selectedTagsSubject.next(this.selectedTags);
     };
     BlogComponent.prototype.toggleTagMode = function () {
-        this.tagsAll = !this.tagsAll;
+        this.tagsAllMode = !this.tagsAllMode;
         this.selectedTagsSubject.next(this.selectedTags);
     };
     return BlogComponent;
@@ -940,10 +950,10 @@ BlogComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/pages/blog/blog.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/blog/blog.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__blog_service__["a" /* BlogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__blog_service__["a" /* BlogService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__blog_service__["a" /* BlogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__blog_service__["a" /* BlogService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], BlogComponent);
 
-var _a, _b, _c;
+var _a, _b;
 //# sourceMappingURL=blog.component.js.map
 
 /***/ }),
@@ -979,6 +989,10 @@ var BlogService = (function () {
     };
     BlogService.prototype.getPost = function (id) {
         return this.http.get("/api/posts/" + id).toPromise()
+            .then(function (res) { return res.json(); });
+    };
+    BlogService.prototype.getTags = function () {
+        return this.http.get('/api/tags').toPromise()
             .then(function (res) { return res.json(); });
     };
     return BlogService;
@@ -1797,10 +1811,98 @@ SpinnerComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/widgets/tag-select/tag-select.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h5 class=\"tag-header\">Tags</h5>\n<app-tags [tags]=\"activeTags\" [selected]=\"true\" (tagSelected)=\"deselect($event)\"></app-tags>\n<app-tags [tags]=\"inactiveTags\" (tagSelected)=\"select($event)\"></app-tags>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/widgets/tag-select/tag-select.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".tag-header {\n  text-align: center;\n  color: #adb5bd; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/widgets/tag-select/tag-select.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TagSelectComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_blog_blog_service__ = __webpack_require__("../../../../../src/app/pages/blog/blog.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TagSelectComponent = (function () {
+    function TagSelectComponent(blog) {
+        this.blog = blog;
+        this.activeTags = [];
+        this.selected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.deselected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    TagSelectComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.blog.getTags().then(function (tags) { return _this.inactiveTags = tags; });
+    };
+    TagSelectComponent.prototype.select = function (tag) {
+        this.inactiveTags = this.inactiveTags.filter(function (t) { return t.name !== tag.name; });
+        this.activeTags.push(tag);
+        this.selected.emit(tag);
+    };
+    TagSelectComponent.prototype.deselect = function (tag) {
+        this.activeTags = this.activeTags.filter(function (t) { return t.name !== tag.name; });
+        this.inactiveTags.push(tag);
+        this.deselected.emit(tag);
+    };
+    return TagSelectComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _a || Object)
+], TagSelectComponent.prototype, "selected", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _b || Object)
+], TagSelectComponent.prototype, "deselected", void 0);
+TagSelectComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-tag-select',
+        template: __webpack_require__("../../../../../src/app/widgets/tag-select/tag-select.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/widgets/tag-select/tag-select.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__pages_blog_blog_service__["a" /* BlogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__pages_blog_blog_service__["a" /* BlogService */]) === "function" && _c || Object])
+], TagSelectComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=tag-select.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/widgets/tags/tags.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tags text-center\">\n  <a class=\"badge badge-dark mx-1\"\n     [class.to-delete]=\"deleteOnClick\"\n     *ngFor=\"let tag of tags\"\n     (click)=\"selectTag(tag.name || tag)\">{{tag.name || tag}}</a>\n</div>\n"
+module.exports = "<div class=\"tags text-center\">\n  <a #tagEl class=\"badge badge-dark mx-1\"\n     [class.to-delete]=\"deleteOnClick\"\n     [class.selected]=\"selected\"\n     [class.selectable]=\"selectable\"\n     *ngFor=\"let tag of tags\"\n     (click)=\"selectTag(tag, tagEl)\">{{tag.name}}</a>\n</div>\n"
 
 /***/ }),
 
@@ -1812,7 +1914,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".badge:hover {\n  cursor: pointer;\n  background: #f8f9fa;\n  color: #212529 !important; }\n\n.badge.to-delete:hover {\n  text-decoration: line-through; }\n", ""]);
+exports.push([module.i, ".badge.selectable.selected {\n  background: #868e96; }\n  .badge.selectable.selected:hover {\n    color: #868e96 !important; }\n\n.badge.selectable:hover {\n  cursor: pointer;\n  background: #f8f9fa;\n  color: #212529 !important; }\n\n.badge.selectable.to-delete:hover {\n  text-decoration: line-through; }\n", ""]);
 
 // exports
 
@@ -1839,8 +1941,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 var TagsComponent = (function () {
-    function TagsComponent() {
+    function TagsComponent(renderer) {
+        this.renderer = renderer;
         this.deleteOnClick = false;
+        this.selected = false;
+        this.selectable = true;
         this.tagSelected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     TagsComponent.prototype.ngOnInit = function () {
@@ -1859,6 +1964,14 @@ __decorate([
     __metadata("design:type", Object)
 ], TagsComponent.prototype, "deleteOnClick", void 0);
 __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], TagsComponent.prototype, "selected", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], TagsComponent.prototype, "selectable", void 0);
+__decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]) === "function" && _a || Object)
 ], TagsComponent.prototype, "tagSelected", void 0);
@@ -1868,10 +1981,10 @@ TagsComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/widgets/tags/tags.component.html"),
         styles: [__webpack_require__("../../../../../src/app/widgets/tags/tags.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"]) === "function" && _b || Object])
 ], TagsComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=tags.component.js.map
 
 /***/ }),
