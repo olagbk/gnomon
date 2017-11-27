@@ -1,8 +1,8 @@
 <div class="tags text-center">
-  <a #tagEl class="badge badge-dark mx-1"
-     [class.to-delete]="deleteOnClick"
+  <a class="badge badge-dark mx-1"
+     *ngFor="let tag of tags; let i = index"
      [class.selected]="selected"
-     [class.selectable]="selectable"
-     *ngFor="let tag of tags"
-     (click)="selectTag(tag, tagEl)">{{tag.name}}</a>
+     [hidden]="abbr && i >= abbrNumTags"
+     (click)="selectTag(tag)">{{tag.name}}
+  </a>
 </div>

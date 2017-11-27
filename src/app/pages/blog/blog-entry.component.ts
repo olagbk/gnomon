@@ -21,5 +21,8 @@ export class BlogEntryComponent implements OnInit {
       });
     });
   }
+  searchTag($event) {
+    this.router.navigate(['blog'], {queryParams: {tag: $event.name}});
+  }
 
 }
