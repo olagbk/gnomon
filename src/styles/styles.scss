@@ -33,6 +33,11 @@ body {
     text-shadow: 1px 1px 1px;
   }
 }
+.small-link {
+  @extend .link;
+  font-size: 12px;
+  color: $gray-500 !important;
+}
 .ngx-ellipsis-more {
   @extend .link;
   text-decoration: underline;

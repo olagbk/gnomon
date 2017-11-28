@@ -81,6 +81,12 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.inactiveTags.push($event);
     this.selectedTags.next(this.activeTags);
   }
+  deleteAllTags(): void {
+    while (this.activeTags.length > 0){
+      this.inactiveTags.push(this.activeTags.pop());
+    }
+    this.selectedTags.next(this.activeTags);
+  }
   toggleTagMode(): void {
     this.tagsAllMode = !this.tagsAllMode;
     this.selectedTags.next(this.activeTags);

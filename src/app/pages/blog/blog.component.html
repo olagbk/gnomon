@@ -1,6 +1,7 @@
 <div class="container px-md-5">
 
   <div class="tags dark-container p-4 mt-1">
+    <a class="small-link" *ngIf="activeTags.length > 0" (click)="deleteAllTags()">[ reset ]</a>
     <app-tags [tags]="activeTags"
               [selected]="true"
               (tagSelected)="deleteTag($event)">
@@ -11,7 +12,7 @@
               (tagSelected)="addTag($event)"
               (tagsExpanded)="tagsExpanded = true">
     </app-tags>
-    <a class="link tags-link" *ngIf="!tagsExpanded" (click)="tagsExpanded = true">more...</a>
+    <a class="small-link" *ngIf="!tagsExpanded" (click)="tagsExpanded = true">more...</a>
 
 
     <span class="tags-opts" *ngIf="activeTags?.length > 1">
@@ -35,7 +36,7 @@
              (typeaheadOnSelect)="addSearchedTag($event)"
              class="form-control tag-search">
 
-      <a class="link tags-link"
+      <a class="small-link"
          (click)="tagsExpanded = false">[ hide ]
       </a>
 
