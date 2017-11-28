@@ -8,8 +8,8 @@ export class BlogService {
 
   constructor(private http: Http) { }
 
-  getPosts(): Promise<Post[]> {
-    return this.http.get('/api/posts').toPromise()
+  getPosts(params = {}): Promise<Post[]> {
+    return this.http.get('/api/posts', params).toPromise()
       .then((res: Response) => res.json());
   }
   getPost(id): Promise<Post> {

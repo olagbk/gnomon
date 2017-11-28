@@ -22,7 +22,20 @@ module.exports = (router, sequelize) => {
       })
 
     .get((req, res) => {
-      sequelize.models.posts.findAll({include: {model: sequelize.models.tags, attributes: ['name']}})
+      const opts = {};
+      console.log(req.query);
+
+      if (req.query.count) {
+        opts.limit = req.query.count;
+        opts.order = [['createdAt', 'DESC']];
+      }
+      if (req.query.tags) {
+        opts.include = {
+          model: sequelize.models.tags,
+          attributes: ['name']
+        }
+      }
+      sequelize.models.posts.findAll(opts)
         .then(posts => res.json(posts))
         .catch(err => res.send(err));
     });

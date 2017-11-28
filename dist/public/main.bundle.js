@@ -746,7 +746,7 @@ AboutComponent = __decorate([
 /***/ "../../../../../src/app/pages/blog/blog-entry.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"dark-container post m-md-2 m-lg-3\">\n\n  <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n\n  <h4 class=\"title text-light\">{{post?.title}}</h4>\n\n  <span class=\"created-at\">{{post?.createdAt | date:'longDate' }}</span>\n  <span class=\"updated-at mb-2\" *ngIf=\"post?.createdAt !== post?.updatedAt\">Last updated on {{post?.updatedAt | date:'longDate'}}</span>\n\n  <app-tags [tags]=\"post?.tags\" (tagSelected)=\"searchTag($event)\"></app-tags>\n\n  <p class=\"text mt-3\">{{post?.body}}</p>\n  <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n</div>\n<disqus [identifier]=\"'/blog/' + post?.id\"></disqus>\n"
+module.exports = "<div class=\"row\">\n  <div class=\"post-col col-12 col-md-9\">\n\n    <div class=\"dark-container post m-md-2 m-lg-3\">\n\n      <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n\n      <h4 class=\"title text-light\">{{post?.title}}</h4>\n\n      <span class=\"created-at\">{{post?.createdAt | date:'longDate' }}</span>\n      <span class=\"updated-at mb-2\" *ngIf=\"post?.createdAt !== post?.updatedAt\">Last updated on {{post?.updatedAt | date:'longDate'}}</span>\n\n      <app-tags [tags]=\"post?.tags\" (tagSelected)=\"searchTag($event)\"></app-tags>\n\n      <p class=\"text mt-3\">{{post?.body}}</p>\n      <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n    </div>\n    <disqus [identifier]=\"'/blog/' + post?.id\"></disqus>\n\n  </div>\n\n  <div class=\"recent-col col-12 col-md-3 p-4 justify-content-start text-center\">\n    <h5 class=\"dark-container recent-header mb-4 p-3\">Recent posts</h5>\n\n    <a class=\"recent-post dark-container p-3 my-3\"\n       *ngFor=\"let post of recentPosts | async\"\n       [routerLink]=\"'/blog/' + post.id\">\n\n      <div class=\"recent-post-header\">\n        <span class=\"recent-title\">{{post.title}}</span>\n        <span class=\"middle-dot\">&middot;</span>\n        <span class=\"recent-date\">{{post.createdAt | date}}</span>\n      </div>\n\n      <p class=\"recent-text pl-md-3 mt-2\"\n         ellipsis=\"(...)\"\n         [ellipsis-word-boundaries]=\"' \\n'\">{{post.body}}\n      </p>\n\n    </a>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -758,7 +758,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  padding: 1rem; }\n\n.post {\n  max-width: 1200px;\n  padding: 1rem 2rem; }\n\n.text, .updated-at, .back {\n  font-size: 14px; }\n\n.text {\n  overflow: hidden; }\n\n.created-at {\n  text-align: center;\n  color: #868e96; }\n\n.updated-at {\n  text-align: center;\n  color: #495057;\n  line-height: 1.5rem; }\n\n.back {\n  margin: 1rem 0;\n  text-decoration: underline; }\n\n@media (min-width: 768px) {\n  .post {\n    padding: 1rem 3rem;\n    line-height: 2.5rem; }\n  .text {\n    font-size: 18px; }\n  .title {\n    font-size: 2.5rem; }\n  .created-at {\n    font-size: 18px; }\n  .updated-at, .back {\n    font-size: 16px; } }\n", ""]);
+exports.push([module.i, ":host {\n  padding: 1rem; }\n\n.post {\n  padding: 1rem 2rem; }\n\n.text, .updated-at, .back {\n  font-size: 14px; }\n\n.text {\n  overflow: hidden; }\n\n.created-at {\n  text-align: center;\n  color: #868e96; }\n\n.updated-at {\n  text-align: center;\n  color: #495057;\n  line-height: 1.5rem; }\n\n.back {\n  margin: 1rem 0;\n  text-decoration: underline; }\n\n.recent-header {\n  color: rgba(255, 255, 255, 0.6);\n  background: rgba(0, 0, 0, 0.3); }\n\n.recent-post {\n  color: rgba(255, 255, 255, 0.8) !important; }\n\n.recent-post:hover {\n  color: white !important;\n  text-decoration: none; }\n\n.recent-date {\n  color: #868e96; }\n\n.recent-date, .recent-text {\n  font-size: 14px; }\n\n.recent-text {\n  max-height: 100px; }\n\n.recent-title {\n  font-weight: 600; }\n\n@media (min-width: 768px) {\n  .post {\n    padding: 1rem 3rem;\n    line-height: 2.5rem; }\n  .text {\n    font-size: 18px; }\n  .title {\n    font-size: 2.5rem; }\n  .created-at {\n    font-size: 18px; }\n  .updated-at, .back {\n    font-size: 16px; } }\n", ""]);
 
 // exports
 
@@ -802,6 +802,7 @@ var BlogEntryComponent = (function () {
                     _this.router.navigate(['blog']);
                 }
                 _this.post = post;
+                _this.recentPosts = _this.blog.getPosts({ params: { count: 10 } });
             });
         });
     };
@@ -827,7 +828,7 @@ var _a, _b, _c;
 /***/ "../../../../../src/app/pages/blog/blog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container px-md-5\">\n\n  <div class=\"tags dark-container p-4 mt-1\">\n    <a class=\"small-link\" *ngIf=\"activeTags.length > 0\" (click)=\"deleteAllTags()\">[ reset ]</a>\n    <app-tags [tags]=\"activeTags\"\n              [selected]=\"true\"\n              (tagSelected)=\"deleteTag($event)\">\n\n    </app-tags>\n    <app-tags [tags]=\"inactiveTags\"\n              [abbr]=\"!tagsExpanded\"\n              (tagSelected)=\"addTag($event)\"\n              (tagsExpanded)=\"tagsExpanded = true\">\n    </app-tags>\n    <a class=\"small-link\" *ngIf=\"!tagsExpanded\" (click)=\"tagsExpanded = true\">more...</a>\n\n\n    <span class=\"tags-opts\" *ngIf=\"activeTags?.length > 1\">\n      <a class=\"link\"\n         [class.active]=\"!tagsAllMode\"\n         (click)=\"toggleTagMode()\">any\n      </a> /\n      <a class=\"link\"\n         [class.active]=\"tagsAllMode\"\n         (click)=\"toggleTagMode()\">all\n      </a>\n    </span>\n\n    <ng-container *ngIf=\"tagsExpanded\">\n\n      <input #search\n             [(ngModel)]=\"searchedTag\"\n             [typeahead]=\"inactiveTags\"\n             typeaheadOptionField=\"name\"\n             typeaheadScrollable = true\n             (typeaheadOnSelect)=\"addSearchedTag($event)\"\n             class=\"form-control tag-search\">\n\n      <a class=\"small-link\"\n         (click)=\"tagsExpanded = false\">[ hide ]\n      </a>\n\n    </ng-container>\n\n  </div>\n\n  <div class=\"dark-container post my-4\" *ngFor=\"let post of filteredPosts | async\">\n\n    <a class=\"link title mb-2\" [routerLink]=\"post.id\">{{ post.title }}</a>\n\n    <span class=\"created-at\">{{post.createdAt | date }}</span>\n\n    <app-tags [tags]=\"post.tags\"\n              (tagSelected)=\"addTag($event)\">\n    </app-tags>\n\n    <p class=\"text pl-md-3 mt-2\"\n       ellipsis=\"(...)\"\n       [ellipsis-word-boundaries]=\"' \\n'\"\n       (ellipsis-click-more)=\"goToPost(post.id)\">{{post.body}}\n    </p>\n\n    <div class=\"shadow-wrapper\"></div>\n  </div>\n</div>\n<app-scroll></app-scroll>\n"
+module.exports = "<div class=\"container px-md-5\">\n\n  <div class=\"tags dark-container p-4 mt-1\">\n    <a class=\"small-link\" *ngIf=\"activeTags.length > 0\" (click)=\"deleteAllTags()\">[ reset ]</a>\n    <app-tags [tags]=\"activeTags\"\n              [count]=\"true\"\n              [selected]=\"true\"\n              (tagSelected)=\"deleteTag($event)\">\n\n    </app-tags>\n    <app-tags [tags]=\"inactiveTags\"\n              [count]=\"true\"\n              [abbr]=\"!tagsExpanded\"\n              (tagSelected)=\"addTag($event)\"\n              (tagsExpanded)=\"tagsExpanded = true\">\n    </app-tags>\n    <a class=\"small-link\" *ngIf=\"!tagsExpanded\" (click)=\"tagsExpanded = true\">more...</a>\n\n\n    <span class=\"tags-opts\" *ngIf=\"activeTags?.length > 1\">\n      <a class=\"link\"\n         [class.active]=\"!tagsAllMode\"\n         (click)=\"toggleTagMode()\">any\n      </a> /\n      <a class=\"link\"\n         [class.active]=\"tagsAllMode\"\n         (click)=\"toggleTagMode()\">all\n      </a>\n    </span>\n\n    <ng-container *ngIf=\"tagsExpanded\">\n\n      <input #search\n             [(ngModel)]=\"searchedTag\"\n             [typeahead]=\"inactiveTags\"\n             typeaheadOptionField=\"name\"\n             typeaheadScrollable = true\n             (typeaheadOnSelect)=\"addSearchedTag($event)\"\n             class=\"form-control tag-search\">\n\n      <a class=\"small-link\"\n         (click)=\"tagsExpanded = false\">[ hide ]\n      </a>\n\n    </ng-container>\n\n  </div>\n\n  <div class=\"dark-container post my-4\" *ngFor=\"let post of filteredPosts | async\">\n\n    <a class=\"link title mb-2\" [routerLink]=\"post.id\">{{ post.title }}</a>\n\n    <span class=\"created-at\">{{post.createdAt | date }}</span>\n\n    <app-tags [tags]=\"post.tags\"\n              (tagSelected)=\"addTag($event)\">\n    </app-tags>\n\n    <p class=\"text pl-md-3 mt-2\"\n       ellipsis=\"(...)\"\n       [ellipsis-word-boundaries]=\"' \\n'\"\n       (ellipsis-click-more)=\"goToPost(post.id)\">{{post.body}}\n    </p>\n\n    <div class=\"shadow-wrapper\"></div>\n  </div>\n</div>\n<app-scroll></app-scroll>\n"
 
 /***/ }),
 
@@ -895,7 +896,7 @@ var BlogComponent = (function () {
     };
     BlogComponent.prototype.getPosts = function () {
         var _this = this;
-        this.blog.getPosts().then(function (posts) {
+        this.blog.getPosts({ tags: true }).then(function (posts) {
             _this.filteredPosts = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"](posts);
             _this.selectedTags.subscribe(function (tags) {
                 _this.filteredPosts.next(tags.length === 0
@@ -965,9 +966,8 @@ var BlogComponent = (function () {
         this.selectedTags.next(this.activeTags);
     };
     BlogComponent.prototype.deleteAllTags = function () {
-        while (this.activeTags.length > 0) {
-            this.inactiveTags.push(this.activeTags.pop());
-        }
+        this.inactiveTags = this.inactiveTags.concat(this.activeTags);
+        this.activeTags = [];
         this.selectedTags.next(this.activeTags);
     };
     BlogComponent.prototype.toggleTagMode = function () {
@@ -1018,8 +1018,9 @@ var BlogService = (function () {
     function BlogService(http) {
         this.http = http;
     }
-    BlogService.prototype.getPosts = function () {
-        return this.http.get('/api/posts').toPromise()
+    BlogService.prototype.getPosts = function (params) {
+        if (params === void 0) { params = {}; }
+        return this.http.get('/api/posts', params).toPromise()
             .then(function (res) { return res.json(); });
     };
     BlogService.prototype.getPost = function (id) {
@@ -1849,7 +1850,7 @@ SpinnerComponent = __decorate([
 /***/ "../../../../../src/app/widgets/tags/tags.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tags text-center\">\n  <a class=\"badge badge-dark mx-1\"\n     *ngFor=\"let tag of tags; let i = index\"\n     [class.selected]=\"selected\"\n     [hidden]=\"abbr && i >= abbrNumTags\"\n     (click)=\"selectTag(tag)\">{{tag.name}}\n  </a>\n</div>\n"
+module.exports = "<div class=\"tags text-center\">\n  <a class=\"badge badge-dark mx-1\"\n     *ngFor=\"let tag of tags; let i = index\"\n     [class.selected]=\"selected\"\n     [hidden]=\"abbr && i >= abbrNumTags\"\n     (click)=\"selectTag(tag)\">{{tag.name}}\n    <span *ngIf=\"count\" class=\"count\">({{tag.count}})</span>\n  </a>\n</div>\n"
 
 /***/ }),
 
@@ -1861,7 +1862,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  max-width: 450px;\n  margin: auto; }\n\n.badge.selected {\n  background: #868e96; }\n  .badge.selected:hover {\n    color: #868e96 !important;\n    text-decoration: line-through; }\n\n.badge:hover {\n  cursor: pointer;\n  background: #f8f9fa;\n  color: #212529 !important; }\n", ""]);
+exports.push([module.i, ":host {\n  max-width: 450px;\n  margin: auto; }\n\n.badge.selected {\n  background: #868e96; }\n  .badge.selected:hover {\n    color: #868e96 !important;\n    text-decoration: line-through; }\n\n.badge:hover {\n  cursor: pointer;\n  background: #f8f9fa;\n  color: #212529 !important; }\n\n.count {\n  color: #ced4da;\n  font-size: 10px; }\n", ""]);
 
 // exports
 
@@ -1890,6 +1891,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var TagsComponent = (function () {
     function TagsComponent() {
         this.abbrNumTags = 5;
+        this.count = false;
         this.abbr = false;
         this.selected = false;
         this.tagSelected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
@@ -1905,6 +1907,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Array)
 ], TagsComponent.prototype, "tags", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], TagsComponent.prototype, "count", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Object)

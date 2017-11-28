@@ -16,7 +16,20 @@ module.exports = function (router, sequelize) {
       res.send(err);
     });
   }).get(function (req, res) {
-    sequelize.models.posts.findAll({ include: { model: sequelize.models.tags, attributes: ['name'] } }).then(function (posts) {
+    var opts = {};
+    console.log(req.query);
+
+    if (req.query.count) {
+      opts.limit = req.query.count;
+      opts.order = [['createdAt', 'DESC']];
+    }
+    if (req.query.tags) {
+      opts.include = {
+        model: sequelize.models.tags,
+        attributes: ['name']
+      };
+    }
+    sequelize.models.posts.findAll(opts).then(function (posts) {
       return res.json(posts);
     }).catch(function (err) {
       return res.send(err);

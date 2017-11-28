@@ -30,7 +30,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.filteredPosts.unsubscribe();
   }
   getPosts(): void {
-    this.blog.getPosts().then(posts => {
+    this.blog.getPosts({tags: true}).then(posts => {
       this.filteredPosts = new BehaviorSubject(posts);
 
       this.selectedTags.subscribe(tags => {
@@ -82,9 +82,8 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.selectedTags.next(this.activeTags);
   }
   deleteAllTags(): void {
-    while (this.activeTags.length > 0){
-      this.inactiveTags.push(this.activeTags.pop());
-    }
+    this.inactiveTags = this.inactiveTags.concat(this.activeTags);
+    this.activeTags = [];
     this.selectedTags.next(this.activeTags);
   }
   toggleTagMode(): void {

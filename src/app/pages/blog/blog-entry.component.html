@@ -1,15 +1,43 @@
-<div class="dark-container post m-md-2 m-lg-3">
+<div class="row">
+  <div class="post-col col-12 col-md-9">
 
-  <a class="back link" routerLink="/blog">&larr; back</a>
+    <div class="dark-container post m-md-2 m-lg-3">
 
-  <h4 class="title text-light">{{post?.title}}</h4>
+      <a class="back link" routerLink="/blog">&larr; back</a>
 
-  <span class="created-at">{{post?.createdAt | date:'longDate' }}</span>
-  <span class="updated-at mb-2" *ngIf="post?.createdAt !== post?.updatedAt">Last updated on {{post?.updatedAt | date:'longDate'}}</span>
+      <h4 class="title text-light">{{post?.title}}</h4>
 
-  <app-tags [tags]="post?.tags" (tagSelected)="searchTag($event)"></app-tags>
+      <span class="created-at">{{post?.createdAt | date:'longDate' }}</span>
+      <span class="updated-at mb-2" *ngIf="post?.createdAt !== post?.updatedAt">Last updated on {{post?.updatedAt | date:'longDate'}}</span>
 
-  <p class="text mt-3">{{post?.body}}</p>
-  <a class="back link" routerLink="/blog">&larr; back</a>
+      <app-tags [tags]="post?.tags" (tagSelected)="searchTag($event)"></app-tags>
+
+      <p class="text mt-3">{{post?.body}}</p>
+      <a class="back link" routerLink="/blog">&larr; back</a>
+    </div>
+    <disqus [identifier]="'/blog/' + post?.id"></disqus>
+
+  </div>
+
+  <div class="recent-col col-12 col-md-3 p-4 justify-content-start text-center">
+    <h5 class="dark-container recent-header mb-4 p-3">Recent posts</h5>
+
+    <a class="recent-post dark-container p-3 my-3"
+       *ngFor="let post of recentPosts | async"
+       [routerLink]="'/blog/' + post.id">
+
+      <div class="recent-post-header">
+        <span class="recent-title">{{post.title}}</span>
+        <span class="middle-dot">&middot;</span>
+        <span class="recent-date">{{post.createdAt | date}}</span>
+      </div>
+
+      <p class="recent-text pl-md-3 mt-2"
+         ellipsis="(...)"
+         [ellipsis-word-boundaries]="' \n'">{{post.body}}
+      </p>
+
+    </a>
+  </div>
 </div>
-<disqus [identifier]="'/blog/' + post?.id"></disqus>
+

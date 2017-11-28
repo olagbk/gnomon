@@ -9,6 +9,7 @@ import { Tag } from '../../pages/blog/post';
 export class TagsComponent implements OnInit {
   abbrNumTags = 5;
   @Input() tags: Tag[];
+  @Input() count = false;
   @Input() abbr = false;
   @Input() selected = false;
   @Output() tagSelected: EventEmitter<string> = new EventEmitter();
