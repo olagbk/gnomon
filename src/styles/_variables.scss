@@ -4,7 +4,9 @@
 $navbar-dark-color:                 $white;
 $navbar-dark-hover-color:           rgba($white,.75);
 $navbar-dark-active-color:          rgba($white, .85);
-$navbar-font-md:                    16px;
-$navbar-font:                       20px;
+$navbar-font-small:                 24px;
+$navbar-font:                       32px;
 
-$burnt-edges:                       inset 0 0 10px 2px $black
+$burnt-edges:                       inset 0 0 10px 2px $black;
+$system-font:                      -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+$amatic:                            Amatic SC, $system-font;

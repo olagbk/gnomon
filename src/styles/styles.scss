@@ -1,9 +1,11 @@
 @import 'gallery';
 @import 'pagination';
 @import '../../node_modules/bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
 
 body {
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  font-family: "Ubuntu Condensed", $system-font;
 }
 .gallery-wrapper {
   margin: auto;
@@ -35,7 +37,7 @@ body {
 }
 .small-link {
   @extend .link;
-  font-size: 12px;
+  font-size: .8rem;
   color: $gray-500 !important;
 }
 .ngx-ellipsis-more {

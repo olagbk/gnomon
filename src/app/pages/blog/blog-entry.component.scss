@@ -6,7 +6,7 @@
   padding: 1rem 2rem;
 }
 .text, .updated-at, .back {
-  font-size: 14px;
+  font-size: .9rem;
 }
 .text {
   overflow: hidden;
@@ -27,6 +27,8 @@
 .recent-header {
   color: rgba($white, 0.6);
   background: rgba($black, 0.3);
+  text-transform: uppercase;
+  font-weight: bold;
 }
 .recent-post {
   color: rgba($white, 0.8) !important;
@@ -39,7 +41,7 @@
   color: $gray-600;
 }
 .recent-date, .recent-text {
-  font-size: 14px;
+  font-size: .9rem;
 }
 .recent-text {
   max-height: 100px;
@@ -54,15 +56,15 @@
     line-height: 2.5rem;
   }
   .text {
-    font-size: 18px;
+    font-size: 1.25rem;
   }
   .title {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
   .created-at {
-    font-size: 18px;
+    font-size: 1.1rem;
   }
   .updated-at, .back {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }

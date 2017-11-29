@@ -5,10 +5,11 @@
   padding: 3rem;
 }
 h1 {
-  font-size: 3rem;
+  font-family: $amatic;
+  font-size: 4rem;
   font-weight: 300;
   letter-spacing: 2px;
-  text-shadow: .05em .025em .015em $gray-100;
+  text-shadow: .05em .025em $gray-100;
   text-align: center;
   animation: fadein 1.5s forwards;
 }
@@ -23,6 +24,6 @@ h1 {
 
 @include media-breakpoint-up(md) {
   h1 {
-    font-size: 6rem;
+    font-size: 10rem;
   }
 }

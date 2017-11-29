@@ -14,6 +14,9 @@ import { Email } from './email';
     :host >>> .popover > .popover-body {
       color: #f8f9fa
     }
+    .form-group {
+      padding: 0 1rem;
+    }
     .button-wrapper {
       position: relative;
       width: fit-content;
@@ -39,6 +42,7 @@ import { Email } from './email';
       border-left: 6px solid #91232d;
     }
     .recaptcha {
+      max-width: 100%;
       margin: 2rem 0;
       overflow: hidden;
     }

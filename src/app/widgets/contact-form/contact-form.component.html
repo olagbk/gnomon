@@ -4,9 +4,9 @@
 </a>
 <p *ngIf="submitted">Your message has been sent.</p>
 
-<div class="container mt-3" *ngIf="!submitted" [hidden]="!formVisible">
+<div class="container mt-3 p-0" *ngIf="!submitted" [hidden]="!formVisible">
 
-  <form #contactForm="ngForm" (ngSubmit)="sendEmail()">
+  <form #contactForm="ngForm" (ngSubmit)="sendEmail()" class="p-1">
 
     <div class="form-group">
       <label for="name">Name</label>
@@ -23,7 +23,7 @@
       <textarea class="form-control" id="message" [(ngModel)]="model.message" name="message" required></textarea>
     </div>
 
-    <div class="recaptcha d-flex justify-content-start justify-content-sm-center">
+    <div class="recaptcha d-flex justify-content-center">
       <re-captcha [(ngModel)]="captcha" name="captcha" required></re-captcha>
     </div>
 

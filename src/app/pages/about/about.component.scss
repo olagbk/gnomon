@@ -3,6 +3,8 @@
 :host {
   width: 100%;
   background: radial-gradient(rgba($black,0.8), rgba($black, 0.6), rgba($black, 0.4));
+  font-size: 1.25rem;
+  margin-top: -.5rem;
 }
 .spinner {
   display: flex;

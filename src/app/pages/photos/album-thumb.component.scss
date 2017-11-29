@@ -16,6 +16,7 @@ $album-height-sm: .5 * $album-height-lg;
   background-size: cover;
   height: $album-height-lg;
   font-size: .15 * $album-height-lg;
+  font-family: $amatic;
   letter-spacing: 0.075em;
 }
 .album-thumb {
@@ -23,7 +24,7 @@ $album-height-sm: .5 * $album-height-lg;
   color: rgba(antiquewhite, 0.8);
   border: 1.5px solid rgba(255,255,255,0.1);
   box-shadow: $burnt-edges;
-  transition: .5s ease;
+  transition: background .5s ease;
   height: 100%;
   width: 100%;
   display: flex;
@@ -31,11 +32,13 @@ $album-height-sm: .5 * $album-height-lg;
   justify-content: center;
   text-align: center;
   text-decoration: none;
+  text-shadow: 2px 2px 2px black;
   font-weight: 300;
 
   &:hover {
     background: transparent;
     color: $white;
+    font-weight: bold;
   }
 }
 @include media-breakpoint-down(md){
