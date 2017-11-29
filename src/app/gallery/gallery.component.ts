@@ -38,10 +38,8 @@ export class GalleryComponent implements OnInit {
         this.pages = Math.ceil(data.count / this.perPage);
         this.images = data.images;
         this.gallery.load(this.images);
+        this.galleryLoaded = true;
       })
       .catch(err => this.galleryError = true);
-  }
-  addThumb() {
-    if (++this.thumbsLoaded === this.images.length) { this.galleryLoaded = true; }
   }
 }

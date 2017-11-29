@@ -111,7 +111,7 @@ AppRoutingModule = __decorate([
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background-wrapper\" [style.background-image]=\"'url(' + backgroundUrl + ')'\">\n  <img [src]=\"imgPreloadUrl\" (load)=\"backgroundUrl = imgPreloadUrl\" hidden>\n  <app-spinner *ngIf=\"!backgroundUrl\"></app-spinner>\n</div>\n<div *ngIf=\"backgroundUrl\" class=\"wrapper d-flex justify-content-center\">\n  <app-navbar></app-navbar>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n</div>\n\n\n"
+module.exports = "<div class=\"background-wrapper\" [style.background-image]=\"'url(' + backgroundUrl + ')'\">\n  <img [src]=\"imgPreloadUrl\" (load)=\"backgroundUrl = imgPreloadUrl\" hidden>\n  <app-spinner *ngIf=\"!backgroundUrl\"></app-spinner>\n</div>\n<div *ngIf=\"backgroundUrl\" class=\"wrapper d-flex justify-content-center\">\n  <app-navbar></app-navbar>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n  <footer>Copyright &copy; {{currentYear}} Gnomon. Designed & developed by Aleksandra Gabka.</footer>\n</div>\n"
 
 /***/ }),
 
@@ -123,7 +123,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".background-wrapper {\n  background-color: rgba(0, 0, 0, 0.95);\n  background-size: cover;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  overflow: auto; }\n\n.wrapper {\n  background-color: rgba(0, 0, 0, 0.7);\n  padding-top: 5rem;\n  position: absolute;\n  min-height: 100%;\n  min-width: 100%;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content; }\n", ""]);
+exports.push([module.i, ".background-wrapper {\n  background-color: rgba(0, 0, 0, 0.95);\n  background-size: cover;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  overflow: auto; }\n\n.wrapper {\n  background-color: rgba(0, 0, 0, 0.7);\n  padding: 5rem 0 3rem 0;\n  position: absolute;\n  min-height: 100%;\n  min-width: 100%;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content; }\n\nfooter {\n  position: absolute;\n  bottom: 0;\n  text-align: center;\n  letter-spacing: 2px;\n  font-size: 12px;\n  background: rgba(0, 0, 0, 0.5);\n  width: 100%;\n  border: rgba(0, 0, 0, 0.5);\n  color: rgba(255, 255, 255, 0.7);\n  padding: 1rem; }\n", ""]);
 
 // exports
 
@@ -152,6 +152,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AppComponent = (function () {
     function AppComponent() {
         this.imgPreloadUrl = '../assets/gnomon.png';
+        var date = new Date();
+        this.currentYear = date.getFullYear();
     }
     AppComponent.prototype.ngOnInit = function () { };
     AppComponent.prototype.setBackground = function () {
@@ -546,7 +548,7 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper my-4 my-md-5 px-5\">\n\n  <div [ngSwitch]=\"true\" class=\"d-flex justify-content-center\">\n\n    <app-pagination *ngSwitchCase=\"galleryLoaded\" [pages]=\"pages\"></app-pagination>\n\n    <p *ngSwitchCase=\"galleryError\" class=\"error-message p-3\">Couldn't fetch images :(</p>\n\n    <app-spinner *ngSwitchDefault></app-spinner>\n\n  </div>\n\n  <div [style.visibility]=\"(galleryLoaded)? 'visible' : 'hidden'\">\n\n    <div class=\"row justify-content-center\">\n\n      <app-gallery-thumb *ngFor=\"let image of images; let i = index\"\n                         [image]=\"image\"\n                         [index]=\"i\"\n                         (addBackground)=\"addThumb()\">\n\n      </app-gallery-thumb>\n\n    </div>\n\n    <app-scroll></app-scroll>\n\n  </div>\n\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
+module.exports = "<div class=\"gallery-wrapper px-5 mt-md-3\">\n\n  <div [ngSwitch]=\"true\" class=\"d-flex justify-content-center\">\n\n    <p *ngSwitchCase=\"galleryError\" class=\"error-message p-3\">Couldn't fetch images :(</p>\n\n    <div class=\"gallery-loaded\" *ngSwitchCase=\"galleryLoaded\">\n\n      <app-pagination [pages]=\"pages\"></app-pagination>\n\n      <div class=\"row justify-content-center\">\n\n        <app-gallery-thumb *ngFor=\"let image of images; let i = index\"\n                           [image]=\"image\"\n                           [index]=\"i\">\n        </app-gallery-thumb>\n\n      </div>\n\n      <app-scroll></app-scroll>\n\n    </div>\n\n    <app-spinner *ngSwitchDefault></app-spinner>\n\n  </div>\n\n\n\n\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
 
 /***/ }),
 
@@ -558,7 +560,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "app-spinner {\n  position: absolute;\n  top: 0; }\n  @media (min-width: 768px) {\n    app-spinner {\n      top: 0.5rem; } }\n\n.error-message {\n  color: rgba(255, 255, 255, 0.85);\n  letter-spacing: 2px; }\n", ""]);
+exports.push([module.i, "app-spinner {\n  position: absolute;\n  top: 0; }\n  @media (min-width: 768px) {\n    app-spinner {\n      top: 0.5rem; } }\n\n.gallery-loaded {\n  width: 100%; }\n\n.error-message {\n  color: rgba(255, 255, 255, 0.85);\n  letter-spacing: 2px; }\n", ""]);
 
 // exports
 
@@ -614,13 +616,9 @@ var GalleryComponent = (function () {
             _this.pages = Math.ceil(data.count / _this.perPage);
             _this.images = data.images;
             _this.gallery.load(_this.images);
+            _this.galleryLoaded = true;
         })
             .catch(function (err) { return _this.galleryError = true; });
-    };
-    GalleryComponent.prototype.addThumb = function () {
-        if (++this.thumbsLoaded === this.images.length) {
-            this.galleryLoaded = true;
-        }
     };
     return GalleryComponent;
 }());
@@ -693,7 +691,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  width: 100%;\n  background: radial-gradient(#000, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); }\n\n.spinner {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n\napp-spinner {\n  position: absolute; }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  border: 2px solid #343a40;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  width: 100%;\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  line-height: 2rem; }\n\n@media (min-width: 992px) {\n  .photo {\n    width: 30vw;\n    height: 30vw; }\n  .desc {\n    width: 40vw; } }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  background: radial-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)); }\n\n.spinner {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n\napp-spinner {\n  position: absolute; }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  border: 2px solid #343a40;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  width: 100%;\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  line-height: 2rem; }\n\n@media (min-width: 992px) {\n  .photo {\n    width: 30vw;\n    height: 30vw; }\n  .desc {\n    width: 40vw; } }\n", ""]);
 
 // exports
 
@@ -746,7 +744,7 @@ AboutComponent = __decorate([
 /***/ "../../../../../src/app/pages/blog/blog-entry.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"post-col col-12 col-md-9\">\n\n    <div class=\"dark-container post m-md-2 m-lg-3\">\n\n      <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n\n      <h4 class=\"title text-light\">{{post?.title}}</h4>\n\n      <span class=\"created-at\">{{post?.createdAt | date:'longDate' }}</span>\n      <span class=\"updated-at mb-2\" *ngIf=\"post?.createdAt !== post?.updatedAt\">Last updated on {{post?.updatedAt | date:'longDate'}}</span>\n\n      <app-tags [tags]=\"post?.tags\" (tagSelected)=\"searchTag($event)\"></app-tags>\n\n      <p class=\"text mt-3\">{{post?.body}}</p>\n      <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n    </div>\n    <disqus [identifier]=\"'/blog/' + post?.id\"></disqus>\n\n  </div>\n\n  <div class=\"recent-col col-12 col-md-3 p-4 justify-content-start text-center\">\n    <h5 class=\"dark-container recent-header mb-4 p-3\">Recent posts</h5>\n\n    <a class=\"recent-post dark-container p-3 my-3\"\n       *ngFor=\"let post of recentPosts | async\"\n       [routerLink]=\"'/blog/' + post.id\">\n\n      <div class=\"recent-post-header\">\n        <span class=\"recent-title\">{{post.title}}</span>\n        <span class=\"middle-dot\">&middot;</span>\n        <span class=\"recent-date\">{{post.createdAt | date}}</span>\n      </div>\n\n      <p class=\"recent-text pl-md-3 mt-2\"\n         ellipsis=\"(...)\"\n         [ellipsis-word-boundaries]=\"' \\n'\">{{post.body}}\n      </p>\n\n    </a>\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"row\">\n  <div class=\"post-col col-12 col-lg-9\">\n\n    <div class=\"dark-container post m-md-2 m-lg-3\">\n\n      <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n\n      <h4 class=\"title text-light\">{{post?.title}}</h4>\n\n      <span class=\"created-at\">{{post?.createdAt | date:'longDate' }}</span>\n      <span class=\"updated-at mb-2\" *ngIf=\"post?.createdAt !== post?.updatedAt\">Last updated on {{post?.updatedAt | date:'longDate'}}</span>\n\n      <app-tags [tags]=\"post?.tags\" (tagSelected)=\"searchTag($event)\"></app-tags>\n\n      <p class=\"text mt-3\">{{post?.body}}</p>\n      <a class=\"back link\" routerLink=\"/blog\">&larr; back</a>\n    </div>\n    <disqus [identifier]=\"'/blog/' + post?.id\"></disqus>\n\n  </div>\n\n  <div class=\"recent-col col-12 col-lg-3 p-4 justify-content-start text-center\">\n    <h5 class=\"dark-container recent-header mb-4 p-3\">Recent posts</h5>\n\n    <a class=\"recent-post dark-container p-3 my-3\"\n       *ngFor=\"let post of recentPosts | async\"\n       [routerLink]=\"'/blog/' + post.id\">\n\n      <div class=\"recent-post-header\">\n        <span class=\"recent-title\">{{post.title}}</span>\n        <span class=\"middle-dot\">&middot;</span>\n        <span class=\"recent-date\">{{post.createdAt | date}}</span>\n      </div>\n\n      <p class=\"recent-text pl-md-3 mt-2\"\n         ellipsis=\"(...)\"\n         [ellipsis-word-boundaries]=\"' \\n'\">{{post.body}}\n      </p>\n\n    </a>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -1185,7 +1183,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  width: 100%;\n  max-width: 640px;\n  margin: 0.75rem; }\n\n.album-thumb-container {\n  background-size: cover;\n  height: 480px;\n  font-size: 72px;\n  letter-spacing: 0.075em; }\n\n.album-thumb {\n  background: rgba(33, 37, 41, 0.6);\n  color: rgba(250, 235, 215, 0.8);\n  border: 1.5px solid rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 0 10px 2px #000;\n  transition: .5s ease;\n  height: 100%;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  text-decoration: none;\n  font-weight: 300; }\n  .album-thumb:hover {\n    background: transparent;\n    color: #fff; }\n\n@media (max-width: 991px) {\n  :host {\n    max-width: 480px; }\n  .album-thumb-container {\n    height: 360px;\n    font-size: 54px; } }\n\n@media (max-width: 575px) {\n  :host {\n    max-width: 320px; }\n  .album-thumb-container {\n    height: 240px;\n    font-size: 32px; } }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  max-width: 640px;\n  margin: 0.75rem; }\n\n.album-thumb-container {\n  background-size: cover;\n  height: 480px;\n  font-size: 72px;\n  letter-spacing: 0.075em; }\n\n.album-thumb {\n  background: rgba(33, 37, 41, 0.5);\n  color: rgba(250, 235, 215, 0.8);\n  border: 1.5px solid rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 0 10px 2px #000;\n  transition: .5s ease;\n  height: 100%;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  text-decoration: none;\n  font-weight: 300; }\n  .album-thumb:hover {\n    background: transparent;\n    color: #fff; }\n\n@media (max-width: 991px) {\n  :host {\n    max-width: 480px; }\n  .album-thumb-container {\n    height: 360px;\n    font-size: 54px; } }\n\n@media (max-width: 575px) {\n  :host {\n    max-width: 320px; }\n  .album-thumb-container {\n    height: 240px;\n    font-size: 32px; } }\n", ""]);
 
 // exports
 
@@ -1320,7 +1318,7 @@ var _a;
 /***/ "../../../../../src/app/pages/photos/photos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-spinner *ngIf=\"!albumsLoaded\"></app-spinner>\n\n<div [style.visibility]=\"(albumsLoaded)? 'visible' : 'hidden'\">\n\n  <div class=\"gallery-wrapper mt-4 mt-md-5 pt-4 px-5 d-flex justify-content-center\">\n\n    <div class=\"row justify-content-center\">\n\n      <app-album-thumb *ngFor=\"let album of albums; let i = index\" [album]=\"album\" (addBackground)=\"addThumb()\"></app-album-thumb>\n\n    </div>\n\n  </div>\n\n  <app-scroll></app-scroll>\n\n</div>\n\n\n"
+module.exports = "<app-spinner *ngIf=\"!albumsLoaded\"></app-spinner>\n\n<div [style.visibility]=\"(albumsLoaded)? 'visible' : 'hidden'\">\n\n  <div class=\"gallery-wrapper pt-4 px-5 d-flex justify-content-center\">\n\n    <div class=\"row justify-content-center\">\n\n      <app-album-thumb *ngFor=\"let album of albums; let i = index\" [album]=\"album\" (addBackground)=\"addThumb()\"></app-album-thumb>\n\n    </div>\n\n  </div>\n\n  <app-scroll></app-scroll>\n\n</div>\n\n\n"
 
 /***/ }),
 
