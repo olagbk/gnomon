@@ -111,7 +111,7 @@ AppRoutingModule = __decorate([
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"background-wrapper\" [style.background-image]=\"'url(' + backgroundUrl + ')'\">\n  <img [src]=\"imgPreloadUrl\" (load)=\"backgroundUrl = imgPreloadUrl\" hidden>\n  <app-spinner *ngIf=\"!backgroundUrl\"></app-spinner>\n</div>\n<div *ngIf=\"backgroundUrl\" class=\"wrapper d-flex justify-content-center\">\n  <app-navbar></app-navbar>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n  <footer>Copyright &copy; {{currentYear}} Gnomon. Designed & developed by Aleksandra Gabka.</footer>\n</div>\n"
+module.exports = "<div class=\"background-wrapper\" [style.background-image]=\"'url(' + backgroundUrl + ')'\">\n  <img [src]=\"imgPreloadUrl\" (load)=\"backgroundUrl = imgPreloadUrl\" hidden>\n  <app-spinner *ngIf=\"!backgroundUrl\"></app-spinner>\n</div>\n<div *ngIf=\"backgroundUrl\" class=\"wrapper d-flex justify-content-center\">\n  <app-navbar></app-navbar>\n  <router-outlet (deactivate)=\"scrollToTop()\"></router-outlet>\n  <footer>Gnomon &copy; {{currentYear}}. Designed & developed by Aleksandra Gabka.</footer>\n</div>\n"
 
 /***/ }),
 
@@ -548,7 +548,7 @@ var _a, _b, _c, _d;
 /***/ "../../../../../src/app/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"gallery-wrapper px-5 mt-md-3\">\n\n  <div [ngSwitch]=\"true\" class=\"d-flex justify-content-center\">\n\n    <p *ngSwitchCase=\"galleryError\" class=\"error-message p-3\">Couldn't fetch images :(</p>\n\n    <div class=\"gallery-loaded\" *ngSwitchCase=\"galleryLoaded\">\n\n      <app-pagination [pages]=\"pages\"></app-pagination>\n\n      <div class=\"row justify-content-center\">\n\n        <app-gallery-thumb *ngFor=\"let image of images; let i = index\"\n                           [image]=\"image\"\n                           [index]=\"i\">\n        </app-gallery-thumb>\n\n      </div>\n\n      <app-scroll></app-scroll>\n\n    </div>\n\n    <app-spinner *ngSwitchDefault></app-spinner>\n\n  </div>\n\n\n\n\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
+module.exports = "<div class=\"gallery-wrapper px-5 mt-md-3\">\n\n  <div [ngSwitch]=\"true\" class=\"d-flex justify-content-center\">\n\n    <p *ngSwitchCase=\"galleryError\" class=\"error-message p-3\">Couldn't fetch images :(</p>\n\n    <div class=\"gallery-loaded\" *ngSwitchCase=\"galleryLoaded\">\n\n      <app-pagination [items]=\"pages\"></app-pagination>\n\n      <div class=\"row justify-content-center\">\n\n        <app-gallery-thumb *ngFor=\"let image of images; let i = index\"\n                           [image]=\"image\"\n                           [index]=\"i\">\n        </app-gallery-thumb>\n\n      </div>\n\n      <app-scroll></app-scroll>\n\n    </div>\n\n    <app-spinner *ngSwitchDefault></app-spinner>\n\n  </div>\n\n\n\n\n\n</div>\n\n<gallery-modal></gallery-modal>\n"
 
 /***/ }),
 
@@ -679,7 +679,7 @@ var galleryConfig = {
 /***/ "../../../../../src/app/pages/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row pt-5 mt-lg-5 px-1\">\n\n  <div #photoDiv\n       class=\"photo mx-2\">\n\n    <span #spinner class=\"spinner\">\n      <app-spinner></app-spinner>\n    </span>\n\n    <img src=\"../../../assets/about.jpg\"\n         (load)=\"photoDiv.style.backgroundColor = 'saddlebrown'; spinner.style.display = 'none'\"/>\n  </div>\n\n  <div class=\"desc pt-3 mb-4\">\n    <p class=\"mx-2\">I am interior crocodile alligator</p>\n\n    <div class=\"desc-links mb-2\">\n      <a class=\"link desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"link desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a>\n    </div>\n\n    <app-contact-form></app-contact-form>\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"row pt-5 mt-lg-5 px-1\">\n\n  <div #photoDiv\n       class=\"photo mx-2\">\n\n    <span #spinner class=\"spinner\">\n      <app-spinner></app-spinner>\n    </span>\n\n    <img src=\"../../../assets/about.jpg\"\n         (load)=\"photoDiv.style.backgroundColor = 'saddlebrown'; spinner.style.display = 'none'\"/>\n  </div>\n\n  <div class=\"desc pt-3 mb-4\">\n    <p class=\"mx-2 mb-2\">I am interior crocodile alligator</p>\n\n    <div class=\"desc-links mb-2\">\n      <a class=\"link desc-link\" href=\"https://www.facebook.com/BoguOs-Gnomon-689909394425813/\" target=\"_blank\">facebook</a> /\n      <a class=\"link desc-link\" href=\"https://www.flickr.com/photos/99486946@N05/\" target=\"_blank\">flickr</a>\n    </div>\n\n    <app-contact-form></app-contact-form>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -691,7 +691,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  width: 100%;\n  background: radial-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));\n  font-size: 1.25rem;\n  margin-top: -.5rem; }\n\n.spinner {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n\napp-spinner {\n  position: absolute; }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  border: 2px solid #343a40;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  width: 100%;\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  line-height: 2rem; }\n\n@media (min-width: 992px) {\n  .photo {\n    width: 30vw;\n    height: 30vw; }\n  .desc {\n    width: 40vw; } }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  background: radial-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));\n  margin-top: -.5rem; }\n\n.spinner {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n\napp-spinner {\n  position: absolute; }\n\n.row {\n  margin: auto;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly; }\n\n.photo {\n  border: 2px solid #343a40;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: inset 0 0 10px 2px #000;\n  opacity: 0.5; }\n  .photo img {\n    width: 100%;\n    opacity: 0.8; }\n\n.desc {\n  width: 100%;\n  text-align: center;\n  color: #adb5bd;\n  letter-spacing: 3px;\n  font-weight: 300; }\n\n.desc-link {\n  line-height: 2rem; }\n\n@media (min-width: 992px) {\n  .photo {\n    width: 30vw;\n    height: 30vw; }\n  .desc {\n    width: 40vw;\n    font-size: 1.25rem; } }\n", ""]);
 
 // exports
 
@@ -826,7 +826,7 @@ var _a, _b, _c;
 /***/ "../../../../../src/app/pages/blog/blog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container px-md-5\">\n\n  <div class=\"tags dark-container p-4 mt-1\">\n    <a class=\"small-link\" *ngIf=\"activeTags.length > 0\" (click)=\"deleteAllTags()\">[ reset ]</a>\n    <app-tags [tags]=\"activeTags\"\n              [count]=\"true\"\n              [selected]=\"true\"\n              (tagSelected)=\"deleteTag($event)\">\n\n    </app-tags>\n    <app-tags [tags]=\"inactiveTags\"\n              [count]=\"true\"\n              [abbr]=\"!tagsExpanded\"\n              (tagSelected)=\"addTag($event)\"\n              (tagsExpanded)=\"tagsExpanded = true\">\n    </app-tags>\n    <a class=\"small-link\" *ngIf=\"!tagsExpanded\" (click)=\"tagsExpanded = true\">more...</a>\n\n\n    <span class=\"tags-opts\" *ngIf=\"activeTags?.length > 1\">\n      <a class=\"link\"\n         [class.active]=\"!tagsAllMode\"\n         (click)=\"toggleTagMode()\">any\n      </a> /\n      <a class=\"link\"\n         [class.active]=\"tagsAllMode\"\n         (click)=\"toggleTagMode()\">all\n      </a>\n    </span>\n\n    <ng-container *ngIf=\"tagsExpanded\">\n\n      <input #search\n             [(ngModel)]=\"searchedTag\"\n             [typeahead]=\"inactiveTags\"\n             typeaheadOptionField=\"name\"\n             typeaheadScrollable = true\n             (typeaheadOnSelect)=\"addSearchedTag($event)\"\n             class=\"form-control tag-search\">\n\n      <a class=\"small-link\"\n         (click)=\"tagsExpanded = false\">[ hide ]\n      </a>\n\n    </ng-container>\n\n  </div>\n\n  <div class=\"dark-container post my-4\" *ngFor=\"let post of filteredPosts | async\">\n\n    <a class=\"link title mb-2\" [routerLink]=\"post.id\">{{ post.title }}</a>\n\n    <span class=\"created-at\">{{post.createdAt | date }}</span>\n\n    <app-tags [tags]=\"post.tags\"\n              (tagSelected)=\"addTag($event)\">\n    </app-tags>\n\n    <p class=\"text pl-md-3 mt-2\"\n       ellipsis=\"(...)\"\n       [ellipsis-word-boundaries]=\"' \\n'\"\n       (ellipsis-click-more)=\"goToPost(post.id)\">{{post.body}}\n    </p>\n\n    <div class=\"shadow-wrapper\"></div>\n  </div>\n</div>\n<app-scroll></app-scroll>\n"
+module.exports = "<div class=\"container px-md-5\">\n\n  <app-pagination [items]=\"filteredPosts?.getValue().length\" [perPage]=\"perPage\"></app-pagination>\n\n  <div class=\"tags dark-container p-3 mb-2\">\n\n    <a class=\"small-link\" *ngIf=\"activeTags.length > 0\" (click)=\"deleteAllTags()\">[ reset ]</a>\n    <app-tags [tags]=\"activeTags\"\n              [count]=\"true\"\n              [selected]=\"true\"\n              (tagSelected)=\"deleteTag($event)\">\n\n    </app-tags>\n    <app-tags [tags]=\"inactiveTags\"\n              [count]=\"true\"\n              [abbr]=\"!tagsExpanded\"\n              (tagSelected)=\"addTag($event)\"\n              (tagsExpanded)=\"tagsExpanded = true\">\n    </app-tags>\n    <a class=\"small-link\" *ngIf=\"!tagsExpanded\" (click)=\"tagsExpanded = true\">more...</a>\n\n\n    <span class=\"tags-opts\" *ngIf=\"activeTags?.length > 1\">\n      <a class=\"link\"\n         [class.active]=\"!tagsAllMode\"\n         (click)=\"toggleTagMode()\">any\n      </a> |\n      <a class=\"link\"\n         [class.active]=\"tagsAllMode\"\n         (click)=\"toggleTagMode()\">all\n      </a>\n    </span>\n\n    <ng-container *ngIf=\"tagsExpanded\">\n\n      <input #search\n             [(ngModel)]=\"searchedTag\"\n             [typeahead]=\"inactiveTags\"\n             typeaheadOptionField=\"name\"\n             typeaheadScrollable = true\n             (typeaheadOnSelect)=\"addSearchedTag($event)\"\n             class=\"form-control tag-search\">\n\n      <a class=\"small-link\"\n         (click)=\"tagsExpanded = false\">[ hide ]\n      </a>\n\n    </ng-container>\n\n  </div>\n\n  <ng-container class=\"dark-container post mb-4\" *ngFor=\"let post of filteredPosts | async; let i = index\">\n\n    <div class=\"dark-container post mb-4\" *ngIf=\"currentPage * perPage - perPage <= i && i < currentPage * perPage\">\n      <a class=\"link title mb-2\" [routerLink]=\"post.id\">{{ post.title }}</a>\n\n      <span class=\"created-at\">{{post.createdAt | date }}</span>\n\n      <app-tags [tags]=\"post.tags\"\n                (tagSelected)=\"addTag($event)\">\n      </app-tags>\n\n      <p class=\"text pl-md-3 mt-2\"\n         ellipsis=\"(...)\"\n         [ellipsis-word-boundaries]=\"' \\n'\"\n         (ellipsis-click-more)=\"goToPost(post.id)\">{{post.body}}\n      </p>\n\n      <div class=\"shadow-wrapper\"></div>\n    </div>\n\n  </ng-container>\n</div>\n<app-scroll></app-scroll>\n"
 
 /***/ }),
 
@@ -838,7 +838,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  width: 100%;\n  background: rgba(0, 0, 0, 0.3); }\n\n.post {\n  position: relative;\n  padding: 2rem 2rem 1rem 2rem; }\n\n.text {\n  font-size: .9rem;\n  max-height: 250px; }\n\n.title {\n  font-size: 1.5rem;\n  text-decoration: underline;\n  text-underline-position: under; }\n  .title:hover {\n    letter-spacing: 2.5px; }\n  .title:not(:hover) {\n    font-weight: 500; }\n\n.created-at {\n  text-align: center;\n  color: #868e96; }\n\n.shadow-wrapper {\n  position: absolute;\n  width: 90%;\n  height: 1px;\n  left: 5%;\n  bottom: 5px;\n  box-shadow: 0px -20px 10px 20px rgba(0, 0, 0, 0.5); }\n\n.tags {\n  text-align: center; }\n\n.tags-opts {\n  font-size: .9rem; }\n\n.small-link {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  margin: auto; }\n\n.tag-search {\n  width: 200px;\n  background: rgba(255, 255, 255, 0.9);\n  padding: 0.25rem;\n  margin: .5rem auto; }\n\n@media (min-width: 768px) {\n  .text {\n    font-size: 1rem; } }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  background: rgba(0, 0, 0, 0.3); }\n\n.post {\n  position: relative;\n  padding: 2rem 2rem 1rem 2rem; }\n\n.text {\n  font-size: .9rem;\n  max-height: 250px; }\n\n.title {\n  font-size: 1.5rem;\n  text-decoration: underline;\n  text-underline-position: under; }\n  .title:hover {\n    letter-spacing: 2.5px; }\n  .title:not(:hover) {\n    font-weight: 500; }\n\n.created-at {\n  text-align: center;\n  color: #868e96; }\n\n.shadow-wrapper {\n  position: absolute;\n  width: 90%;\n  height: 1px;\n  left: 5%;\n  bottom: 5px;\n  box-shadow: 0px -20px 10px 20px rgba(0, 0, 0, 0.5); }\n\n.tags {\n  text-align: center; }\n\n.tags-opts {\n  font-size: .9rem; }\n\n.small-link {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  margin: auto; }\n\n.tag-search {\n  width: 200px;\n  background: rgba(255, 255, 255, 0.9);\n  padding: 0.25rem;\n  margin: .5rem auto; }\n\n@media (min-width: 768px) {\n  :host {\n    padding-top: 1rem; }\n  .text {\n    font-size: 1rem; } }\n", ""]);
 
 // exports
 
@@ -883,10 +883,18 @@ var BlogComponent = (function () {
         this.activeTags = [];
         this.tagsAllMode = false;
         this.tagsExpanded = false;
+        this.currentPage = 1;
+        this.perPage = 10;
     }
     BlogComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.getTags();
         this.getPosts();
+        this.activatedRoute.queryParams.subscribe(function (params) {
+            if (params.page) {
+                _this.currentPage = params.page;
+            }
+        });
     };
     BlogComponent.prototype.ngOnDestroy = function () {
         this.selectedTags.unsubscribe();
@@ -894,7 +902,7 @@ var BlogComponent = (function () {
     };
     BlogComponent.prototype.getPosts = function () {
         var _this = this;
-        this.blog.getPosts({ tags: true }).then(function (posts) {
+        this.blog.getPosts({ params: { tags: true } }).then(function (posts) {
             _this.filteredPosts = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"](posts);
             _this.selectedTags.subscribe(function (tags) {
                 _this.filteredPosts.next(tags.length === 0
@@ -1122,7 +1130,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center;\n  padding: 3rem; }\n\nh1 {\n  font-family: Amatic SC, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n  font-size: 4rem;\n  font-weight: 300;\n  letter-spacing: 2px;\n  text-shadow: 0.05em 0.025em #f8f9fa;\n  text-align: center;\n  -webkit-animation: fadein 1.5s forwards;\n          animation: fadein 1.5s forwards; }\n\n@-webkit-keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 0.7; } }\n\n@keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 0.7; } }\n\n@media (min-width: 768px) {\n  h1 {\n    font-size: 10rem; } }\n", ""]);
+exports.push([module.i, ":host {\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center;\n  padding: 3rem; }\n\nh1 {\n  font-family: Amatic SC, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n  font-size: 4rem;\n  font-weight: 300;\n  letter-spacing: 2px;\n  text-shadow: 0.05em 0.025em #f8f9fa;\n  text-align: center;\n  -webkit-animation: fadein 2s forwards;\n          animation: fadein 2s forwards; }\n\n@-webkit-keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 0.7; } }\n\n@keyframes fadein {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 0.7; } }\n\n@media (min-width: 768px) {\n  h1 {\n    font-size: 10rem; } }\n", ""]);
 
 // exports
 
@@ -1571,7 +1579,7 @@ ContactFormComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-contact-form',
         template: __webpack_require__("../../../../../src/app/widgets/contact-form/contact-form.component.html"),
-        styles: ["\n    :host >>> .popover {\n      background-color: rgba(0,0,0,0.9);\n    }\n    :host >>> .popover > .arrow:after {\n      border-top-color: rgba(0,0,0,0.9);\n    }\n    :host >>> .popover > .popover-body {\n      color: #f8f9fa\n    }\n    .form-group {\n      padding: 0 1rem;\n    }\n    .button-wrapper {\n      position: relative;\n      width: fit-content;\n      margin: auto;\n    }\n    .popover-wrapper {\n      position: absolute;\n      left: 0;\n      top: 0;\n      width: 100%;\n      height: 100%;\n    }\n    .submit-button:hover {\n      background: transparent;\n      color: #f8f9fa;\n      border-color: #f8f9fa;\n      cursor: pointer;\n    }\n    #message {\n      height: 225px;\n    }\n    .ng-invalid.ng-touched[required]:not(re-captcha) {\n      border-left: 6px solid #91232d;\n    }\n    .recaptcha {\n      max-width: 100%;\n      margin: 2rem 0;\n      overflow: hidden;\n    }\n    .form-link {\n      text-decoration: none;\n    }\n  "]
+        styles: ["\n    :host >>> .popover {\n      background-color: rgba(0,0,0,0.9);\n    }\n    :host >>> .popover > .arrow:after {\n      border-top-color: rgba(0,0,0,0.9);\n    }\n    :host >>> .popover > .popover-body {\n      color: #f8f9fa\n    }\n    .form-group {\n      padding: 0 1rem;\n    }\n    .button-wrapper {\n      position: relative;\n      width: fit-content;\n      margin: auto;\n    }\n    .popover-wrapper {\n      position: absolute;\n      left: 0;\n      top: 0;\n      width: 100%;\n      height: 100%;\n    }\n    .submit-button {\n      font-size: 1.5rem;\n      letter-spacing; 2px;\n    }\n    .submit-button:hover {\n      background: transparent;\n      color: #f8f9fa;\n      border-color: #f8f9fa;\n      cursor: pointer;\n    }\n    #message {\n      height: 225px;\n    }\n    .ng-invalid.ng-touched[required]:not(re-captcha) {\n      border-left: 6px solid #91232d;\n    }\n    .recaptcha {\n      max-width: 100%;\n      margin: 2rem 0;\n      overflow: hidden;\n    }\n    .form-link {\n      text-decoration: none;\n    }\n  "]
     }),
     __metadata("design:paramtypes", [])
 ], ContactFormComponent);
@@ -1601,7 +1609,7 @@ var Email = (function () {
 /***/ "../../../../../src/app/widgets/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark fixed-top py-3\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto p-4 p-lg-0\">\n      <li class=\"home-button align-self-center px-2 mb-3\"  (click)=\"toggleCollapse()\">\n        <a class=\"nav-link p-2\" routerLink=\"/home\" routerLinkActive=\"active\"> g </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/blog\" routerLinkActive=\"active\"> blog </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/drawings\" routerLinkActive=\"active\"> drawings </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/sketches\" routerLinkActive=\"active\"> sketches </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/photos\" routerLinkActive=\"active\"> photographs </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"about\" routerLinkActive=\"active\"> about </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark fixed-top py-3\">\n\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navLinks\"\n          aria-controls=\"navLinks\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"\n          (click)=\"toggleCollapse()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"navbar-collapse\" [collapse]=\"!isCollapsed\" id=\"navLinks\">\n    <ul class=\"navbar-nav m-auto p-4 p-lg-0\">\n      <li class=\"home-button align-self-center px-2 m-2\"  (click)=\"toggleCollapse()\">\n        <a class=\"nav-link p-2\" routerLink=\"/home\" routerLinkActive=\"active\"> g </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/blog\" routerLinkActive=\"active\"> blog </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/drawings\" routerLinkActive=\"active\"> drawings </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/sketches\" routerLinkActive=\"active\"> sketches </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"/photos\" routerLinkActive=\"active\"> photographs </a>\n      </li>\n      <li class=\"nav-item\" (click)=\"toggleCollapse()\">\n        <a class=\"nav-link\" routerLink=\"about\" routerLinkActive=\"active\"> about </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1613,7 +1621,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.75); }\n\n.nav-item {\n  padding: 0 1rem;\n  margin: auto;\n  opacity: 0.8; }\n\n.nav-link {\n  padding: 0;\n  font-family: Amatic SC, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n  font-size: 32px;\n  font-weight: bold;\n  text-transform: uppercase;\n  text-shadow: 0.5px 0.5px 1px #868e96;\n  letter-spacing: 1px; }\n  .nav-link:after {\n    height: 0;\n    content: '';\n    display: block;\n    position: relative;\n    background: rgba(255, 255, 255, 0.85);\n    top: -24px;\n    transition: 0.5s ease; }\n  .nav-link.active:after {\n    height: 1px; }\n  .nav-link:not(.active):after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0;\n    top: 0;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:not(.active):hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); }\n\n.home-button {\n  position: absolute;\n  left: 0;\n  top: 0;\n  margin: 0.75rem;\n  border: 1px solid #212529;\n  border-radius: 0.3rem;\n  transition: 0.25s ease; }\n  .home-button:hover {\n    cursor: pointer;\n    border-color: rgba(255, 255, 255, 0.75); }\n    .home-button:hover .nav-link {\n      color: rgba(255, 255, 255, 0.75); }\n  .home-button .nav-link {\n    text-shadow: 1px 1px 1px white;\n    color: #343a40;\n    font-weight: 400; }\n    .home-button .nav-link:after {\n      height: 0;\n      width: 0; }\n\n@media (max-width: 991px) {\n  .navbar-nav {\n    max-height: 90vh;\n    max-height: -webkit-fill-available;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .home-button {\n    left: auto;\n    right: 0; }\n  .nav-item {\n    padding: 0.5rem 0; }\n  .nav-link {\n    font-size: 24px; }\n    .nav-link.active:after {\n      top: -18px; } }\n", ""]);
+exports.push([module.i, "nav {\n  box-shadow: 0px 2px 2px #212529;\n  background-color: rgba(0, 0, 0, 0.75); }\n\n.nav-item {\n  padding: 0 1rem;\n  margin: auto;\n  opacity: 0.8; }\n\n.nav-link {\n  padding: 0;\n  font-family: Amatic SC, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n  font-size: 32px;\n  font-weight: bold;\n  text-transform: uppercase;\n  text-shadow: 0.5px 0.5px 1px #868e96;\n  letter-spacing: 1px; }\n  .nav-link:after {\n    height: 0;\n    content: '';\n    display: block;\n    position: relative;\n    background: rgba(255, 255, 255, 0.85);\n    top: -24px;\n    transition: 0.5s ease; }\n  .nav-link.active:after {\n    height: 1px; }\n  .nav-link:not(.active):after {\n    content: '';\n    display: block;\n    height: 1px;\n    width: 0;\n    top: 0;\n    background: transparent;\n    transition: width .25s ease, background-color .5s ease; }\n  .nav-link:not(.active):hover:after {\n    width: 100%;\n    background: rgba(255, 255, 255, 0.75); }\n\n.home-button {\n  position: absolute;\n  left: 0;\n  top: 0;\n  border: 1px solid #212529;\n  border-radius: 0.3rem;\n  transition: 0.25s ease; }\n  .home-button:hover {\n    cursor: pointer;\n    border-color: rgba(255, 255, 255, 0.75); }\n    .home-button:hover .nav-link {\n      color: rgba(255, 255, 255, 0.75); }\n  .home-button .nav-link {\n    text-shadow: 1px 1px 1px white;\n    color: #343a40;\n    font-weight: 400; }\n    .home-button .nav-link:after {\n      height: 0;\n      width: 0; }\n\n@media (max-width: 991px) {\n  .navbar-nav {\n    max-height: 90vh;\n    max-height: -webkit-fill-available;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .home-button {\n    left: auto;\n    right: 0; }\n  .nav-item {\n    padding: 0.5rem 0; }\n  .nav-link {\n    font-size: 24px; }\n    .nav-link.active:after {\n      top: -18px; } }\n", ""]);
 
 // exports
 
@@ -1666,7 +1674,7 @@ NavbarComponent = __decorate([
 /***/ "../../../../../src/app/widgets/pagination/pagination.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-12 px-0 pt-3 pt-md-0\" aria-label=\"album pages\">\n    <pagination [totalItems]=\"pages\" [(ngModel)]=\"page\" [maxSize]=\"maxSize\"\n                [boundaryLinks]=\"true\" [rotate]=\"false\" [itemsPerPage]=\"1\" (pageChanged)=\"pageChanged($event)\"\n                previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\"></pagination>\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\">\n  <div class=\"col-12 px-0 pt-3 pt-md-0\" aria-label=\"album pages\">\n    <pagination [totalItems]=\"items\" [(ngModel)]=\"page\" [maxSize]=\"maxSize\"\n                [boundaryLinks]=\"true\" [rotate]=\"false\" [itemsPerPage]=\"perPage\" (pageChanged)=\"pageChanged($event)\"\n                previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\"></pagination>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1692,6 +1700,7 @@ var PaginationComponent = (function () {
     function PaginationComponent(activatedRoute, router) {
         this.activatedRoute = activatedRoute;
         this.router = router;
+        this.perPage = 1;
         this.maxSize = 5;
     }
     PaginationComponent.prototype.ngOnInit = function () {
@@ -1702,14 +1711,20 @@ var PaginationComponent = (function () {
         this.goToPage(event.page);
     };
     PaginationComponent.prototype.goToPage = function (page) {
-        this.router.navigate(this.activatedRoute.snapshot.url.map(function (segment) { return segment.path; }), { queryParams: { page: page } });
+        var queryParams = Object.assign({}, this.activatedRoute.snapshot.queryParams);
+        queryParams.page = page;
+        this.router.navigate(this.activatedRoute.snapshot.url.map(function (segment) { return segment.path; }), { queryParams: queryParams });
     };
     return PaginationComponent;
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Number)
-], PaginationComponent.prototype, "pages", void 0);
+], PaginationComponent.prototype, "items", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], PaginationComponent.prototype, "perPage", void 0);
 PaginationComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-pagination',

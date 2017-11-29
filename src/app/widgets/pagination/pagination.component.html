@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12 px-0 pt-3 pt-md-0" aria-label="album pages">
-    <pagination [totalItems]="pages" [(ngModel)]="page" [maxSize]="maxSize"
-                [boundaryLinks]="true" [rotate]="false" [itemsPerPage]="1" (pageChanged)="pageChanged($event)"
+    <pagination [totalItems]="items" [(ngModel)]="page" [maxSize]="maxSize"
+                [boundaryLinks]="true" [rotate]="false" [itemsPerPage]="perPage" (pageChanged)="pageChanged($event)"
                 previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
   </div>
 </div>

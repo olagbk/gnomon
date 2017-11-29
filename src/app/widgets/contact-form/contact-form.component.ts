@@ -29,6 +29,10 @@ import { Email } from './email';
       width: 100%;
       height: 100%;
     }
+    .submit-button {
+      font-size: 1.5rem;
+      letter-spacing; 2px;
+    }
     .submit-button:hover {
       background: transparent;
       color: #f8f9fa;

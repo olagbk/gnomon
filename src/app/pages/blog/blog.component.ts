@@ -18,19 +18,24 @@ export class BlogComponent implements OnInit, OnDestroy {
   searchedTag: string;
   tagsAllMode = false;
   tagsExpanded = false;
+  currentPage = 1;
+  perPage = 10;
 
   constructor(private blog: BlogService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getTags();
     this.getPosts();
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params.page) {this.currentPage = params.page; }
+    });
   }
   ngOnDestroy(): void {
     this.selectedTags.unsubscribe();
     this.filteredPosts.unsubscribe();
   }
   getPosts(): void {
-    this.blog.getPosts({tags: true}).then(posts => {
+    this.blog.getPosts({params: {tags: true}}).then(posts => {
       this.filteredPosts = new BehaviorSubject(posts);
 
       this.selectedTags.subscribe(tags => {
