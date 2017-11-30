@@ -4,6 +4,9 @@ nav {
   box-shadow: 0px 2px 2px $gray-900;
   background-color: rgba(0,0,0,0.75);
 }
+.navbar-toggler {
+  cursor: pointer;
+}
 .nav-item {
   padding: 0 1rem;
   margin: auto;
