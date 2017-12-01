@@ -19,9 +19,13 @@ export class BlogComponent implements OnInit, OnDestroy {
   tagsAllMode = false;
   tagsExpanded = false;
   currentPage = 1;
-  perPage = 10;
+  perPage: number;
+  perPageOpts = [5, 10, 20, 50];
 
-  constructor(private blog: BlogService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private blog: BlogService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.perPage = (localStorage && localStorage.getItem('blogPerPage')) ? Number(localStorage.getItem('blogPerPage')) : 10;
+
+  }
 
   ngOnInit(): void {
     this.getTags();
@@ -97,5 +101,10 @@ export class BlogComponent implements OnInit, OnDestroy {
   }
   goToPost(id): void {
     this.router.navigate(['blog', id]);
+  }
+  perPageChange(response: any) {
+    if (localStorage) { localStorage.setItem('blogPerPage', String(response.perPage)); }
+    this.perPage = response.perPage;
+    if (response.currentPage) { this.currentPage = response.currentPage; }
   }
 }

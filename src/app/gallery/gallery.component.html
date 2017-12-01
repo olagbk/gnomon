@@ -6,7 +6,7 @@
 
     <div class="gallery-loaded" *ngSwitchCase="galleryLoaded">
 
-      <app-pagination [items]="pages"></app-pagination>
+      <app-pagination [items]="totalItems" [perPage]="perPage" [perPageOpts]="perPageOpts" (selected)="perPageChange($event)"></app-pagination>
 
       <div class="row justify-content-center">
 

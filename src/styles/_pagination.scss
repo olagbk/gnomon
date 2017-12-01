@@ -12,18 +12,22 @@
     cursor: pointer;
   }
 }
+.pagination-container {
+  background-color: rgba($black, 0.5);
+  border: 1.5px solid $gray-900;
+  border-radius: $border-radius;
+  letter-spacing: 2px;
+  text-decoration: none;
+  margin: 1px;
+}
 .pagination {
   justify-content: center;
   flex-wrap: wrap;
+  font-size: .9rem;
   .page-item {
     &, &.active, &.disabled, &:hover {
       .page-link {
-        background-color: rgba($black, 0.5);
-        border: 1.5px solid $gray-900;
-        border-radius: $border-radius;
-        letter-spacing: 2px;
-        text-decoration: none;
-        margin: 1px;
+        @extend .pagination-container;
         &:hover {
           color: $white;
           border-color: $navbar-dark-hover-color;
@@ -41,5 +45,29 @@
     &.disabled .page-link {
       color: $gray-700;
     }
+  }
+}
+.page-opts {
+  @extend .pagination-container;
+  color: $gray-500;
+  padding: .5rem;
+  font-size: .9rem;
+}
+.item-count {
+  font-weight: 600;
+}
+.per-page-select.custom-select {
+  background: transparent url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='rgb(173,181,189)' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  background-size: 8px 10px;
+  border: none;
+  color: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-weight: bold;
+  cursor: pointer;
+  height: auto !important;
+
+  option {
+    background: rgba($black, 0.9);
   }
 }
