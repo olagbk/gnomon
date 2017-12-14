@@ -1213,7 +1213,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  width: 100%;\n  max-width: 640px;\n  margin: 0.75rem; }\n\n.album-thumb-container {\n  background-size: cover;\n  height: 480px;\n  font-size: 72px;\n  font-family: Amatic SC, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n  letter-spacing: 0.075em; }\n\n.album-thumb {\n  background: rgba(33, 37, 41, 0.5);\n  color: rgba(250, 235, 215, 0.8);\n  border: 1.5px solid rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 0 10px 2px #000;\n  transition: background .5s ease;\n  height: 100%;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  text-decoration: none;\n  text-shadow: 2px 2px 2px black;\n  font-weight: 300; }\n  .album-thumb:hover {\n    background: transparent;\n    color: #fff;\n    font-weight: bold; }\n\n@media (max-width: 991px) {\n  :host {\n    max-width: 480px; }\n  .album-thumb-container {\n    height: 360px;\n    font-size: 54px; } }\n\n@media (max-width: 575px) {\n  :host {\n    max-width: 320px; }\n  .album-thumb-container {\n    height: 240px;\n    font-size: 32px; } }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  max-width: 640px;\n  margin: 0.75rem; }\n\n.album-thumb-container {\n  background-size: cover;\n  height: 480px;\n  font-size: 72px;\n  font-family: Amatic SC, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;\n  letter-spacing: 0.075em; }\n\n.album-thumb {\n  background: rgba(33, 37, 41, 0.5);\n  color: rgba(250, 235, 215, 0.8);\n  border: 1.5px solid rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 0 10px 2px #000;\n  transition: background .5s ease;\n  height: 100%;\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  text-decoration: none;\n  text-shadow: 2px 2px 2px black;\n  font-weight: 300; }\n  .album-thumb:hover {\n    background: transparent;\n    color: #fff; }\n\n@media (max-width: 991px) {\n  :host {\n    max-width: 480px; }\n  .album-thumb-container {\n    height: 360px;\n    font-size: 54px; } }\n\n@media (max-width: 575px) {\n  :host {\n    max-width: 320px; }\n  .album-thumb-container {\n    height: 240px;\n    font-size: 32px; } }\n", ""]);
 
 // exports
 
@@ -1281,7 +1281,7 @@ var _a, _b, _c;
 /***/ "../../../../../src/app/pages/photos/photo-album.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-gallery *ngIf=\"album\" [album]=\"album\"></app-gallery>\n"
+module.exports = "<a class=\"albums-link link d-flex mx-auto my-3\" routerLink=\"/photos\">← back to albums</a>\n<app-gallery *ngIf=\"album\" [album]=\"album\"></app-gallery>\n"
 
 /***/ }),
 
@@ -1293,7 +1293,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  width: 100%; }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%; }\n\n.albums-link {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  letter-spacing: 1px;\n  color: #ced4da !important; }\n", ""]);
 
 // exports
 
