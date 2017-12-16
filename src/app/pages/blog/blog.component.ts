@@ -18,6 +18,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   searchedTag: string;
   tagsAllMode = false;
   tagsExpanded = false;
+  stackTags = false;
   currentPage = 1;
   perPage: number;
   perPageOpts = [5, 10, 20, 50];
@@ -81,8 +82,13 @@ export class BlogComponent implements OnInit, OnDestroy {
   }
   addTag($event): void {
     if ( this.activeTags.some(tag => tag.name === $event.name) ) { return; }
-    this.activeTags.push($event);
+
+    if (!this.stackTags) {
+      this.inactiveTags = this.inactiveTags.concat(this.activeTags);
+      this.activeTags = [];
+    }
     this.inactiveTags = this.inactiveTags.filter(tag => tag.name !== $event.name);
+    this.activeTags.push($event);
     this.selectedTags.next(this.activeTags);
   }
   deleteTag($event): void {
@@ -102,9 +108,16 @@ export class BlogComponent implements OnInit, OnDestroy {
   goToPost(id): void {
     this.router.navigate(['blog', id]);
   }
-  perPageChange(response: any) {
+  perPageChange(response: any): void {
     if (localStorage) { localStorage.setItem('blogPerPage', String(response.perPage)); }
     this.perPage = response.perPage;
     if (response.currentPage) { this.currentPage = response.currentPage; }
+  }
+  toggleStacking(): void {
+    if (!this.stackTags && this.activeTags.length > 1) {
+      this.inactiveTags = this.inactiveTags.concat(this.activeTags);
+      this.activeTags = [];
+      this.selectedTags.next(this.activeTags);
+    }
   }
 }

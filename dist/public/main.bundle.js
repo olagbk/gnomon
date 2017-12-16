@@ -838,7 +838,7 @@ var _a, _b, _c;
 /***/ "../../../../../src/app/pages/blog/blog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container px-md-5\">\n\n  <app-pagination [items]=\"filteredPosts?.getValue().length\" [perPage]=\"perPage\" [perPageOpts]=\"perPageOpts\" (selected)=\"perPageChange($event)\"></app-pagination>\n\n  <div class=\"tags dark-container p-3 mb-2\">\n\n    <a class=\"small-link\" *ngIf=\"activeTags.length > 0\" (click)=\"deleteAllTags()\">[ reset ]</a>\n    <app-tags [tags]=\"activeTags\"\n              [count]=\"true\"\n              [selected]=\"true\"\n              (tagSelected)=\"deleteTag($event)\">\n\n    </app-tags>\n    <app-tags [tags]=\"inactiveTags\"\n              [count]=\"true\"\n              [abbr]=\"!tagsExpanded\"\n              (tagSelected)=\"addTag($event)\"\n              (tagsExpanded)=\"tagsExpanded = true\">\n    </app-tags>\n    <a class=\"small-link\" *ngIf=\"!tagsExpanded\" (click)=\"tagsExpanded = true\">more...</a>\n\n\n    <span class=\"tags-opts\" *ngIf=\"activeTags?.length > 1\">\n      <a class=\"link\"\n         [class.active]=\"!tagsAllMode\"\n         (click)=\"toggleTagMode()\">any\n      </a> |\n      <a class=\"link\"\n         [class.active]=\"tagsAllMode\"\n         (click)=\"toggleTagMode()\">all\n      </a>\n    </span>\n\n    <ng-container *ngIf=\"tagsExpanded\">\n\n      <input #search\n             [(ngModel)]=\"searchedTag\"\n             [typeahead]=\"inactiveTags\"\n             typeaheadOptionField=\"name\"\n             typeaheadScrollable = true\n             (typeaheadOnSelect)=\"addSearchedTag($event)\"\n             class=\"form-control tag-search\">\n\n      <a class=\"small-link\"\n         (click)=\"tagsExpanded = false\">[ hide ]\n      </a>\n\n    </ng-container>\n\n  </div>\n\n  <ng-container class=\"dark-container post mb-4\" *ngFor=\"let post of filteredPosts | async; let i = index\">\n\n    <div class=\"dark-container post mb-4\" *ngIf=\"perPage == 0 || currentPage * perPage - perPage <= i && i < currentPage * perPage\">\n      <a class=\"link title mb-2\" [routerLink]=\"post.id\">{{ post.title }}</a>\n\n      <span class=\"created-at\">{{post.createdAt | date }}</span>\n\n      <app-tags [tags]=\"post.tags\"\n                (tagSelected)=\"addTag($event)\">\n      </app-tags>\n\n      <p class=\"text pl-md-3 mt-2\"\n         ellipsis=\"(...)\"\n         [ellipsis-word-boundaries]=\"' \\n'\"\n         (ellipsis-click-more)=\"goToPost(post.id)\">{{post.body}}\n      </p>\n\n      <div class=\"shadow-wrapper\"></div>\n    </div>\n\n  </ng-container>\n</div>\n<app-scroll></app-scroll>\n"
+module.exports = "<div class=\"container px-md-5\">\n\n  <app-pagination [items]=\"filteredPosts?.getValue().length\" [perPage]=\"perPage\" [perPageOpts]=\"perPageOpts\" (selected)=\"perPageChange($event)\"></app-pagination>\n\n  <div class=\"tags dark-container p-3 mb-2\">\n\n    <ng-container *ngIf=\"activeTags.length > 0\">\n\n      <a class=\"small-link\" (click)=\"deleteAllTags()\">[ reset ]</a>\n\n      <span class=\"stack-tags\">\n\n        <label class=\"custom-control custom-checkbox small-link\">\n          <input type=\"checkbox\" class=\"custom-control-input\" [(ngModel)]=\"stackTags\" (change)=\"toggleStacking()\">\n          <span class=\"custom-control-indicator\"></span>\n          <span class=\"custom-control-description\">Stack tags?</span>\n        </label>\n\n        <span class=\"tags-opts\" *ngIf=\"stackTags\">\n          <a class=\"small-link\"\n             [class.active]=\"!tagsAllMode\"\n             (click)=\"toggleTagMode()\">any\n          </a> |\n          <a class=\"small-link\"\n             [class.active]=\"tagsAllMode\"\n             (click)=\"toggleTagMode()\">all\n          </a>\n        </span>\n\n      </span>\n\n    </ng-container>\n\n    <app-tags [tags]=\"activeTags\"\n              [count]=\"true\"\n              [selected]=\"true\"\n              (tagSelected)=\"deleteTag($event)\">\n\n    </app-tags>\n    <app-tags [tags]=\"inactiveTags\"\n              [count]=\"true\"\n              [abbr]=\"!tagsExpanded\"\n              (tagSelected)=\"addTag($event)\"\n              (tagsExpanded)=\"tagsExpanded = true\">\n    </app-tags>\n    <a class=\"small-link\" *ngIf=\"!tagsExpanded\" (click)=\"tagsExpanded = true\">more...</a>\n\n    <ng-container *ngIf=\"tagsExpanded\">\n\n      <input #search\n             [(ngModel)]=\"searchedTag\"\n             [typeahead]=\"inactiveTags\"\n             typeaheadOptionField=\"name\"\n             typeaheadScrollable = true\n             (typeaheadOnSelect)=\"addSearchedTag($event)\"\n             class=\"form-control tag-search\">\n\n      <a class=\"small-link\"\n         (click)=\"tagsExpanded = false\">[ hide ]\n      </a>\n\n    </ng-container>\n\n  </div>\n\n  <ng-container class=\"dark-container post mb-4\" *ngFor=\"let post of filteredPosts | async; let i = index\">\n\n    <div class=\"dark-container post mb-4\" *ngIf=\"perPage == 0 || currentPage * perPage - perPage <= i && i < currentPage * perPage\">\n      <a class=\"link title mb-2\" [routerLink]=\"post.id\">{{ post.title }}</a>\n\n      <span class=\"created-at\">{{post.createdAt | date }}</span>\n\n      <app-tags [tags]=\"post.tags\"\n                (tagSelected)=\"addTag($event)\">\n      </app-tags>\n\n      <p class=\"text pl-md-3 mt-2\"\n         ellipsis=\"(...)\"\n         [ellipsis-word-boundaries]=\"' \\n'\"\n         (ellipsis-click-more)=\"goToPost(post.id)\">{{post.body}}\n      </p>\n\n      <div class=\"shadow-wrapper\"></div>\n    </div>\n\n  </ng-container>\n</div>\n<app-scroll></app-scroll>\n"
 
 /***/ }),
 
@@ -850,7 +850,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ":host {\n  width: 100%;\n  background: rgba(0, 0, 0, 0.3); }\n\n.post {\n  position: relative;\n  padding: 2rem 2rem 1rem 2rem; }\n\n.text {\n  font-size: .9rem;\n  max-height: 250px; }\n\n.title {\n  font-size: 1.5rem;\n  text-decoration: underline;\n  text-underline-position: under; }\n  .title:hover {\n    letter-spacing: 2.5px; }\n  .title:not(:hover) {\n    font-weight: 500; }\n\n.created-at {\n  text-align: center;\n  color: #868e96; }\n\n.shadow-wrapper {\n  position: absolute;\n  width: 90%;\n  height: 1px;\n  left: 5%;\n  bottom: 5px;\n  box-shadow: 0px -20px 10px 20px rgba(0, 0, 0, 0.5); }\n\n.tags {\n  text-align: center; }\n\n.tags-opts {\n  font-size: .9rem; }\n\n.small-link {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  margin: auto; }\n\n.tag-search {\n  width: 200px;\n  background: rgba(255, 255, 255, 0.9);\n  padding: 0.25rem;\n  margin: .5rem auto; }\n\n@media (min-width: 768px) {\n  :host {\n    padding-top: 1rem; }\n  .text {\n    font-size: 1rem; } }\n", ""]);
+exports.push([module.i, ":host {\n  width: 100%;\n  background: rgba(0, 0, 0, 0.3); }\n\n.post {\n  position: relative;\n  padding: 2rem 2rem 1rem 2rem; }\n\n.text {\n  font-size: .9rem;\n  max-height: 250px; }\n\n.title {\n  font-size: 1.5rem;\n  text-decoration: underline;\n  text-underline-position: under; }\n  .title:hover {\n    letter-spacing: 2.5px; }\n  .title:not(:hover) {\n    font-weight: 500; }\n\n.created-at {\n  text-align: center;\n  color: #868e96; }\n\n.shadow-wrapper {\n  position: absolute;\n  width: 90%;\n  height: 1px;\n  left: 5%;\n  bottom: 5px;\n  box-shadow: 0px -20px 10px 20px rgba(0, 0, 0, 0.5); }\n\n.tags {\n  text-align: center; }\n\n.tags-opts {\n  font-size: .9rem; }\n\n.small-link {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n  margin: auto; }\n\n.tag-search {\n  width: 200px;\n  background: rgba(255, 255, 255, 0.9);\n  padding: 0.25rem;\n  margin: .5rem auto; }\n\n.custom-control-input:checked ~ .custom-control-indicator {\n  background-color: rgba(255, 255, 255, 0.5); }\n\n.custom-control-indicator {\n  top: .5rem; }\n\n@media (min-width: 768px) {\n  :host {\n    padding-top: 1rem; }\n  .text {\n    font-size: 1rem; } }\n", ""]);
 
 // exports
 
@@ -895,6 +895,7 @@ var BlogComponent = (function () {
         this.activeTags = [];
         this.tagsAllMode = false;
         this.tagsExpanded = false;
+        this.stackTags = false;
         this.currentPage = 1;
         this.perPageOpts = [5, 10, 20, 50];
         this.perPage = (localStorage && localStorage.getItem('blogPerPage')) ? Number(localStorage.getItem('blogPerPage')) : 10;
@@ -975,8 +976,12 @@ var BlogComponent = (function () {
         if (this.activeTags.some(function (tag) { return tag.name === $event.name; })) {
             return;
         }
-        this.activeTags.push($event);
+        if (!this.stackTags) {
+            this.inactiveTags = this.inactiveTags.concat(this.activeTags);
+            this.activeTags = [];
+        }
         this.inactiveTags = this.inactiveTags.filter(function (tag) { return tag.name !== $event.name; });
+        this.activeTags.push($event);
         this.selectedTags.next(this.activeTags);
     };
     BlogComponent.prototype.deleteTag = function ($event) {
@@ -1003,6 +1008,13 @@ var BlogComponent = (function () {
         this.perPage = response.perPage;
         if (response.currentPage) {
             this.currentPage = response.currentPage;
+        }
+    };
+    BlogComponent.prototype.toggleStacking = function () {
+        if (!this.stackTags && this.activeTags.length > 1) {
+            this.inactiveTags = this.inactiveTags.concat(this.activeTags);
+            this.activeTags = [];
+            this.selectedTags.next(this.activeTags);
         }
     };
     return BlogComponent;

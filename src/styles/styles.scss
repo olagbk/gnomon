@@ -39,6 +39,9 @@ body {
   @extend .link;
   font-size: .8rem;
   color: $gray-500 !important;
+  &.active {
+    color: $gray-200 !important;
+  }
 }
 .ngx-ellipsis-more {
   @extend .link;

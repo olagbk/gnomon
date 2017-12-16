@@ -4,7 +4,33 @@
 
   <div class="tags dark-container p-3 mb-2">
 
-    <a class="small-link" *ngIf="activeTags.length > 0" (click)="deleteAllTags()">[ reset ]</a>
+    <ng-container *ngIf="activeTags.length > 0">
+
+      <a class="small-link" (click)="deleteAllTags()">[ reset ]</a>
+
+      <span class="stack-tags">
+
+        <label class="custom-control custom-checkbox small-link">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="stackTags" (change)="toggleStacking()">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Stack tags?</span>
+        </label>
+
+        <span class="tags-opts" *ngIf="stackTags">
+          <a class="small-link"
+             [class.active]="!tagsAllMode"
+             (click)="toggleTagMode()">any
+          </a> |
+          <a class="small-link"
+             [class.active]="tagsAllMode"
+             (click)="toggleTagMode()">all
+          </a>
+        </span>
+
+      </span>
+
+    </ng-container>
+
     <app-tags [tags]="activeTags"
               [count]="true"
               [selected]="true"
@@ -18,18 +44,6 @@
               (tagsExpanded)="tagsExpanded = true">
     </app-tags>
     <a class="small-link" *ngIf="!tagsExpanded" (click)="tagsExpanded = true">more...</a>
-
-
-    <span class="tags-opts" *ngIf="activeTags?.length > 1">
-      <a class="link"
-         [class.active]="!tagsAllMode"
-         (click)="toggleTagMode()">any
-      </a> |
-      <a class="link"
-         [class.active]="tagsAllMode"
-         (click)="toggleTagMode()">all
-      </a>
-    </span>
 
     <ng-container *ngIf="tagsExpanded">
 
