@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   currentYear: number;
-  backgroundReady: boolean;
   backgroundUrl: string;
   imgPreloadUrl = '../assets/gnomon.png';
 
@@ -18,10 +17,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {}
 
-  setBackground() {
-    this.backgroundUrl = this.imgPreloadUrl;
-    this.backgroundReady = true;
-  }
   scrollToTop() {
     window.scroll(0, 0);
   }
