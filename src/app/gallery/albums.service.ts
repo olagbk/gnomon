@@ -26,7 +26,7 @@ export class AlbumsService {
   getPhotos(): Album[] {
     return this.data.filter(a => a.type === 'photos');
   }
-  getAlbumByType(type): Album {
+  getAlbumByType(type: string): Album {
     return this.data.find(album => album.type === type);
   }
   get data(): Album[] {
