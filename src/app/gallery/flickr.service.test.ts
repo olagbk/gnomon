@@ -5,6 +5,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { HttpModule, Response, ResponseOptions, XHRBackend } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { FlickrService } from './flickr.service';
+import { FlickrParams } from './flickr-params';
 
 use(chaiAsPromised);
 
@@ -46,7 +47,7 @@ describe('GalleryService', () => {
     mockBackend.connections.subscribe((connection) => {
       connection.mockRespond(response);
     });
-    service.getImages({}).then(albums => {
+    service.getImages(<FlickrParams>{}).then(albums => {
       albums.should.equal(mockData);
     });
   }));
@@ -56,7 +57,7 @@ describe('GalleryService', () => {
     });
     const spy = sinon.spy(service, 'handleError');
 
-    service.getImages({})
+    service.getImages(<FlickrParams>{})
       .catch(err => {
         spy.called.should.be.true;
         spy.returnValues[0].should.be.rejected;

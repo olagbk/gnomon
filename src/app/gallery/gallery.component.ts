@@ -9,13 +9,12 @@ import { FlickrService } from './flickr.service';
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent implements OnInit {
-  perPage: number;
   perPageOpts = [12, 24, 48, 92];
+  perPage: number;
+  totalPages: number;
   totalItems: number;
-  thumbsLoaded: number;
   galleryLoaded: boolean;
   galleryError: boolean;
-  pages: number;
   currentPage: number;
   images: GalleryImage[];
   @Input() album: string;
@@ -24,23 +23,22 @@ export class GalleryComponent implements OnInit {
               private flickr: FlickrService,
               private activatedRoute: ActivatedRoute
   ) {
-    this.perPage = (localStorage && localStorage.getItem('galleryPerPage')) ? Number(localStorage.getItem('galleryPerPage')) : 24;
   }
 
   ngOnInit(): void {
+    this.perPage = (localStorage && localStorage.getItem('galleryPerPage')) ? Number(localStorage.getItem('galleryPerPage')) : 24;
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.currentPage = Number(params['page']) || 1;
       this.getImages();
     });
   }
   getImages(): void {
-    this.thumbsLoaded = 0;
     this.galleryLoaded = false;
     this.galleryError = false;
     this.flickr.getImages({page: this.currentPage, perPage: this.perPage, album: this.album})
       .then(data => {
         this.totalItems = data.count;
-        this.pages = Math.ceil(data.count / this.perPage);
+        this.totalPages = Math.ceil(data.count / this.perPage);
         this.images = data.images;
         this.gallery.load(this.images);
         this.galleryLoaded = true;
