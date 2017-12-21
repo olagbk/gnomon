@@ -1,7 +1,4 @@
-<div #thumb
-     class="image-frame"
+<div class="image-frame"
+     [style.background-image]="'url(' + this.image.thumbnail + ')'"
      (click)="openGallery()">
-
-  <img [src]="image.thumbnail" (load)="setBackground(thumb)" hidden/>
-
 </div>

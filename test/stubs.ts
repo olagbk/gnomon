@@ -23,6 +23,7 @@ export class FlickrServiceStub {
 }
 export class GalleryServiceStub {
   load() {}
+  set() {}
 }
 
 export class ActivatedRouteStub {
