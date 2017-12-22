@@ -2,12 +2,16 @@
 /* tslint:disable:use-host-property-decorator*/
 /* tslint:disable:no-input-rename*/
 
-import { Directive, Input } from '@angular/core';
+import { Directive, Input, Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Params } from '@angular/router';
 import { FlickrParams } from '../src/app/gallery/flickr-params';
 import { Post, Tag } from '../src/app/pages/blog/post';
+import { Album } from '../src/app/gallery/album';
 
+export class AlbumsServiceStub {
+  getAlbumByType(album: string): Album {return {album_id: album, type: album}; }
+}
 export class BlogServiceStub {
   posts: Post[] = [{
     id: '1',
@@ -53,7 +57,6 @@ export class BlogServiceStub {
     return Promise.resolve(this.tags);
   }
 }
-
 export class FlickrServiceStub {
   totalItems = 2000;
   error = false;
@@ -76,7 +79,13 @@ export class GalleryServiceStub {
   load() {}
   set() {}
 }
-
+@Component({
+  selector: 'app-gallery',
+  template: `<span></span>`
+})
+export class GalleryStubComponent {
+  @Input() album: string;
+}
 export class ActivatedRouteStub {
 
   private psubject = new BehaviorSubject(this.testParams);
