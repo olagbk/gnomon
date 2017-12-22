@@ -11,6 +11,7 @@ import { Post } from './post';
 export class BlogEntryComponent implements OnInit {
   post: Post;
   recentPosts: Promise<Post[]>;
+  recentPostsCount = 10;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private blog: BlogService) { }
 
@@ -19,7 +20,7 @@ export class BlogEntryComponent implements OnInit {
       this.blog.getPost(params.id).then(post => {
         if (!post) { this.router.navigate(['blog']); }
         this.post = post;
-        this.recentPosts = this.blog.getPosts({params: {count: 10}});
+        this.recentPosts = this.blog.getPosts({params: {count: this.recentPostsCount}});
       });
     });
   }
