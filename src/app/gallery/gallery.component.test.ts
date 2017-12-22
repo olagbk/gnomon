@@ -74,6 +74,7 @@ describe('GalleryComponent', () => {
     component.perPageChange({perPage: perPage});
     tick();
     const currentPerPage = localStorage.getItem('galleryPerPage');
+    component.ngOnInit();
 
     should().exist(currentPerPage);
     component.perPage.should.equal(perPage);

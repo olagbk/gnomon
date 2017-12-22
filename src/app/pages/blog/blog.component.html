@@ -6,12 +6,12 @@
 
     <ng-container *ngIf="activeTags.length > 0">
 
-      <a class="small-link" (click)="deleteAllTags()">[ reset ]</a>
+      <a class="small-link reset" (click)="deleteAllTags()">[ reset ]</a>
 
       <span class="stack-tags">
 
         <label class="custom-control custom-checkbox small-link">
-          <input type="checkbox" class="custom-control-input" [(ngModel)]="stackTags" (change)="toggleStacking()">
+          <input type="checkbox" class="custom-control-input" [ngModel]="stackTags" (ngModelChange)="toggleStacking($event)">
           <span class="custom-control-indicator"></span>
           <span class="custom-control-description">Stack tags?</span>
         </label>
@@ -43,7 +43,7 @@
               (tagSelected)="addTag($event)"
               (tagsExpanded)="tagsExpanded = true">
     </app-tags>
-    <a class="small-link" *ngIf="!tagsExpanded" (click)="tagsExpanded = true">more...</a>
+    <a class="small-link more" *ngIf="!tagsExpanded" (click)="tagsExpanded = true">more...</a>
 
     <ng-container *ngIf="tagsExpanded">
 
@@ -55,7 +55,7 @@
              (typeaheadOnSelect)="addSearchedTag($event)"
              class="form-control tag-search">
 
-      <a class="small-link"
+      <a class="small-link hide"
          (click)="tagsExpanded = false">[ hide ]
       </a>
 
@@ -63,7 +63,7 @@
 
   </div>
 
-  <ng-container class="dark-container post mb-4" *ngFor="let post of filteredPosts | async; let i = index">
+  <ng-container *ngFor="let post of filteredPosts | async; let i = index">
 
     <div class="dark-container post mb-4" *ngIf="perPage == 0 || currentPage * perPage - perPage <= i && i < currentPage * perPage">
       <a class="link title mb-2" [routerLink]="post.id">{{ post.title }}</a>

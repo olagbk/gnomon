@@ -1,7 +1,50 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Params } from '@angular/router';
 import { FlickrParams } from '../src/app/gallery/flickr-params';
+import { Post, Tag } from '../src/app/pages/blog/post';
 
+export class BlogServiceStub {
+  posts: Post[] = [{
+    id: '1',
+    title: 'Post title',
+    body: 'Post body',
+    createdAt: '2017-11-25T20:45:11.140Z',
+    updatedAt: '2017-11-25T20:45:11.140Z',
+    tags: [{name: 'tag1', count: 2}]
+  }, {
+    id: '2',
+    title: 'Post title',
+    body: 'Post body',
+    createdAt: '2017-11-25T20:45:11.140Z',
+    updatedAt: '2017-11-25T20:45:11.140Z',
+    tags: [{name: 'tag2', count: 2}]
+  }, {
+    id: '3',
+    title: 'Post title',
+    body: 'Post body',
+    createdAt: '2017-11-25T20:45:11.140Z',
+    updatedAt: '2017-11-25T20:45:11.140Z',
+    tags: [{name: 'tag1', count: 2}, {name: 'tag2', count: 2}]
+  }, {
+    id: '4',
+    title: 'Post title',
+    body: 'Post body',
+    createdAt: '2017-11-25T20:45:11.140Z',
+    updatedAt: '2017-11-25T20:45:11.140Z',
+    tags: [{name: 'tag3', count: 1}]
+  }];
+  tags: Tag[] = [
+    {name: 'tag1', count: 2},
+    {name: 'tag2', count: 2},
+    {name: 'tag3', count: 1}
+  ]
+  getPosts(): Promise<Post[]> {
+    return Promise.resolve(this.posts);
+  }
+  getTags(): Promise<Tag[]> {
+    return Promise.resolve(this.tags);
+  }
+}
 
 export class FlickrServiceStub {
   totalItems = 2000;
@@ -40,4 +83,7 @@ export class ActivatedRouteStub {
   get snapshot() {
     return { queryParams: this._testQueryParams };
   }
+}
+export class RouterStub {
+  navigateByUrl(url: string) { return url; }
 }

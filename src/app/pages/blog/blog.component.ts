@@ -23,12 +23,10 @@ export class BlogComponent implements OnInit, OnDestroy {
   perPage: number;
   perPageOpts = [5, 10, 20, 50];
 
-  constructor(private blog: BlogService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.perPage = (localStorage && localStorage.getItem('blogPerPage')) ? Number(localStorage.getItem('blogPerPage')) : 10;
-
-  }
+  constructor(private blog: BlogService, private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.perPage = (localStorage && localStorage.getItem('blogPerPage')) ? Number(localStorage.getItem('blogPerPage')) : 10;
     this.getTags();
     this.getPosts();
     this.activatedRoute.queryParams.subscribe(params => {
@@ -37,7 +35,6 @@ export class BlogComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.selectedTags.unsubscribe();
-    this.filteredPosts.unsubscribe();
   }
   getPosts(): void {
     this.blog.getPosts({params: {tags: true}}).then(posts => {
@@ -113,7 +110,8 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.perPage = response.perPage;
     if (response.currentPage) { this.currentPage = response.currentPage; }
   }
-  toggleStacking(): void {
+  toggleStacking($event: boolean): void {
+    this.stackTags = $event;
     if (!this.stackTags && this.activeTags.length > 1) {
       this.inactiveTags = this.inactiveTags.concat(this.activeTags);
       this.activeTags = [];

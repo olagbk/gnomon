@@ -6,14 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  formVisible = false;
 
   constructor() { }
 
-  ngOnInit() {
-  }
-  toggleForm() {
-    this.formVisible = !this.formVisible;
-  }
+  ngOnInit() { }
 
 }
