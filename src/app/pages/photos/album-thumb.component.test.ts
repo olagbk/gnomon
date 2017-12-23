@@ -1,4 +1,5 @@
 import { should } from 'chai';
+import * as sinon from 'sinon';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterLinkStubDirective } from '../../../../test/stubs';
@@ -37,12 +38,14 @@ describe('AlbumThumbComponent', () => {
     linkD.navigatedTo.should.equal(component.album.album_id);
   });
   it('should set background once the image loads', () => {
+    const emitSpy = sinon.spy(component.addBackground, 'emit');
     const thumbEl = fixture.debugElement.query(By.css('div'));
     const imageEl = fixture.debugElement.query(By.css('img'));
     should().not.exist(thumbEl.styles.backgroundImage);
     should().exist(imageEl.attributes.hidden);
 
     imageEl.triggerEventHandler('load', thumbEl);
+    emitSpy.called.should.equal(true);
     thumbEl.styles.backgroundImage.should.include(`${component.album.filename}`);
   });
 });
