@@ -20,5 +20,4 @@ export class AlbumThumbComponent implements OnInit {
     this.renderer.setStyle(el, 'backgroundImage', `url(${this.path})`);
     this.addBackground.emit();
   }
-
 }
