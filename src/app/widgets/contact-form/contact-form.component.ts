@@ -58,12 +58,11 @@ import { Email } from './email';
 export class ContactFormComponent implements OnInit {
   model = new Email();
   submitted = false;
-  captcha: string;
   formVisible = false;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   sendEmail() {
     this.submitted = true;
@@ -71,5 +70,4 @@ export class ContactFormComponent implements OnInit {
   toggleForm() {
     this.formVisible = !this.formVisible;
   }
-
 }
