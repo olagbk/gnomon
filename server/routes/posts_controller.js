@@ -23,7 +23,6 @@ module.exports = (router, sequelize) => {
 
     .get((req, res) => {
       const opts = {};
-      console.log(req.query);
 
       if (req.query.count) {
         opts.limit = req.query.count;

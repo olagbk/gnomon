@@ -1,9 +1,20 @@
 import { should } from 'chai';
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { routes } from './routes';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SketchesComponent } from './pages/sketches/sketches.component';
+import { DrawingsComponent } from './pages/drawings/drawings.component';
+import { PhotosComponent } from './pages/photos/photos.component';
+import { PhotoAlbumComponent } from './pages/photos/photo-album.component';
+import { AboutComponent } from './pages/about/about.component';
+import { BlogComponent } from './pages/blog/blog.component';
+import { BlogEntryComponent } from './pages/blog/blog-entry.component';
 
 describe('AppComponent', () => {
 
@@ -106,4 +117,78 @@ describe('AppComponent', () => {
     footerEl.nativeElement.textContent.should.include(year);
     footerEl.nativeElement.textContent.should.include('\u00A9');
   });
+});
+
+describe('App routing', () => {
+
+  let fixture: ComponentFixture<AppComponent>;
+  let router: Router;
+  let location: Location;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ RouterTestingModule.withRoutes(routes) ],
+      declarations: [
+        AppComponent,
+        HomeComponent,
+        DrawingsComponent,
+        SketchesComponent,
+        PhotosComponent,
+        PhotoAlbumComponent,
+        AboutComponent,
+        BlogComponent,
+        BlogEntryComponent
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
+    });
+    router = TestBed.get(Router);
+    location = TestBed.get(Location);
+    fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+  });
+  it('navigate to "" redirects you to /home', fakeAsync(() => {
+    router.navigate(['']);
+    tick();
+    location.path().should.equal('/home');
+  }));
+  it('navigate to non-existing path redirects you to /home', fakeAsync(() => {
+    router.navigate(['fakepath']);
+    tick();
+    location.path().should.equal('/home');
+  }));
+  it('navigate to blog', fakeAsync(() => {
+    router.navigate(['blog']);
+    tick();
+    location.path().should.equal('/blog');
+  }));
+  it('navigate to blog entry', fakeAsync(() => {
+    router.navigate(['blog', '1']);
+    tick();
+    location.path().should.equal('/blog/1');
+  }));
+  it('navigate to drawings', fakeAsync(() => {
+    router.navigate(['drawings']);
+    tick();
+    location.path().should.equal('/drawings');
+  }));
+  it('navigate to sketches', fakeAsync(() => {
+    router.navigate(['sketches']);
+    tick();
+    location.path().should.equal('/sketches');
+  }));
+  it('navigate to photos', fakeAsync(() => {
+    router.navigate(['photos']);
+    tick();
+    location.path().should.equal('/photos');
+  }));
+  it('navigate to photo album', fakeAsync(() => {
+    router.navigate(['photos', '123456']);
+    tick();
+    location.path().should.equal('/photos/123456');
+  }));
+  it('navigate to about page', fakeAsync(() => {
+    router.navigate(['about']);
+    tick();
+    location.path().should.equal('/about');
+  }));
 });
