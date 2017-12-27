@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { NgModel } from '@angular/forms';
 
 
 @Component({
@@ -21,8 +20,9 @@ export class PaginationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.perPage = this.perPage || 10;
+    this.perPageOpts = this.perPageOpts || [10, 20, 50, 100];
     this.page = Number(this.activatedRoute.snapshot.queryParams.page) || 1;
-    this.goToPage(this.page);
   }
 
   pageChanged(event: any): void {
@@ -34,11 +34,11 @@ export class PaginationComponent implements OnInit {
     queryParams.page = page;
     this.router.navigate(this.activatedRoute.snapshot.url.map(segment => segment.path), {queryParams: queryParams});
   }
-  select(perPage: number) {
+  select(perPage: string) {
     const response: any = {perPage: perPage};
-    const numPages = Math.ceil(perPage / this.items);
+    const numPages = (perPage === '0') ? 1 : Math.ceil(this.items / Number(perPage));
     if (numPages < this.page) {
-      response.currentPage = Math.max(1, Math.ceil(numPages));
+      response.currentPage = Math.ceil(numPages);
     }
     this.selected.emit(response);
   }

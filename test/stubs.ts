@@ -111,6 +111,16 @@ export class GalleryServiceStub {
 export class GalleryStubComponent {
   @Input() album: string;
 }
+
+@Component({
+  selector: 'app-pagination-host',
+  template: `<app-pagination [items]="items" [perPage]="perPage" [perPageOpts]="perPageOpts"></app-pagination>`
+})
+export class PaginationHostStubComponent {
+  items: any[];
+  perPage: number;
+  perPageOpts: number[];
+}
 export class ActivatedRouteStub {
 
   private psubject = new BehaviorSubject(this.testParams);
@@ -133,12 +143,13 @@ export class ActivatedRouteStub {
   get snapshot() {
     return {
       params: this._testParams,
-      queryParams: this._testQueryParams
+      queryParams: this._testQueryParams,
+      url: [{path: 'path'}]
     };
   }
 }
 export class RouterStub {
-  navigate(commands: string[], extras: any) { return Promise.resolve(true) }
+  navigate(commands: string[], extras: any) { return Promise.resolve(true); }
   navigateByUrl(url: string) { return Promise.resolve(true); }
 }
 @Directive({
