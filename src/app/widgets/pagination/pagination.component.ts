@@ -36,7 +36,7 @@ export class PaginationComponent implements OnInit {
   }
   select(perPage: string) {
     const response: any = {perPage: Number(perPage)};
-    const numPages = (perPage === '0') ? 1 : Math.ceil(this.items / Number(perPage));
+    const numPages = (perPage === '-1') ? 1 : Math.ceil(this.items / Number(perPage));
     if (numPages < this.page) {
       response.currentPage = Math.ceil(numPages);
     }

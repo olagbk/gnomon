@@ -86,7 +86,7 @@ describe('PaginationComponent', () => {
     optEls[1].nativeElement.textContent.should.equal('5');
     optEls[2].nativeElement.value.should.equal('10');
     optEls[2].nativeElement.textContent.should.equal('10');
-    optEls[3].nativeElement.value.should.equal('0');
+    optEls[3].nativeElement.value.should.equal('-1');
     optEls[3].nativeElement.textContent.should.equal('all');
   });
   it('should show current per page option as selected', () => {
@@ -101,7 +101,7 @@ describe('PaginationComponent', () => {
     hostFixture.detectChanges();
     optEls[0].nativeElement.selected.should.equal(true);
     optEls[1].nativeElement.selected.should.equal(false);
-    selectEl.triggerEventHandler('change', {target: {value: '0'}});
+    selectEl.triggerEventHandler('change', {target: {value: '-1'}});
     hostFixture.detectChanges();
     optEls[3].nativeElement.selected.should.equal(true);
   });

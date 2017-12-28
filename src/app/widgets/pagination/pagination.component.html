@@ -4,7 +4,7 @@
   <span class="page-opts">
     <select class="per-page-select custom-select" (change)="select($event.target.value)">
       <option *ngFor="let opt of perPageOpts" [value]="opt" [selected]="opt == perPage">{{opt}}</option>
-      <option [value]="0" [selected]="perPage == 0">all</option>
+      <option [value]="-1" [selected]="perPage == -1">all</option>
     </select>per page
   </span>
   <div class="col-12 px-0 pt-md-0" aria-label="album pages">
