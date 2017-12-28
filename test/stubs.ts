@@ -1,3 +1,4 @@
+/* tslint:disable:component-selector*/
 /* tslint:disable:directive-selector*/
 /* tslint:disable:use-host-property-decorator*/
 /* tslint:disable:no-input-rename*/
@@ -114,12 +115,30 @@ export class GalleryStubComponent {
 
 @Component({
   selector: 'app-pagination-host',
-  template: `<app-pagination [items]="items" [perPage]="perPage" [perPageOpts]="perPageOpts"></app-pagination>`
+  template: `
+    <app-pagination [items]="items" [perPage]="perPage" [perPageOpts]="perPageOpts" (selected)="onSelect($event)"></app-pagination>
+  `
 })
 export class PaginationHostStubComponent {
-  items: any[];
+  items: number;
   perPage: number;
   perPageOpts: number[];
+  currentPage:  number;
+  onSelect($event) {
+    this.perPage = $event.perPage;
+    this.currentPage = $event.currentPage;
+  }
+}
+@Component({
+  selector: 'pagination',
+  template: `
+    <span></span>
+  `
+})
+export class BootstrapPaginationStubComponent {
+  @Input() totalItems: number;
+  @Input() maxSize: number;
+  @Input() itemsPerPage: number;
 }
 export class ActivatedRouteStub {
 

@@ -35,7 +35,7 @@ export class PaginationComponent implements OnInit {
     this.router.navigate(this.activatedRoute.snapshot.url.map(segment => segment.path), {queryParams: queryParams});
   }
   select(perPage: string) {
-    const response: any = {perPage: perPage};
+    const response: any = {perPage: Number(perPage)};
     const numPages = (perPage === '0') ? 1 : Math.ceil(this.items / Number(perPage));
     if (numPages < this.page) {
       response.currentPage = Math.ceil(numPages);
