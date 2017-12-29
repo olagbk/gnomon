@@ -22,7 +22,7 @@ export class PaginationComponent implements OnInit {
   ngOnInit(): void {
     this.perPage = this.perPage || 10;
     this.perPageOpts = this.perPageOpts || [10, 20, 50, 100];
-    this.page = Number(this.activatedRoute.snapshot.queryParams.page) || 1;
+    this.page = Math.max(Math.min(Number(this.activatedRoute.snapshot.queryParams.page), Math.ceil(this.items / this.perPage)), 1) || 1;
   }
 
   pageChanged(event: any): void {

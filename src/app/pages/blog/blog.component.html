@@ -65,7 +65,7 @@
 
   <ng-container *ngFor="let post of filteredPosts | async; let i = index">
 
-    <div class="dark-container post mb-4" *ngIf="perPage == 0 || currentPage * perPage - perPage <= i && i < currentPage * perPage">
+    <div class="dark-container post mb-4" *ngIf="perPage == -1 || currentPage * perPage - perPage <= i && i < currentPage * perPage">
       <a class="link title mb-2" [routerLink]="post.id">{{ post.title }}</a>
 
       <span class="created-at">{{post.createdAt | date }}</span>

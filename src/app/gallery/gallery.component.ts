@@ -43,7 +43,14 @@ export class GalleryComponent implements OnInit {
         this.gallery.load(this.images);
         this.galleryLoaded = true;
       })
-      .catch(err => this.galleryError = true);
+      .catch(err => {
+        if (this.currentPage === 1) {
+          this.galleryError = true;
+        } else {
+          this.currentPage = 1;
+          this.getImages();
+        }
+      });
   }
   perPageChange(response: any): void {
     if (localStorage) { localStorage.setItem('galleryPerPage', String(response.perPage)); }

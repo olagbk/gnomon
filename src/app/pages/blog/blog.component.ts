@@ -29,9 +29,6 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.perPage = (localStorage && localStorage.getItem('blogPerPage')) ? Number(localStorage.getItem('blogPerPage')) : 10;
     this.getTags();
     this.getPosts();
-    this.activatedRoute.queryParams.subscribe(params => {
-      if (params.page) {this.currentPage = params.page; }
-    });
   }
   ngOnDestroy(): void {
     this.selectedTags.unsubscribe();
@@ -39,6 +36,12 @@ export class BlogComponent implements OnInit, OnDestroy {
   getPosts(): void {
     this.blog.getPosts({params: {tags: true}}).then(posts => {
       this.filteredPosts = new BehaviorSubject(posts);
+      this.activatedRoute.queryParams.subscribe(params => {
+        if (params.page ) {
+          const maxPage = Math.max(Math.ceil(this.filteredPosts.getValue().length / this.perPage), 1);
+          this.currentPage = (params.page > maxPage) ? maxPage : params.page;
+        }
+      });
 
       this.selectedTags.subscribe(tags => {
         this.filteredPosts.next(tags.length === 0
