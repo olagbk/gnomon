@@ -1,6 +1,6 @@
-<div class="tags text-center">
+<div class="tags text-center" *ngIf="tags">
   <a class="badge badge-dark mx-1"
-     *ngFor="let tag of tags; let i = index"
+     *ngFor="let tag of tags | sort; let i = index"
      [class.selected]="selected"
      [hidden]="abbr && i >= abbrNumTags"
      (click)="selectTag(tag)">{{tag.name}}

@@ -112,7 +112,17 @@ export class GalleryServiceStub {
 export class GalleryStubComponent {
   @Input() album: string;
 }
-
+@Component({
+  selector: 'app-tags-host',
+  template: `<app-tags [tags]="tags" [count]="count" [abbr]="abbr" [selected]="selected" (tagSelected)="selectTag($event)"></app-tags>`
+})
+export class TagsHostStubComponent {
+  tags: Tag[];
+  count: boolean;
+  abbr: boolean;
+  selected: boolean;
+  selectTag($event) {}
+}
 @Component({
   selector: 'app-pagination-host',
   template: `

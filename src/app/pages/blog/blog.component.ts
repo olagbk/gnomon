@@ -73,11 +73,11 @@ export class BlogComponent implements OnInit, OnDestroy {
       }
     });
   }
-  addSearchedTag($event): void {
+  addSearchedTag($event: any): void {
     this.searchedTag = null;
     this.addTag($event.item);
   }
-  addTag($event): void {
+  addTag($event: Tag): void {
     if ( this.activeTags.some(tag => tag.name === $event.name) ) { return; }
 
     if (!this.stackTags) {
@@ -88,7 +88,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.activeTags.push($event);
     this.selectedTags.next(this.activeTags);
   }
-  deleteTag($event): void {
+  deleteTag($event: Tag): void {
     this.activeTags = this.activeTags.filter(tag => tag.name !== $event.name);
     this.inactiveTags.push($event);
     this.selectedTags.next(this.activeTags);
@@ -102,7 +102,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.tagsAllMode = !this.tagsAllMode;
     this.selectedTags.next(this.activeTags);
   }
-  goToPost(id): void {
+  goToPost(id: number): void {
     this.router.navigate(['blog', id]);
   }
   perPageChange(response: any): void {

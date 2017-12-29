@@ -44,6 +44,8 @@ import { BlogService } from './pages/blog/blog.service';
 import { FlickrService } from './gallery/flickr.service';
 import { AlbumsService } from './gallery/albums.service';
 
+import { SortPipe } from './widgets/tags/sort.pipe';
+
 import { galleryConfig } from './gallery/gallery.config';
 
 export function startupServiceFactory(albumsService: AlbumsService): Function {
@@ -72,7 +74,9 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     AlbumThumbComponent,
 
     GalleryComponent,
-    GalleryThumbComponent
+    GalleryThumbComponent,
+
+    SortPipe
   ],
   imports: [
     AppRoutingModule,

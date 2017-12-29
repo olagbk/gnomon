@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Tag } from '../../pages/blog/post';
 
 @Component({
@@ -9,16 +9,17 @@ import { Tag } from '../../pages/blog/post';
 export class TagsComponent implements OnInit {
   abbrNumTags = 5;
   @Input() tags: Tag[];
-  @Input() count = false;
-  @Input() abbr = false;
-  @Input() selected = false;
-  @Output() tagSelected: EventEmitter<string> = new EventEmitter();
+  @Input() count: boolean;
+  @Input() abbr: boolean;
+  @Input() selected: boolean;
+  @Output() tagSelected: EventEmitter<Tag> = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+
   }
-  selectTag(tag) {
+  selectTag(tag: Tag): void {
     this.tagSelected.emit(tag);
   }
 }
