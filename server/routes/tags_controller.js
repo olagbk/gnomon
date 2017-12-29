@@ -4,8 +4,8 @@ module.exports = (router, sequelize) => {
 
   router.route('/tags')
     .get((req, res) => {
-      sequelize.models.tags.findAll()
-        .then(data => res.json(data))
+      sequelize.query('SELECT tags.name, COUNT("PostTags"."tagId") FROM tags INNER JOIN "PostTags" ON tags.id = "PostTags"."tagId" GROUP BY tags.id')
+        .then(data => res.json(data[0]))
         .catch(err => res.send(err))
     });
 };
