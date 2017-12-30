@@ -40,9 +40,10 @@ import { SpinnerComponent } from './widgets/spinner/spinner.component';
 import { ScrollComponent } from './widgets/scroll/scroll.component';
 import { TagsComponent } from './widgets/tags/tags.component';
 
+import { AlbumsService } from './gallery/albums.service';
 import { BlogService } from './pages/blog/blog.service';
 import { FlickrService } from './gallery/flickr.service';
-import { AlbumsService } from './gallery/albums.service';
+import { MailerService } from './widgets/contact-form/mailer.service';
 
 import { SortPipe } from './widgets/tags/sort.pipe';
 
@@ -104,6 +105,7 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     },
     BlogService,
     FlickrService,
+    MailerService,
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: { siteKey: '6LfB2jkUAAAAAAM_uaJSpcoLZk3mEe1Sh17ShDcN' } as RecaptchaSettings,

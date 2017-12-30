@@ -1,21 +1,26 @@
 import { should } from 'chai';
 import * as sinon from 'sinon';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { ContactFormComponent } from './contact-form.component';
+import { MailerServiceStub } from '../../../../test/stubs';
+import { MailerService } from './mailer.service';
 
 describe('ContactFormComponent', () => {
   let component: ContactFormComponent;
   let fixture: ComponentFixture<ContactFormComponent>;
+  let mailer: MailerServiceStub;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule ],
+      providers: [ {provide: MailerService, useClass: MailerServiceStub} ],
       declarations: [ ContactFormComponent ],
       schemas: [ NO_ERRORS_SCHEMA ]
     });
+    mailer = TestBed.get(MailerService);
     fixture = TestBed.createComponent(ContactFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -42,6 +47,15 @@ describe('ContactFormComponent', () => {
     formEl.properties.hidden.should.equal(true);
     component.formVisible.should.equal(false);
   });
+  it('should send email when form is submitted', fakeAsync(() => {
+    const spy = sinon.spy(component, 'sendEmail');
+    const formEl = fixture.debugElement.query(By.css('form'));
+
+    formEl.triggerEventHandler('submit', component.model);
+    tick();
+    spy.called.should.equal(true);
+    component.submitted.should.equal(true);
+  }));
   it('should hide form and show message after it has been submitted', () => {
     let messageEl, formEl;
     messageEl = fixture.debugElement.query(By.css('p'));
@@ -54,8 +68,38 @@ describe('ContactFormComponent', () => {
     formEl = fixture.debugElement.query(By.css('div'));
     messageEl = fixture.debugElement.query(By.css('p'));
 
-    should().exist(messageEl);
     should().not.exist(formEl);
+    should().exist(messageEl);
+    messageEl.nativeElement.textContent.should.include('sent');
+  });
+  it('should handle sending errors', fakeAsync(() => {
+    mailer.error = true;
+    component.sendEmail();
+    tick();
+    component.submitted.should.equal(false);
+    component.error.should.equal(true);
+  }));
+  it('should hide form and show error message if failed', () => {
+    let messageEl, formEl;
+
+    component.formVisible = true;
+    fixture.detectChanges();
+
+    formEl = fixture.debugElement.query(By.css('div'));
+    messageEl = fixture.debugElement.query(By.css('p'));
+
+    should().exist(formEl);
+    should().not.exist(messageEl);
+
+    component.error = true;
+    fixture.detectChanges();
+
+    formEl = fixture.debugElement.query(By.css('div'));
+    messageEl = fixture.debugElement.query(By.css('p'));
+
+    should().not.exist(formEl);
+    should().exist(messageEl);
+    messageEl.nativeElement.textContent.should.include('wrong');
   });
   it('should disable submit button until all fields are filled', () => {
     component.formVisible = true;
@@ -93,12 +137,5 @@ describe('ContactFormComponent', () => {
     popoverWrapperEl.nativeElement.previousElementSibling.className.should.include('submit-button');
     should().exist(popoverWrapperEl.attributes.popover);
     popoverWrapperEl.attributes.triggers.should.equal('mouseenter:mouseleave');
-  });
-  it('should send email when form is submitted', () => {
-    const spy = sinon.spy(component, 'sendEmail');
-    const formEl = fixture.debugElement.query(By.css('form'));
-
-    formEl.triggerEventHandler('submit', null);
-    spy.called.should.equal(true);
   });
 });

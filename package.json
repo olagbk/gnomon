@@ -36,6 +36,7 @@
     "ngx-bootstrap": "^1.9.3",
     "ngx-disqus": "^2.2.1",
     "ngx-ellipsis": "^1.0.6",
+    "nodemailer": "^4.4.1",
     "npm": "^5.5.1",
     "pg": "^7.4.0",
     "rxjs": "^5.5.2",

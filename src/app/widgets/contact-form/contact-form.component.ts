@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Email } from './email';
+import { MailerService } from './mailer.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -57,15 +58,19 @@ import { Email } from './email';
 })
 export class ContactFormComponent implements OnInit {
   model = new Email();
+  error = false;
   submitted = false;
   formVisible = false;
+  captcha: string;
 
-  constructor() { }
+  constructor(private mailer: MailerService) { }
 
   ngOnInit() { }
 
   sendEmail() {
-    this.submitted = true;
+    this.mailer.send(this.model)
+      .then(res =>  this.submitted = true)
+      .catch(err => this.error = true);
   }
   toggleForm() {
     this.formVisible = !this.formVisible;

@@ -1,3 +1,4 @@
+/* tslint:disable:no-unused-expression */
 import { should, use } from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import * as sinon from 'sinon';

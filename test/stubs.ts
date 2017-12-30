@@ -9,7 +9,15 @@ import { Params } from '@angular/router';
 import { FlickrParams } from '../src/app/gallery/flickr-params';
 import { Post, Tag } from '../src/app/pages/blog/post';
 import { Album } from '../src/app/gallery/album';
+import { Email } from '../src/app/widgets/contact-form/email';
 
+export class MailerServiceStub {
+  error = false;
+  send(email: Email): Promise<any> {
+    if (this.error) { return Promise.reject(null); }
+    return Promise.resolve();
+  }
+}
 export class AlbumsServiceStub {
   getAlbumByType(album: string): Album {return {album_id: album, type: album}; }
   getPhotos(): Album[] { return [{
