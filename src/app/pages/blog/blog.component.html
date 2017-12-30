@@ -1,6 +1,6 @@
 <div class="container px-md-5">
 
-  <app-pagination *ngIf="filteredPosts" [items]="filteredPosts.getValue().length" [perPage]="perPage" [perPageOpts]="perPageOpts" (selected)="perPageChange($event)"></app-pagination>
+  <app-pagination *ngIf="filteredPosts" [items]="filteredPosts.getValue().length" [perPage]="perPage" [perPageOpts]="perPageOpts" (perPageChanged)="perPageChange($event)"></app-pagination>
 
   <div class="tags dark-container p-3 mb-2">
 

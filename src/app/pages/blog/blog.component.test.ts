@@ -6,6 +6,7 @@ import { By } from '@angular/platform-browser';
 import { BlogComponent } from './blog.component';
 import { BlogService } from './blog.service';
 import { BlogServiceStub, ActivatedRouteStub, RouterStub } from '../../../../test/stubs';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 describe('BlogComponent', () => {
   let component: BlogComponent;
@@ -39,6 +40,7 @@ describe('BlogComponent', () => {
     component.filteredPosts.getValue().length.should.equal(4);
   });
   it('should update when user navigates to another page', () => {
+    component.filteredPosts = new BehaviorSubject(new Array(100));
     activatedRoute.testQueryParams = {page: 3};
     component.currentPage.should.equal(3);
   });
@@ -198,7 +200,7 @@ describe('BlogComponent', () => {
     postEls = fixture.debugElement.queryAll(By.css('.post'));
     postEls.length.should.equal(3);
 
-    component.perPage = 0; // show all
+    component.perPage = -1; // show all
     fixture.detectChanges();
     postEls = fixture.debugElement.queryAll(By.css('.post'));
     postEls.length.should.equal(4);

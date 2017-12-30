@@ -57,7 +57,7 @@ describe('GalleryComponent', () => {
     const pageChangedSpy = sinon.spy(component, 'perPageChange');
     const perPage = 92;
     const paginationEl = fixture.debugElement.query(By.css('app-pagination'));
-    paginationEl.triggerEventHandler('selected', {perPage: perPage, currentPage: 3});
+    paginationEl.triggerEventHandler('perPageChanged', {perPage: perPage, currentPage: 3});
     tick();
     fixture.detectChanges();
     const thumbEls = fixture.debugElement.queryAll(By.css('app-gallery-thumb'));

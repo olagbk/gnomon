@@ -70,8 +70,8 @@ describe('PaginationComponent', () => {
     component.page = 3;
     hostFixture.detectChanges();
 
-    const spy = sinon.spy(component.selected, 'emit');
-    component.select('10');
+    const spy = sinon.spy(component.perPageChanged, 'emit');
+    component.selectPerPage('10');
     hostFixture.detectChanges();
 
     spy.calledWith({perPage: 10, currentPage: 2}).should.equal(true);

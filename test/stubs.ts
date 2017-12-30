@@ -126,7 +126,7 @@ export class TagsHostStubComponent {
 @Component({
   selector: 'app-pagination-host',
   template: `
-    <app-pagination [items]="items" [perPage]="perPage" [perPageOpts]="perPageOpts" (selected)="onSelect($event)"></app-pagination>
+    <app-pagination [items]="items" [perPage]="perPage" [perPageOpts]="perPageOpts" (perPageChanged)="onSelect($event)"></app-pagination>
   `
 })
 export class PaginationHostStubComponent {

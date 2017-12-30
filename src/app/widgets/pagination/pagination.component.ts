@@ -12,7 +12,7 @@ export class PaginationComponent implements OnInit {
   @Input() items: number;
   @Input() perPage: number;
   @Input() perPageOpts: number[];
-  @Output() selected: EventEmitter<any> = new EventEmitter();
+  @Output() perPageChanged: EventEmitter<any> = new EventEmitter();
 
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {
@@ -34,12 +34,12 @@ export class PaginationComponent implements OnInit {
     queryParams.page = page;
     this.router.navigate(this.activatedRoute.snapshot.url.map(segment => segment.path), {queryParams: queryParams});
   }
-  select(perPage: string) {
+  selectPerPage(perPage: string) {
     const response: any = {perPage: Number(perPage)};
     const numPages = (perPage === '-1') ? 1 : Math.ceil(this.items / Number(perPage));
     if (numPages < this.page) {
       response.currentPage = Math.ceil(numPages);
     }
-    this.selected.emit(response);
+    this.perPageChanged.emit(response);
   }
 }
