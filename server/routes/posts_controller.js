@@ -40,7 +40,7 @@ module.exports = (router, sequelize) => {
     });
   router.route('/posts/:id')
     .get((req, res) => {
-      sequelize.models.posts.findById(req.params.id, {include: {model: sequelize.models.tags}})
+      sequelize.models.posts.findById(req.params.id, {include: {model: sequelize.models.tags, attributes: []}})
         .then(post => res.json(post))
         .catch(err => res.send(err));
     })
