@@ -10,10 +10,6 @@ module.exports = (sequelize) => {
       name: {
         type: Sequelize.STRING,
         allowNull: false
-      },
-      count: {
-        type: Sequelize.INTEGER,
-        allowNull: false
       }
     },
     {

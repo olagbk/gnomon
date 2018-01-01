@@ -1,13 +1,15 @@
 'use strict';
 
-process.env.NODE_ENV = 'test';
-
+import exeunt from 'exeunt';
 import fs from 'fs';
 import Sequelize from 'sequelize';
 
 import sequelize from '~/dist/database/sequelize';
 
 const migrations = {};
+
+
+after(exeunt);
 
 describe('Sequelize migration', () => {
 
@@ -18,17 +20,12 @@ describe('Sequelize migration', () => {
         const key = file.split('_')[0];
         migrations[key] = require('~/dist/database/migrations/' + file);
       }
-      done();
+      sequelize.queryInterface
+        .dropAllTables()
+        .then(
+          () => done(),
+          (err) => done(err));
     });
-  });
-
-  beforeEach(function (done) {
-    // Setup the database
-    sequelize.queryInterface
-      .dropAllTables()
-      .then(
-        () => done(),
-        (err) => done(err));
   });
 
   it('should create the posts table', done => {
@@ -47,9 +44,65 @@ describe('Sequelize migration', () => {
       posts.attributes.id.allowNull.should.equal(false);
 
       posts.attributes.should.have.property('body');
-      posts.attributes.body.type.key.should.equal('STRING');
+      posts.attributes.body.type.key.should.equal('TEXT');
+      should.not.exist(posts.attributes.body.allowNull); //true by default
 
       posts.options.timestamps.should.equal(true);
+
+      done();
+    });
+  });
+  it('should create the albums table', done => {
+    migrations['002'].up(sequelize.queryInterface, Sequelize, () => {
+
+      const albums = sequelize.models.albums;
+
+      should.exist(albums);
+
+      albums.attributes.should.have.property('id');
+      albums.attributes.id.type.key.should.equal('INTEGER');
+      albums.attributes.id.allowNull.should.equal(false);
+
+      albums.attributes.should.have.property('type');
+      albums.attributes.type.type.key.should.equal('STRING');
+      albums.attributes.type.allowNull.should.equal(false);
+
+      albums.attributes.should.have.property('album_id');
+      albums.attributes.album_id.type.key.should.equal('STRING');
+      albums.attributes.album_id.allowNull.should.equal(false);
+
+      albums.attributes.should.have.property('name');
+      albums.attributes.name.type.key.should.equal('STRING');
+      should.not.exist(albums.attributes.name.allowNull); // true by default
+
+      albums.attributes.should.have.property('filename');
+      albums.attributes.filename.type.key.should.equal('STRING');
+      should.not.exist(albums.attributes.filename.allowNull); //true by default
+
+      albums.options.timestamps.should.equal(false);
+
+      done();
+    });
+  });
+  it('should create tags and PostTags', done => {
+    migrations['003'].up(sequelize.queryInterface, Sequelize, () => {
+
+      const tags = sequelize.models.tags;
+      const ptags = sequelize.models.PostTags;
+
+      should.exist(tags);
+      should.exist(ptags);
+
+      tags.attributes.should.have.property('name');
+      tags.attributes.name.type.key.should.equal('STRING');
+      tags.attributes.name.allowNull.should.equal(false);
+
+      tags.options.timestamps.should.equal(false);
+
+      should.exist(tags.associations.posts);
+
+      ptags.primaryKeyAttributes.should.include('postId');
+      ptags.primaryKeyAttributes.should.include('tagId');
 
       done();
     });
