@@ -41,7 +41,7 @@ describe('models', () => {
       Post.attributes.title.type.key.should.equal('STRING');
       Post.attributes.id.allowNull.should.equal(false);
 
-      Post.attributes.body.type.key.should.equal('STRING');
+      Post.attributes.body.type.key.should.equal('TEXT');
 
     })
   })
