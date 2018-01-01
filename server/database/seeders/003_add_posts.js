@@ -303,33 +303,27 @@ Things we could use.`}], {})
       return queryInterface.bulkInsert('tags', [
         {
           id: 1,
-          name: 'hitler',
-          count: 2
+          name: 'hitler'
         },
         {
           id: 2,
-          name: 'copypasta',
-          count: '2'
+          name: 'copypasta'
         },
         {
           id: 3,
-          name: 'poetry',
-          count: 2
+          name: 'poetry'
         },
         {
           id: 4,
-          name: 'NSFK',
-          count: 2
+          name: 'NSFK'
         },
         {
           id: 5,
-          name: 'PL',
-          count: 2
+          name: 'PL'
         },
         {
           id: 6,
-          name: 'politics',
-          count: 1
+          name: 'politics'
         }
 
       ], {})
