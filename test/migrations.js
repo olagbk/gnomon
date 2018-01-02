@@ -1,15 +1,11 @@
 'use strict';
 
-import exeunt from 'exeunt';
 import fs from 'fs';
 import Sequelize from 'sequelize';
 
 import sequelize from '~/dist/database/sequelize';
 
 const migrations = {};
-
-
-after(exeunt);
 
 describe('Sequelize migration', () => {
 

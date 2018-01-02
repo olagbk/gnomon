@@ -48,7 +48,7 @@ module.exports = (router, sequelize) => {
       sequelize.models.posts.findById(req.params.id)
         .then(post => {
           post
-            .update(req.query)
+            .update(req.body)
             .then(updatedPost => res.json(post))
             .catch(err => res.send(err))
         })
