@@ -5,22 +5,19 @@ Run `gulp watch` to start the server and watch for file changes. Runs on port 30
 
 ## Build
 Run `gulp build` to build the project.
-Run `gulp transpile` to only transpile server files to ES5.
-Run `gulp ng-build` to only build client files (NB: `-prod` flag will be needed a production build)
 
-The build artifacts will be stored in the `dist/` directory. 
+Run `gulp transpile` to only transpile server-side files to ES5.
 
-## Running unit tests
+Run `gulp ng-build` to only build client files (NB: `-prod` flag will be needed a production build).
 
-Run `npm test` to execute server-side tests.
-Run `ng test` to execute client-side tests via [Karma](https://karma-runner.github.io).
+The build artifacts are stored in the `dist/` directory. 
 
-## Running end-to-end tests
+## Tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-(Not implemented yet)
+Run `npm test` to execute server-side tests via Mocha.
+
+Run `ng test` to execute client-side tests via Mocha/Karma.
 
 ## Heroku
 
-`git checkout heroku` and `npm run heroku` to deploy the app to Heroku. 
+`git checkout heroku` and `npm run heroku` to deploy the app. 
