@@ -1,6 +1,6 @@
 export interface Album {
   type: string;
-  album_id: string;
+  albumId: string;
   name?: string;
   filename?: string;
 }

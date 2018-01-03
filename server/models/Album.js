@@ -10,7 +10,7 @@ export default (sequelize) => {
       type: Sequelize.STRING,
       allowNull: false
     },
-    album_id: {
+    albumId: {
       type: Sequelize.STRING,
       allowNull: false
     },

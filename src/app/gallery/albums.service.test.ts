@@ -19,10 +19,10 @@ describe('AlbumsService', () => {
       ]
     });
     mockResponse = [
-      {type: 'photos', album_id: '52222', name: 'things', filename: 'things.png'},
-      {type: 'photos', album_id: '38755', name: 'people', filename: 'people.png'},
-      {type: 'drawings', album_id: '28888'},
-      {type: 'sketches', album_id: '56432'}
+      {type: 'photos', albumId: '52222', name: 'things', filename: 'things.png'},
+      {type: 'photos', albumId: '38755', name: 'people', filename: 'people.png'},
+      {type: 'drawings', albumId: '28888'},
+      {type: 'sketches', albumId: '56432'}
     ];
     service = TestBed.get(AlbumsService);
     mockBackend = TestBed.get(XHRBackend);

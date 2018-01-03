@@ -63,9 +63,9 @@ describe('Sequelize migration', () => {
       albums.attributes.type.type.key.should.equal('STRING');
       albums.attributes.type.allowNull.should.equal(false);
 
-      albums.attributes.should.have.property('album_id');
-      albums.attributes.album_id.type.key.should.equal('STRING');
-      albums.attributes.album_id.allowNull.should.equal(false);
+      albums.attributes.should.have.property('albumId');
+      albums.attributes.albumId.type.key.should.equal('STRING');
+      albums.attributes.albumId.allowNull.should.equal(false);
 
       albums.attributes.should.have.property('name');
       albums.attributes.name.type.key.should.equal('STRING');

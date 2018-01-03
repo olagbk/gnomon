@@ -29,6 +29,6 @@ describe('SketchesComponent', () => {
   it('should pass album id to gallery component', () => {
     const galleryEl = fixture.debugElement.query(By.css('app-gallery'));
     const galleryC = galleryEl.componentInstance;
-    galleryC.album.should.equal(component.album.album_id);
+    galleryC.album.should.equal(component.album.albumId);
   });
 });

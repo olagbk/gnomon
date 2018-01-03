@@ -18,7 +18,7 @@ describe('AlbumThumbComponent', () => {
     component.album = {
       type: 'photos',
       name: 'weird / creepy / dead',
-      album_id: '72157642924012913',
+      albumId: '72157642924012913',
       filename: 'weird.jpg'
     };
     fixture.detectChanges();
@@ -35,7 +35,7 @@ describe('AlbumThumbComponent', () => {
     const linkEl = fixture.debugElement.query(By.css('a'));
     const linkD = linkEl.injector.get(RouterLinkStubDirective);
     linkEl.triggerEventHandler('click', null);
-    linkD.navigatedTo.should.equal(component.album.album_id);
+    linkD.navigatedTo.should.equal(component.album.albumId);
   });
   it('should set background once the image loads', () => {
     const emitSpy = sinon.spy(component.addBackground, 'emit');

@@ -19,29 +19,29 @@ export class MailerServiceStub {
   }
 }
 export class AlbumsServiceStub {
-  getAlbumByType(album: string): Album {return {album_id: album, type: album}; }
+  getAlbumByType(album: string): Album {return {albumId: album, type: album}; }
   getPhotos(): Album[] { return [{
     type: 'photos',
     name: 'mammalia',
-    album_id: '72157644448784543',
+    albumId: '72157644448784543',
     filename: 'mammalia.jpg'
   },
     {
       type: 'photos',
       name: 'insecta et invertebrata',
-      album_id: '72157636520804406',
+      albumId: '72157636520804406',
       filename: 'insecta.jpg'
     },
     {
       type: 'photos',
       name: 'weird / creepy / dead',
-      album_id: '72157642924012913',
+      albumId: '72157642924012913',
       filename: 'weird.jpg'
     },
     {
       type: 'photos',
       name: 'aves',
-      album_id: '72157636520438644',
+      albumId: '72157636520438644',
       filename: 'aves.jpg'
     }];
   }
