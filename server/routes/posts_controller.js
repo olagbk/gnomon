@@ -7,16 +7,18 @@ module.exports = (router, sequelize) => {
     .post((req, res) => {
 
     sequelize.models.posts.create({
-      title: req.query.title,
-      body: req.query.body
+      title: req.body.title,
+      body: req.body.body
     }).then(post => {
 
-      const tags = req.query.tags || [];
-      const promises = tags.map(tag => sequelize.models.tags.findCreateFind({where: {name: tag}}));
+      const reqTags = req.body.tags || [];
+      const promises = reqTags.map(tag => sequelize.models.tags.findCreateFind({where: {name: tag}}));
 
       Promise.all(promises).then(tags => {
-        tags = tags.map(t => t[0]);
-        post.setTags(tags).then(tags => res.status(201).json(post) )
+        const tagObjs = tags.map(t => t[0]);
+        post.setTags(tagObjs).then(() => {
+          res.status(201).json({post, tags})
+        } )
         });
       })
       .catch(err => {
@@ -28,15 +30,13 @@ module.exports = (router, sequelize) => {
     .get((req, res) => {
       const opts = {};
 
+      opts.include = {
+        model: sequelize.models.tags,
+        attributes: ['name']
+      };
       if (req.query.count) {
         opts.limit = req.query.count;
         opts.order = [['createdAt', 'DESC']];
-      }
-      if (req.query.tags) {
-        opts.include = {
-          model: sequelize.models.tags,
-          attributes: ['name']
-        }
       }
       sequelize.models.posts.findAll(opts)
         .then(posts => res.json(posts))
@@ -44,21 +44,37 @@ module.exports = (router, sequelize) => {
     });
   router.route('/posts/:id')
     .get((req, res) => {
-      sequelize.models.posts.findById(req.params.id, {include: {model: sequelize.models.tags, attributes: []}})
+      sequelize.models.posts.findById(req.params.id, {include: {model: sequelize.models.tags}})
         .then(post => res.json(post))
         .catch(err => res.send(err));
     })
     .put((req, res) => {
       sequelize.models.posts.findById(req.params.id)
-        .then(post => {
-          post
-            .update(req.body)
-            .then(updatedPost => res.json(post))
-            .catch(err => res.send(err))
-        })
-        .catch(err => res.send(err));
+        .then(instance => {
 
-    })
+          instance.update(req.body)
+            .then(post => {
+
+              if (!req.body.tags) return res.json({post});
+
+              const promises = req.body.tags.map(tag => sequelize.models.tags.findCreateFind({where: {name: tag}}));
+
+              Promise.all(promises)
+                .then(tags => {
+
+                const tagObjs = tags.map(t => t[0]);
+
+                post.setTags(tagObjs).then(
+                  () => res.json({post, tags}),
+                  () => res.send(err)
+                )
+                })
+                .catch(err => res.send(err));
+            })
+        })
+        .catch(err => res.send(err))
+  })
+
     .delete((req, res) => {
       sequelize.models.posts.findById(req.params.id)
         .then(post => {
