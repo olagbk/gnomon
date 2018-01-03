@@ -4,7 +4,7 @@ import express from 'express';
 import fs from 'fs';
 
 import sequelize from './database/sequelize';
-
+import defineModels from './models/index';
 const router = express.Router();
 
 sequelize
@@ -14,18 +14,13 @@ sequelize
     console.log('Connection has been established successfully.');
 
     //define models and controllers
-    fs.readdir('server/models', (err, files) => {
+    defineModels(sequelize);
+
+    fs.readdir('server/routes', (err, files) => {
 
       for (let file of files) {
-        require(`./models/${file}`)(sequelize)
+        require(`./routes/${file}`)(router, sequelize);
       }
-
-      fs.readdir('server/routes', (err, files) => {
-
-        for (let file of files) {
-          require(`./routes/${file}`)(router, sequelize);
-        }
-      });
     });
   })
   .catch(err => {

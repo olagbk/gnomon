@@ -2,7 +2,7 @@
 
 import Sequelize from 'sequelize';
 
-module.exports = (sequelize) => {
+export default (sequelize) => {
 
   return sequelize.define('posts', {
     title: {

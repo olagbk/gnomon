@@ -1,11 +1,9 @@
 'use strict';
 
 import Sequelize from 'sequelize';
-import path from 'path';
 
-module.exports = (sequelize) => {
-  const Post = sequelize.import(path.join(path.resolve(), '/dist/models/Post.js'));
-  const Tag = sequelize.define('tags', {
+export default (sequelize) => {
+  return sequelize.define('tags', {
 
       name: {
         type: Sequelize.STRING,
@@ -15,9 +13,5 @@ module.exports = (sequelize) => {
     {
       timestamps: false
     });
-  Tag.belongsToMany(Post, {through: 'PostTags'});
-  Post.belongsToMany(Tag, {through: 'PostTags'});
-
-  return Tag;
 };
 

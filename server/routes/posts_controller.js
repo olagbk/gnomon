@@ -6,17 +6,21 @@ module.exports = (router, sequelize) => {
 
     .post((req, res) => {
 
-      sequelize.models.posts.create({
-        title: req.query.title,
-        body: req.query.body
+    sequelize.models.posts.create({
+      title: req.query.title,
+      body: req.query.body
+    }).then(post => {
+
+      const tags = req.query.tags || [];
+      const promises = tags.map(tag => sequelize.models.tags.findCreateFind({where: {name: tag}}));
+
+      Promise.all(promises).then(tags => {
+        tags = tags.map(t => t[0]);
+        post.setTags(tags).then(tags => res.status(201).json(post) )
+        });
       })
-        .then(post => res.status(201).json(post))
-
-        .catch(err => {
-
-        if (err.constructor.name === 'ValidationError')
-          res.status(422);
-
+      .catch(err => {
+        if (err.constructor.name === 'ValidationError') res.status(422);
         res.send(err);
         })
       })

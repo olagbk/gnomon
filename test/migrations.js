@@ -83,6 +83,7 @@ describe('Sequelize migration', () => {
   it('should create tags and PostTags', done => {
     migrations['003'].up(sequelize.queryInterface, Sequelize, () => {
 
+      const posts = sequelize.models.posts;
       const tags = sequelize.models.tags;
       const ptags = sequelize.models.PostTags;
 
@@ -96,6 +97,7 @@ describe('Sequelize migration', () => {
       tags.options.timestamps.should.equal(false);
 
       should.exist(tags.associations.posts);
+      should.exist(posts.associations.tags);
 
       ptags.primaryKeyAttributes.should.include('postId');
       ptags.primaryKeyAttributes.should.include('tagId');

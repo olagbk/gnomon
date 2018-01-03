@@ -4,34 +4,54 @@ import chaiHttp from 'chai-http';
 
 import server from '~/dist/index';
 import sequelize from '~/dist/database/sequelize';
-
+import defineModels from '~/dist/models/index';
 import '../migrations.js';
 
 const chai = require('chai').use(chaiHttp);
-const Post = require('~/dist/models/Post')(sequelize);
+const models = defineModels(sequelize);
 
-describe('Posts', () => {
+describe('Posts route', () => {
 
-  const samplePost = {
-    title: "Proper title",
-    body: "Much body"
-  };
-  let response;
+  let testPostData, testTag, response;
+
+  before(done => {
+    models.Tag.destroy({where: {}}).then(() => {
+
+      models.Tag.create({name: 'sampleTag'}).then(tag => {
+        testTag = tag;
+        done();
+      })
+    })
+  });
 
   beforeEach(done => {
 
     response = null;
 
-    Post.destroy({where: {}}).then(() => {
+    testPostData = {
+      title: "Proper title",
+      body: "Much body"
+    };
+
+    models.Post.destroy({where: {}}).then(() => {
       done();
     });
   });
+
+  // after(done => {
+  //   models.Post.destroy({where: {}}).then(() => {
+  //
+  //     models.Tag.destroy({where: {}}).then(() => {
+  //       done();
+  //     })
+  //   });
+  // });
 
 
   describe('/GET response', () => {
     it('it should return correctly formatted data', done => {
 
-      Post.bulkCreate([
+      models.Post.bulkCreate([
         {title: 'First post title', body: 'First post body'},
         {title: 'Second post title', body: 'Second post body'}
       ])
@@ -56,7 +76,7 @@ describe('Posts', () => {
       beforeEach(done => {
         chai.request(server)
           .post('/api/posts')
-          .query(samplePost)
+          .query(testPostData)
           .end((err, res) => {
             response = {err, res};
             done();
@@ -70,8 +90,8 @@ describe('Posts', () => {
       });
       it('should have a title and body', () => {
         response.res.body.should.be.a('object');
-        response.res.body.should.have.property('title').equal(samplePost.title);
-        response.res.body.should.have.property('body').equal(samplePost.body);
+        response.res.body.should.have.property('title').equal(testPostData.title);
+        response.res.body.should.have.property('body').equal(testPostData.body);
       });
       it('should have timestamps', () => {
         response.res.body.should.have.property('createdAt').not.equal(null);
@@ -79,11 +99,31 @@ describe('Posts', () => {
       });
     });
 
+    describe('POST w/ tags', () => {
+
+      beforeEach(done => {
+        testPostData.tags = ['sampleTag', 'anotherTag'];
+
+        chai.request(server)
+          .post('/api/posts')
+          .query(testPostData)
+          .end((err, res) => {
+            response = {err, res};
+            done();
+          });
+      });
+
+      it('should work', () => {
+        should.not.exist(response.err);
+      })
+
+    });
+
     describe('GET by id', () => {
       let post;
 
       beforeEach(done => {
-        Post.create(samplePost).then(data => {
+        models.Post.create(testPostData).then(data => {
           post = data;
 
           chai.request(server)
@@ -111,7 +151,7 @@ describe('Posts', () => {
     describe('Update (PUT)', () => {
 
       beforeEach(done => {
-        Post.create(samplePost).then(post => {
+        models.Post.create(testPostData).then(post => {
 
           chai.request(server)
             .put(`/api/posts/${post.id}`)
@@ -139,7 +179,7 @@ describe('Posts', () => {
       let post;
 
       beforeEach(done => {
-        Post.create(samplePost).then(data => {
+        models.Post.create(testPostData).then(data => {
           post = data;
 
           chai.request(server)

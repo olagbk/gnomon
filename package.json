@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "node dist/index.js",
     "build": "gulp build",
-    "test": "NODE_ENV='test'&& mocha --recursive --require babel-register --require chai/register-should --exit",
+    "test": "export NODE_ENV=test&& mocha --recursive --require babel-register --require chai/register-should --exit",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "reinstall": "rm -rf node_modules && npm install",
