@@ -13,7 +13,7 @@ module.exports = (router, sequelize) => {
     const type = req.params.type;
     const method = (type === 'photos')? 'findAll' : 'findOne';
     sequelize.models.albums[method]({where: {type: type}})
-      .then(data => res.json(data))
+      .then(data => data? res.json(data) : res.status(404).send())
       .catch(err => res.send(err));
 
   })
