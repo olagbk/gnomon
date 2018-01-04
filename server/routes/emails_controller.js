@@ -2,7 +2,7 @@
 import nodemailer from 'nodemailer';
 import config from '~/config/config.json';
 
-module.exports = (router, sequelize) => {
+export default (router, sequelize) => {
 
   router.route('/emails')
     .post((req, res) => {

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (router, sequelize) => {
+export default (router, sequelize) => {
 
   router.route('/albums')
     .get((req, res) => {
