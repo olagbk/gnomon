@@ -2,20 +2,21 @@
 import Flickr from '../flickr.js';
 import config from '~/config/config.json';
 
-export function fetchAlbum(flickrAuth, req, res) {
-  return flickrAuth
+export function getAlbum(f, req, res, conf) {
+  return f
     .then(flickr => {
-      if (flickr instanceof Error) throw new Error(flickr);
-      flickr.photosets.getPhotos(
-        {
-          user_id: config.flickr.nsid,
+
+      if (flickr instanceof Error) throw flickr;
+      return flickr.photosets.getPhotos({
+
+          user_id: conf.flickr.nsid,
           photoset_id: req.query.album,
           page: req.query.page,
           per_page: req.query.perPage,
-          extras: ['url_o', 'url_n']
+          extras: ['url_n']
         },
         (err, result) => {
-          if (err) return res.send(err);
+          if (err) return res.status(404).send(err);
           const images = result.photoset.photo.map(img => {
             return {
               src: `https://farm${img.farm}.staticflickr.com/${img.server}/${img.id}_${img.secret}_b.jpg`,
@@ -23,16 +24,18 @@ export function fetchAlbum(flickrAuth, req, res) {
               text: img.title
             }
           });
-          res.json({images: images, count: result.photoset.total})
+          res.json({
+            images: images,
+            count: result.photoset.total
+          })
         }
       )
     })
     .catch(e => res.status(500).send(e))
 }
+
 export default (router, sequelize) => {
-  router.route('/flickr').get((req, res) => {
-    fetchAlbum(Flickr, req, res);
-  });
+  router.route('/flickr').get((req, res) => getAlbum(Flickr, req, res, config));
 };
 
 

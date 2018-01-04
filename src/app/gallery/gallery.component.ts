@@ -44,11 +44,11 @@ export class GalleryComponent implements OnInit {
         this.galleryLoaded = true;
       })
       .catch(err => {
-        if (this.currentPage === 1) {
-          this.galleryError = true;
-        } else {
+        if (err.status === 404 && this.currentPage !== 1) {
           this.currentPage = 1;
           this.getImages();
+        } else {
+          this.galleryError = true;
         }
       });
   }
