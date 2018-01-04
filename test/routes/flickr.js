@@ -1,19 +1,35 @@
 'use strict';
 
-import chaiHttp from 'chai-http';
-import server from '~/dist/index';
-import sequelize from '~/dist/database/sequelize';
-import defineModels from '~/dist/models/index';
-
+import sinon from 'sinon';
+import { mockFlickr } from '~/test/stubs/server';
+import { fetchAlbum } from '~/dist/routes/flickr_controller';
 import '../migrations.js';
 
-import { fetchAlbum } from '~/dist/routes/flickr_controller';
-const chai = require('chai').use(chaiHttp);
-const models = defineModels(sequelize);
+describe('/Flickr test', () => {
+  let req, res;
 
-describe.only('/Flickr test', () => {
+  beforeEach(done => {
+    req = {
+      query: {
+        album: 'yo mama',
+        page: '1',
+        perPage: '20'
+      }
+    };
+    res = {
+      status: function() { return this },
+      send: function() { return this },
+      json: function(data) { return data }
+    };
+    done();
+  });
 
-  it('should test something', () => {
-    (2).should.equal(2);
+  it('should send json response', done => {
+    const jsonSpy = sinon.spy(res, 'json');
+
+    fetchAlbum(mockFlickr, req, res).then(() => {
+      jsonSpy.calledOnce.should.equal(true);
+      done();
+    });
   });
 });

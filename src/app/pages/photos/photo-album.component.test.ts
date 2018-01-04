@@ -2,7 +2,7 @@ import { should } from 'chai';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { ActivatedRouteStub, GalleryStubComponent, RouterLinkStubDirective } from '../../../../test/stubs';
+import { ActivatedRouteStub, GalleryStubComponent, RouterLinkStubDirective } from '../../../../test/stubs/client';
 
 import { PhotoAlbumComponent } from './photo-album.component';
 

@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 
-import { GalleryServiceStub } from '../../../test/stubs';
+import { GalleryServiceStub } from '../../../test/stubs/client';
 import { GalleryService } from 'ng-gallery';
 import { GalleryThumbComponent } from './gallery-thumb.component';
 

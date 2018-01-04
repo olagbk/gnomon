@@ -6,10 +6,10 @@
 import { Directive, Input, Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Params } from '@angular/router';
-import { FlickrParams } from '../src/app/gallery/flickr-params';
-import { Post, Tag } from '../src/app/pages/blog/post';
-import { Album } from '../src/app/gallery/album';
-import { Email } from '../src/app/widgets/contact-form/email';
+import { FlickrParams } from '../../src/app/gallery/flickr-params';
+import { Post, Tag } from '../../src/app/pages/blog/post';
+import { Album } from '../../src/app/gallery/album';
+import { Email } from '../../src/app/widgets/contact-form/email';
 
 export class MailerServiceStub {
   error = false;

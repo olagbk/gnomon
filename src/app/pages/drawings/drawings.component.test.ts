@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { DrawingsComponent } from './drawings.component';
 import { AlbumsService } from '../../gallery/albums.service';
-import { AlbumsServiceStub, GalleryStubComponent } from '../../../../test/stubs';
+import { AlbumsServiceStub, GalleryStubComponent } from '../../../../test/stubs/client';
 
 describe('DrawingsComponent', () => {
   let component: DrawingsComponent;

@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { PaginationHostStubComponent, BootstrapPaginationStubComponent, RouterStub, ActivatedRouteStub } from '../../../../test/stubs';
+import { PaginationHostStubComponent, BootstrapPaginationStubComponent, RouterStub, ActivatedRouteStub } from '../../../../test/stubs/client';
 import { PaginationComponent } from './pagination.component';
 
 describe('PaginationComponent', () => {

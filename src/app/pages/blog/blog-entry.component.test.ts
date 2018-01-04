@@ -4,7 +4,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { fakeAsync, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ActivatedRouteStub, BlogServiceStub, RouterStub, RouterLinkStubDirective } from '../../../../test/stubs';
+import { ActivatedRouteStub, BlogServiceStub, RouterStub, RouterLinkStubDirective } from '../../../../test/stubs/client';
 import { BlogService } from './blog.service';
 import { BlogEntryComponent } from './blog-entry.component';
 

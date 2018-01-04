@@ -7,7 +7,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { ActivatedRouteStub, GalleryServiceStub, FlickrServiceStub } from '../../../test/stubs';
+import { ActivatedRouteStub, GalleryServiceStub, FlickrServiceStub } from '../../../test/stubs/client';
 
 import { GalleryService } from 'ng-gallery';
 import { FlickrService } from './flickr.service';

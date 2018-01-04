@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { BlogComponent } from './blog.component';
 import { BlogService } from './blog.service';
-import { BlogServiceStub, ActivatedRouteStub, RouterStub } from '../../../../test/stubs';
+import { BlogServiceStub, ActivatedRouteStub, RouterStub } from '../../../../test/stubs/client';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 describe('BlogComponent', () => {

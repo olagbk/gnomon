@@ -5,7 +5,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { ContactFormComponent } from './contact-form.component';
-import { MailerServiceStub } from '../../../../test/stubs';
+import { MailerServiceStub } from '../../../../test/stubs/client';
 import { MailerService } from './mailer.service';
 
 describe('ContactFormComponent', () => {

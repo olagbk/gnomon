@@ -3,7 +3,7 @@ import * as sinon from 'sinon';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { TagsHostStubComponent } from '../../../../test/stubs';
+import { TagsHostStubComponent } from '../../../../test/stubs/client';
 import { TagsComponent } from './tags.component';
 import { SortPipe } from './sort.pipe';
 

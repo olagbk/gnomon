@@ -3,7 +3,7 @@ import Flickr from '../flickr.js';
 import config from '~/config/config.json';
 
 export function fetchAlbum(flickrAuth, req, res) {
-  flickrAuth
+  return flickrAuth
     .then(flickr => {
       if (flickr instanceof Error) throw new Error(flickr);
       flickr.photosets.getPhotos(

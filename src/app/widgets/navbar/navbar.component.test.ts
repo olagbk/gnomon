@@ -2,7 +2,7 @@ import { should } from 'chai';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { RouterLinkStubDirective } from '../../../../test/stubs';
+import { RouterLinkStubDirective } from '../../../../test/stubs/client';
 import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {
