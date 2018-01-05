@@ -56,6 +56,36 @@ describe('ContactFormComponent', () => {
     spy.called.should.equal(true);
     component.submitted.should.equal(true);
   }));
+  it('should set processing status while email is being sent', fakeAsync(() => {
+    component.processing.should.equal(false);
+
+    const formEl = fixture.debugElement.query(By.css('form'));
+    formEl.triggerEventHandler('submit', component.model);
+    component.processing.should.equal(true);
+
+    tick();
+    component.processing.should.equal(false);
+  }));
+  it('should show a loading panel while email is being sent', () => {
+    let panelEl;
+
+    panelEl = fixture.debugElement.query(By.css('.processing-screen'));
+    should().not.exist(panelEl);
+
+    component.processing = true;
+    fixture.detectChanges();
+
+    panelEl = fixture.debugElement.query(By.css('.processing-screen'));
+    should().exist(panelEl);
+    const spinnerEl = panelEl.query(By.css('app-spinner'));
+    should().exist(spinnerEl);
+
+    component.processing = false;
+    fixture.detectChanges();
+
+    panelEl = fixture.debugElement.query(By.css('.processing-screen'));
+    should().not.exist(panelEl);
+  });
   it('should hide form and show message after it has been submitted', () => {
     let messageEl, formEl;
     messageEl = fixture.debugElement.query(By.css('p'));

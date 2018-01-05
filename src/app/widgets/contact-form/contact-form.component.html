@@ -1,3 +1,7 @@
+<div class="processing-screen" *ngIf="processing">
+  <app-spinner></app-spinner>
+</div>
+
 <a class="link form-link" *ngIf="!submitted && !error"
    [innerHTML]="(formVisible)? '[ hide ]' : '[ contact me ]'"
    (click)="toggleForm()">
