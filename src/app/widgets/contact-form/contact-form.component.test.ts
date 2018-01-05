@@ -114,6 +114,7 @@ describe('ContactFormComponent', () => {
 
     should().exist(inputEls[0].attributes.required);
     should().exist(inputEls[1].attributes.required);
+    should().exist(inputEls[2].attributes.required);
     should().exist(textareaEl.attributes.required);
     should().exist(captchaEl.attributes.required);
     form.valid.should.equal(false);
@@ -121,6 +122,7 @@ describe('ContactFormComponent', () => {
 
     form.controls.name.setValue('name');
     form.controls.email.setValue('name@gmail.com');
+    form.controls.subject.setValue('subject');
     form.controls.message.setValue('message');
     form.controls.captcha.setValue('valid');
 

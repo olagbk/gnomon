@@ -2,31 +2,34 @@
 import nodemailer from 'nodemailer';
 import config from '~/config/config.json';
 
+export function sendEmail(mailer, req, res, conf){
+  const transporter = mailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: conf.gmail.username,
+      pass: conf.gmail.password
+    }
+  });
+  const mailOptions = {
+    from: `"${req.body.name}" <${req.body.email}>`,
+    replyTo: `"${req.body.name}" <${req.body.email}>`,
+    to: conf.gmail.addressee,
+    subject: `[GNOMON] ${req.body.subject}`,
+    text: req.body.message
+  };
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      res.status(500).send(error);
+    } else {
+      res.json('sent');
+    }
+  });
+}
 export default (router, sequelize) => {
 
   router.route('/emails')
     .post((req, res) => {
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: config.gmail.username,
-          pass: config.gmail.password
-        }
-      });
-      const mailOptions = {
-        from: `"${req.body.name}" <${req.body.email}>`,
-        replyTo: `"${req.body.name}" <${req.body.email}>`,
-        to: 'rivvel@gmail.com',
-        subject: 'Fan mail!',
-        text: req.body.message
-      };
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          res.status(500).send(error);
-        } else {
-          res.json('sent');
-        }
-      });
+      sendEmail(nodemailer, req, res, config);
     });
 };
 

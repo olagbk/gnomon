@@ -5,7 +5,7 @@ import { getAlbum } from '~/dist/routes/flickr_controller';
 import { MockFlickr, mockConfig } from '~/test/stubs/server';
 import '../migrations.js';
 
-describe.only('/Flickr test', () => {
+describe('/Flickr test', () => {
   let req, res, mockFlickr;
 
   beforeEach(done => {
@@ -32,9 +32,11 @@ describe.only('/Flickr test', () => {
   it('should handle authorization errors', done => {
     const sendSpy = sinon.spy(res, 'send');
     const statusSpy = sinon.spy(res,'status');
+    const jsonSpy = sinon.spy(res, 'json');
     const flickr = mockFlickr.response({authError: true});
 
     getAlbum(flickr, req, res, mockConfig).then(() => {
+      jsonSpy.called.should.be.false;
       sendSpy.calledOnce.should.be.true;
       sendSpy.firstCall.args[0].should.be.an.instanceOf(Error);
       statusSpy.calledWith(500).should.be.true;
@@ -45,9 +47,11 @@ describe.only('/Flickr test', () => {
   it('should handle photoset errors', done => {
     const sendSpy = sinon.spy(res, 'send');
     const statusSpy = sinon.spy(res,'status');
+    const jsonSpy = sinon.spy(res, 'json');
     const flickr = mockFlickr.response({albumError: true});
 
     getAlbum(flickr, req, res, mockConfig).then(() => {
+      jsonSpy.called.should.be.false;
       sendSpy.calledOnce.should.be.true;
       sendSpy.firstCall.args[0].should.be.an.instanceOf(Error);
       statusSpy.calledWith(404).should.be.true;

@@ -36,8 +36,25 @@ export function MockFlickr() {
     return Promise.resolve(response);
   };
 }
+
+export function MockMailer() {
+  this.error = false;
+  this.sendMail = (opts, callback) => {
+    callback(this.error, {});
+  };
+  this.createTransport = (opts) => {
+    return {
+      sendMail: this.sendMail
+    }
+  }
+}
 export const mockConfig = {
   "flickr": {
     "nsid": "userId"
   },
+  "gmail": {
+    "username": "username",
+    "password": "password",
+    "addressee": "somedude@gmail.com"
+  }
 };
