@@ -35,6 +35,24 @@ body {
     text-shadow: 1px 1px 1px;
   }
 }
+.button-link {
+  background-color: rgba($black, 0.5);
+  border: 1.5px solid $gray-900;
+  border-radius: $border-radius;
+  letter-spacing: 2px;
+  text-decoration: none;
+  &:hover {
+    color: $white !important;
+    border-color: $navbar-dark-hover-color;
+    cursor: pointer;
+  }
+  display: flex;
+  width: 125px; //for Edge
+  width: fit-content;
+  margin: 2rem auto;
+  padding: 0.75rem;
+  color: $gray-400 !important;
+}
 .small-link {
   @extend .link;
   font-size: .8rem;

@@ -3,7 +3,7 @@
 /* tslint:disable:use-host-property-decorator*/
 /* tslint:disable:no-input-rename*/
 
-import { Directive, Input, Component } from '@angular/core';
+import {Directive, Input, Component, TemplateRef} from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Params } from '@angular/router';
 import { FlickrParams } from '../../src/app/gallery/flickr-params';
@@ -112,6 +112,9 @@ export class FlickrServiceStub {
 export class GalleryServiceStub {
   load() {}
   set() {}
+}
+export class BsModalServiceStub {
+  show(template: TemplateRef<any>) { return template; }
 }
 @Component({
   selector: 'app-gallery',

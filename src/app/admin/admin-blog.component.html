@@ -1,0 +1,45 @@
+<a class="button-link">New post</a>
+
+<div class="container p-5 rounded text-center">
+
+  <div class="row header pb-1 align-items-center">
+
+    <div class="col-2">Created</div>
+    <div class="col-2">Last updated</div>
+    <div class="col">Title</div>
+    <div class="col-1"></div>
+    <div class="col-1"></div>
+
+  </div>
+  <div class="row post align-items-center"
+       *ngFor="let post of posts | async">
+    <div class="col-2">{{post.createdAt | date}}</div>
+    <div class="col-2">{{post.updatedAt | date}}</div>
+    <div class="col link">{{post.title}}</div>
+    <div class="col-1">
+      <a class="button-link edit">Edit</a>
+    </div>
+    <div class="col-1">
+      <a class="button-link delete" (click)="openModal(post.title)">Delete</a>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-wrapper">
+    <div class="modal-header">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <span class="message m-5">Are you sure you want to delete <em>{{postToDelete}}</em>?</span>
+      <div class="buttons d-flex">
+        <a class="button-link" (click)="deletePost()">Hell Yeah</a>
+        <a class="button-link" (click)="modalRef.hide()">Maybe not</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<app-scroll></app-scroll>

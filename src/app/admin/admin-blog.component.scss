@@ -1,0 +1,28 @@
+@import '../../styles/common';
+.container {
+  border: 1px solid $gray-900;
+}
+.header {
+  font-size: 1.5rem;
+  color: $gray-600;
+}
+.row {
+  border-bottom: 1px solid $gray-900;
+}
+.modal-wrapper {
+  border: 1px solid $gray-700;
+  border-radius: 10rem;
+}
+.modal-body, .modal-header, .close {
+  background: $black;
+  color: $gray-200;
+}
+.modal-header {
+  border-bottom: 1px solid $gray-700;
+}
+.close {
+  cursor: pointer;
+}
+.message {
+  font-size: 1.5rem;
+}

@@ -34,7 +34,7 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.selectedTags.unsubscribe();
   }
   getPosts(): void {
-    this.blog.getPosts({params: {tags: true}}).then(posts => {
+    this.blog.getPosts().then(posts => {
       this.filteredPosts = new BehaviorSubject(posts);
       this.activatedRoute.queryParams.subscribe(params => {
         if (params.page ) {

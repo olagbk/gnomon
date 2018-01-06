@@ -20,6 +20,7 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recap
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared.module';
 
 import { AboutComponent } from './pages/about/about.component';
 import { AlbumThumbComponent } from './pages/photos/album-thumb.component';
@@ -37,7 +38,6 @@ import { PhotoAlbumComponent } from './pages/photos/photo-album.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { SketchesComponent } from './pages/sketches/sketches.component';
 import { SpinnerComponent } from './widgets/spinner/spinner.component';
-import { ScrollComponent } from './widgets/scroll/scroll.component';
 import { TagsComponent } from './widgets/tags/tags.component';
 
 import { AlbumsService } from './gallery/albums.service';
@@ -60,7 +60,6 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
     NavbarComponent,
     PaginationComponent,
     SpinnerComponent,
-    ScrollComponent,
     ContactFormComponent,
     TagsComponent,
 
@@ -81,6 +80,7 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
   ],
   imports: [
     AppRoutingModule,
+    SharedModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
