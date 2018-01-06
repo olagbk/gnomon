@@ -5,16 +5,16 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { routes } from './app-routing.module';
+import { routes } from './core/core-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { SketchesComponent } from './pages/sketches/sketches.component';
-import { DrawingsComponent } from './pages/drawings/drawings.component';
-import { PhotosComponent } from './pages/photos/photos.component';
-import { PhotoAlbumComponent } from './pages/photos/photo-album.component';
-import { AboutComponent } from './pages/about/about.component';
-import { BlogComponent } from './pages/blog/blog.component';
-import { BlogEntryComponent } from './pages/blog/blog-entry.component';
+import { HomeComponent } from './core/pages/home/home.component';
+import { SketchesComponent } from './core/pages/sketches/sketches.component';
+import { DrawingsComponent } from './core/pages/drawings/drawings.component';
+import { PhotosComponent } from './core/pages/photos/photos.component';
+import { PhotoAlbumComponent } from './core/pages/photos/photo-album.component';
+import { AboutComponent } from './core/pages/about/about.component';
+import { BlogComponent } from './core/pages/blog/blog.component';
+import { BlogEntryComponent } from './core/pages/blog/blog-entry.component';
 
 describe('AppComponent', () => {
 

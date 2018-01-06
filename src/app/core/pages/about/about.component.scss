@@ -1,0 +1,50 @@
+@import '../../../../styles/common';
+
+:host {
+  width: 100%;
+  background: radial-gradient(rgba($black,0.8), rgba($black, 0.6), rgba($black, 0.4));
+  margin-top: -.5rem;
+}
+.spinner {
+  display: flex;
+  justify-content: center;
+}
+app-spinner {
+  position: absolute;
+}
+.row {
+  margin: auto;
+  justify-content: center; //for Edge
+  justify-content: space-evenly;
+}
+.photo {
+  border: 2px solid $gray-800;
+  width: 100%;
+  height: fit-content;
+  box-shadow: $burnt-edges;
+  opacity: 0.5;
+  img {
+    width: 100%;
+    opacity: 0.8;
+  }
+}
+.desc {
+  width: 100%;
+  text-align: center;
+  color: $gray-500;
+  letter-spacing: 3px;
+  font-weight: 300;
+}
+.desc-link {
+  line-height: 2rem;
+}
+@include media-breakpoint-up(lg){
+  .photo {
+    width: 30vw;
+    height: 30vw;
+  }
+  .desc {
+    width: 40vw;
+    font-size: 1.25rem;
+  }
+}

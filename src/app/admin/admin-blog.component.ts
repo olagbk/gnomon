@@ -4,8 +4,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
 
-import { BlogService } from '../pages/blog/blog.service';
-import { Post } from '../pages/blog/post';
+import { BlogService } from '../core/pages/blog/blog.service';
+import { Post } from '../core/pages/blog/post';
 
 @Component({
   selector: 'app-admin-blog',
@@ -27,7 +27,7 @@ export class AdminBlogComponent implements OnInit {
     this.postToDelete = title;
     this.modalRef = this.modal.show(this.modalTemplate);
   }
-  deletePost(){
+  deletePost() {
     this.modalRef.hide();
   }
 }

@@ -1,0 +1,22 @@
+@import '../../../../styles/common';
+:host {
+  max-width: 450px;
+  margin: auto;
+}
+.badge {
+  &.selected {
+  background: $gray-600;
+    &:hover {
+      color: $gray-600 !important;
+    }
+  }
+  &:hover {
+  cursor: pointer;
+  background: $gray-100;
+  color: $gray-900 !important;
+  }
+}
+.count {
+  color: $gray-400;
+  font-size: .65rem;
+}

@@ -1,0 +1,29 @@
+@import '../../../../styles/common';
+
+:host {
+  align-self: center;
+  padding: 3rem;
+}
+h1 {
+  font-family: $amatic;
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-shadow: .05em .025em $gray-100;
+  text-align: center;
+  animation: fadein 2s forwards;
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  h1 {
+    font-size: 10rem;
+  }
+}

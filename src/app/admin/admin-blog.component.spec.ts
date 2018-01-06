@@ -6,7 +6,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BsModalService } from 'ngx-bootstrap';
 import { BsModalServiceStub, BlogServiceStub } from '../../../test/stubs/client';
-import { BlogService } from '../pages/blog/blog.service';
+import { BlogService } from '../core/pages/blog/blog.service';
 import { AdminBlogComponent } from './admin-blog.component';
 
 describe('AdminBlogComponent', () => {

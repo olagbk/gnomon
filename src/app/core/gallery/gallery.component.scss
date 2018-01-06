@@ -1,0 +1,18 @@
+@import '../../../styles/common';
+
+app-spinner {
+  position: absolute;
+  top: 0;
+  @include media-breakpoint-up(md){
+    top: 0.5rem;
+  }
+}
+.gallery-loaded {
+  width: 100%;
+}
+.error-message {
+  color: rgba($white, 0.85);
+  letter-spacing: 2px;
+}
+
+

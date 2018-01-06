@@ -1,53 +1,11 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
-import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { PopoverModule } from 'ngx-bootstrap/popover';
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
-import { DisqusModule } from 'ngx-disqus';
-
-import { GalleryModule } from 'ng-gallery';
-
-import { EllipsisModule } from 'ngx-ellipsis';
-
-import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
-import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
-
-import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared.module';
-
-import { AboutComponent } from './pages/about/about.component';
-import { AlbumThumbComponent } from './pages/photos/album-thumb.component';
 import { AppComponent } from './app.component';
-import { BlogComponent } from './pages/blog/blog.component';
-import { BlogEntryComponent } from './pages/blog/blog-entry.component';
-import { ContactFormComponent } from './widgets/contact-form/contact-form.component';
-import { DrawingsComponent } from './pages/drawings/drawings.component';
-import { GalleryComponent } from './gallery/gallery.component';
-import { GalleryThumbComponent } from './gallery/gallery-thumb.component';
-import { HomeComponent } from './pages/home/home.component';
-import { NavbarComponent } from './widgets/navbar/navbar.component';
-import { PaginationComponent } from './widgets/pagination/pagination.component';
-import { PhotoAlbumComponent } from './pages/photos/photo-album.component';
-import { PhotosComponent } from './pages/photos/photos.component';
-import { SketchesComponent } from './pages/sketches/sketches.component';
-import { SpinnerComponent } from './widgets/spinner/spinner.component';
-import { TagsComponent } from './widgets/tags/tags.component';
-
-import { AlbumsService } from './gallery/albums.service';
-import { BlogService } from './pages/blog/blog.service';
-import { FlickrService } from './gallery/flickr.service';
-import { MailerService } from './widgets/contact-form/mailer.service';
-
-import { SortPipe } from './widgets/tags/sort.pipe';
-
-import { galleryConfig } from './gallery/gallery.config';
+import { AlbumsService } from './core/gallery/albums.service';
 
 export function startupServiceFactory(albumsService: AlbumsService): Function {
   return () => albumsService.loadAll();
@@ -55,62 +13,22 @@ export function startupServiceFactory(albumsService: AlbumsService): Function {
 
 @NgModule({
   declarations: [
-    AppComponent,
-
-    NavbarComponent,
-    PaginationComponent,
-    SpinnerComponent,
-    ContactFormComponent,
-    TagsComponent,
-
-    HomeComponent,
-    BlogComponent,
-    BlogEntryComponent,
-    AboutComponent,
-    SketchesComponent,
-    DrawingsComponent,
-    PhotosComponent,
-    PhotoAlbumComponent,
-    AlbumThumbComponent,
-
-    GalleryComponent,
-    GalleryThumbComponent,
-
-    SortPipe
+    AppComponent
   ],
   imports: [
-    AppRoutingModule,
+    CoreModule,
     SharedModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpModule,
-    EllipsisModule,
-    CollapseModule.forRoot(),
-    DisqusModule.forRoot('gnomon'),
-    PaginationModule.forRoot(),
-    PopoverModule.forRoot(),
-    TypeaheadModule.forRoot(),
-    GalleryModule.forRoot(galleryConfig),
-    RecaptchaModule.forRoot(),
-    RecaptchaFormsModule
+    BrowserModule
   ],
   providers: [
-    AlbumsService,
     {
       provide: APP_INITIALIZER,
       useFactory: startupServiceFactory,
-      deps: [AlbumsService],
+      deps: [ AlbumsService ],
       multi: true
     },
-    BlogService,
-    FlickrService,
-    MailerService,
-    {
-      provide: RECAPTCHA_SETTINGS,
-      useValue: { siteKey: '6LfB2jkUAAAAAAM_uaJSpcoLZk3mEe1Sh17ShDcN' } as RecaptchaSettings,
-    },
+
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

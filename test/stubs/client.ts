@@ -3,13 +3,14 @@
 /* tslint:disable:use-host-property-decorator*/
 /* tslint:disable:no-input-rename*/
 
-import {Directive, Input, Component, TemplateRef} from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Directive, Input, Component, TemplateRef } from '@angular/core';
 import { Params } from '@angular/router';
-import { FlickrParams } from '../../src/app/gallery/flickr-params';
-import { Post, Tag } from '../../src/app/pages/blog/post';
-import { Album } from '../../src/app/gallery/album';
-import { Email } from '../../src/app/widgets/contact-form/email';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+import { FlickrParams } from '../../src/app/core/gallery/flickr-params';
+import { Post, Tag } from '../../src/app/core/pages/blog/post';
+import { Album } from '../../src/app/core/gallery/album';
+import { Email } from '../../src/app/core/widgets/contact-form/email';
 
 export class MailerServiceStub {
   error = false;

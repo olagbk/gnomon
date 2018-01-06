@@ -1,0 +1,9 @@
+@import '../../../../styles/common';
+:host {
+  width: 100%;
+}
+.albums-link {
+  width: fit-content;
+  letter-spacing: 1px;
+  color: $gray-400 !important;
+}
