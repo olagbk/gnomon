@@ -4,12 +4,9 @@ import chaiHttp from 'chai-http';
 
 import server from '~/dist/index';
 import sequelize from '~/dist/database/sequelize';
-import defineModels from '~/dist/models/index';
-
 import '../migrations.js';
 
 const chai = require('chai').use(chaiHttp);
-const models = defineModels(sequelize);
 
 describe('Tags route', () => {
 
@@ -36,17 +33,17 @@ describe('Tags route', () => {
       title: 'let you down'
     }];
 
-    models.Tag.destroy({
+    sequelize.models.tags.destroy({
       where: {}
     }).then(() => {
 
-      models.Tag.bulkCreate(testTags, {returning: true})
+      sequelize.models.tags.bulkCreate(testTags, {returning: true})
         .then(tags => {
 
           const never = tags.find(t => t.name === 'Never');
           const gonna = tags.find(t => t.name === 'gonna');
 
-          models.Post.bulkCreate(testPosts, {returning: true}).then(posts => {
+          sequelize.models.posts.bulkCreate(testPosts, {returning: true}).then(posts => {
 
             Promise.all([
               posts[0].setTags([never, gonna]),

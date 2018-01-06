@@ -80,12 +80,12 @@ describe('Sequelize migration', () => {
       done();
     });
   });
-  it('should create tags and PostTags', done => {
+  it('should create tags and post_tags', done => {
     migrations['003'].up(sequelize.queryInterface, Sequelize, () => {
 
       const posts = sequelize.models.posts;
       const tags = sequelize.models.tags;
-      const ptags = sequelize.models.PostTags;
+      const ptags = sequelize.models.post_tags;
 
       should.exist(tags);
       should.exist(ptags);

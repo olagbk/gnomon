@@ -4,12 +4,9 @@ import chaiHttp from 'chai-http';
 
 import server from '~/dist/index';
 import sequelize from '~/dist/database/sequelize';
-import defineModels from '~/dist/models/index';
-
 import '../migrations.js';
 
 const chai = require('chai').use(chaiHttp);
-const models = defineModels(sequelize);
 
 describe('Albums route', () => {
 
@@ -36,11 +33,11 @@ describe('Albums route', () => {
       filename: 'mammalia.jpg'
     }];
 
-    models.Album.destroy({
+    sequelize.models.albums.destroy({
       where: {}
     }).then(() => {
 
-      models.Album.bulkCreate(testAlbums)
+      sequelize.models.albums.bulkCreate(testAlbums)
         .then(() => done());
     });
   });

@@ -4,12 +4,9 @@ import chaiHttp from 'chai-http';
 
 import server from '~/dist/index';
 import sequelize from '~/dist/database/sequelize';
-import defineModels from '~/dist/models/index';
-
 import '../migrations.js';
 
 const chai = require('chai').use(chaiHttp);
-const models = defineModels(sequelize);
 
 describe('Posts route', () => {
 
@@ -28,7 +25,7 @@ describe('Posts route', () => {
       name: 'anotherSampleTag'
     }];
 
-    models.Post.destroy({
+    sequelize.models.posts.destroy({
       where: {}
     }).then(() => done());
   });
@@ -38,8 +35,8 @@ describe('Posts route', () => {
     beforeEach(done => {
       testPost.tags = testTags;
 
-      models.Post.create(testPost, {
-        include: models.Tag
+      sequelize.models.posts.create(testPost, {
+        include: sequelize.models.tags
       }).then(() => {
 
         chai.request(server)
@@ -71,8 +68,8 @@ describe('Posts route', () => {
     beforeEach(done => {
       testPost.tags = testTags;
 
-      models.Post.create(testPost, {
-        include: models.Tag
+      sequelize.models.posts.create(testPost, {
+        include: sequelize.models.tags
       }).then(instance => {
 
         post = instance;
@@ -138,10 +135,10 @@ describe('Posts route', () => {
   describe('POST w/ tags', () => {
 
     beforeEach(done => {
-      models.Tag.destroy({
+      sequelize.models.tags.destroy({
         where: {}
       }).then(() => {
-        models.Tag.bulkCreate(testTags).then(tags => {
+        sequelize.models.tags.bulkCreate(testTags).then(tags => {
           testPost.tags = ['sampleTag', 'newTag'];
 
           chai.request(server)
@@ -169,12 +166,12 @@ describe('Posts route', () => {
       response.res.body.tags[1][1].should.equal(true); // created
     });
     it('should set up the associations', done => {
-      models.Post.find({
+      sequelize.models.posts.find({
         where: {
           id: response.res.body.post.id
         },
         include: {
-          model: models.Tag
+          model: sequelize.models.tags
       }}).then(post => {
 
         post.tags.length.should.equal(2);
@@ -183,8 +180,8 @@ describe('Posts route', () => {
         done();
       })
     });
-    it('should save associations in PostTags table', done => {
-      sequelize.models.PostTags.findAll({
+    it('should save associations in post_tags table', done => {
+      sequelize.models.post_tags.findAll({
         where: {
           postId: response.res.body.post.id
         }}).then(ptags => {
@@ -223,13 +220,13 @@ describe('Posts route', () => {
     let initialPost;
 
     beforeEach(done => {
-      models.Tag.destroy({
+      sequelize.models.tags.destroy({
         where: {}
       }).then(() => {
         testPost.tags = testTags;
 
-        models.Post.create(testPost, {
-          include: models.Tag
+        sequelize.models.posts.create(testPost, {
+          include: sequelize.models.tags
         }).then(instance => {
           initialPost = instance;
           done();
@@ -260,11 +257,11 @@ describe('Posts route', () => {
         response.res.body.post.should.have.property('title').equal('New title');
       });
       it('should have kept the associations', done => {
-        models.Post.find({
+        sequelize.models.posts.find({
           where: {
             id: response.res.body.post.id
           }, include: {
-            model: models.Tag
+            model: sequelize.models.tags
           }}).then(post => {
           post.tags.length.should.equal(2);
           post.tags[0].name.should.equal('sampleTag');
@@ -292,11 +289,11 @@ describe('Posts route', () => {
         response.res.body.post.should.have.property('title').equal('New title');
       });
       it('should have added and deleted associations', done => {
-        models.Post.find({
+        sequelize.models.posts.find({
           where: {
             id: response.res.body.post.id
           }, include: {
-            model: models.Tag
+            model: sequelize.models.tags
           }
         }).then(post => {
           post.tags.length.should.equal(3);
@@ -326,11 +323,11 @@ describe('Posts route', () => {
       response.res.body.post.should.have.property('body').equal(initialPost.body);
     });
     it('should have deleted associations', done => {
-      models.Post.find({
+      sequelize.models.posts.find({
         where: {
           id: response.res.body.post.id
         }, include: {
-          model: models.Tag
+          model: sequelize.models.tags
         }}).then(post => {
         post.tags.should.be.an('array').and.be.empty;
         done();
@@ -344,7 +341,7 @@ describe('Posts route', () => {
 
     beforeEach(done => {
       testPost.tags = testTags;
-      models.Post.create(testPost).then(instance => {
+      sequelize.models.posts.create(testPost).then(instance => {
         post = instance;
 
         chai.request(server)
@@ -370,7 +367,7 @@ describe('Posts route', () => {
         })
     });
     it('should have deleted associations', done => {
-      sequelize.models.PostTags.findAll({
+      sequelize.models.post_tags.findAll({
         where: {
           postId: post.id
         }}).then(ptags => {

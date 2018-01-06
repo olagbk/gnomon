@@ -71,7 +71,7 @@ describe('PostsService', () => {
       mockBackend.connections.subscribe((connection) => {
         connection.mockRespond(response);
       });
-      service.getPost(1).then(post => {
+      service.getPost('1').then(post => {
         post.should.equal(mockResponse);
       });
     }));

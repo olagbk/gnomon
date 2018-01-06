@@ -2,7 +2,7 @@ import { should } from 'chai';
 import * as sinon from 'sinon';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { RouterLinkStubDirective } from '../../../../test/stubs/client';
+import { RouterLinkStubDirective } from '../../../../../test/stubs/client';
 import { AlbumThumbComponent } from './album-thumb.component';
 
 describe('AlbumThumbComponent', () => {

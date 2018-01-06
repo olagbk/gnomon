@@ -3,9 +3,9 @@ import * as sinon from 'sinon';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { TagsHostStubComponent } from '../../../../test/stubs/client';
+import { TagsHostStubComponent } from '../../../../../test/stubs/client';
 import { TagsComponent } from './tags.component';
-import { SortPipe } from './sort.pipe';
+import { TagSortPipe } from './sort.pipe';
 
 describe('TagsComponent', () => {
   let component: TagsComponent;
@@ -15,7 +15,7 @@ describe('TagsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ TagsComponent, TagsHostStubComponent, SortPipe ]
+      declarations: [ TagsComponent, TagsHostStubComponent, TagSortPipe ]
     });
     hostFixture = TestBed.createComponent(TagsHostStubComponent);
     hostComponent = hostFixture.componentInstance;

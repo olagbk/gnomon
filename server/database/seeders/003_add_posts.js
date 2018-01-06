@@ -328,7 +328,7 @@ Things we could use.`}], {})
 
       ], {})
         .then(() => {
-          return queryInterface.bulkInsert('PostTags', [
+          return queryInterface.bulkInsert('post_tags', [
             {
               postId: 1,
               tagId: 3,
@@ -407,6 +407,6 @@ Things we could use.`}], {})
     })
   },
   down: (queryInterface, Sequelize) => {
-    return Promise.all([queryInterface.bulkDelete('posts', null, {}), queryInterface.bulkDelete('tags', null, {}), queryInterface.bulkDelete('PostTags', null, {})]);
+    return Promise.all([queryInterface.bulkDelete('posts', null, {}), queryInterface.bulkDelete('tags', null, {}), queryInterface.bulkDelete('post_tags', null, {})]);
   }
 };

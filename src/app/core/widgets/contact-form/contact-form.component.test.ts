@@ -69,21 +69,19 @@ describe('ContactFormComponent', () => {
   it('should show a loading panel while email is being sent', () => {
     let panelEl;
 
-    panelEl = fixture.debugElement.query(By.css('.processing-screen'));
+    panelEl = fixture.debugElement.query(By.css('app-spinner-screen'));
     should().not.exist(panelEl);
 
     component.processing = true;
     fixture.detectChanges();
 
-    panelEl = fixture.debugElement.query(By.css('.processing-screen'));
+    panelEl = fixture.debugElement.query(By.css('app-spinner-screen'));
     should().exist(panelEl);
-    const spinnerEl = panelEl.query(By.css('app-spinner'));
-    should().exist(spinnerEl);
 
     component.processing = false;
     fixture.detectChanges();
 
-    panelEl = fixture.debugElement.query(By.css('.processing-screen'));
+    panelEl = fixture.debugElement.query(By.css('app-spinner-screen'));
     should().not.exist(panelEl);
   });
   it('should hide form and show message after it has been submitted', () => {
