@@ -1,3 +1,5 @@
+<app-spinner-screen *ngIf="processing"></app-spinner-screen>
+
 <a class="button-link">New post</a>
 
 <div class="container p-5 rounded text-center">
@@ -12,7 +14,7 @@
 
   </div>
   <div class="row post align-items-center"
-       *ngFor="let post of posts | async">
+       *ngFor="let post of posts">
     <div class="col-2">{{post.createdAt | date}}</div>
     <div class="col-2">{{post.updatedAt | date}}</div>
     <div class="col link">{{post.title}}</div>
@@ -20,7 +22,7 @@
       <a class="button-link edit">Edit</a>
     </div>
     <div class="col-1">
-      <a class="button-link delete" (click)="openModal(post.title)">Delete</a>
+      <a class="button-link delete" (click)="openModal(post)">Delete</a>
     </div>
   </div>
 </div>
@@ -33,7 +35,7 @@
       </button>
     </div>
     <div class="modal-body text-center">
-      <span class="message m-5">Are you sure you want to delete <em>{{postToDelete}}</em>?</span>
+      <span class="message m-5">Are you sure you want to delete <em>{{postToDelete.title}}</em>?</span>
       <div class="buttons d-flex">
         <a class="button-link" (click)="deletePost()">Hell Yeah</a>
         <a class="button-link" (click)="modalRef.hide()">Maybe not</a>

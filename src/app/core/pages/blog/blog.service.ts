@@ -12,12 +12,17 @@ export class BlogService {
     return this.http.get('/api/posts', params).toPromise()
       .then((res: Response) => res.json());
   }
-  getPost(id): Promise<Post> {
+  getPost(id: string): Promise<Post> {
     return this.http.get(`/api/posts/${id}`).toPromise()
       .then((res: Response) => res.json());
   }
   getTags(): Promise<Tag[]> {
     return this.http.get('/api/tags').toPromise()
       .then((res: Response) => res.json());
+  }
+  deletePost(id: string): Promise<any> {
+    return this.http.delete(`/api/posts/${id}`).toPromise()
+      .then((res: Response) => res.json())
+      .catch((err: Response) => err.json());
   }
 }

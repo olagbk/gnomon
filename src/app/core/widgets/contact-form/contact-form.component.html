@@ -1,6 +1,4 @@
-<div class="processing-screen" *ngIf="processing">
-  <app-spinner></app-spinner>
-</div>
+<app-spinner-screen *ngIf="processing"></app-spinner-screen>
 
 <a class="link form-link" *ngIf="!submitted && !error"
    [innerHTML]="(formVisible)? '[ hide ]' : '[ contact me ]'"
@@ -20,7 +18,8 @@
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" [(ngModel)]="model.email" name="email" required email>
+      <input type="email" class="form-control" id="email" [(ngModel)]="model.email" name="emai
+      l" required email>
     </div>
 
     <div class="form-group">

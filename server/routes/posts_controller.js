@@ -69,7 +69,7 @@ export default (router, sequelize) => {
                   () => res.send(err)
                 )
                 })
-                .catch(err => res.send(err));
+                .catch(err => res(500).send(err));
             })
         })
         .catch(err => res.send(err))
@@ -81,8 +81,8 @@ export default (router, sequelize) => {
           post
             .destroy()
             .then(() => res.status(204).send())
-            .catch(err => res.send(err))
+            .catch(err => res.status(500).send(err))
         })
-        .catch(err => res.send(err));
+        .catch(err => res.status(500).send(err));
     })
 };

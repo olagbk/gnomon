@@ -15,19 +15,31 @@ import { Post } from '../core/pages/blog/post';
 export class AdminBlogComponent implements OnInit {
   @ViewChild('template') modalTemplate: TemplateRef<any>;
   modalRef: BsModalRef;
-  posts: Promise<Post[]>;
-  postToDelete: string;
+  posts: Post[];
+  postToDelete: Post;
+  processing = false;
 
   constructor(private blog: BlogService, private modal: BsModalService) { }
 
-  ngOnInit() {
-    this.posts = this.blog.getPosts();
+  ngOnInit()  {
+    this.blog.getPosts().then(posts => this.posts = posts);
   }
-  openModal(title: string) {
-    this.postToDelete = title;
+  openModal(post: Post) {
+    this.postToDelete = post;
     this.modalRef = this.modal.show(this.modalTemplate);
   }
-  deletePost() {
+  deletePost(): void {
     this.modalRef.hide();
+    this.processing = true;
+
+    this.blog.deletePost(this.postToDelete.id)
+      .then(err => {
+        this.processing = false;
+        if (err) {
+          return alert(`Failed to delete post: ${err.message || err.name || err}`);
+        }
+        this.posts = this.posts.filter(post => post.id !== this.postToDelete.id);
+      });
+    }
   }
-}
+

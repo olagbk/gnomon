@@ -15,21 +15,6 @@ import { MailerService } from './mailer.service';
     :host >>> .popover > .popover-body {
       color: #f8f9fa
     }
-    .processing-screen {
-      background: rgba(0,0,0,0.9);
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      z-index: 1;
-    }
-    .processing-screen app-spinner {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
     .form-group {
       padding: 0 1rem;
     }

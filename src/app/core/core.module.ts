@@ -1,20 +1,25 @@
+// angular modules
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { PopoverModule } from 'ngx-bootstrap/popover';
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
-
+// third party modules
 import { DisqusModule } from 'ngx-disqus';
 import { EllipsisModule } from 'ngx-ellipsis';
 import { GalleryModule } from 'ng-gallery';
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
+// bootstrap modules
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
+// application modules
 import { CoreRoutingModule } from './core-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
+// components
 import { AboutComponent } from './pages/about/about.component';
 import { AlbumThumbComponent } from './pages/photos/album-thumb.component';
 import { BlogComponent } from './pages/blog/blog.component';
@@ -30,13 +35,16 @@ import { PhotosComponent } from './pages/photos/photos.component';
 import { SketchesComponent } from './pages/sketches/sketches.component';
 import { TagsComponent } from './widgets/tags/tags.component';
 
+// services
 import { AlbumsService } from './gallery/albums.service';
 import { BlogService } from './pages/blog/blog.service';
 import { FlickrService } from './gallery/flickr.service';
 import { MailerService } from './widgets/contact-form/mailer.service';
 
+// pipes
 import { TagSortPipe } from './widgets/tags/sort.pipe';
 
+// config
 import { galleryConfig } from './gallery/gallery.config';
 
 const declarations: Array<any> = [
