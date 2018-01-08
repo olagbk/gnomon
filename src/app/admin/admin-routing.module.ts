@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { AdminBlogComponent } from './admin-blog.component';
+import {AdminBlogEditorComponent} from './admin-blog-editor.component';
 
 const routes: Routes = [
   { path: '',
     component: AdminComponent,
     children: [
-      { path: '', redirectTo: 'blog', pathMatch: 'full'},
-      { path: 'blog', component: AdminBlogComponent }
+      { path: '', redirectTo: 'posts', pathMatch: 'full'},
+      { path: 'posts', component: AdminBlogComponent },
+      { path: 'posts/:id', component: AdminBlogEditorComponent },
+      { path: 'posts/new', component: AdminBlogEditorComponent }
     ]
   }
 ];

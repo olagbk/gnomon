@@ -19,7 +19,7 @@
     <div class="col-2">{{post.updatedAt | date}}</div>
     <div class="col link">{{post.title}}</div>
     <div class="col-1">
-      <a class="button-link edit">Edit</a>
+      <a class="button-link edit" [routerLink]="post.id">Edit</a>
     </div>
     <div class="col-1">
       <a class="button-link delete" (click)="openModal(post)">Delete</a>

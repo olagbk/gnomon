@@ -13,7 +13,6 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 // bootstrap modules
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PopoverModule } from 'ngx-bootstrap/popover';
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 // application modules
 import { CoreRoutingModule } from './core-routing.module';
@@ -77,7 +76,6 @@ const imports: Array<any> = [
   CollapseModule.forRoot(),
   DisqusModule.forRoot('gnomon'),
   PopoverModule.forRoot(),
-  TypeaheadModule.forRoot(),
   GalleryModule.forRoot(galleryConfig),
   RecaptchaModule.forRoot(),
   RecaptchaFormsModule

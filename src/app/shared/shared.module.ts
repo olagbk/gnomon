@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 
 // bootstrap modules
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 // components
 import { ScrollComponent } from './scroll/scroll.component';
@@ -18,14 +19,16 @@ import { SpinnerScreenComponent } from './spinner-screen/spinner-screen.componen
     CommonModule,
     FormsModule,
     HttpModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    TypeaheadModule.forRoot()
   ],
   exports: [
     ScrollComponent,
     SpinnerComponent,
     PaginationComponent,
     SpinnerScreenComponent,
-    FormsModule
+    FormsModule,
+    TypeaheadModule
   ],
   declarations: [
     ScrollComponent,
