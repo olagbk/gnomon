@@ -3,29 +3,34 @@
 export default (router, sequelize) => {
 
   router.route('/posts')
+    // POST request
 
     .post((req, res) => {
-
     sequelize.models.posts.create({
       title: req.body.title,
       body: req.body.body
     }).then(post => {
 
       const reqTags = req.body.tags || [];
-      const promises = reqTags.map(tag => sequelize.models.tags.findCreateFind({where: {name: tag}}));
 
-      Promise.all(promises).then(tags => {
-        const tagObjs = tags.map(t => t[0]);
-        post.setTags(tagObjs).then(() => {
-          res.status(201).json({post, tags})
-        } )
-        });
-      })
+      Promise.all(reqTags.map(tag =>
+        sequelize.models.tags.findCreateFind({
+          where: {
+            name: tag
+          }
+        }))).then(tags => {
+
+          post.setTags(tags.map(t => t[0])).then(() => {
+            res.status(201).json({post, tags})
+        })
+      });
+    })
       .catch(err => {
-        if (err.constructor.name === 'ValidationError') res.status(422);
-        res.send(err);
+        const status = (err.constructor.name === 'ValidationError')? 422 : 500;
+        res.status(status).send(err);
         })
       })
+    // GET request
 
     .get((req, res) => {
       const opts = {};
@@ -42,47 +47,41 @@ export default (router, sequelize) => {
         .then(posts => res.json(posts))
         .catch(err => res.send(err));
     });
+
   router.route('/posts/:id')
+    // GET request
+
     .get((req, res) => {
       sequelize.models.posts.findById(req.params.id, {include: {model: sequelize.models.tags}})
         .then(post => res.json(post))
         .catch(err => res.send(err));
     })
+    // PUT request
+
     .put((req, res) => {
       sequelize.models.posts.findById(req.params.id)
         .then(instance => {
+          instance.update(req.body.post).then(post => {
 
-          instance.update(req.body)
-            .then(post => {
+            Promise.all(req.body.tags.map(tag => sequelize.models.tags.findCreateFind({where: {name: tag}})))
+              .then(tags => {
 
-              if (!req.body.tags) return res.json({post});
-
-              const promises = req.body.tags.map(tag => sequelize.models.tags.findCreateFind({where: {name: tag}}));
-
-              Promise.all(promises)
-                .then(tags => {
-
-                const tagObjs = tags.map(t => t[0]);
-
-                post.setTags(tagObjs).then(
-                  () => res.json({post, tags}),
-                  () => res.send(err)
-                )
-                })
-                .catch(err => res(500).send(err));
-            })
+              post.setTags(tags.map(t => t[0])).then(
+                () => res.json({post, tags}),
+                () => res.status(500).send(err)
+              )})
+              .catch(err => res(500).send(err));
+          })
         })
         .catch(err => res.send(err))
-  })
+    })
+    // DELETE request
 
     .delete((req, res) => {
       sequelize.models.posts.findById(req.params.id)
-        .then(post => {
-          post
-            .destroy()
-            .then(() => res.status(204).send())
-            .catch(err => res.status(500).send(err))
-        })
+        .then(post => post.destroy()
+          .then(() => res.status(204).send())
+          .catch(err => res.status(500).send(err)))
         .catch(err => res.status(500).send(err));
     })
 };

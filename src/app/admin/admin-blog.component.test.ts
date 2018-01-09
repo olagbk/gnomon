@@ -32,8 +32,8 @@ describe('AdminBlogComponent', () => {
     should().exist(component);
   });
   it('should fetch posts', async(() => {
-    component.posts.then(posts => {
-      posts.should.be.an('array').of.length(4);
+    fixture.whenStable().then(() => {
+      component.posts.should.be.an('array').of.length(4);
     });
   }));
   it('should display all posts', async(() => {
@@ -50,11 +50,10 @@ describe('AdminBlogComponent', () => {
       const spy = sinon.spy(component, 'openModal');
       const postEl = fixture.debugElement.query(By.css('.post'));
       const deleteEl = postEl.query(By.css('.delete'));
-      const title = postEl.query(By.css('.link')).nativeElement.textContent;
 
       deleteEl.triggerEventHandler('click', null);
 
-      spy.calledWith(title).should.be.true;
+      spy.calledWith(component.posts[0]).should.be.true;
       should().exist(component.modalRef);
     });
   }));

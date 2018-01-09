@@ -8,6 +8,10 @@ export class BlogService {
 
   constructor(private http: Http) { }
 
+  getTags(): Promise<Tag[]> {
+    return this.http.get('/api/tags').toPromise()
+      .then((res: Response) => res.json());
+  }
   getPosts(params = {}): Promise<Post[]> {
     return this.http.get('/api/posts', params).toPromise()
       .then((res: Response) => res.json());
@@ -16,13 +20,13 @@ export class BlogService {
     return this.http.get(`/api/posts/${id}`).toPromise()
       .then((res: Response) => res.json());
   }
-  getTags(): Promise<Tag[]> {
-    return this.http.get('/api/tags').toPromise()
-      .then((res: Response) => res.json());
-  }
   deletePost(id: string): Promise<any> {
     return this.http.delete(`/api/posts/${id}`).toPromise()
       .then((res: Response) => res.json())
       .catch((err: Response) => err.json());
+  }
+  editPost(post: Post, tags: string[]): Promise<any> {
+    return this.http.put(`api/posts/${post.id}`, {post: post, tags: tags}).toPromise()
+      .then((res: Response) => res.json());
   }
 }

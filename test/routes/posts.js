@@ -217,7 +217,7 @@ describe('Posts route', () => {
   });
 
   describe('Update (PUT)', () => {
-    let initialPost;
+    let initialPost, updatedPost;
 
     beforeEach(done => {
       sequelize.models.tags.destroy({
@@ -229,18 +229,19 @@ describe('Posts route', () => {
           include: sequelize.models.tags
         }).then(instance => {
           initialPost = instance;
+          updatedPost = Object.assign({}, initialPost.dataValues, {title: 'New title'});
           done();
         });
       });
     });
 
-    describe('no tags', () => {
+    describe('preserve tags', () => {
 
       beforeEach(done => {
 
         chai.request(server)
           .put(`/api/posts/${initialPost.id}`)
-          .send({title: 'New title'})
+          .send({post: updatedPost, tags: initialPost.tags.map(t => t.name)})
           .end((err, res) => {
             response = {err, res};
             done();
@@ -271,12 +272,12 @@ describe('Posts route', () => {
       })
     });
 
-    describe('w/ tags', () => {
+    describe('update tags', () => {
 
       beforeEach(done => {
         chai.request(server)
           .put(`/api/posts/${initialPost.id}`)
-          .send({title: 'New title', tags: ['sampleTag', 'newTag', 'anotherNewTag']})
+          .send({post: updatedPost, tags: ['sampleTag', 'newTag', 'anotherNewTag']})
           .end((err, res) => {
             response = {err, res};
             done();
@@ -310,7 +311,7 @@ describe('Posts route', () => {
     beforeEach(done => {
       chai.request(server)
         .put(`/api/posts/${initialPost.id}`)
-        .send({tags: []})
+        .send({post: updatedPost, tags: []})
         .end((err, res) => {
           response = {err, res};
           done();
@@ -319,8 +320,8 @@ describe('Posts route', () => {
 
     it('should return correct data', () => {
       should.not.exist(response.err);
-      response.res.body.post.should.have.property('title').equal(initialPost.title);
-      response.res.body.post.should.have.property('body').equal(initialPost.body);
+      response.res.body.post.should.have.property('title').equal('New title');
+      response.res.body.post.should.have.property('body').equal('Much body');
     });
     it('should have deleted associations', done => {
       sequelize.models.posts.find({
@@ -334,7 +335,7 @@ describe('Posts route', () => {
       })
     })
     });
-  });
+   });
 
   describe('DELETE post', () => {
     let post;

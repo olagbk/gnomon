@@ -12,7 +12,7 @@
 
       <app-tags [tags]="post?.tags" (tagSelected)="searchTag($event)"></app-tags>
 
-      <p class="text mt-3">{{post?.body}}</p>
+      <p #text class="text mt-3" [innerHTML]="post?.body"></p>
       <a class="back link" routerLink="/blog">&larr; back</a>
     </div>
     <disqus [identifier]="'/blog/' + post?.id"></disqus>
@@ -34,7 +34,8 @@
 
       <p class="recent-text pl-md-3 mt-2"
          ellipsis="(...)"
-         [ellipsis-word-boundaries]="' \n'">{{post.body}}
+         [ellipsis-word-boundaries]="' \n'"
+         [innerHTML]="post.body">
       </p>
 
     </a>

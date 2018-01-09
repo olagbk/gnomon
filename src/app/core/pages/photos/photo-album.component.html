@@ -1,2 +1,5 @@
-<a class="albums-link link d-flex mx-auto my-3" routerLink="/photos">← back to albums</a>
-<app-gallery *ngIf="album" [album]="album"></app-gallery>
+<ng-container *ngIf="album">
+  <a class="albums-link link d-flex mx-auto" routerLink="/photos" hidden>← back to albums</a>
+  <app-gallery [album]="album"></app-gallery>
+</ng-container>
+

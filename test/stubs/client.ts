@@ -91,6 +91,9 @@ export class BlogServiceStub {
   getTags(): Promise<Tag[]> {
     return Promise.resolve(this.tags);
   }
+  editPost(id: string): Promise<any> {
+    return Promise.resolve();
+  }
 }
 export class FlickrServiceStub {
   totalItems = 2000;

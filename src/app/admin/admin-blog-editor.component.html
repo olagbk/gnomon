@@ -1,16 +1,25 @@
+
+<!--navigation-->
+
 <div class="buttons d-flex">
   <a class="button-link" routerLink="../">Back</a>
-  <a class="button-link" (click)="save()">Save</a>
+  <a class="button-link" (click)="savePost()">Save</a>
 </div>
 
 <div *ngIf="post">
 
+  <!--tags-->
+
   <div class="tags-container d-flex">
     <span class="tag d-flex align-items-center rounded mr-2"
           *ngFor="let tag of postTags">{{tag}}
-    <span class="close" (click)="deleteTag(tag)">&times;</span>
+    <span class="close"
+          (click)="deleteTag(tag)">&times;
+    </span>
   </span>
   </div>
+
+  <!--tag search-->
 
   <div class="tag-search d-flex align-items-baseline">
     <input #search
@@ -21,12 +30,22 @@
            typeaheadScrollable = true
            (typeaheadOnSelect)="addTag(search)"
            class="form-control tag-search">
-    <button class="btn btn-dark ml-2" (click)="addTag(search)">Add</button>
+    <button class="btn btn-dark ml-2"
+            (click)="addTag(search)">Add
+    </button>
   </div>
 
+  <!--post editor-->
+
   <div class="form-group">
-    <input type="text" class="form-control rounded-0" id="title" title="title" [(ngModel)]="post.title" name="title" required>
+    <input type="text" class="title form-control rounded-0" id="title" title="title" [(ngModel)]="post.title" name="title">
   </div>
-  <quill-editor [(ngModel)]="post.body" [style]="{height: '500px'}"></quill-editor>
+
+  <quill-editor #editor
+                [(ngModel)]="post.body"
+                [style]="{height: '500px'}"
+                [modules]="quillModules"
+                (onEditorCreated)="setImageHandler($event)">
+  </quill-editor>
 </div>
 
