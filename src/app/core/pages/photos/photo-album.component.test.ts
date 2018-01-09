@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ActivatedRouteStub, GalleryStubComponent, RouterLinkStubDirective } from '../../../../../test/stubs/client';
 
 import { PhotoAlbumComponent } from './photo-album.component';
+import {Renderer2} from '@angular/core';
 
 describe('PhotoAlbumComponent', () => {
   let component: PhotoAlbumComponent;
@@ -14,7 +15,10 @@ describe('PhotoAlbumComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ PhotoAlbumComponent, RouterLinkStubDirective, GalleryStubComponent ],
-      providers: [{provide: ActivatedRoute, useClass: ActivatedRouteStub}]
+      providers: [
+        Renderer2,
+        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
+        ]
     });
     activatedRoute = TestBed.get(ActivatedRoute);
     activatedRoute.testParams = { album: '123456' };
@@ -37,5 +41,13 @@ describe('PhotoAlbumComponent', () => {
     const linkD = linkEl.injector.get(RouterLinkStubDirective);
     linkEl.triggerEventHandler('click', null);
     linkD.navigatedTo.should.equal('/photos');
+  });
+  it('should show back link when gallery is loaded (so that it does not overlap with the spinner)', () => {
+    const el = fixture.debugElement.query(By.css('a'));
+    const galleryEl = fixture.debugElement.query(By.css('app-gallery'));
+    should().exist(el.nativeElement.attributes.getNamedItem('hidden'));
+    galleryEl.triggerEventHandler('onGalleryLoaded', null);
+    should().not.exist(el.nativeElement.attributes.getNamedItem('hidden'));
+    el.nativeElement.style.display.should.equal('flex');
   });
 });

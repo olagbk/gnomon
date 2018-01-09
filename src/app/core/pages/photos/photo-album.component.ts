@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,10 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 export class PhotoAlbumComponent implements OnInit {
   album: string;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute, private renderer: Renderer2) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => this.album = params.album);
+  }
+  showLink(el: any): void {
+    el.attributes.removeNamedItem('hidden');
+    this.renderer.setStyle(el, 'display', 'flex');
   }
 
 }

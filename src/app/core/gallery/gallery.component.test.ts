@@ -107,4 +107,10 @@ describe('GalleryComponent', () => {
     spinnerEl = fixture.debugElement.query(By.css('app-spinner'));
     should().not.exist(spinnerEl);
   }));
+  it('should emit an event when gallery is loaded', fakeAsync(() => {
+    const spy = sinon.spy(component.onGalleryLoaded, 'emit');
+    component.getImages();
+    tick();
+    spy.calledOnce.should.be.true;
+  }));
 });

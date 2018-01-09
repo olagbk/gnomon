@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GalleryService, GalleryImage } from 'ng-gallery';
 import { FlickrService } from './flickr.service';
@@ -18,6 +18,7 @@ export class GalleryComponent implements OnInit {
   currentPage: number;
   images: GalleryImage[];
   @Input() album: string;
+  @Output() onGalleryLoaded: EventEmitter<any> = new EventEmitter();
 
   constructor(public gallery: GalleryService,
               private flickr: FlickrService,
@@ -42,6 +43,7 @@ export class GalleryComponent implements OnInit {
         this.images = data.images;
         this.gallery.load(this.images);
         this.galleryLoaded = true;
+        this.onGalleryLoaded.emit();
       })
       .catch(err => {
         if (err.status === 404 && this.currentPage !== 1) {
