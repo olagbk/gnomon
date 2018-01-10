@@ -29,6 +29,7 @@
            typeaheadOptionField="name"
            typeaheadScrollable = true
            (typeaheadOnSelect)="addTag(search)"
+           (keyup.enter)="addTag(search)"
            class="form-control tag-search">
     <button class="btn btn-dark ml-2"
             (click)="addTag(search)">Add

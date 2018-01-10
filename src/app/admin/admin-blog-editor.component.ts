@@ -11,9 +11,9 @@ import { Post, Tag } from '../core/pages/blog/post';
 })
 export class AdminBlogEditorComponent implements OnInit {
   post: Post;
-  postTags: string[];
-  allTags: Tag[];
   searchedTag: Tag;
+  allTags: Tag[];
+  postTags: string[] = [];
   quillModules: any = {};
 
   constructor(private blog: BlogService, private activatedRoute: ActivatedRoute, private router: Router, private renderer: Renderer2) {
@@ -25,9 +25,14 @@ export class AdminBlogEditorComponent implements OnInit {
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
       ['image']];
   }
+
   ngOnInit(): void {
+    this.blog.getTags().then(tags => this.allTags = tags);
+
     const id = this.activatedRoute.snapshot.params.id;
-    if (id) {
+    if (id === 'new') {
+      this.post = new Post('');
+    } else {
       this.blog.getPost(id).then(post => {
         if (!post) {
           return this.router.navigate(['../'], {relativeTo: this.activatedRoute});
@@ -36,23 +41,29 @@ export class AdminBlogEditorComponent implements OnInit {
         this.postTags = post.tags.map(t => t.name);
       });
     }
-    this.blog.getTags().then(tags => this.allTags = tags);
   }
+
   savePost(): void {
     if (!this.post.title.trim()) { return alert('Title is required.'); }
 
-    this.blog.editPost(this.post, this.postTags)
+    const method = (this.post.id) ? 'editPost' : 'createPost';
+    this.blog[method](this.post, this.postTags)
       .then(() => {
       this.router.navigate(['../'], {relativeTo: this.activatedRoute});
     }).catch(err => alert(err.message || err.name || err));
   }
+
   addTag(tag: any): void {
-    if (!this.postTags.find(t => t === tag.value)) { this.postTags.push(tag.value); }
+    const value = tag.value.trim();
+    if (!value) { return; }
+    if (!this.postTags.find(t => t === value)) { this.postTags.push(value); }
     tag.value = null;
   }
+
   deleteTag(tag: string): void {
     this.postTags = this.postTags.filter(t => t !== tag);
   }
+
   addImageElement(parent: any): void {
     const url = prompt('Enter image URL:');
     const imgEl = this.renderer.createElement('img');
@@ -64,6 +75,7 @@ export class AdminBlogEditorComponent implements OnInit {
     this.renderer.appendChild(parent, imgEl);
     this.renderer.appendChild(parent, pEl);
   }
+
   setImageHandler(quill: Quill): void {
     quill.getModule('toolbar').addHandler('image', () => this.addImageElement(quill.root));
   }

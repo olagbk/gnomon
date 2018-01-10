@@ -3,12 +3,21 @@ export interface Tag {
   count: number;
 }
 
-export interface Post {
+// export interface Post {
+//   id: string;
+//   title: string;
+//   body?: string;
+//   createdAt: string;
+//   updatedAt: string;
+//   tags: Tag[];
+// }
+export class Post {
   id: string;
-  title: string;
-  body?: string;
-  cutoff?: boolean;
   createdAt: string;
   updatedAt: string;
   tags: Tag[];
+  constructor(
+    public title: string,
+    public body?: string
+  ) {  }
 }

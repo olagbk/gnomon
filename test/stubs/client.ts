@@ -94,6 +94,9 @@ export class BlogServiceStub {
   editPost(id: string): Promise<any> {
     return Promise.resolve();
   }
+  createPost(id: string): Promise<any> {
+    return Promise.resolve();
+  }
 }
 export class FlickrServiceStub {
   totalItems = 2000;

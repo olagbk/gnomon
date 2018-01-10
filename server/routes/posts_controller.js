@@ -6,10 +6,8 @@ export default (router, sequelize) => {
     // POST request
 
     .post((req, res) => {
-    sequelize.models.posts.create({
-      title: req.body.title,
-      body: req.body.body
-    }).then(post => {
+    req.body.post.id = null;
+    sequelize.models.posts.create(req.body.post).then(post => {
 
       const reqTags = req.body.tags || [];
 
@@ -18,12 +16,12 @@ export default (router, sequelize) => {
           where: {
             name: tag
           }
-        }))).then(tags => {
-
+        })
+      )).then(tags => {
           post.setTags(tags.map(t => t[0])).then(() => {
             res.status(201).json({post, tags})
         })
-      });
+      }).catch(err => res.status(500).json(err));
     })
       .catch(err => {
         const status = (err.constructor.name === 'ValidationError')? 422 : 500;

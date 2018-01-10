@@ -20,13 +20,17 @@ export class BlogService {
     return this.http.get(`/api/posts/${id}`).toPromise()
       .then((res: Response) => res.json());
   }
+  editPost(post: Post, tags: string[]): Promise<{post: Post, tags: Tag[]}> {
+    return this.http.put(`api/posts/${post.id}`, {post: post, tags: tags}).toPromise()
+      .then((res: Response) => res.json());
+  }
+  createPost(post: Post, tags: string[]): Promise<{post: Post, tags: Tag[]}> {
+    return this.http.post('api/posts', {post: post, tags: tags}).toPromise()
+      .then((res: Response) => res.json());
+  }
   deletePost(id: string): Promise<any> {
     return this.http.delete(`/api/posts/${id}`).toPromise()
       .then((res: Response) => res.json())
       .catch((err: Response) => err.json());
-  }
-  editPost(post: Post, tags: string[]): Promise<any> {
-    return this.http.put(`api/posts/${post.id}`, {post: post, tags: tags}).toPromise()
-      .then((res: Response) => res.json());
   }
 }

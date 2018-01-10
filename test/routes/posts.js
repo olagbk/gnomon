@@ -105,7 +105,7 @@ describe('Posts route', () => {
 
       chai.request(server)
         .post('/api/posts')
-        .send(testPost)
+        .send({post: testPost, tags: []})
         .end((err, res) => {
           response = {err, res};
           done();
@@ -139,11 +139,10 @@ describe('Posts route', () => {
         where: {}
       }).then(() => {
         sequelize.models.tags.bulkCreate(testTags).then(tags => {
-          testPost.tags = ['sampleTag', 'newTag'];
 
           chai.request(server)
             .post('/api/posts')
-            .send(testPost)
+            .send({post: testPost, tags: ['sampleTag', 'newTag']})
             .end((err, res) => {
               response = {err, res};
               done();
@@ -197,7 +196,7 @@ describe('Posts route', () => {
 
       chai.request(server)
         .post('/api/posts')
-        .send({body: "Post body"})
+        .send({post: {body: "Post body"}, tags: []})
         .end((err, res) => {
           response = {err, res};
           done();
