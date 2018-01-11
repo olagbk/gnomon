@@ -26,6 +26,9 @@
       <li class="nav-item" (click)="isCollapsed = false">
         <a class="nav-link" routerLink="/about" routerLinkActive="active"> about </a>
       </li>
+      <li *ngIf="isAdmin" class="nav-item" (click)="isCollapsed = false">
+        <a class="nav-link admin-link" routerLink="/admin" routerLinkActive="active"> admin </a>
+      </li>
     </ul>
   </div>
 </nav>

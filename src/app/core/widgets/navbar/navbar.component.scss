@@ -72,6 +72,12 @@ nav {
     }
   }
 }
+.admin-link {
+  color: $gray-700 !important;
+  &:after {
+    background: $gray-700 !important;
+  }
+}
 @include media-breakpoint-down(md) {
   .navbar-nav {
     max-height: 90vh;

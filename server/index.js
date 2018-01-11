@@ -4,9 +4,12 @@ import express from 'express';
 import path from 'path';
 
 import api from './api';
+import config from '~/config/config.json';
 
 const app = express();
 const port = process.env.PORT || '3000';
+
+app.set('JWTsecret', config.auth.JWTsecret);
 
 // Parsers for POST data
 app.use(express.json());
@@ -22,6 +25,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(path.resolve(), 'dist/public/index.html'));
 });
 
-const server = app.listen(port);
+app.listen(port);
 
-export default server;
+export default app;

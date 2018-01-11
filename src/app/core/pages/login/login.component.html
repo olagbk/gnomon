@@ -11,6 +11,6 @@
       <button [disabled]="loading" class="btn btn-outline-light">Login</button>
       <app-spinner *ngIf="loading"></app-spinner>
     </div>
-    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    <p *ngIf="error" class="text-danger">{{error}}</p>
   </form>
 </div>

@@ -1,3 +1,5 @@
+import md5 from 'md5';
+
 const result = {
   photoset: {
     total: 15,

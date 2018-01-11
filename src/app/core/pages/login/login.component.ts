@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../../auth.service';
@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   model: any = {};
   loading = false;
   error = '';
+  @Output() loggedIn: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private router: Router,
@@ -24,14 +25,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loading = true;
+    this.error = '';
     this.authService.login(this.model.password)
-      .subscribe(result => {
-        if (result === true) {
-          // login successful
+      .subscribe(authorized => {
+        if (authorized) {
+          this.loggedIn.emit();
           this.router.navigate(['/admin']);
         } else {
-          // login failed
-          this.error = 'Password is incorrect';
+          this.error = 'Password is incorrect.';
           this.loading = false;
         }
       });

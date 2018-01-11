@@ -31,6 +31,8 @@
     "flickrapi": "^0.6.0",
     "hammerjs": "^2.0.8",
     "i": "^0.3.6",
+    "jsonwebtoken": "^8.1.0",
+    "md5": "^2.2.1",
     "ng-gallery": "github:olagbk/ng-gallery-build",
     "ng-recaptcha": "^3.0.2",
     "ngx-bootstrap": "^1.9.3",
