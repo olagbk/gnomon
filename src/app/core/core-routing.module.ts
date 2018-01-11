@@ -1,5 +1,8 @@
+// angular modules
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+// components
 import { HomeComponent } from './pages/home/home.component';
 import { SketchesComponent } from './pages/sketches/sketches.component';
 import { DrawingsComponent } from './pages/drawings/drawings.component';
@@ -8,6 +11,10 @@ import { PhotoAlbumComponent } from './pages/photos/photo-album.component';
 import { AboutComponent } from './pages/about/about.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { BlogEntryComponent } from './pages/blog/blog-entry.component';
+import {LoginComponent} from './pages/login/login.component';
+
+// guards
+import { AuthGuard } from '../guards/auth.guard';
 
 export const routes = [
   {
@@ -49,7 +56,12 @@ export const routes = [
   },
   {
     path: 'admin',
-    loadChildren: 'app/admin/admin.module#AdminModule'
+    loadChildren: 'app/admin/admin.module#AdminModule',
+    canLoad: [ AuthGuard ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '**',
@@ -63,6 +75,9 @@ export const routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    AuthGuard
   ],
   declarations: []
 })

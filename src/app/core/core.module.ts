@@ -25,6 +25,7 @@ import { BlogComponent } from './pages/blog/blog.component';
 import { BlogEntryComponent } from './pages/blog/blog-entry.component';
 import { ContactFormComponent } from './widgets/contact-form/contact-form.component';
 import { DrawingsComponent } from './pages/drawings/drawings.component';
+import { LoginComponent } from './pages/login/login.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { GalleryThumbComponent } from './gallery/gallery-thumb.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -35,6 +36,7 @@ import { SketchesComponent } from './pages/sketches/sketches.component';
 import { TagsComponent } from './widgets/tags/tags.component';
 
 // services
+import { AuthService } from '../auth.service';
 import { AlbumsService } from './gallery/albums.service';
 import { BlogService } from './pages/blog/blog.service';
 import { FlickrService } from './gallery/flickr.service';
@@ -63,6 +65,7 @@ const declarations: Array<any> = [
   PhotoAlbumComponent,
   AlbumThumbComponent,
   AboutComponent,
+  LoginComponent,
 
   TagSortPipe
 ];
@@ -81,6 +84,7 @@ const imports: Array<any> = [
   RecaptchaFormsModule
 ];
 const providers: Array<any> = [
+  AuthService,
   AlbumsService,
   BlogService,
   FlickrService,
