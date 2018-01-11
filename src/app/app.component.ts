@@ -20,7 +20,4 @@ export class AppComponent implements OnInit {
   scrollToTop() {
     window.scroll(0, 0);
   }
-  loggedIn() {
-    console.log('logged in');
-  }
 }
