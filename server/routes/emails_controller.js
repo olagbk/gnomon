@@ -1,5 +1,4 @@
 'use strict';
-import md5 from 'md5';
 import nodemailer from 'nodemailer';
 import config from '~/config/config.json';
 
@@ -8,7 +7,7 @@ export function sendEmail(mailer, req, res, conf){
     service: 'gmail',
     auth: {
       user: conf.gmail.username,
-      pass: md5(conf.gmail.password)
+      pass: conf.gmail.password
     }
   });
   const mailOptions = {

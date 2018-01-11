@@ -1,6 +1,5 @@
 'use strict';
 
-import md5 from 'md5';
 import sinon from 'sinon';
 import { sendEmail } from '../../server/routes/emails_controller';
 import { MockMailer, mockConfig } from '~/test/stubs/server';
@@ -37,12 +36,11 @@ describe('/Email test', () => {
     sendEmail(mailer, req, res, mockConfig);
     spy.calledOnce.should.be.true;
 
-    const password = md5('password');
     const options = spy.firstCall.args[0];
     options.should.have.keys('service', 'auth');
     options.service.should.equal('gmail');
     options.auth.user.should.equal('username');
-    options.auth.pass.should.equal(password);
+    options.auth.pass.should.equal('password');
   });
 
   it('should pass correct options to transporter', () => {
