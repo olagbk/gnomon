@@ -21,3 +21,11 @@ Run `ng test` to execute client-side tests via Mocha/Karma.
 ## Heroku
 
 `git checkout heroku` and `npm run heroku` to deploy the app. 
+
+## TODO
+- OAuth2 authentication for nodemailer
+- remove footer from admin pages
+- refactor test directory
+- authentication tests
+- CanDeactivate Guard for email and post edit
+- secure posts POST route
