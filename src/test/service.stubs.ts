@@ -1,0 +1,116 @@
+import { Album } from '../app/core/gallery/album';
+import { Email } from '../app/core/widgets/contact-form/email';
+import { FlickrParams } from '../app/core/gallery/flickr-params';
+import { Post, Tag } from '../app/core/pages/blog/post';
+
+export class MailerServiceStub {
+  error = false;
+
+  send(email: Email): Promise<any> {
+    if (this.error) { return Promise.reject(null); }
+    return Promise.resolve();
+  }
+}
+
+export class AlbumsServiceStub {
+  getAlbumByType(album: string): Album {return {albumId: album, type: album}; }
+
+  getPhotos(): Album[] { return [{
+    type: 'photos',
+    name: 'mammalia',
+    albumId: '72157644448784543',
+    filename: 'mammalia.jpg'
+  },
+    {
+      type: 'photos',
+      name: 'insecta et invertebrata',
+      albumId: '72157636520804406',
+      filename: 'insecta.jpg'
+    },
+    {
+      type: 'photos',
+      name: 'weird / creepy / dead',
+      albumId: '72157642924012913',
+      filename: 'weird.jpg'
+    },
+    {
+      type: 'photos',
+      name: 'aves',
+      albumId: '72157636520438644',
+      filename: 'aves.jpg'
+    }];
+  }
+}
+
+export class BlogServiceStub {
+  posts: Post[] = [{
+    id: '1',
+    title: 'Post title',
+    body: 'Post body',
+    createdAt: '2017-11-25T20:45:11.140Z',
+    updatedAt: '2017-11-25T20:45:11.140Z',
+    tags: [{name: 'tag1', count: 2}]
+  }, {
+    id: '2',
+    title: 'Post title',
+    body: 'Post body',
+    createdAt: '2017-11-25T20:45:11.140Z',
+    updatedAt: '2017-11-26T20:45:11.140Z',
+    tags: [{name: 'tag2', count: 2}]
+  }, {
+    id: '3',
+    title: 'Post title',
+    body: 'Post body',
+    createdAt: '2017-11-25T20:45:11.140Z',
+    updatedAt: '2017-11-25T20:45:11.140Z',
+    tags: [{name: 'tag1', count: 2}, {name: 'tag2', count: 2}]
+  }, {
+    id: '4',
+    title: 'Post title',
+    body: 'Post body',
+    createdAt: '2017-11-25T20:45:11.140Z',
+    updatedAt: '2017-11-25T20:45:11.140Z',
+    tags: [{name: 'tag3', count: 1}]
+  }];
+  tags: Tag[] = [
+    {name: 'tag1', count: 2},
+    {name: 'tag2', count: 2},
+    {name: 'tag3', count: 1}
+  ];
+
+  getPost(id: string): Promise<Post> {
+    return Promise.resolve(this.posts.find(p => p.id === id));
+  };
+  getPosts(): Promise<Post[]> {
+    return Promise.resolve(this.posts);
+  }
+  getTags(): Promise<Tag[]> {
+    return Promise.resolve(this.tags);
+  }
+  editPost(id: string): Promise<any> {
+    return Promise.resolve();
+  }
+  createPost(id: string): Promise<any> {
+    return Promise.resolve();
+  }
+}
+
+export class FlickrServiceStub {
+  totalItems = 2000;
+  error = false;
+
+  getImages(params: FlickrParams): Promise<any> {
+    if (this.error) {
+      return Promise.reject('');
+    }
+    const images = [];
+    const perPage = params.perPage || 1;
+    for (let i = 1; i <= perPage; i++) {
+      images.push({src: 'https://some.url', thumbnail: 'thumbnail.url', text: 'Image title'});
+    }
+    return Promise.resolve({
+      images: images,
+      count: this.totalItems
+    });
+  }
+}

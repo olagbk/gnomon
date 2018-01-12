@@ -1,7 +1,7 @@
 'use strict';
 
 import Sequelize from 'sequelize';
-import config from '~/config/database.json';
+import config from '../../config/database.json';
 
 const env = process.env.NODE_ENV || 'development';
 const sequelize =

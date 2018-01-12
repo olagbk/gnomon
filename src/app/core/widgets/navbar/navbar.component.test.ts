@@ -1,8 +1,15 @@
+// testing tools
 import { should } from 'chai';
+
+// angular imports
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { RouterLinkStubDirective } from '../../../../../test/stubs/client';
+
+// stubs
+import { RouterLinkStubDirective } from '../../../../test/routing.stubs';
+
+// components
 import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {

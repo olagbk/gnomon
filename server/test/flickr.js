@@ -2,8 +2,9 @@
 
 import sinon from 'sinon';
 import { getAlbum } from '~/dist/routes/flickr_controller';
-import { MockFlickr, mockConfig } from '~/test/stubs/server';
-import '../migrations.js';
+import { MockFlickr } from './stubs/flickr';
+import { mockConfig } from './stubs/config';
+import './migrations.js';
 
 describe('/Flickr test', () => {
   let req, res, mockFlickr;

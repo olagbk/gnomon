@@ -13,10 +13,10 @@
       ],
       "index": "index.html",
       "main": "main.ts",
-      "polyfills": "polyfills.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
+      "polyfills": "config/polyfills.ts",
+      "test": "config/test.ts",
+      "tsconfig": "config/tsconfig.app.json",
+      "testTsconfig": "config/tsconfig.spec.json",
       "prefix": "app",
       "styles": [
         "styles/styles.scss",
@@ -33,17 +33,19 @@
   ],
   "lint": [
     {
-      "project": "src/tsconfig.app.json",
+      "project": "src/config/tsconfig.app.json",
+      "tslintConfig": "src/config/tslint.json",
       "exclude": "**/node_modules/**"
     },
     {
-      "project": "src/tsconfig.spec.json",
+      "project": "src/config/tsconfig.spec.json",
+      "tslintConfig": "src/config/tslint.json",
       "exclude": "**/node_modules/**"
     }
   ],
   "test": {
     "karma": {
-      "config": "./test/karma.conf.js"
+      "config": "src/config/karma.conf.js"
     }
   },
   "defaults": {

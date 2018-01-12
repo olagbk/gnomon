@@ -1,11 +1,21 @@
 /* tslint:disable:no-unused-expression */
+
+// testing tools
 import { should } from 'chai';
 import * as sinon from 'sinon';
+
+// angular imports
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { PaginationHostStubComponent, BootstrapPaginationStubComponent, RouterStub, ActivatedRouteStub } from '../../../../test/stubs/client';
+
+// stubs
+import { RouterStub, ActivatedRouteStub } from '../../../test/routing.stubs';
+import { PaginationHostStubComponent } from '../../../test/host.stubs';
+import { BootstrapPaginationStubComponent } from '../../../test/third-party.stubs';
+
+// components
 import { PaginationComponent } from './pagination.component';
 
 describe('PaginationComponent', () => {

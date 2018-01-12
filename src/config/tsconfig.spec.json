@@ -1,8 +1,8 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/spec",
-    "baseUrl": "./",
+    "baseUrl": "../",
     "module": "commonjs",
     "target": "es5",
     "types": [
@@ -11,7 +11,7 @@
     ]
   },
   "files": [
-    "test.ts"
+    "./test.ts"
   ],
   "include": [
     "**/*.test.ts",

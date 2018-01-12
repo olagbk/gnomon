@@ -1,9 +1,16 @@
+// testing tools
 import { should } from 'chai';
 import * as sinon from 'sinon';
+
+// angular imports
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { TagsHostStubComponent } from '../../../../../test/stubs/client';
+
+// stubs
+import { TagsHostStubComponent } from '../../../../test/host.stubs';
+
+// components & pipes
 import { TagsComponent } from './tags.component';
 import { TagSortPipe } from './sort.pipe';
 

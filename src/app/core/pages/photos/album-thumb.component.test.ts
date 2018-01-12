@@ -1,8 +1,15 @@
+// testing tools
 import { should } from 'chai';
 import * as sinon from 'sinon';
+
+// angular imports
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { RouterLinkStubDirective } from '../../../../../test/stubs/client';
+
+// stubs
+import { RouterLinkStubDirective } from '../../../../test/routing.stubs';
+
+// components
 import { AlbumThumbComponent } from './album-thumb.component';
 
 describe('AlbumThumbComponent', () => {

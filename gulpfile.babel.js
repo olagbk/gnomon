@@ -32,7 +32,7 @@ gulp.task('clean', () => {
 
 gulp.task('transpile', ['clean'], () => {
   return new Promise((resolve) => {
-    gulp.src('server/**/*.js')
+    gulp.src(['server/**/*.js', '!server/test/**/*.js'])
       .pipe(babel())
       .pipe(gulp.dest('dist'))
       .on('end', resolve)

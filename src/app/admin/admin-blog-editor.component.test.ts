@@ -1,15 +1,26 @@
 /* tslint:disable:no-unused-expression */
-
+// testing tools
 import { should } from 'chai';
 import * as sinon from 'sinon';
+
+// angular imports
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NO_ERRORS_SCHEMA, Renderer2 } from '@angular/core';
+
+// stubs
+import { ActivatedRouteStub, RouterStub, RouterLinkStubDirective } from '../../test/routing.stubs';
+import { BlogServiceStub } from '../../test/service.stubs';
+
+// dependencies
 import { BlogService } from '../core/pages/blog/blog.service';
-import { ActivatedRouteStub, BlogServiceStub, RouterStub, RouterLinkStubDirective } from '../../../test/stubs/client';
+
+// models
+import { Post } from '../core/pages/blog/post';
+
+// components
 import { AdminBlogEditorComponent } from './admin-blog-editor.component';
-import {Post} from '../core/pages/blog/post';
 
 describe('AdminBlogEditorComponent', () => {
   let component: AdminBlogEditorComponent;

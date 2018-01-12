@@ -1,12 +1,23 @@
 /* tslint:disable:no-unused-expression */
+
+// testing tools
 import * as sinon from 'sinon';
 import { should } from 'chai';
+
+// angular imports
 import { ComponentFixture, async, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
+
+// stubs
+import { BsModalServiceStub } from '../../test/third-party.stubs';
+import { BlogServiceStub } from '../../test/service.stubs';
+
+// dependencies
 import { BsModalService } from 'ngx-bootstrap';
-import { BsModalServiceStub, BlogServiceStub } from '../../../test/stubs/client';
 import { BlogService } from '../core/pages/blog/blog.service';
+
+// components
 import { AdminBlogComponent } from './admin-blog.component';
 
 describe('AdminBlogComponent', () => {

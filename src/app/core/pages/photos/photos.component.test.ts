@@ -1,11 +1,20 @@
+// testing tools
 import { should } from 'chai';
+
+// angular imports
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+
+// stubs
+import { AlbumsServiceStub } from '../../../../test/service.stubs';
+
+// dependencies
 import { AlbumsService } from '../../gallery/albums.service';
+
+// components
 import { AlbumThumbComponent } from './album-thumb.component';
-import { AlbumsServiceStub } from '../../../../../test/stubs/client';
 import { PhotosComponent } from './photos.component';
-import {By} from '@angular/platform-browser';
 
 describe('PhotosComponent', () => {
   let component: PhotosComponent;

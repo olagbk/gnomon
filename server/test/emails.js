@@ -1,9 +1,10 @@
 'use strict';
 
 import sinon from 'sinon';
-import { sendEmail } from '../../server/routes/emails_controller';
-import { MockMailer, mockConfig } from '~/test/stubs/server';
-import '../migrations.js';
+import { sendEmail } from '../routes/emails_controller';
+import { MockMailer } from './stubs/emails';
+import { mockConfig } from './stubs/config';
+import './migrations.js';
 
 describe('/Email test', () => {
   let req, res, mailer;

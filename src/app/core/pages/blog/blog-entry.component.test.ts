@@ -1,11 +1,21 @@
+// testing tools
 import { should } from 'chai';
 import * as sinon from 'sinon';
+
+// angular imports
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { fakeAsync, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ActivatedRouteStub, BlogServiceStub, RouterStub, RouterLinkStubDirective } from '../../../../../test/stubs/client';
+
+// stubs
+import { ActivatedRouteStub, RouterStub, RouterLinkStubDirective } from '../../../../test/routing.stubs';
+import { BlogServiceStub } from '../../../../test/service.stubs';
+
+// dependencies
 import { BlogService } from './blog.service';
+
+// components
 import { BlogEntryComponent } from './blog-entry.component';
 
 describe('BlogEntryComponent', () => {

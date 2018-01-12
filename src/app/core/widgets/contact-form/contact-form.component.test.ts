@@ -1,12 +1,21 @@
+// testing tools
 import { should } from 'chai';
 import * as sinon from 'sinon';
+
+// angular imports
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { ContactFormComponent } from './contact-form.component';
-import { MailerServiceStub } from '../../../../../test/stubs/client';
+
+// stubs
+import { MailerServiceStub } from '../../../../test/service.stubs';
+
+// dependencies
 import { MailerService } from './mailer.service';
+
+// components
+import { ContactFormComponent } from './contact-form.component';
 
 describe('ContactFormComponent', () => {
   let component: ContactFormComponent;

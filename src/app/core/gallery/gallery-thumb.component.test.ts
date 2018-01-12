@@ -1,13 +1,21 @@
 /* tslint:disable:no-unused-expression */
 
+// testing tools
 import { should } from 'chai';
 import * as sinon from 'sinon';
+
+// angular imports
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 
-import { GalleryServiceStub } from '../../../../test/stubs/client';
+// stubs
+import { GalleryServiceStub } from '../../../test/third-party.stubs';
+
+// dependencies
 import { GalleryService } from 'ng-gallery';
+
+// components
 import { GalleryThumbComponent } from './gallery-thumb.component';
 
 describe('GalleryThumbComponent', () => {

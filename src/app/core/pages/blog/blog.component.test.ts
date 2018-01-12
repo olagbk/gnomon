@@ -1,12 +1,22 @@
+// testing tools
 import { should } from 'chai';
+
+// angular imports
 import { tick, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
-import { BlogComponent } from './blog.component';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+// stubs
+import { ActivatedRouteStub, RouterStub } from '../../../../test/routing.stubs';
+import { BlogServiceStub } from '../../../../test/service.stubs';
+
+// dependencies
 import { BlogService } from './blog.service';
-import { BlogServiceStub, ActivatedRouteStub, RouterStub } from '../../../../../test/stubs/client';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+
+// components
+import { BlogComponent } from './blog.component';
 
 describe('BlogComponent', () => {
   let component: BlogComponent;

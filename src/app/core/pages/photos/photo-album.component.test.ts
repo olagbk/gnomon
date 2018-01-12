@@ -1,11 +1,18 @@
+// testing tools
 import { should } from 'chai';
+
+// angular imports
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { ActivatedRouteStub, GalleryStubComponent, RouterLinkStubDirective } from '../../../../../test/stubs/client';
+import { Renderer2 } from '@angular/core';
 
+// stubs
+import { ActivatedRouteStub, RouterLinkStubDirective } from '../../../../test/routing.stubs';
+import { GalleryStubComponent } from '../../../../test/component.stubs';
+
+// components
 import { PhotoAlbumComponent } from './photo-album.component';
-import {Renderer2} from '@angular/core';
 
 describe('PhotoAlbumComponent', () => {
   let component: PhotoAlbumComponent;

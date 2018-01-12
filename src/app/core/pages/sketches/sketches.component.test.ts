@@ -1,10 +1,19 @@
+// testing tools
 import { should } from 'chai';
-import { ComponentFixture, TestBed} from '@angular/core/testing';
+
+// angular imports
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { SketchesComponent } from './sketches.component';
+// stubs
+import { AlbumsServiceStub } from '../../../../test/service.stubs';
+import { GalleryStubComponent } from '../../../../test/component.stubs';
+
+// dependencies
 import { AlbumsService } from '../../gallery/albums.service';
-import { AlbumsServiceStub, GalleryStubComponent } from '../../../../../test/stubs/client';
+
+// components
+import { SketchesComponent } from './sketches.component';
 
 describe('SketchesComponent', () => {
   let component: SketchesComponent;

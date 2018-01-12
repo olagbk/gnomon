@@ -1,16 +1,27 @@
 /* tslint:disable:no-unused-expression */
+
+// testing tools
 import { should, use } from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import * as sinon from 'sinon';
+
+// angular imports
 import { tick, fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { ActivatedRouteStub, GalleryServiceStub, FlickrServiceStub } from '../../../../test/stubs/client';
 
+// stubs
+import { ActivatedRouteStub } from '../../../test/routing.stubs';
+import { GalleryServiceStub } from '../../../test/third-party.stubs';
+import { FlickrServiceStub } from '../../../test/service.stubs';
+
+// dependencies
 import { GalleryService } from 'ng-gallery';
 import { FlickrService } from './flickr.service';
+
+// components
 import { GalleryComponent } from './gallery.component';
 
 use(chaiAsPromised);
