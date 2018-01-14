@@ -1,6 +1,10 @@
+// testing tools
 import { should } from 'chai';
+
+// angular imports
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// components
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {

@@ -1,11 +1,16 @@
+// testing tools
 import { should } from 'chai';
+
+// angular imports
 import { TestBed, fakeAsync, tick, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { routes } from './core/core-routing.module';
+import { FormsModule } from '@angular/forms';
+
+// components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './core/pages/home/home.component';
 import { SketchesComponent } from './core/pages/sketches/sketches.component';
@@ -15,6 +20,10 @@ import { PhotoAlbumComponent } from './core/pages/photos/photo-album.component';
 import { AboutComponent } from './core/pages/about/about.component';
 import { BlogComponent } from './core/pages/blog/blog.component';
 import { BlogEntryComponent } from './core/pages/blog/blog-entry.component';
+import { LoginComponent } from './core/pages/login/login.component';
+
+// routes
+import { routes } from './core/core-routing.module';
 
 describe('AppComponent', () => {
 
@@ -127,7 +136,10 @@ describe('App routing', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ RouterTestingModule.withRoutes(routes) ],
+      imports: [
+        RouterTestingModule.withRoutes(routes),
+        FormsModule
+      ],
       declarations: [
         AppComponent,
         HomeComponent,
@@ -137,7 +149,8 @@ describe('App routing', () => {
         PhotoAlbumComponent,
         AboutComponent,
         BlogComponent,
-        BlogEntryComponent
+        BlogEntryComponent,
+        LoginComponent
       ],
       schemas: [NO_ERRORS_SCHEMA]
     });

@@ -1,11 +1,14 @@
+// testing tools
 import { should } from 'chai';
+
+// angular imports
 import { HttpModule, Response, ResponseOptions, XHRBackend } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { TestBed, inject } from '@angular/core/testing';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/do';
 
-
+// dependencies
 import { BlogService } from './blog.service';
 
 describe('PostsService', () => {

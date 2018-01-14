@@ -1,8 +1,12 @@
+// testing tools
 import { should } from 'chai';
+
+// angular imports
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
+// components
 import { AboutComponent } from './about.component';
 
 describe('AboutComponent', () => {

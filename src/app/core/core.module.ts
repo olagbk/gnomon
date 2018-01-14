@@ -36,7 +36,7 @@ import { SketchesComponent } from './pages/sketches/sketches.component';
 import { TagsComponent } from './widgets/tags/tags.component';
 
 // services
-import { AuthService } from '../auth.service';
+import { AuthService } from './auth.service';
 import { AlbumsService } from './gallery/albums.service';
 import { BlogService } from './pages/blog/blog.service';
 import { FlickrService } from './gallery/flickr.service';

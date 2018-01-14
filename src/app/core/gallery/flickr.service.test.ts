@@ -1,11 +1,19 @@
 /* tslint:disable:no-unused-expression */
+
+// testing tools
 import { should, use } from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import * as sinon from 'sinon';
+
+// angular imports
 import { TestBed, async } from '@angular/core/testing';
 import { HttpModule, Response, ResponseOptions, XHRBackend } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
+
+// dependencies
 import { FlickrService } from './flickr.service';
+
+// models
 import { FlickrParams } from './flickr-params';
 
 use(chaiAsPromised);

@@ -1,8 +1,15 @@
+// testing tools
 import { should } from 'chai';
+
+// angular imports
 import { TestBed, async } from '@angular/core/testing';
 import { HttpModule, Response, ResponseOptions, XHRBackend } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
+
+// dependencies
 import { AlbumsService } from './albums.service';
+
+// models
 import { Album } from './album';
 
 describe('AlbumsService', () => {

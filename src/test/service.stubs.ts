@@ -1,8 +1,20 @@
+import { EventEmitter, Output } from '@angular/core';
 import { Album } from '../app/core/gallery/album';
 import { Email } from '../app/core/widgets/contact-form/email';
 import { FlickrParams } from '../app/core/gallery/flickr-params';
 import { Post, Tag } from '../app/core/pages/blog/post';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/delay';
 
+export class AuthServiceStub {
+  @Output() loggedIn: EventEmitter<boolean> = new EventEmitter(false);
+  valid = true;
+
+  login(password: string): Promise<boolean> { return Promise.resolve(this.valid); }
+  logout() {}
+
+}
 export class MailerServiceStub {
   error = false;
 

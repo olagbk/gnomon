@@ -1,6 +1,7 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -15,9 +16,9 @@ export class AuthService {
     this.loggedIn = new EventEmitter(!!this.token);
   }
 
-  login(password: string): Observable<boolean> {
-    return this.http.post('/api/authenticate', { password: password })
-      .map((response: Response) => {
+  login(password: string): Promise<boolean> {
+    return this.http.post('/api/authenticate', { password: password }).toPromise()
+      .then((response: Response) => {
         // login successful if there's a jwt token in the response
         const token = response.json() && response.json().token;
         if (token) {
@@ -34,7 +35,7 @@ export class AuthService {
           // return false to indicate failed login
           return false;
         }
-      }).catch(err => Observable.of(false));
+      }).catch(err => false);
   }
   logout(): void {
     // clear token remove user from local storage to log user out

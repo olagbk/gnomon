@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../../auth.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   templateUrl: './login.component.html',
@@ -18,22 +18,23 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // reset login status
     this.authService.logout();
   }
 
-  login() {
+  login(): void {
     this.loading = true;
     this.error = '';
     this.authService.login(this.model.password)
-      .subscribe(authorized => {
+      .then((authorized: boolean) => {
+        this.loading = false;
+
         if (authorized) {
           this.loggedIn.emit();
           this.router.navigate(['/admin']);
         } else {
           this.error = 'Password is incorrect.';
-          this.loading = false;
         }
       });
   }

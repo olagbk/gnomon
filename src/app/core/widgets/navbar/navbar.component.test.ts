@@ -8,6 +8,10 @@ import { By } from '@angular/platform-browser';
 
 // stubs
 import { RouterLinkStubDirective } from '../../../../test/routing.stubs';
+import { AuthServiceStub } from '../../../../test/service.stubs';
+
+// dependencies
+import { AuthService } from '../../auth.service';
 
 // components
 import { NavbarComponent } from './navbar.component';
@@ -19,7 +23,8 @@ describe('NavbarComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ NavbarComponent, RouterLinkStubDirective ],
-      schemas: [ NO_ERRORS_SCHEMA ]
+      schemas: [ NO_ERRORS_SCHEMA ],
+      providers: [{ provide: AuthService, useClass: AuthServiceStub } ]
     });
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;

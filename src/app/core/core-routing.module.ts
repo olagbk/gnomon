@@ -14,7 +14,7 @@ import { BlogEntryComponent } from './pages/blog/blog-entry.component';
 import {LoginComponent} from './pages/login/login.component';
 
 // guards
-import { AuthGuard } from '../guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes = [
   {
