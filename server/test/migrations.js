@@ -83,18 +83,27 @@ describe('Sequelize migration', () => {
   it('should create tags and post_tags', done => {
     migrations['003'].up(sequelize.queryInterface, Sequelize, () => {
 
-      const posts = sequelize.models.posts;
       const tags = sequelize.models.tags;
-      const ptags = sequelize.models.post_tags;
 
       should.exist(tags);
-      should.exist(ptags);
 
       tags.attributes.should.have.property('name');
       tags.attributes.name.type.key.should.equal('STRING');
       tags.attributes.name.allowNull.should.equal(false);
 
       tags.options.timestamps.should.equal(false);
+
+      done();
+    });
+  });
+  it('should create post_tags', done => {
+    migrations['004'].up(sequelize.queryInterface, Sequelize, () => {
+
+      const posts = sequelize.models.posts;
+      const tags = sequelize.models.tags;
+      const ptags = sequelize.models.post_tags;
+
+      should.exist(ptags);
 
       should.exist(tags.associations.posts);
       should.exist(posts.associations.tags);

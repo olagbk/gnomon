@@ -4,15 +4,15 @@ import sinon from 'sinon';
 import { sendEmail } from '../routes/emails_controller';
 import { MockMailer } from './stubs/emails';
 import { mockConfig } from './stubs/config';
+import { Res } from './stubs/res';
 import './migrations.js';
 
 describe('/Email test', () => {
   let req, res, mailer;
 
   beforeEach(done => {
-
     mailer = new MockMailer();
-
+    res = new Res();
     req = {
       body: {
         name: 'yo mama',
@@ -21,13 +21,6 @@ describe('/Email test', () => {
         message: 'bruh'
       }
     };
-
-    res = {
-      send(data) {},
-      json(data) {},
-      status: function(code) { return this }
-    };
-
     done();
   });
 

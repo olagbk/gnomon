@@ -4,15 +4,15 @@ import sinon from 'sinon';
 import { getAlbum } from '~/dist/routes/flickr_controller';
 import { MockFlickr } from './stubs/flickr';
 import { mockConfig } from './stubs/config';
+import { Res } from './stubs/res';
 import './migrations.js';
 
 describe('/Flickr test', () => {
   let req, res, mockFlickr;
 
   beforeEach(done => {
-
     mockFlickr = new MockFlickr();
-
+    res = new Res();
     req = {
       query: {
         album: 'yo mama',
@@ -20,13 +20,6 @@ describe('/Flickr test', () => {
         perPage: '20'
       }
     };
-
-    res = {
-      send(data) {},
-      json(data) {},
-      status: function(code) { return this }
-    };
-
     done();
   });
 

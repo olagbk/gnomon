@@ -95,15 +95,28 @@ describe('GalleryComponent', () => {
     component.ngOnInit();
     component.perPage.should.equal(24);
   }));
+  it('should send another request if page was out of scope', fakeAsync(() => {
+    flickr.error = 404;
+    component.currentPage = 5;
+    component.getImages();
+
+    const spy = sinon.spy(component, 'getImages');
+    tick();
+
+    spy.calledOnce.should.be.true;
+    component.currentPage.should.equal(1);
+    component.galleryError.should.equal(false);
+  }));
   it('should display error message when images are not retrieved', fakeAsync(() => {
-    let messageEl;
-    messageEl = fixture.debugElement.query(By.css('.error-message'));
+    let messageEl = fixture.debugElement.query(By.css('.error-message'));
     should().not.exist(messageEl);
 
-    flickr.error = true;
+    flickr.error = 500;
+    component.currentPage = 2;
     component.getImages();
     tick();
     fixture.detectChanges();
+
     messageEl = fixture.debugElement.query(By.css('.error-message'));
     should().exist(messageEl);
   }));

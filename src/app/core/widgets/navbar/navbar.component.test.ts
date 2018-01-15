@@ -1,3 +1,5 @@
+/* tslint:disable:no-unused-expression */
+
 // testing tools
 import { should } from 'chai';
 
@@ -35,6 +37,8 @@ describe('NavbarComponent', () => {
     should().exist(component);
   });
   it('should wire links to routes', () => {
+    component.isAdmin = true;
+    fixture.detectChanges();
     const linkEls = fixture.debugElement.queryAll(By.css('a'));
 
     const homeEl = linkEls[0];
@@ -46,7 +50,6 @@ describe('NavbarComponent', () => {
     const blogD = blogEl.injector.get(RouterLinkStubDirective);
     blogEl.triggerEventHandler('click', null);
     blogD.navigatedTo.should.equal('/blog');
-    fixture.detectChanges();
 
     const drawEl = linkEls[2];
     const drawD = drawEl.injector.get(RouterLinkStubDirective);
@@ -67,6 +70,11 @@ describe('NavbarComponent', () => {
     const aboutD = aboutEl.injector.get(RouterLinkStubDirective);
     aboutEl.triggerEventHandler('click', null);
     aboutD.navigatedTo.should.equal('/about');
+
+    const adminEl = linkEls[6];
+    const adminD = adminEl.injector.get(RouterLinkStubDirective);
+    adminEl.triggerEventHandler('click', null);
+    adminD.navigatedTo.should.equal('/admin');
   });
   it('should configure router to add "active" class to active link', () => {
     const linkEls = fixture.debugElement.queryAll(By.css('a'));
@@ -91,5 +99,39 @@ describe('NavbarComponent', () => {
     component.isCollapsed.should.equal(true);
     navEl.triggerEventHandler('click', null);
     component.isCollapsed.should.equal(false);
+  });
+  it('should set isAdmin value', () => {
+    localStorage.setItem('token', 'sometoken');
+    component.ngOnInit();
+    component.isAdmin.should.equal(true);
+
+    localStorage.removeItem('token');
+    component.ngOnInit();
+    component.isAdmin.should.equal(false);
+  });
+  it('should respond to loggedIn event change', () => {
+    const auth = TestBed.get(AuthService);
+    component.isAdmin = false;
+    auth.loggedIn.emit(true);
+    component.isAdmin.should.equal(true);
+    auth.loggedIn.emit(false);
+    component.isAdmin.should.equal(false);
+  });
+  it('should unsubscribe when destroyed', () => {
+    const sub = component.loginSubscription;
+    sub.closed.should.be.false;
+    component.ngOnDestroy();
+    sub.closed.should.be.true;
+  });
+  it('should show admin link only when logged in', () => {
+    component.isAdmin = true;
+    fixture.detectChanges();
+    let linkEl = fixture.debugElement.query(By.css('.admin-link'));
+    should().exist(linkEl);
+
+    component.isAdmin = false;
+    fixture.detectChanges();
+    linkEl = fixture.debugElement.query(By.css('.admin-link'));
+    should().not.exist(linkEl);
   });
 });

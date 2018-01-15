@@ -1,26 +1,33 @@
 'use strict';
 import md5 from 'md5';
-import jwt from 'jsonwebtoken';
-import app from '../index.js';
+import JWT from 'jsonwebtoken';
 import config from '~/config/config.json';
 
-export default (router, sequelize) => {
+export function authenticate(jwt, req, res, conf) {
 
-  router.route('/authenticate')
-    .post((req, res) => {
-      const password = md5(req.body.password);
-      if (config.auth.password !== password) {
-        res.status(401).send();
+  const password = md5(req.body.password);
+  if (conf.auth.password !== password) {
+    res.status(401).send();
+  } else {
+    const payload = {};
+
+    jwt.sign(payload, conf.auth.JWTsecret, {
+      expiresIn: '24h'
+    }, ((err, token) => {
+      if (err) {
+        res.status(500).send(err)
       } else {
-        const payload = {};
-        const token = jwt.sign(payload, app.get('JWTsecret'), {
-          expiresIn: '24h'
-        });
         res.json({
           token: token
         });
       }
-    });
+    }));
+  }
+}
+export default (router, sequelize) => {
+
+  router.route('/authenticate')
+    .post((req, res) => authenticate(JWT, req, res, config));
 };
 
 

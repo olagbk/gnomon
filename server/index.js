@@ -9,8 +9,6 @@ import config from '~/config/config.json';
 const app = express();
 const port = process.env.PORT || '3000';
 
-app.set('JWTsecret', config.auth.JWTsecret);
-
 // Parsers for POST data
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

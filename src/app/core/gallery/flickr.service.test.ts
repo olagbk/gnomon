@@ -51,8 +51,23 @@ describe('GalleryService', () => {
   it('should be created', () => {
     should().exist(service);
   });
-  it('should fetch requested albums', async(() => {
+  it('should send params in request body', async(() => {
+    mockBackend.connections.subscribe((connection) => {
+      connection.mockRespond(response);
+    });
+    const params: FlickrParams = { page: 1, perPage: 10, album: 'albumID' };
+    const query = [];
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) { query.push(key + '=' + params[key]); }
+    }
+    const queryStr = query.join('&');
 
+    service.getImages(params).then(() => {
+      const reqQuery = mockBackend.connectionsArray[0].request.url.split('?')[1];
+      reqQuery.should.equal(queryStr);
+    });
+  }));
+  it('should fetch requested albums', async(() => {
     mockBackend.connections.subscribe((connection) => {
       connection.mockRespond(response);
     });

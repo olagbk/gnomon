@@ -7,7 +7,7 @@ export class GalleryServiceStub {
   set() {}
 }
 export class BsModalServiceStub {
-  show(template: TemplateRef<any>) { return template; }
+  show(template: TemplateRef<any>) { return { hide() {} }; }
 }
 
 @Component({

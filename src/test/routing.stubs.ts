@@ -33,11 +33,11 @@ export class ActivatedRouteStub {
     };
   }
 }
+
 export class RouterStub {
   navigate(commands: string[], extras: any) { return Promise.resolve(true); }
-
-  navigateByUrl(url: string) { return Promise.resolve(true); }
 }
+
 @Directive({
   selector: '[routerLink]',
   host: {

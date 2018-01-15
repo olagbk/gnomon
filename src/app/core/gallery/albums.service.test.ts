@@ -33,22 +33,29 @@ describe('AlbumsService', () => {
     ];
     service = TestBed.get(AlbumsService);
     mockBackend = TestBed.get(XHRBackend);
-
-    const options = new ResponseOptions({
-      body: mockResponse
-    });
-    const response = new Response(options);
-
-    mockBackend.connections.subscribe((connection) => {
-      connection.mockRespond(response);
-    });
   });
 
   it('should be created', () => {
     should().exist(service);
   });
 
+  it('should return an empty promise if server error received', async(() => {
+    mockBackend.connections.subscribe((connection) => {
+      connection.mockError(new Error());
+    });
+    service.loadAll().then(res => {
+      should().not.exist(res);
+    });
+  }));
+
   it('should load and store a list of all albums', async(() => {
+    const options = new ResponseOptions({
+      body: mockResponse
+    });
+    mockBackend.connections.subscribe((connection) => {
+      connection.mockRespond(new Response(options));
+    });
+
     should().not.exist(service.data);
 
     service.loadAll().then(albums => {
@@ -58,6 +65,13 @@ describe('AlbumsService', () => {
     });
   }));
   it('should filter out photographs', async(() => {
+    const options = new ResponseOptions({
+      body: mockResponse
+    });
+    mockBackend.connections.subscribe((connection) => {
+      connection.mockRespond(new Response(options));
+    });
+
     service.loadAll().then(albums => {
       const photos = service.getPhotos();
       photos.length.should.equal(2);
@@ -66,6 +80,13 @@ describe('AlbumsService', () => {
     });
   }));
   it('should get an album by content type', async(() => {
+    const options = new ResponseOptions({
+      body: mockResponse
+    });
+    mockBackend.connections.subscribe((connection) => {
+      connection.mockRespond(new Response(options));
+    });
+
     service.loadAll().then(albums => {
       const drawings = service.getAlbumByType('drawings');
       const sketches = service.getAlbumByType('sketches');

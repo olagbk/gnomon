@@ -1,7 +1,11 @@
+// testing tools
 import { should } from 'chai';
+
+// angular imports
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+// components
 import { ScrollComponent } from './scroll.component';
 
 describe('ScrollComponent', () => {

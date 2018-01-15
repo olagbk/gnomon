@@ -3,13 +3,11 @@ import { Album } from '../app/core/gallery/album';
 import { Email } from '../app/core/widgets/contact-form/email';
 import { FlickrParams } from '../app/core/gallery/flickr-params';
 import { Post, Tag } from '../app/core/pages/blog/post';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/delay';
 
 export class AuthServiceStub {
-  @Output() loggedIn: EventEmitter<boolean> = new EventEmitter(false);
   valid = true;
+  admin = false;
+  @Output() loggedIn: EventEmitter<boolean> = new EventEmitter(this.admin);
 
   login(password: string): Promise<boolean> { return Promise.resolve(this.valid); }
   logout() {}
@@ -105,15 +103,18 @@ export class BlogServiceStub {
   createPost(id: string): Promise<any> {
     return Promise.resolve();
   }
+  deletePost(id: string): Promise<any> {
+    return Promise.resolve(id === 'error');
+  }
 }
 
 export class FlickrServiceStub {
   totalItems = 2000;
-  error = false;
+  error: number;
 
   getImages(params: FlickrParams): Promise<any> {
-    if (this.error) {
-      return Promise.reject('');
+    if (this.error && params.page != 1) {
+      return Promise.reject({status: this.error });
     }
     const images = [];
     const perPage = params.perPage || 1;
