@@ -18,14 +18,12 @@ Run `npm test` to execute server-side tests via Mocha.
 
 Run `ng test` to execute client-side tests via Mocha/Karma.
 
+Run `ng test --watch=false --code-coverage` to generate coverage stats in `/coverage`.
+
 ## Heroku
 
 `git checkout heroku` and `npm run heroku` to deploy the app. 
 
 ## TODO
-- OAuth2 authentication for nodemailer
-- remove footer from admin pages
-- refactor test directory
-- authentication tests
 - CanDeactivate Guard for email and post edit
 - secure posts POST route
