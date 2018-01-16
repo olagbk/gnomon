@@ -1,3 +1,5 @@
+/* tslint:disable:no-unused-expression */
+
 // testing tools
 import { should } from 'chai';
 import * as sinon from 'sinon';
@@ -65,6 +67,11 @@ describe('ContactFormComponent', () => {
     spy.called.should.equal(true);
     component.submitted.should.equal(true);
   }));
+  it('should pass email object to mailer service', () => {
+    const spy = sinon.spy(mailer, 'send');
+    component.sendEmail();
+    spy.calledWith(component.model).should.be.true;
+  });
   it('should set processing status while email is being sent', fakeAsync(() => {
     component.processing.should.equal(false);
 

@@ -70,30 +70,30 @@ export class BlogComponent implements OnInit, OnDestroy {
       this.inactiveTags = tags;
       const queriedTagName = this.activatedRoute.snapshot.queryParams.tag;
       if (queriedTagName) {
-        const queriedTag = tags.find(t => t.name = queriedTagName);
-        if (!queriedTag) {return;}
+        const queriedTag = tags.find(t => t.name === queriedTagName);
+        if (!queriedTag) {return; }
         this.addTag(queriedTag);
       }
     });
   }
-  addSearchedTag($event: any): void {
+  addSearchedTag(search: any): void {
     this.searchedTag = null;
-    this.addTag($event.item);
+    this.addTag(search.item);
   }
-  addTag($event: Tag): void {
-    if ( this.activeTags.some(tag => tag.name === $event.name) ) { return; }
+  addTag(newTag: Tag): void {
+    if ( this.activeTags.some(tag => tag.name === newTag.name) ) { return; }
 
     if (!this.stackTags) {
       this.inactiveTags = this.inactiveTags.concat(this.activeTags);
       this.activeTags = [];
     }
-    this.inactiveTags = this.inactiveTags.filter(tag => tag.name !== $event.name);
-    this.activeTags.push($event);
+    this.inactiveTags = this.inactiveTags.filter(tag => tag.name !== newTag.name);
+    this.activeTags.push(newTag);
     this.selectedTags.next(this.activeTags);
   }
-  deleteTag($event: Tag): void {
-    this.activeTags = this.activeTags.filter(tag => tag.name !== $event.name);
-    this.inactiveTags.push($event);
+  deleteTag(deletedTag: Tag): void {
+    this.activeTags = this.activeTags.filter(tag => tag.name !== deletedTag.name);
+    this.inactiveTags.push(deletedTag);
     this.selectedTags.next(this.activeTags);
   }
   deleteAllTags(): void {
@@ -113,8 +113,8 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.perPage = response.perPage;
     if (response.currentPage) { this.currentPage = response.currentPage; }
   }
-  toggleStacking($event: boolean): void {
-    this.stackTags = $event;
+  toggleStacking(stackTags: boolean): void {
+    this.stackTags = stackTags;
     if (!this.stackTags && this.activeTags.length > 1) {
       this.inactiveTags = this.inactiveTags.concat(this.activeTags);
       this.activeTags = [];

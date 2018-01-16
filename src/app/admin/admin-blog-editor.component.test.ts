@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-expression */
 // testing tools
 import { should } from 'chai';
+import { SinonSandbox } from 'sinon';
 import * as sinon from 'sinon';
 
 // angular imports
@@ -28,8 +29,15 @@ describe('AdminBlogEditorComponent', () => {
   let activatedRoute: ActivatedRouteStub;
   let router: RouterStub;
   let blog: BlogServiceStub;
+  let sandbox: SinonSandbox;
+
+  before(() => {
+    sandbox = sinon.sandbox.create();
+  });
 
   beforeEach(() => {
+    sandbox.restore();
+
     TestBed.configureTestingModule({
       declarations: [ AdminBlogEditorComponent, RouterLinkStubDirective ],
       providers: [
@@ -96,10 +104,10 @@ describe('AdminBlogEditorComponent', () => {
 
   describe('Edit an existing post', () => {
 
-    beforeEach(async() => {
+    beforeEach(async(() => {
       activatedRoute.testParams = {id: '1'};
       component.ngOnInit();
-    });
+    }));
 
     it('should fetch post w/ tags', () => {
       component.post.should.have.keys('id', 'title', 'body', 'tags', 'createdAt', 'updatedAt');
@@ -148,24 +156,40 @@ describe('AdminBlogEditorComponent', () => {
       });
     }));
     it('should save post when save button is clicked', () => {
-      const spy = sinon.spy(blog, 'editPost');
+      const spy = sandbox.spy(blog, 'editPost');
       const els = fixture.debugElement.queryAll(By.css('a'));
       const el = els[1];
       component.post = blog.posts[0];
       el.triggerEventHandler('click', null);
       spy.calledWith(blog.posts[0], ['tag1']).should.be.true;
     });
+    it('should pass post and tags to service method', () => {
+      const spy = sandbox.spy(blog, 'editPost');
+      component.savePost();
+      spy.calledWith(component.post, component.postTags).should.be.true;
+    });
     it('should alert and not save when title is empty', () => {
-      const alertSpy = sinon.spy(window, 'alert');
-      const saveSpy = sinon.spy(blog, 'editPost');
+      const alertSpy = sandbox.spy(window, 'alert');
+      const saveSpy = sandbox.spy(blog, 'editPost');
       component.post.title = '   ';
       component.savePost();
       saveSpy.called.should.be.false;
       alertSpy.calledOnce.should.be.true;
       alertSpy.lastCall.args[0].should.include('required');
     });
+    it('should alert and stay on page if save fails', async(() => {
+      const routerSpy = sandbox.spy(router, 'navigate');
+      const alertSpy = sandbox.spy(window, 'alert');
+      component.post.id = 'error';
+      component.savePost();
+
+      fixture.whenStable().catch(() => {
+        alertSpy.calledWith('error').should.be.true;
+        routerSpy.called.should.be.false;
+      });
+    }));
     it('should navigate to post list after save', async(() => {
-      const spy = sinon.spy(router, 'navigate');
+      const spy = sandbox.spy(router, 'navigate');
       component.savePost();
       fixture.whenStable().then(() => {
         spy.calledWith(['../']).should.be.true;
@@ -175,16 +199,16 @@ describe('AdminBlogEditorComponent', () => {
 
   describe('Add a new post', () => {
 
-    beforeEach(() => {
+    beforeEach(async(() => {
       activatedRoute.testParams = {id: 'new'};
       component.ngOnInit();
-    });
+    }));
 
     it('should create a new post', () => {
       component.post.should.have.keys('title', 'body');
     });
     it('should save post when save button is clicked', () => {
-      const spy = sinon.spy(blog, 'createPost');
+      const spy = sandbox.spy(blog, 'createPost');
       const els = fixture.debugElement.queryAll(By.css('a'));
       const el = els[1];
       const post = new Post('title', 'body');
@@ -193,9 +217,28 @@ describe('AdminBlogEditorComponent', () => {
       el.triggerEventHandler('click', null);
       spy.calledWith(post, ['tag1']).should.be.true;
     });
+    it('should pass post and tags to service method', () => {
+      const spy = sandbox.spy(blog, 'createPost');
+      component.post = new Post('title', 'body');
+      component.postTags = ['tag1'];
+      component.savePost();
+      spy.calledWith(component.post, component.postTags).should.be.true;
+    });
+    it('should alert and stay on page if save fails', async(() => {
+      const routerSpy = sandbox.spy(router, 'navigate');
+      const alertSpy = sandbox.spy(window, 'alert');
+      component.post = new Post('title', 'body');
+      component.post.id = 'error';
+      component.savePost();
+
+      fixture.whenStable().catch(() => {
+        alertSpy.calledWith('error').should.be.true;
+        routerSpy.called.should.be.false;
+      });
+    }));
     it('should navigate to post list after save', async(() => {
       component.post = new Post('title', 'body');
-      const spy = sinon.spy(router, 'navigate');
+      const spy = sandbox.spy(router, 'navigate');
       component.savePost();
       fixture.whenStable().then(() => {
         spy.calledWith(['../']).should.be.true;

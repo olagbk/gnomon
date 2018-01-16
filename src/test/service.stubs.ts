@@ -9,7 +9,9 @@ export class AuthServiceStub {
   admin = false;
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter(this.admin);
 
-  login(password: string): Promise<boolean> { return Promise.resolve(this.valid); }
+  login(password: string): Promise<boolean> {
+    return Promise.resolve(this.valid);
+  }
   logout() {}
 
 }
@@ -17,15 +19,15 @@ export class MailerServiceStub {
   error = false;
 
   send(email: Email): Promise<any> {
-    if (this.error) { return Promise.reject(null); }
+    if (this.error) {
+      return Promise.reject(null);
+    }
     return Promise.resolve();
   }
 }
 
 export class AlbumsServiceStub {
-  getAlbumByType(album: string): Album {return {albumId: album, type: album}; }
-
-  getPhotos(): Album[] { return [{
+  photos: Album[] = [{
     type: 'photos',
     name: 'mammalia',
     albumId: '72157644448784543',
@@ -49,7 +51,11 @@ export class AlbumsServiceStub {
       albumId: '72157636520438644',
       filename: 'aves.jpg'
     }];
-  }
+
+  getAlbumByType(album: string): Album {return {albumId: album, type: album}; }
+
+  getPhotos(): Album[] { return this.photos; }
+
 }
 
 export class BlogServiceStub {
@@ -97,11 +103,11 @@ export class BlogServiceStub {
   getTags(): Promise<Tag[]> {
     return Promise.resolve(this.tags);
   }
-  editPost(id: string): Promise<any> {
-    return Promise.resolve();
+  editPost(post: Post): Promise<any> {
+    return (post.id === 'error') ? Promise.reject('error') : Promise.resolve();
   }
-  createPost(id: string): Promise<any> {
-    return Promise.resolve();
+  createPost(post: Post): Promise<any> {
+    return (post.id === 'error') ? Promise.reject('error') : Promise.resolve();
   }
   deletePost(id: string): Promise<any> {
     return Promise.resolve(id === 'error');
@@ -114,12 +120,18 @@ export class FlickrServiceStub {
 
   getImages(params: FlickrParams): Promise<any> {
     if (this.error && params.page != 1) {
-      return Promise.reject({status: this.error });
+      return Promise.reject({
+        status: this.error
+      });
     }
     const images = [];
     const perPage = params.perPage || 1;
     for (let i = 1; i <= perPage; i++) {
-      images.push({src: 'https://some.url', thumbnail: 'thumbnail.url', text: 'Image title'});
+      images.push({
+        src: 'https://some.url',
+        thumbnail: 'thumbnail.url',
+        text: 'Image title'
+      });
     }
     return Promise.resolve({
       images: images,

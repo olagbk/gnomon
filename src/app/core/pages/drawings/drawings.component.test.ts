@@ -1,8 +1,11 @@
+/* tslint:disable:no-unused-expression */
+
 // testing tools
 import { should } from 'chai';
+import * as sinon from 'sinon';
 
 // angular imports
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 // stubs
@@ -32,9 +35,14 @@ describe('DrawingsComponent', () => {
   it('should be created', () => {
     should().exist(component);
   });
-  it('should fetch the album on init', () => {
+  it('should fetch the album by type', fakeAsync(() => {
+    const service = TestBed.get(AlbumsService);
+    const spy = sinon.spy(service, 'getAlbumByType');
+    component.ngOnInit();
+    tick();
+    spy.calledWith('drawings').should.be.true;
     component.album.type.should.equal('drawings');
-  });
+  }));
   it('should pass album id to gallery component', () => {
     const galleryEl = fixture.debugElement.query(By.css('app-gallery'));
     const galleryC = galleryEl.componentInstance;

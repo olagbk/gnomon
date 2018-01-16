@@ -33,6 +33,8 @@ describe('GalleryComponent', () => {
   let activatedRoute: ActivatedRouteStub;
 
   beforeEach(() => {
+    localStorage.removeItem('galleryPerPage');
+
     TestBed.configureTestingModule({
       declarations: [ GalleryComponent ],
       imports: [ HttpModule ],
@@ -80,7 +82,6 @@ describe('GalleryComponent', () => {
     thumbEls.length.should.equal(perPage);
   }));
   it('should save items per page number in localStorage', fakeAsync(() => {
-    localStorage.removeItem('galleryPerPage');
     const perPage = 48;
     component.perPageChange({perPage: perPage});
     tick();
@@ -95,6 +96,12 @@ describe('GalleryComponent', () => {
     component.ngOnInit();
     component.perPage.should.equal(24);
   }));
+  it('should send required params to flickr service', () => {
+    const spy = sinon.spy(flickr, 'getImages');
+    const opts = {page: component.currentPage, perPage: component.perPage, album: component.album};
+    component.getImages();
+    spy.lastCall.args[0].should.deep.equal(opts);
+  });
   it('should send another request if page was out of scope', fakeAsync(() => {
     flickr.error = 404;
     component.currentPage = 5;

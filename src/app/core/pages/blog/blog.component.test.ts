@@ -1,5 +1,8 @@
+/* tslint:disable:no-unused-expression */
+
 // testing tools
 import { should } from 'chai';
+import * as sinon from 'sinon';
 
 // angular imports
 import { tick, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
@@ -9,7 +12,7 @@ import { By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 // stubs
-import { ActivatedRouteStub, RouterStub } from '../../../../test/routing.stubs';
+import { ActivatedRouteStub, RouterStub, RouterLinkStubDirective } from '../../../../test/routing.stubs';
 import { BlogServiceStub } from '../../../../test/service.stubs';
 
 // dependencies
@@ -25,8 +28,10 @@ describe('BlogComponent', () => {
   let blog: BlogServiceStub;
 
   beforeEach(() => {
+    localStorage.removeItem('blogPerPage');
+
     TestBed.configureTestingModule({
-      declarations: [ BlogComponent ],
+      declarations: [ BlogComponent, RouterLinkStubDirective ],
       providers: [
         { provide: BlogService, useClass: BlogServiceStub },
         { provide: ActivatedRoute, useClass: ActivatedRouteStub },
@@ -75,6 +80,21 @@ describe('BlogComponent', () => {
     activeTagEls.triggerEventHandler('tagSelected', blog.tags[0]);
     component.activeTags.length.should.equal(0);
     component.inactiveTags.length.should.equal(3);
+  });
+  it('should add searched tags', () => {
+    component.tagsExpanded = true;
+    fixture.detectChanges();
+    const inputEl = fixture.debugElement.query(By.css('input'));
+    inputEl.triggerEventHandler('typeaheadOnSelect', {item: {name: 'searchedTag'}});
+    const tag = component.activeTags.find(t => t.name === 'searchedTag');
+    should().exist(tag);
+  });
+  it('should omit tags that already exist', () => {
+    const tag = {name: 'testTag', count: 1};
+    component.addTag(tag);
+    component.addTag(tag);
+    const tags = component.activeTags.filter(t => t.name === tag.name);
+    tags.length.should.equal(1);
   });
   it('should only show posts with the selected tag', () => {
     const tagsSub = component.selectedTags;
@@ -150,6 +170,12 @@ describe('BlogComponent', () => {
     component.activeTags.length.should.equal(1);
     component.filteredPosts.getValue().length.should.equal(2);
   }));
+  it('should ignore non-existent tags in URL', fakeAsync(() => {
+    activatedRoute.testQueryParams = {tag: 'fakeTag'};
+    component.ngOnInit();
+    tick();
+    component.activeTags.should.be.empty;
+  }));
   it('should delete active tags when reset link is clicked', () => {
     component.activeTags = blog.tags;
     fixture.detectChanges();
@@ -202,6 +228,11 @@ describe('BlogComponent', () => {
     component.ngOnInit();
     component.perPage.should.equal(10);
   }));
+  it('should update current page if changed after perPage change', () => {
+    // component.currentPage = 5;
+    // component.perPageChange({perPage: 50, currentPage: 1});
+    // component.currentPage.should.equal(1);
+  });
   it('should show the right number of posts per page', () => {
     let postEls;
     component.perPage = 3;
@@ -215,5 +246,19 @@ describe('BlogComponent', () => {
     postEls = fixture.debugElement.queryAll(By.css('.post'));
     postEls.length.should.equal(4);
   });
-
+  it('should navigate to post when title clicked', () => {
+    fixture.detectChanges();
+    const el = fixture.debugElement.query(By.directive(RouterLinkStubDirective));
+    const routerLink = el.injector.get(RouterLinkStubDirective);
+    el.triggerEventHandler('click', null);
+    routerLink.navigatedTo.should.equal('1');
+  });
+  it('should navigate to post when ellipsis clicked', () => {
+    fixture.detectChanges();
+    const router = TestBed.get(Router);
+    const spy = sinon.spy(router, 'navigate');
+    const ellipsisEl = fixture.debugElement.query(By.css('p'));
+    ellipsisEl.triggerEventHandler('ellipsis-click-more', null);
+    spy.calledWith(['blog', '1']).should.be.true;
+  });
 });

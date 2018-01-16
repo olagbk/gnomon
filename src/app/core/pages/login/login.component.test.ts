@@ -87,6 +87,12 @@ describe('LoginComponent', () => {
     formEl.triggerEventHandler('submit', component.model);
     spy.called.should.equal(true);
   });
+  it('should send password to auth service', () => {
+    const spy = sinon.spy(auth, 'login');
+    component.model.password = 'passwd';
+    component.login();
+    spy.calledWith('passwd').should.be.true;
+  });
   it('should disable button and show spinner while waiting for server response', fakeAsync(() => {
     let spinnerEl = fixture.debugElement.query(By.css('app-spinner'));
     const buttonEl = fixture.debugElement.query(By.css('button'));

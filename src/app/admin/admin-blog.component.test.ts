@@ -64,7 +64,15 @@ describe('AdminBlogComponent', () => {
 
     spy.calledWith(component.posts[0]).should.be.true;
     should().exist(component.modalRef);
-
+  });
+  it('should pass id to service delete method', () => {
+    const blog = TestBed.get(BlogService);
+    const spy = sinon.spy(blog, 'deletePost');
+    const post = new Post('title');
+    post.id = '1234';
+    component.openModal(post);
+    component.deletePost();
+    spy.calledWith('1234').should.be.true;
   });
   it('should update UI while post is being deleted', fakeAsync(() => {
     component.openModal(new Post('title'));
