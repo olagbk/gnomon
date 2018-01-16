@@ -1,5 +1,5 @@
 import Quill from 'quill';
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import {Component, OnInit, Renderer2, ViewChild} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from '../core/pages/blog/blog.service';
 import { Post, Tag } from '../core/pages/blog/post';
@@ -15,6 +15,8 @@ export class AdminBlogEditorComponent implements OnInit {
   allTags: Tag[];
   postTags: string[] = [];
   quillModules: any = {};
+  isSaved = false;
+  @ViewChild('editor') editor: Quill;
 
   constructor(private blog: BlogService, private activatedRoute: ActivatedRoute, private router: Router, private renderer: Renderer2) {
     this.quillModules.toolbar = [
@@ -49,7 +51,8 @@ export class AdminBlogEditorComponent implements OnInit {
     const method = (this.post.id) ? 'editPost' : 'createPost';
     this.blog[method](this.post, this.postTags)
       .then(() => {
-      this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        this.isSaved = true;
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
     }).catch(err => alert(err.message || err.name || err));
   }
 
@@ -78,5 +81,13 @@ export class AdminBlogEditorComponent implements OnInit {
 
   setImageHandler(quill: Quill): void {
     quill.getModule('toolbar').addHandler('image', () => this.addImageElement(quill.root));
+  }
+
+  canDeactivate(): boolean {
+    if (this.isSaved) {
+      return true;
+    } else {
+      return confirm(`Your post has not been saved. Are you sure you want to leave this page?`);
+    }
   }
 }

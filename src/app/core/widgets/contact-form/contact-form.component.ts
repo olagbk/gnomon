@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Email } from './email';
 import { MailerService } from './mailer.service';
 
@@ -63,6 +64,7 @@ export class ContactFormComponent implements OnInit {
   submitted = false;
   formVisible = false;
   captcha: string;
+  @ViewChild('contactForm') form: NgForm;
 
   constructor(private mailer: MailerService) { }
 

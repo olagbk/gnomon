@@ -33,6 +33,7 @@ describe('AdminBlogEditorComponent', () => {
 
   before(() => {
     sandbox = sinon.sandbox.create();
+    window.confirm = () => true;
   });
 
   beforeEach(() => {
@@ -244,5 +245,14 @@ describe('AdminBlogEditorComponent', () => {
         spy.calledWith(['../']).should.be.true;
       });
     }));
+    it('should confirm if user navigates away before save', () => {
+      const spy = sandbox.spy(window, 'confirm');
+      component.canDeactivate();
+      spy.calledOnce.should.be.true;
+    });
+    it('should let the user navigate away after post is saved', () => {
+      component.isSaved = true;
+      component.canDeactivate().should.be.true;
+    });
   });
 });

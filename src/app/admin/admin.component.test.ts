@@ -15,7 +15,7 @@ import { AuthServiceStub } from '../../test/service.stubs';
 import { RouterStub } from '../../test/routing.stubs';
 
 // dependencies
-import { AuthService } from '../core/auth.service';
+import { AuthService } from '../core/auth/auth.service';
 
 // components
 import { AdminComponent } from './admin.component';

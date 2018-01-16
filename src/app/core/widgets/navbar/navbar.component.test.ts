@@ -13,7 +13,7 @@ import { RouterLinkStubDirective } from '../../../../test/routing.stubs';
 import { AuthServiceStub } from '../../../../test/service.stubs';
 
 // dependencies
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../auth/auth.service';
 
 // components
 import { NavbarComponent } from './navbar.component';

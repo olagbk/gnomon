@@ -23,7 +23,7 @@ import { BlogEntryComponent } from './core/pages/blog/blog-entry.component';
 import { LoginComponent } from './core/pages/login/login.component';
 
 // routes
-import { routes } from './core/core-routing.module';
+import { routes } from './app-routing.module';
 
 describe('AppComponent', () => {
 
