@@ -1,21 +1,10 @@
 'use strict';
 
-import FlickrAPI from 'flickrapi';
+import Flickr from '../services/flickr';
 import config from '~/config/config.json';
 
-const Flickr = new Promise(
-  (resolve, reject) => {
-
-    FlickrAPI.tokenOnly(
-      {
-        api_key: config.flickr.key,
-        secret: config.flickr.secret
-      },
-      (error, flickr) => resolve(error || flickr));
-  });
-
 export function getAlbum(f, req, res, conf) {
-  return f
+  return f.authenticate()
     .then(flickr => {
 
       if (flickr instanceof Error) throw flickr;

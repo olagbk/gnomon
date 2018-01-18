@@ -1,4 +1,4 @@
-export const mockConfig = {
+export default {
   "flickr": {
     "nsid": "userId"
   },

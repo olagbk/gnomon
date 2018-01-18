@@ -1,36 +1,41 @@
 'use strict';
 
+import jwt from '../services/jwt';
+
 export default (router, sequelize) => {
 
+  //authentication middleware
+  router.use('/posts*', (req, res, next) => {
+    jwt.verify(req).then(next);
+  });
+
   router.route('/posts')
-    // POST request
 
-    .post((req, res) => {
-    req.body.post.id = null;
-    sequelize.models.posts.create(req.body.post).then(post => {
+    .post((req, res) => {  // POST request
+      if (jwt.authenticated(req, res)) {
 
-      const reqTags = req.body.tags || [];
+        // create instance
+        sequelize.models.posts.create(req.body.post)
+          .then(post => {
+            // find or create tags
+            req.body.tags = req.body.tags || [];
+            const tags = Promise.all(
 
-      Promise.all(reqTags.map(tag =>
-        sequelize.models.tags.findCreateFind({
-          where: {
-            name: tag
-          }
-        })
-      )).then(tags => {
-          post.setTags(tags.map(t => t[0])).then(() => {
-            res.status(201).json({post, tags})
-        })
-      }).catch(err => res.status(500).json(err));
+              req.body.tags.map(tag =>
+                sequelize.models.tags.findCreateFind({
+                  where: { name: tag }
+                })
+              )
+            );
+            return Promise.all([post, tags])
+          })
+          // relate tags to post
+          .then(([post, tags]) => post.setTags(tags.map(t => t[0])))
+          .then(() => res.status(201).send())
+          .catch(err => res.status((err.constructor.name === 'ValidationError')? 422 : 500).send(err))
+      }
     })
-      .catch(err => {
-        const status = (err.constructor.name === 'ValidationError')? 422 : 500;
-        res.status(status).send(err);
-        })
-      })
-    // GET request
-
-    .get((req, res) => {
+    .get((req, res) => { // GET request
       const opts = {};
 
       opts.include = {
@@ -43,43 +48,62 @@ export default (router, sequelize) => {
       }
       sequelize.models.posts.findAll(opts)
         .then(posts => res.json(posts))
-        .catch(err => res.send(err));
+        .catch(err => res.status(500).send(err));
     });
 
   router.route('/posts/:id')
-    // GET request
 
-    .get((req, res) => {
-      sequelize.models.posts.findById(req.params.id, {include: {model: sequelize.models.tags}})
+    .get((req, res) => { // GET request
+      sequelize.models.posts.findById(req.params.id, {
+        include: {
+          model: sequelize.models.tags
+        }})
         .then(post => res.json(post))
-        .catch(err => res.send(err));
-    })
-    // PUT request
-
-    .put((req, res) => {
-      sequelize.models.posts.findById(req.params.id)
-        .then(instance => {
-          instance.update(req.body.post).then(post => {
-
-            Promise.all(req.body.tags.map(tag => sequelize.models.tags.findCreateFind({where: {name: tag}})))
-              .then(tags => {
-
-              post.setTags(tags.map(t => t[0])).then(
-                () => res.json({post, tags}),
-                () => res.status(500).send(err)
-              )})
-              .catch(err => res(500).send(err));
-          })
-        })
-        .catch(err => res.send(err))
-    })
-    // DELETE request
-
-    .delete((req, res) => {
-      sequelize.models.posts.findById(req.params.id)
-        .then(post => post.destroy()
-          .then(() => res.status(204).send())
-          .catch(err => res.status(500).send(err)))
         .catch(err => res.status(500).send(err));
+    })
+    .put((req, res) => { // PUT request
+      if (jwt.authenticated(req, res)) {
+
+        sequelize.models.posts.findById(req.params.id)
+          .then(post => post.update(req.body.post))
+          .then(post => {
+            const tags = Promise.all(
+              req.body.tags.map(tag =>
+                sequelize.models.tags.findCreateFind({
+                  where: {name: tag}
+                })
+              )
+            );
+            return Promise.all([post, tags])
+          })
+          .then(([post, tags]) => post.setTags(tags.map(t => t[0])))
+          .then(() => res.status(200).send())
+          .catch(err => res.status(500).send(err));
+
+        // sequelize.models.posts.findById(req.params.id)
+        //   .then(instance => {
+        //     instance.update(req.body.post).then(post => {
+        //
+        //       Promise.all(req.body.tags.map(tag => sequelize.models.tags.findCreateFind({where: {name: tag}})))
+        //         .then(tags => {
+        //
+        //           post.setTags(tags.map(t => t[0])).then(
+        //             () => res.json({post, tags}),
+        //             () => res.status(500).send(err)
+        //           )})
+        //         .catch(err => res(500).send(err));
+        //     })
+        //   })
+        //   .catch(err => res.send(err))
+      }
+    })
+    .delete((req, res) => { // DELETE request
+        if (jwt.authenticated(req, res)) {
+
+        sequelize.models.posts.findById(req.params.id)
+          .then(post => post.destroy())
+          .then(() => res.status(204).send())
+          .catch(err => res.status(500).send(err))
+      }
     })
 };

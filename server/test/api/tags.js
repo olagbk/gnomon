@@ -4,7 +4,7 @@ import chaiHttp from 'chai-http';
 
 import server from '~/dist/index';
 import sequelize from '~/dist/database/sequelize';
-import './migrations.js';
+import '../migrations.js';
 
 const chai = require('chai').use(chaiHttp);
 
@@ -32,26 +32,20 @@ describe('Tags route', () => {
     }, {
       title: 'let you down'
     }];
+    let never, gonna;
 
-    sequelize.models.tags.destroy({
-      where: {}
-    }).then(() => {
-
-      sequelize.models.tags.bulkCreate(testTags, {returning: true})
-        .then(tags => {
-
-          const never = tags.find(t => t.name === 'Never');
-          const gonna = tags.find(t => t.name === 'gonna');
-
-          sequelize.models.posts.bulkCreate(testPosts, {returning: true}).then(posts => {
-
-            Promise.all([
-              posts[0].setTags([never, gonna]),
-              posts[1].setTags([never])
-            ]).then(() => done());
-          })
-        });
-    });
+    sequelize.models.tags.destroy({where: {}})
+      .then(() => sequelize.models.tags.bulkCreate(testTags, {returning: true}))
+      .then(tags => {
+        never = tags.find(t => t.name === 'Never');
+        gonna = tags.find(t => t.name === 'gonna');
+        return sequelize.models.posts.bulkCreate(testPosts, {returning: true})
+      })
+      .then(posts => Promise.all([
+        posts[0].setTags([never, gonna]),
+        posts[1].setTags([never])
+      ]))
+      .then(() => done());
   });
 
   describe('/GET all', () => {

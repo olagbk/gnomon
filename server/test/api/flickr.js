@@ -2,10 +2,10 @@
 
 import sinon from 'sinon';
 import { getAlbum } from '~/dist/routes/flickr_controller';
-import { MockFlickr } from './stubs/flickr';
-import { mockConfig } from './stubs/config';
-import { Res } from './stubs/res';
-import './migrations.js';
+import { MockFlickr } from '../stubs/flickr';
+import mockConfig from '../stubs/config';
+import { Res } from '../stubs/res';
+import '../migrations.js';
 
 describe('/Flickr test', () => {
   let req, res, mockFlickr;
@@ -27,9 +27,10 @@ describe('/Flickr test', () => {
     const sendSpy = sinon.spy(res, 'send');
     const statusSpy = sinon.spy(res,'status');
     const jsonSpy = sinon.spy(res, 'json');
-    const flickr = mockFlickr.response({authError: true});
 
-    getAlbum(flickr, req, res, mockConfig).then(() => {
+    mockFlickr.authError = new Error();
+
+    getAlbum(mockFlickr, req, res, mockConfig).then(() => {
       jsonSpy.called.should.be.false;
       sendSpy.calledOnce.should.be.true;
       sendSpy.firstCall.args[0].should.be.an.instanceOf(Error);
@@ -42,9 +43,10 @@ describe('/Flickr test', () => {
     const sendSpy = sinon.spy(res, 'send');
     const statusSpy = sinon.spy(res,'status');
     const jsonSpy = sinon.spy(res, 'json');
-    const flickr = mockFlickr.response({albumError: true});
 
-    getAlbum(flickr, req, res, mockConfig).then(() => {
+    mockFlickr.albumError = new Error();
+
+    getAlbum(mockFlickr, req, res, mockConfig).then(() => {
       jsonSpy.called.should.be.false;
       sendSpy.calledOnce.should.be.true;
       sendSpy.firstCall.args[0].should.be.an.instanceOf(Error);
@@ -56,7 +58,7 @@ describe('/Flickr test', () => {
   it('should call flickr API with required options', done => {
     const spy = sinon.spy(mockFlickr, 'getPhotos');
 
-    getAlbum(mockFlickr.response(), req, res, mockConfig).then(() => {
+    getAlbum(mockFlickr, req, res, mockConfig).then(() => {
       spy.calledOnce.should.be.true;
 
       const options = spy.firstCall.args[0];
@@ -73,9 +75,8 @@ describe('/Flickr test', () => {
 
   it('should send formatted json response', done => {
     const jsonSpy = sinon.spy(res, 'json');
-    const flickr = mockFlickr.response();
 
-    getAlbum(flickr, req, res, mockConfig)
+    getAlbum(mockFlickr, req, res, mockConfig)
       .then(() => {
         jsonSpy.calledOnce.should.be.true;
 

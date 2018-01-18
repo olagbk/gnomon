@@ -20,7 +20,7 @@ export class BlogEntryComponent implements OnInit {
       this.blog.getPost(params.id).then(post => {
         if (!post) { this.router.navigate(['blog']); }
         this.post = post;
-        this.recentPosts = this.blog.getPosts({params: {count: this.recentPostsCount}});
+        this.recentPosts = this.blog.getPosts({count: this.recentPostsCount});
       });
     });
   }

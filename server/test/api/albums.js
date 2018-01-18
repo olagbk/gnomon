@@ -4,7 +4,7 @@ import chaiHttp from 'chai-http';
 
 import server from '~/dist/index';
 import sequelize from '~/dist/database/sequelize';
-import './migrations.js';
+import '../migrations.js';
 
 const chai = require('chai').use(chaiHttp);
 

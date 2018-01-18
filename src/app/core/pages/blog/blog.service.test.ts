@@ -130,7 +130,7 @@ describe('BlogService', () => {
 
     it('should pass post id in params', async(() => {
       service.editPost(mockResponse.post, ['post']).then(() => {
-        const url = mockBackend.connectionsArray[0].request.url;
+        const url = mockBackend.connectionsArray[0].request.url.split('?')[0];
         const id = url[url.length - 1];
         id.should.equal('1');
       });
@@ -194,7 +194,7 @@ describe('BlogService', () => {
       });
 
       service.deletePost('1').then(() => {
-        const url = mockBackend.connectionsArray[0].request.url;
+        const url = mockBackend.connectionsArray[0].request.url.split('?')[0];
         const id = url[url.length - 1];
         id.should.equal('1');
       });
@@ -212,20 +212,6 @@ describe('BlogService', () => {
 
       service.deletePost('1').then(res => {
         res.should.deep.equal({});
-      });
-    }));
-    it('should catch error responses and return json', async(() => {
-      const mockResponse = new Error;
-      const options = new ResponseOptions({
-        body: mockResponse
-      });
-      const response = new Response(options);
-
-      mockBackend.connections.subscribe((connection) => {
-        connection.mockError(response);
-      });
-      service.deletePost('1').then(res => {
-        res.should.deep.equal(mockResponse);
       });
     }));
   });

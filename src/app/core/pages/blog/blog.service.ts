@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Post, Tag } from './post';
 
@@ -13,7 +13,9 @@ export class BlogService {
       .then((res: Response) => res.json());
   }
   getPosts(params = {}): Promise<Post[]> {
-    return this.http.get('/api/posts', params).toPromise()
+    const options = new RequestOptions({params: params});
+
+    return this.http.get('/api/posts', options).toPromise()
       .then((res: Response) => res.json());
   }
   getPost(id: string): Promise<Post> {
@@ -21,16 +23,23 @@ export class BlogService {
       .then((res: Response) => res.json());
   }
   editPost(post: Post, tags: string[]): Promise<{post: Post, tags: Tag[]}> {
-    return this.http.put(`api/posts/${post.id}`, {post: post, tags: tags}).toPromise()
+    const options = new RequestOptions({params: {token: localStorage.getItem('token')}});
+    const body = { post: post, tags: tags };
+
+    return this.http.put(`api/posts/${post.id}`, body, options).toPromise()
       .then((res: Response) => res.json());
   }
   createPost(post: Post, tags: string[]): Promise<{post: Post, tags: Tag[]}> {
-    return this.http.post('api/posts', {post: post, tags: tags}).toPromise()
+    const options = new RequestOptions({params: {token: localStorage.getItem('token')}});
+    const body = { post: post, tags: tags };
+
+    return this.http.post('api/posts', body, options).toPromise()
       .then((res: Response) => res.json());
   }
   deletePost(id: string): Promise<any> {
-    return this.http.delete(`/api/posts/${id}`).toPromise()
-      .then((res: Response) => res.json())
-      .catch((err: Response) => err.json());
+    const options = new RequestOptions({params: {token: localStorage.getItem('token')}});
+
+    return this.http.delete(`/api/posts/${id}`, options).toPromise()
+      .then((res: Response) => res.json());
   }
 }

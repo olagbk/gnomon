@@ -35,10 +35,11 @@ export class AdminBlogComponent implements OnInit {
     this.blog.deletePost(this.postToDelete.id)
       .then(err => {
         this.processing = false;
-        if (err) {
-          return alert(`Failed to delete post: ${err.message || err.name || err}`);
-        }
         this.posts = this.posts.filter(post => post.id !== this.postToDelete.id);
+      })
+      .catch(err => {
+        this.processing = false;
+        alert(`Failed to delete post: ${err.statusText || err}`);
       });
     }
   }

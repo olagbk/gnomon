@@ -19,15 +19,15 @@ const result = {
   }
 };
 export function MockFlickr() {
-  this.albumError = false;
+  this.albumError = null;
+  this.authError = null;
   this.getPhotos = (options, callback) => {
     callback(this.albumError, result)
   };
-  this.response = (opts = {}) => {
-    if (opts.albumError) this.albumError = new Error();
+  this.authenticate = (opts = {}) => {
 
-    const response = opts.authError ?
-      new Error()
+    const response = this.authError ?
+      this.authError
       : {
         photosets: {
           getPhotos: this.getPhotos
