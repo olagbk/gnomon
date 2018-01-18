@@ -1,79 +1,99 @@
 'use strict';
 
+import chaiHttp from 'chai-http';
 import sinon from 'sinon';
-import { sendEmail } from '../../routes/emails_controller';
-import { MockMailer } from '../stubs/emails';
+
+import server from '~/dist/index';
+import mailerService from '~/dist/services/mailer';
+
+import MockMailer from '../stubs/emails';
 import mockConfig from '../stubs/config';
-import { Res } from '../stubs/res';
+
 import '../migrations.js';
 
+const chai = require('chai').use(chaiHttp);
+
 describe('/Email test', () => {
-  let req, res, mailer;
+  let mailer, testEmail;
 
   beforeEach(done => {
     mailer = new MockMailer();
-    res = new Res();
-    req = {
-      body: {
-        name: 'yo mama',
-        email: 'yomama@gmail.com',
-        subject: 'sup',
-        message: 'bruh'
-      }
+    mailerService.useAPI(mailer);
+    mailerService.useConfig(mockConfig);
+    testEmail = {
+      name: 'yo mama',
+      email: 'yomama@gmail.com',
+      subject: 'sup',
+      message: 'bruh'
     };
     done();
   });
 
-  it('should create transport with correct options', () => {
+  it('should create transport with correct options', done => {
     const spy = sinon.spy(mailer, 'createTransport');
 
-    sendEmail(mailer, req, res, mockConfig);
-    spy.calledOnce.should.be.true;
+    chai.request(server)
+      .post(`/api/emails`)
+      .send(testEmail)
+      .end((err, res) => {
 
-    const options = spy.firstCall.args[0];
-    options.should.have.keys('service', 'auth');
-    options.service.should.equal('gmail');
-    options.auth.user.should.equal('username');
-    options.auth.pass.should.equal('password');
+        spy.calledOnce.should.be.true;
+
+        const options = spy.firstCall.args[0];
+        options.should.have.keys('service', 'auth');
+        options.service.should.equal('gmail');
+        options.auth.user.should.equal('username');
+        options.auth.pass.should.equal('password');
+
+        done();
+      });
   });
 
-  it('should pass correct options to transporter', () => {
+  it('should pass correct options to transporter', done => {
     const spy = sinon.spy(mailer, 'sendMail');
 
-    sendEmail(mailer, req, res, mockConfig);
-    spy.calledOnce.should.be.true;
+    chai.request(server)
+      .post(`/api/emails`)
+      .send(testEmail)
+      .end((err, res) => {
 
-    const options = spy.firstCall.args[0];
-    options.should.have.keys('from', 'to', 'replyTo', 'subject', 'text');
-    options.from.should.equal('"yo mama" <yomama@gmail.com>');
-    options.replyTo.should.equal('"yo mama" <yomama@gmail.com>');
-    options.to.should.equal("somedude@gmail.com");
-    options.subject.should.equal("[GNOMON] sup");
-    options.text.should.equal("bruh");
+        spy.calledOnce.should.be.true;
+
+        const options = spy.firstCall.args[0];
+        options.should.have.keys('from', 'to', 'replyTo', 'subject', 'text');
+        options.from.should.equal('"yo mama" <yomama@gmail.com>');
+        options.replyTo.should.equal('"yo mama" <yomama@gmail.com>');
+        options.to.should.equal("somedude@gmail.com");
+        options.subject.should.equal("[GNOMON] sup");
+        options.text.should.equal("bruh");
+
+        done();
+      });
   });
 
-  it('should notify the client when email is sent', () => {
-    const spy = sinon.spy(res, 'json');
+  it('should send success response to the client', done => {
+    chai.request(server)
+      .post(`/api/emails`)
+      .send(testEmail)
+      .end((err, res) => {
+        res.status.should.equal(200);
+        res.body.should.equal('sent');
 
-    sendEmail(mailer, req, res, mockConfig);
-    spy.calledOnce.should.be.true;
-    spy.firstCall.calledWithExactly('sent').should.be.true;
+        done();
+      });
   });
 
-  it('should notify the client when error occurs', () => {
-    const statusSpy = sinon.spy(res, 'status');
-    const sendSpy = sinon.spy(res, 'send');
-    const jsonSpy = sinon.spy(res, 'json');
-    const error = new Error('something went wrong');
+  it('send error response to the client', done => {
+    sinon.stub(mailerService, 'sendEmail').returns(new Error());
 
-    mailer.error = error;
-    sendEmail(mailer, req, res, mockConfig);
+    chai.request(server)
+      .post(`/api/emails`)
+      .send(testEmail)
+      .end((err, res) => {
+        should.exist(err);
+        err.status.should.equal(500);
 
-    statusSpy.calledOnce.should.be.true;
-    sendSpy.calledOnce.should.be.true;
-    jsonSpy.called.should.be.false;
-
-    statusSpy.firstCall.calledWithExactly(500).should.be.true;
-    sendSpy.firstCall.calledWithExactly(error).should.be.true;
+        done();
+      });
   })
 });

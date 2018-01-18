@@ -1,95 +1,102 @@
 'use strict';
 
+import chaiHttp from 'chai-http';
 import sinon from 'sinon';
-import { getAlbum } from '~/dist/routes/flickr_controller';
-import { MockFlickr } from '../stubs/flickr';
+
+import server from '~/dist/index';
+import flickrService from '~/dist/services/flickr';
+
+import MockFlickr from '../stubs/flickr';
 import mockConfig from '../stubs/config';
-import { Res } from '../stubs/res';
+
 import '../migrations.js';
 
+const chai = require('chai').use(chaiHttp);
+
 describe('/Flickr test', () => {
-  let req, res, mockFlickr;
+  let mockFlickr, testQuery;
 
   beforeEach(done => {
     mockFlickr = new MockFlickr();
-    res = new Res();
-    req = {
-      query: {
+
+    flickrService.useAPI(mockFlickr);
+    flickrService.useConfig(mockConfig);
+
+    testQuery = {
         album: 'yo mama',
         page: '1',
         perPage: '20'
-      }
-    };
+      };
     done();
   });
 
   it('should handle authorization errors', done => {
-    const sendSpy = sinon.spy(res, 'send');
-    const statusSpy = sinon.spy(res,'status');
-    const jsonSpy = sinon.spy(res, 'json');
+    const authStub = sinon.stub(flickrService, 'authenticate').returns(new Error());
 
-    mockFlickr.authError = new Error();
+    chai.request(server)
+      .get('/api/flickr')
+      .query(testQuery)
+      .end((err, res) => {
 
-    getAlbum(mockFlickr, req, res, mockConfig).then(() => {
-      jsonSpy.called.should.be.false;
-      sendSpy.calledOnce.should.be.true;
-      sendSpy.firstCall.args[0].should.be.an.instanceOf(Error);
-      statusSpy.calledWith(500).should.be.true;
-      done();
-    });
+        should.exist(err);
+        err.status.should.equal(500);
+        authStub.restore();
+        done();
+      });
   });
 
   it('should handle photoset errors', done => {
-    const sendSpy = sinon.spy(res, 'send');
-    const statusSpy = sinon.spy(res,'status');
-    const jsonSpy = sinon.spy(res, 'json');
-
     mockFlickr.albumError = new Error();
 
-    getAlbum(mockFlickr, req, res, mockConfig).then(() => {
-      jsonSpy.called.should.be.false;
-      sendSpy.calledOnce.should.be.true;
-      sendSpy.firstCall.args[0].should.be.an.instanceOf(Error);
-      statusSpy.calledWith(404).should.be.true;
-      done();
-    });
+    chai.request(server)
+      .get('/api/flickr')
+      .query(testQuery)
+      .end((err, res) => {
+
+        should.exist(err);
+        err.status.should.equal(404);
+        done();
+      });
   });
 
   it('should call flickr API with required options', done => {
-    const spy = sinon.spy(mockFlickr, 'getPhotos');
+    const spy = sinon.spy(mockFlickr.photosets, 'getPhotos');
 
-    getAlbum(mockFlickr, req, res, mockConfig).then(() => {
-      spy.calledOnce.should.be.true;
+    chai.request(server)
+      .get('/api/flickr')
+      .query(testQuery)
+      .end((err, res) => {
 
-      const options = spy.firstCall.args[0];
-      options.should.have.keys('user_id', 'photoset_id', 'page', 'per_page', 'extras');
-      options.user_id.should.equal('userId');
-      options.photoset_id.should.equal('yo mama');
-      options.page.should.equal('1');
-      options.per_page.should.equal('20');
-      options.extras.should.be.an('array').that.includes('url_n');
-      done();
-    });
+        spy.calledOnce.should.be.true;
 
+        const options = spy.firstCall.args[0];
+        options.should.have.keys('user_id', 'photoset_id', 'page', 'per_page', 'extras');
+        options.user_id.should.equal('userId');
+        options.photoset_id.should.equal('yo mama');
+        options.page.should.equal('1');
+        options.per_page.should.equal('20');
+        options.extras.should.be.an('array').that.includes('url_n');
+
+        done();
+      });
   });
 
   it('should send formatted json response', done => {
-    const jsonSpy = sinon.spy(res, 'json');
+    chai.request(server)
+      .get('/api/flickr')
+      .query(testQuery)
+      .end((err, res) => {
 
-    getAlbum(mockFlickr, req, res, mockConfig)
-      .then(() => {
-        jsonSpy.calledOnce.should.be.true;
+        res.body.should.have.keys('images', 'count');
+        res.body.count.should.equal(15);
+        res.body.images.length.should.equal(2);
 
-        const args = jsonSpy.firstCall.args[0];
-        args.should.have.keys('images', 'count');
-        args.count.should.equal(15);
-        args.images.length.should.equal(2);
+        res.body.images[0].should.have.keys('src', 'thumbnail', 'text');
+        res.body.images[0].src.should.equal('https://farm1.staticflickr.com/server/id_secret_b.jpg');
+        res.body.images[0].thumbnail.should.equal('url_n');
+        res.body.images[0].text.should.equal('title');
 
-        args.images[0].should.have.keys('src', 'thumbnail', 'text');
-        args.images[0].src.should.equal('https://farm1.staticflickr.com/server/id_secret_b.jpg');
-        args.images[0].thumbnail.should.equal('url_n');
-        args.images[0].text.should.equal('title');
         done();
-    });
+      });
   });
 });

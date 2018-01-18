@@ -5,8 +5,10 @@ import sinon from 'sinon';
 
 import server from '~/dist/index';
 import JWTService from '~/dist/services/jwt';
-import JWT from '../stubs/jwt';
+
+import MockJWT from '../stubs/jwt';
 import mockConfig from '../stubs/config';
+
 import '../migrations.js';
 
 const chai = require('chai').use(chaiHttp);
@@ -15,7 +17,7 @@ describe('/Auth test', () => {
   let jwt;
 
   beforeEach(done => {
-    jwt = new JWT();
+    jwt = new MockJWT();
     JWTService.useAPI(jwt);
     JWTService.useConfig(mockConfig);
     done();

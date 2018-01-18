@@ -4,42 +4,39 @@ import chaiHttp from 'chai-http';
 
 import server from '~/dist/index';
 import sequelize from '~/dist/database/sequelize';
+
 import '../migrations.js';
 
 const chai = require('chai').use(chaiHttp);
 
 describe('Albums route', () => {
 
-  let testAlbums, response;
+  let response;
 
   beforeEach(done => {
     response = null;
 
-    testAlbums = [{
-      type: 'drawings',
-      albumId: '72157634825451545'
-    }, {
-      type: 'sketches',
-      albumId: '72157658877200994'
-    }, {
-      type: 'photos',
-      name: 'insecta et invertebrata',
-      albumId: '72157636520804406',
-      filename: 'insecta.jpg'
-    }, {
-      type: 'photos',
-      name: 'mammalia',
-      albumId: '72157644448784543',
-      filename: 'mammalia.jpg'
-    }];
+    sequelize.models.albums.destroy({where: {}})
+      .then(() => {
 
-    sequelize.models.albums.destroy({
-      where: {}
-    }).then(() => {
-
-      sequelize.models.albums.bulkCreate(testAlbums)
-        .then(() => done());
-    });
+      sequelize.models.albums.bulkCreate([{
+        type: 'drawings',
+        albumId: '72157634825451545'
+      }, {
+        type: 'sketches',
+        albumId: '72157658877200994'
+      }, {
+        type: 'photos',
+        name: 'insecta et invertebrata',
+        albumId: '72157636520804406',
+        filename: 'insecta.jpg'
+      }, {
+        type: 'photos',
+        name: 'mammalia',
+        albumId: '72157644448784543',
+        filename: 'mammalia.jpg'
+      }])
+    }).then(() => done());
   });
 
   describe('/GET all', () => {

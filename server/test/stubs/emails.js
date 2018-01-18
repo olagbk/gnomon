@@ -1,4 +1,4 @@
-export function MockMailer() {
+export default function() {
   this.error = false;
   this.sendMail = (opts, callback) => {
     callback(this.error, {});

@@ -77,7 +77,10 @@ export class ContactFormComponent implements OnInit {
         this.submitted = true;
         this.processing = false;
       })
-      .catch(err => this.error = true);
+      .catch(err => {
+        this.processing = false;
+        this.error = true;
+      });
   }
   toggleForm() {
     this.formVisible = !this.formVisible;

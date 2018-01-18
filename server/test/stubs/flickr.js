@@ -18,21 +18,11 @@ const result = {
     }]
   }
 };
-export function MockFlickr() {
+export default function() {
   this.albumError = null;
-  this.authError = null;
-  this.getPhotos = (options, callback) => {
-    callback(this.albumError, result)
-  };
-  this.authenticate = (opts = {}) => {
-
-    const response = this.authError ?
-      this.authError
-      : {
-        photosets: {
-          getPhotos: this.getPhotos
-        }
-      };
-    return Promise.resolve(response);
+  this.photosets = {
+    getPhotos: (options, callback) => {
+      callback(this.albumError, result)
+    }
   };
 }

@@ -6,7 +6,7 @@ import server from '~/dist/index';
 import sequelize from '~/dist/database/sequelize';
 import JWTService from '~/dist/services/jwt';
 
-import JWT from '../../stubs/jwt';
+import MockJWT from '../../stubs/jwt';
 import mockConfig from '../../stubs/config';
 
 import '../../migrations.js';
@@ -20,7 +20,7 @@ describe('Posts DELETE route', () => {
   beforeEach(done => {
 
     response = null;
-    JWTService.useAPI(new JWT());
+    JWTService.useAPI(new MockJWT());
     JWTService.useConfig(mockConfig);
 
     sequelize.models.posts.create({
