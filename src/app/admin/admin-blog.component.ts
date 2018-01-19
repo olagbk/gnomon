@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal';
@@ -19,7 +20,7 @@ export class AdminBlogComponent implements OnInit {
   postToDelete: Post;
   processing = false;
 
-  constructor(private blog: BlogService, private modal: BsModalService) { }
+  constructor(private blog: BlogService, private modal: BsModalService, private router: Router) { }
 
   ngOnInit()  {
     this.blog.getPosts().then(posts => this.posts = posts);
@@ -33,13 +34,17 @@ export class AdminBlogComponent implements OnInit {
     this.processing = true;
 
     this.blog.deletePost(this.postToDelete.id)
-      .then(err => {
+      .then(() => {
         this.processing = false;
         this.posts = this.posts.filter(post => post.id !== this.postToDelete.id);
       })
       .catch(err => {
         this.processing = false;
-        alert(`Failed to delete post: ${err.statusText || err}`);
+        if (err.status === 401) {
+          this.router.navigate(['/login']);
+        } else {
+          alert(`Post can't be deleted: ${err.statusText || err}`);
+        }
       });
     }
   }

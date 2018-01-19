@@ -7,13 +7,13 @@ import * as sinon from 'sinon';
 // angular imports
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 // stubs
 import { AuthServiceStub } from '../../../../test/service.stubs';
-import { RouterStub } from '../../../../test/routing.stubs';
+import { ActivatedRouteStub, RouterStub } from '../../../../test/routing.stubs';
 
 // dependencies
 import { AuthService } from '../../auth/auth.service';
@@ -34,6 +34,8 @@ describe('LoginComponent', () => {
         provide: AuthService, useClass: AuthServiceStub
       }, {
         provide: Router, useClass: RouterStub
+      }, {
+        provide: ActivatedRoute, useClass: ActivatedRouteStub
       }],
       schemas: [ NO_ERRORS_SCHEMA ]
     });

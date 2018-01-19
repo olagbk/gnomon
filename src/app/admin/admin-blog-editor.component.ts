@@ -15,7 +15,7 @@ export class AdminBlogEditorComponent implements OnInit {
   allTags: Tag[];
   postTags: string[] = [];
   quillModules: any = {};
-  isSaved = false;
+  canRedirect = false;
   @ViewChild('editor') editor: Quill;
 
   constructor(private blog: BlogService, private activatedRoute: ActivatedRoute, private router: Router, private renderer: Renderer2) {
@@ -31,6 +31,13 @@ export class AdminBlogEditorComponent implements OnInit {
   ngOnInit(): void {
     this.blog.getTags().then(tags => this.allTags = tags);
 
+    const saved = JSON.parse(localStorage.getItem('post'));
+    if (saved) {
+      this.post = saved.post;
+      this.postTags = saved.postTags;
+      localStorage.removeItem('post');
+      return;
+    }
     const id = this.activatedRoute.snapshot.params.id;
     if (id === 'new') {
       this.post = new Post('');
@@ -49,11 +56,22 @@ export class AdminBlogEditorComponent implements OnInit {
     if (!this.post.title.trim()) { return alert('Title is required.'); }
 
     const method = (this.post.id) ? 'editPost' : 'createPost';
+
     this.blog[method](this.post, this.postTags)
       .then(() => {
-        this.isSaved = true;
+        this.canRedirect = true;
         this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-    }).catch(err => alert(err.message || err.name || err));
+      })
+      .catch(err => {
+      if (err.status === 401) {
+        const postToSave = { post: this.post, postTags: this.postTags };
+        localStorage.setItem('post', JSON.stringify(postToSave));
+        this.canRedirect = true;
+        this.router.navigate(['/login'], {queryParams: {redirectTo: this.router.url}});
+      } else {
+        alert(err.message || err.name || err.statusText || err);
+      }
+    });
   }
 
   addTag(tag: any): void {
@@ -84,7 +102,7 @@ export class AdminBlogEditorComponent implements OnInit {
   }
 
   canDeactivate(): boolean {
-    if (this.isSaved) {
+    if (this.canRedirect) {
       return true;
     } else {
       return confirm(`Your post has not been saved. Are you sure you want to leave this page?`);

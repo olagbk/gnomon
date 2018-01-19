@@ -13,7 +13,7 @@ export default (router, sequelize) => {
 
     .post((req, res) => {  // POST request
       if (!req.decoded) {
-        return res.status(401).setHeader('WWW-Authenticate', 'Bearer token_type="JWT"').send();
+        return res.status(401).append('WWW-Authenticate', 'Bearer token_type="JWT"').send();
       }
       // create instance
       sequelize.models.posts.create(req.body.post)
@@ -63,7 +63,7 @@ export default (router, sequelize) => {
     })
     .put((req, res) => { // PUT request
       if (!req.decoded) {
-        return res.status(401).setHeader('WWW-Authenticate', 'Bearer token_type="JWT"').send();
+        return res.status(401).append('WWW-Authenticate', 'Bearer token_type="JWT"').send();
       }
       // find and update instance
       sequelize.models.posts.findById(req.params.id)
@@ -86,7 +86,7 @@ export default (router, sequelize) => {
     })
     .delete((req, res) => { // DELETE request
       if (!req.decoded) {
-        return res.status(401).setHeader('WWW-Authenticate', 'Bearer token_type="JWT"').send();
+        return res.status(401).append('WWW-Authenticate', 'Bearer token_type="JWT"').send();
       }
       sequelize.models.posts.findById(req.params.id)
         .then(post => post.destroy())

@@ -8,10 +8,12 @@ import { should } from 'chai';
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 // stubs
 import { BsModalServiceStub } from '../../test/third-party.stubs';
 import { BlogServiceStub } from '../../test/service.stubs';
+import { RouterStub } from '../../test/routing.stubs';
 
 // dependencies
 import { BsModalService } from 'ngx-bootstrap';
@@ -34,6 +36,8 @@ describe('AdminBlogComponent', () => {
         provide: BlogService, useClass: BlogServiceStub
       }, {
         provide: BsModalService, useClass: BsModalServiceStub
+      }, {
+        provide: Router, useClass: RouterStub
       }],
       schemas: [ NO_ERRORS_SCHEMA ]
     });
@@ -96,12 +100,28 @@ describe('AdminBlogComponent', () => {
   }));
   it('should leave posts untouched if error', fakeAsync(() => {
     const oldPosts = component.posts.slice(0);
+    const blog = TestBed.get(BlogService);
 
-    component.openModal(new Post('title'));
-    component.postToDelete.id = 'error';
+    sinon.stub(blog, 'deletePost').returns(Promise.reject({status: 500}));
+
+    component.openModal(component.posts[0]);
     component.deletePost();
     tick();
+
     component.posts.should.deep.equal(oldPosts);
+  }));
+  it('should redirect to login page if no valid token', fakeAsync(() => {
+    const blog = TestBed.get(BlogService);
+    const router = TestBed.get(Router);
+    const spy = sinon.spy(router, 'navigate');
+
+    sinon.stub(blog, 'deletePost').returns(Promise.reject({status: 401}));
+
+    component.openModal(component.posts[0]);
+    component.deletePost();
+    tick();
+
+    spy.calledWith(['/login']).should.be.true;
   }));
   it('should remove deleted post from list', fakeAsync(() => {
     const post = component.posts[0];
@@ -114,7 +134,5 @@ describe('AdminBlogComponent', () => {
     component.posts.length.should.equal(3);
     const deleted = component.posts.find(p => p === post);
     should().not.exist(deleted);
-
-
   }));
 });

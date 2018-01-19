@@ -104,13 +104,13 @@ export class BlogServiceStub {
     return Promise.resolve(this.tags);
   }
   editPost(post: Post): Promise<any> {
-    return (post.id === 'error') ? Promise.reject('error') : Promise.resolve();
+    return Promise.resolve();
   }
   createPost(post: Post): Promise<any> {
-    return (post.id === 'error') ? Promise.reject('error') : Promise.resolve();
+    return Promise.resolve();
   }
   deletePost(id: string): Promise<any> {
-    return Promise.resolve(id === 'error');
+    return Promise.resolve();
   }
 }
 

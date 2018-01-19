@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthService } from '../../auth/auth.service';
 
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -32,7 +33,8 @@ export class LoginComponent implements OnInit {
 
         if (authorized) {
           this.loggedIn.emit();
-          this.router.navigate(['/admin']);
+          const redirectUrl = this.activatedRoute.snapshot.queryParams.redirectTo || '/admin';
+          this.router.navigate([redirectUrl]);
         } else {
           this.error = 'Password is incorrect.';
         }

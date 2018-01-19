@@ -6,7 +6,7 @@ import * as sinon from 'sinon';
 
 // angular imports
 import { By } from '@angular/platform-browser';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NO_ERRORS_SCHEMA, Renderer2 } from '@angular/core';
 
@@ -34,6 +34,7 @@ describe('AdminBlogEditorComponent', () => {
   before(() => {
     sandbox = sinon.sandbox.create();
     window.confirm = () => true;
+    window.alert = (message) => true;
   });
 
   beforeEach(() => {
@@ -42,16 +43,17 @@ describe('AdminBlogEditorComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ AdminBlogEditorComponent, RouterLinkStubDirective ],
       providers: [
-        {provide: BlogService, useClass: BlogServiceStub},
-        {provide: Router, useClass: RouterStub},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub},
+        { provide: BlogService, useClass: BlogServiceStub },
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
         Renderer2
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [ NO_ERRORS_SCHEMA ]
     });
-    blog = TestBed.get(BlogService);
     router = TestBed.get(Router);
+    blog = TestBed.get(BlogService);
     activatedRoute = TestBed.get(ActivatedRoute);
+
     fixture = TestBed.createComponent(AdminBlogEditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -102,10 +104,20 @@ describe('AdminBlogEditorComponent', () => {
     el.triggerEventHandler('click', null);
     routerLink.navigatedTo.should.equal('../');
   });
+  it('should retrieve and delete post saved after login redirect', fakeAsync(() => {
+    const post = new Post('title', 'body');
+    const tags = ['tag1', 'tag2'];
+    localStorage.setItem('post', JSON.stringify({post: post, postTags: tags}));
+    component.ngOnInit();
+    tick();
+    component.post.should.deep.equal(post);
+    component.postTags.should.deep.equal(tags);
+    should().not.exist(localStorage.getItem('post'));
+  }));
 
   describe('Edit an existing post', () => {
 
-    beforeEach(async(() => {
+    beforeEach(fakeAsync(() => {
       activatedRoute.testParams = {id: '1'};
       component.ngOnInit();
     }));
@@ -117,45 +129,39 @@ describe('AdminBlogEditorComponent', () => {
       component.postTags.should.be.an('array').of.length(1);
       component.postTags[0].should.equal('tag1');
     });
-    it('should show tags', async(() => {
-      fixture.whenStable().then(() => {
-        fixture.detectChanges();
-        const els = fixture.debugElement.queryAll(By.css('.tag'));
-        els.length.should.equal(1);
-        els[0].nativeElement.innerText.should.include('tag1');
-      });
-    }));
+    it('should show tags', () => {
+      fixture.detectChanges();
+      const els = fixture.debugElement.queryAll(By.css('.tag'));
+      els.length.should.equal(1);
+      els[0].nativeElement.innerText.should.include('tag1');
+    });
     it('should add tags to DOM', () => {
       component.postTags = ['1', '2', '3'];
       fixture.detectChanges();
       const els = fixture.debugElement.queryAll(By.css('.tag'));
       els.length.should.equal(3);
     });
-    it('should add tags typed into input field', async(() => {
-      fixture.whenStable().then(() => {
-        fixture.detectChanges();
-        const input = fixture.debugElement.query(By.css('input'));
-        const button = fixture.debugElement.query(By.css('button'));
+    it('should add tags typed into input field', () => {
+      fixture.detectChanges();
+      const input = fixture.debugElement.query(By.css('input'));
+      const button = fixture.debugElement.query(By.css('button'));
 
-        input.nativeElement.value = 'something';
-        button.triggerEventHandler('click', null);
-        component.postTags.length.should.equal(2);
-        component.postTags.should.include('something');
+      input.nativeElement.value = 'something';
+      button.triggerEventHandler('click', null);
+      component.postTags.length.should.equal(2);
+      component.postTags.should.include('something');
 
-        input.nativeElement.value = 'another thing';
-        input.triggerEventHandler('keyup.enter', null);
-        component.postTags.length.should.equal(3);
-        component.postTags.should.include('another thing');
-      });
-    }));
-    it('should delete tag', async(() => {
-      fixture.whenStable().then(() => {
-        fixture.detectChanges();
-        const el = fixture.debugElement.query(By.css('.close'));
-        el.triggerEventHandler('click', 'tag1');
-        component.postTags.should.have.length(0);
-      });
-    }));
+      input.nativeElement.value = 'another thing';
+      input.triggerEventHandler('keyup.enter', null);
+      component.postTags.length.should.equal(3);
+      component.postTags.should.include('another thing');
+    });
+    it('should delete tag', () => {
+      fixture.detectChanges();
+      const el = fixture.debugElement.query(By.css('.close'));
+      el.triggerEventHandler('click', 'tag1');
+      component.postTags.should.have.length(0);
+    });
     it('should save post when save button is clicked', () => {
       const spy = sandbox.spy(blog, 'editPost');
       const els = fixture.debugElement.queryAll(By.css('a'));
@@ -178,81 +184,124 @@ describe('AdminBlogEditorComponent', () => {
       alertSpy.calledOnce.should.be.true;
       alertSpy.lastCall.args[0].should.include('required');
     });
-    it('should alert and stay on page if save fails', async(() => {
+    it('should alert and stay on page if save fails', fakeAsync(() => {
       const routerSpy = sandbox.spy(router, 'navigate');
       const alertSpy = sandbox.spy(window, 'alert');
-      component.post.id = 'error';
+      sandbox.stub(blog, 'editPost').rejects({status: 500, statusText: 'Internal Server Error'});
       component.savePost();
-
-      fixture.whenStable().catch(() => {
-        alertSpy.calledWith('error').should.be.true;
-        routerSpy.called.should.be.false;
-      });
+      tick();
+      alertSpy.calledWith('Internal Server Error').should.be.true;
+      routerSpy.called.should.be.false;
     }));
-    it('should navigate to post list after save', async(() => {
+    it('should navigate to post list after save', fakeAsync(() => {
       const spy = sandbox.spy(router, 'navigate');
       component.savePost();
-      fixture.whenStable().then(() => {
-        spy.calledWith(['../']).should.be.true;
-      });
+      tick();
+      spy.calledWith(['../']).should.be.true;
+    }));
+    it('should redirect to login page if save is unauthorized', fakeAsync(() => {
+      const spy = sandbox.spy(router, 'navigate');
+      sandbox.stub(blog, 'editPost').rejects({status: 401});
+      router.url = 'admin/blog/1';
+      component.savePost();
+      tick();
+      component.canDeactivate().should.be.true;
+      spy.firstCall.args[0].should.deep.equal(['/login']);
+      spy.firstCall.args[1].should.deep.equal({queryParams: {redirectTo: 'admin/blog/1'}});
+    }));
+    it('should save edited post in localStorage for use after relogging', fakeAsync(() => {
+      sandbox.stub(blog, 'editPost').rejects({status: 401});
+      component.savePost();
+      tick();
+      const saved = JSON.parse(localStorage.getItem('post'));
+      saved.post.should.deep.equal(component.post);
+      saved.postTags.should.deep.equal(component.postTags);
     }));
   });
 
   describe('Add a new post', () => {
 
-    beforeEach(async(() => {
+    beforeEach(fakeAsync(() => {
       activatedRoute.testParams = {id: 'new'};
       component.ngOnInit();
+      tick();
+      component.post = new Post('title', 'body');
     }));
 
-    it('should create a new post', () => {
+    it('should create a post skeleton', () => {
       component.post.should.have.keys('title', 'body');
     });
     it('should save post when save button is clicked', () => {
       const spy = sandbox.spy(blog, 'createPost');
       const els = fixture.debugElement.queryAll(By.css('a'));
       const el = els[1];
-      const post = new Post('title', 'body');
-      component.post = post;
+
+      component.post = new Post('title', 'body');
       component.postTags = ['tag1'];
+
       el.triggerEventHandler('click', null);
-      spy.calledWith(post, ['tag1']).should.be.true;
+      spy.calledWith(component.post, component.postTags).should.be.true;
     });
     it('should pass post and tags to service method', () => {
       const spy = sandbox.spy(blog, 'createPost');
       component.post = new Post('title', 'body');
       component.postTags = ['tag1'];
       component.savePost();
+
       spy.calledWith(component.post, component.postTags).should.be.true;
     });
-    it('should alert and stay on page if save fails', async(() => {
+    it('should alert and stay on page if save fails', fakeAsync(() => {
       const routerSpy = sandbox.spy(router, 'navigate');
       const alertSpy = sandbox.spy(window, 'alert');
-      component.post = new Post('title', 'body');
-      component.post.id = 'error';
-      component.savePost();
+      sandbox.stub(blog, 'createPost').rejects({status: 500, statusText: 'Internal Server Error'});
 
-      fixture.whenStable().catch(() => {
-        alertSpy.calledWith('error').should.be.true;
-        routerSpy.called.should.be.false;
-      });
+      component.post = new Post('title', 'body');
+      component.savePost();
+      tick();
+
+      alertSpy.calledWith('Internal Server Error').should.be.true;
+      routerSpy.called.should.be.false;
     }));
-    it('should navigate to post list after save', async(() => {
+    it('should navigate to post list after save', fakeAsync(() => {
       component.post = new Post('title', 'body');
       const spy = sandbox.spy(router, 'navigate');
       component.savePost();
-      fixture.whenStable().then(() => {
-        spy.calledWith(['../']).should.be.true;
-      });
+      tick();
+      spy.calledWith(['../']).should.be.true;
     }));
     it('should confirm if user navigates away before save', () => {
       const spy = sandbox.spy(window, 'confirm');
       component.canDeactivate();
       spy.calledOnce.should.be.true;
     });
-    it('should let the user navigate away after post is saved', () => {
-      component.isSaved = true;
+    it('should let the user navigate away after post is saved', fakeAsync(() => {
+      component.post = new Post('title', 'body');
+      component.postTags = ['tag1'];
+      component.savePost();
+      tick();
+      component.canRedirect.should.be.true;
       component.canDeactivate().should.be.true;
-    });
+    }));
+    it('should redirect to login page if save is unauthorized', fakeAsync(() => {
+      const spy = sandbox.spy(router, 'navigate');
+      sandbox.stub(blog, 'createPost').rejects({status: 401});
+      router.url = 'admin/blog/new';
+      component.post = new Post('title', 'body');
+      component.savePost();
+      tick();
+      component.canDeactivate().should.be.true;
+      spy.firstCall.args[0].should.deep.equal(['/login']);
+      spy.firstCall.args[1].should.deep.equal({queryParams: {redirectTo: 'admin/blog/new'}});
+    }));
+    it('should save edited post in localStorage for use after relogging', fakeAsync(() => {
+      component.post = new Post('title', 'body');
+      component.postTags = ['someTag'];
+      sandbox.stub(blog, 'createPost').rejects({status: 401});
+      component.savePost();
+      tick();
+      const saved = JSON.parse(localStorage.getItem('post'));
+      saved.post.should.deep.equal(component.post);
+      saved.postTags.should.deep.equal(component.postTags);
+    }));
   });
 });

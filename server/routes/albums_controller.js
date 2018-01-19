@@ -18,7 +18,6 @@ export default (router, sequelize) => {
       sequelize.models.albums[method]({where: {type: type}})
         .then(data => data? res.json(data) : res.status(404).send())
         .catch(err => res.send(err));
-
   })
 };
 

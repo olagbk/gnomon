@@ -35,6 +35,7 @@ export class ActivatedRouteStub {
 }
 
 export class RouterStub {
+  url: string;
   navigate(commands: string[], extras: any) { return Promise.resolve(true); }
 }
 

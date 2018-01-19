@@ -142,13 +142,8 @@ describe('BlogService', () => {
         body.tags.should.deep.equal(['post']);
       });
     }));
-    it('should return a promise of post & tags', async(() => {
-      service.editPost(mockResponse.post, ['post']).then(res => {
-        res.post.should.equal(mockResponse.post);
-        res.tags.should.equal(mockResponse.tags);
-      });
-    }));
   });
+
   describe('Create post', () => {
     let mockResponse: {post: Post, tags: Tag[]};
 
@@ -170,12 +165,6 @@ describe('BlogService', () => {
         const body = JSON.parse(mockBackend.connectionsArray[0].request.getBody());
         body.post.should.deep.equal(mockResponse.post);
         body.tags.should.deep.equal(['post']);
-      });
-    }));
-    it('should return a promise of post & tags', async(() => {
-      service.createPost(mockResponse.post, ['post']).then(res => {
-        res.post.should.equal(mockResponse.post);
-        res.tags.should.equal(mockResponse.tags);
       });
     }));
   });
