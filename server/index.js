@@ -1,6 +1,8 @@
 'use strict';
 
 import express from 'express';
+import compression from 'compression';
+import helmet from 'helmet';
 import path from 'path';
 
 import api from './api';
@@ -11,6 +13,9 @@ const port = process.env.PORT || '3000';
 // Parsers for POST data
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(compression());
+app.use(helmet());
 
 app.use(express.static(path.join(path.resolve(), 'dist/public')));
 
