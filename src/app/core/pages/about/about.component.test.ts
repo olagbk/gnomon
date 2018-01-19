@@ -33,7 +33,7 @@ describe('AboutComponent', () => {
       declarations: [ AboutComponent, ContactFormComponent ],
       schemas: [ NO_ERRORS_SCHEMA ],
       imports: [ FormsModule ],
-      providers: [{provide: MailerService, useClass: MailerServiceStub}]
+      providers: [{ provide: MailerService, useClass: MailerServiceStub } ]
     });
     fixture = TestBed.createComponent(AboutComponent);
     component = fixture.componentInstance;
@@ -57,6 +57,10 @@ describe('AboutComponent', () => {
     component.contact.form.form.markAsDirty();
     component.canDeactivate();
     spy.calledOnce.should.be.true;
+  });
+  it('should not guard if form is not in the DOM', () => {
+    component.contact.form = null;
+    component.canDeactivate().should.be.true;
   });
   it('should not guard if the user did not type anything', () => {
     component.contact.form.form.markAsTouched();

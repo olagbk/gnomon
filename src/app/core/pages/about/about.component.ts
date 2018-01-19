@@ -14,7 +14,7 @@ export class AboutComponent implements OnInit {
   ngOnInit() { }
 
   canDeactivate(): boolean {
-    if (this.contact.form.dirty) {
+    if (this.contact.form && this.contact.form.dirty) {
       return confirm(`Your message has not been sent. Are you sure you want to leave this page?`);
     } else {
       return true;
