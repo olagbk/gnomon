@@ -3,23 +3,35 @@
 
     <div class="dark-container post m-md-2 m-lg-3">
 
-      <a class="back link" routerLink="/blog">&larr; back</a>
+      <a class="back link"
+         routerLink="/blog">&larr; back
+      </a>
 
       <h4 class="title text-light">{{post?.title}}</h4>
 
       <span class="created-at">{{post?.createdAt | date:'longDate' }}</span>
-      <span class="updated-at mb-2" *ngIf="post?.createdAt !== post?.updatedAt">Last updated on {{post?.updatedAt | date:'longDate'}}</span>
+      <span class="updated-at mb-2"
+            *ngIf="post?.createdAt !== post?.updatedAt">Last updated on {{post?.updatedAt | date:'longDate'}}
+      </span>
 
-      <app-tags [tags]="post?.tags" (tagSelected)="searchTag($event)"></app-tags>
+      <app-tags [tags]="post?.tags"
+                (tagSelected)="searchTag($event)">
+      </app-tags>
 
-      <p #text class="text mt-3" [innerHTML]="post?.body"></p>
-      <a class="back link" routerLink="/blog">&larr; back</a>
+      <p #text class="text mt-3"
+         [innerHTML]="post?.body">
+      </p>
+
+      <a class="back link"
+         routerLink="/blog">&larr; back
+      </a>
     </div>
-    <disqus [identifier]="'/blog/' + post?.id"></disqus>
 
+    <disqus [identifier]="'/blog/' + post?.id"></disqus>
   </div>
 
   <div class="recent-col col-12 col-lg-3 p-4 justify-content-start text-center">
+
     <h5 class="dark-container recent-header p-3">Recent posts</h5>
 
     <a class="recent-post dark-container p-3 my-3"
@@ -37,7 +49,6 @@
          [ellipsis-word-boundaries]="' \n'"
          [innerHTML]="post.body">
       </p>
-
     </a>
   </div>
 </div>

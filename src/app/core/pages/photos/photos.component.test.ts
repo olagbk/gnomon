@@ -24,7 +24,7 @@ describe('PhotosComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PhotosComponent, AlbumThumbComponent ],
-      providers: [{provide: AlbumsService, useClass: AlbumsServiceStub}],
+      providers: [{ provide: AlbumsService, useClass: AlbumsServiceStub }],
       schemas: [ NO_ERRORS_SCHEMA ]
     });
     albums = TestBed.get(AlbumsService);
@@ -37,8 +37,7 @@ describe('PhotosComponent', () => {
     should().exist(component);
   });
   it('should show spinner until the albums are loaded', () => {
-    let spinnerEl;
-    spinnerEl = fixture.debugElement.query(By.css('app-spinner'));
+    let spinnerEl = fixture.debugElement.query(By.css('app-spinner'));
     should().exist(spinnerEl);
     component.albumsLoaded = true;
     fixture.detectChanges();
@@ -46,8 +45,7 @@ describe('PhotosComponent', () => {
     should().not.exist(spinnerEl);
   });
   it('should hide album thumbnails until all images are loaded', () => {
-    let thumbsEl;
-    thumbsEl = fixture.debugElement.query(By.css('div'));
+    const thumbsEl = fixture.debugElement.query(By.css('div'));
     thumbsEl.styles.visibility.should.equal('hidden');
     component.albumsLoaded = true;
     fixture.detectChanges();

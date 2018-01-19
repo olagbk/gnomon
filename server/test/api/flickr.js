@@ -31,7 +31,7 @@ describe('/Flickr test', () => {
   });
 
   it('should handle authorization errors', done => {
-    const authStub = sinon.stub(flickrService, 'authenticate').returns(new Error());
+    const stub = sinon.stub(flickrService, 'authenticate').rejects(new Error());
 
     chai.request(server)
       .get('/api/flickr')
@@ -40,7 +40,7 @@ describe('/Flickr test', () => {
 
         should.exist(err);
         err.status.should.equal(500);
-        authStub.restore();
+        stub.restore();
         done();
       });
   });

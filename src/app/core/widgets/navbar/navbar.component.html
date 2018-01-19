@@ -1,33 +1,85 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLinks"
-          aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation"
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navLinks"
+          aria-controls="navLinks"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
           (click)="isCollapsed = !isCollapsed">
+
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="navbar-collapse" [collapse]="!isCollapsed" id="navLinks">
+  <div class="navbar-collapse"
+       [collapse]="!isCollapsed"
+       id="navLinks">
+
     <ul class="navbar-nav m-auto p-4 p-lg-0">
-      <li class="home-button align-self-center px-2 m-2"  (click)="isCollapsed = false">
-        <a class="nav-link p-2" routerLink="/home" routerLinkActive="active"> g </a>
+
+      <li class="home-button align-self-center px-2 m-2"
+          (click)="isCollapsed = false">
+
+        <a class="nav-link p-2"
+           routerLink="/home"
+           routerLinkActive="active"
+        > g </a>
       </li>
-      <li class="nav-item" (click)="isCollapsed = false">
-        <a class="nav-link" routerLink="/blog" routerLinkActive="active"> blog </a>
+
+      <li class="nav-item"
+          (click)="isCollapsed = false">
+
+        <a class="nav-link"
+           routerLink="/blog"
+           routerLinkActive="active"
+        > blog </a>
       </li>
-      <li class="nav-item" (click)="isCollapsed = false">
-        <a class="nav-link" routerLink="/drawings" routerLinkActive="active"> drawings </a>
+
+      <li class="nav-item"
+          (click)="isCollapsed = false">
+
+        <a class="nav-link"
+           routerLink="/drawings"
+           routerLinkActive="active"
+        > drawings </a>
       </li>
-      <li class="nav-item" (click)="isCollapsed = false">
-        <a class="nav-link" routerLink="/sketches" routerLinkActive="active"> sketches </a>
+
+      <li class="nav-item"
+          (click)="isCollapsed = false">
+
+        <a class="nav-link"
+           routerLink="/sketches"
+           routerLinkActive="active"
+        > sketches </a>
       </li>
-      <li class="nav-item" (click)="isCollapsed = false">
-        <a class="nav-link" routerLink="/photos" routerLinkActive="active"> photographs </a>
+
+      <li class="nav-item"
+          (click)="isCollapsed = false">
+
+        <a class="nav-link"
+           routerLink="/photos"
+           routerLinkActive="active"
+        > photographs </a>
       </li>
-      <li class="nav-item" (click)="isCollapsed = false">
-        <a class="nav-link" routerLink="/about" routerLinkActive="active"> about </a>
+
+      <li class="nav-item"
+          (click)="isCollapsed = false">
+
+        <a class="nav-link"
+           routerLink="/about"
+           routerLinkActive="active"
+        > about </a>
       </li>
-      <li *ngIf="isAdmin" class="nav-item" (click)="isCollapsed = false">
-        <a class="nav-link admin-link" routerLink="/admin" routerLinkActive="active"> admin </a>
+
+      <li *ngIf="isAdmin"
+          class="nav-item"
+          (click)="isCollapsed = false">
+
+        <a class="nav-link admin-link"
+           routerLink="/admin"
+           routerLinkActive="active"
+        > admin </a>
       </li>
     </ul>
   </div>

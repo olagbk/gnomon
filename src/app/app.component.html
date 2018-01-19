@@ -1,9 +1,19 @@
-<div class="background-wrapper" [style.background-image]="'url(' + backgroundUrl + ')'">
-  <img [src]="imgPreloadUrl" (load)="backgroundUrl = imgPreloadUrl" hidden>
+<div class="background-wrapper"
+     [style.background-image]="'url(' + backgroundUrl + ')'">
+
+  <img [src]="imgPreloadUrl"
+       (load)="backgroundUrl = imgPreloadUrl"
+       hidden>
+
   <app-spinner *ngIf="!backgroundUrl"></app-spinner>
 </div>
-<div *ngIf="backgroundUrl" class="wrapper d-flex justify-content-center">
+
+<div *ngIf="backgroundUrl"
+     class="wrapper d-flex justify-content-center">
+
   <app-navbar></app-navbar>
+
   <router-outlet (deactivate)="scrollToTop()"></router-outlet>
+
   <footer>Boguo's Gnomon &copy; {{currentYear}}. Designed & developed by Aleksandra Gabka.</footer>
 </div>

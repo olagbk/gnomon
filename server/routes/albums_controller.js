@@ -6,7 +6,7 @@ export default (router, sequelize) => {
     .get((req, res) => {
       sequelize.models.albums.findAll()
         .then(data => res.json(data))
-        .catch(err => res.send(err))
+        .catch(err => res.status(500).send(err))
     });
 
   router.route('/albums/:type')
@@ -17,7 +17,7 @@ export default (router, sequelize) => {
 
       sequelize.models.albums[method]({where: {type: type}})
         .then(data => data? res.json(data) : res.status(404).send())
-        .catch(err => res.send(err));
+        .catch(err => res.status(500).send(err));
   })
 };
 

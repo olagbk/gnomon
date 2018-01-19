@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 // stubs
 import { BsModalServiceStub } from '../../test/third-party.stubs';
 import { BlogServiceStub } from '../../test/service.stubs';
-import { RouterStub } from '../../test/routing.stubs';
+import { RouterStub, RouterLinkStubDirective } from '../../test/routing.stubs';
 
 // dependencies
 import { BsModalService } from 'ngx-bootstrap';
@@ -31,7 +31,7 @@ describe('AdminBlogComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminBlogComponent ],
+      declarations: [ AdminBlogComponent, RouterLinkStubDirective ],
       providers: [{
         provide: BlogService, useClass: BlogServiceStub
       }, {
@@ -102,7 +102,7 @@ describe('AdminBlogComponent', () => {
     const oldPosts = component.posts.slice(0);
     const blog = TestBed.get(BlogService);
 
-    sinon.stub(blog, 'deletePost').returns(Promise.reject({status: 500}));
+    sinon.stub(blog, 'deletePost').rejects({status: 500});
 
     component.openModal(component.posts[0]);
     component.deletePost();
@@ -115,7 +115,7 @@ describe('AdminBlogComponent', () => {
     const router = TestBed.get(Router);
     const spy = sinon.spy(router, 'navigate');
 
-    sinon.stub(blog, 'deletePost').returns(Promise.reject({status: 401}));
+    sinon.stub(blog, 'deletePost').rejects({status: 401});
 
     component.openModal(component.posts[0]);
     component.deletePost();
@@ -135,4 +135,25 @@ describe('AdminBlogComponent', () => {
     const deleted = component.posts.find(p => p === post);
     should().not.exist(deleted);
   }));
+  it('should go to post editor when new post is clicked', () => {
+    fixture.detectChanges();
+    const el = fixture.debugElement.query(By.css('.new'));
+    const dir = el.injector.get(RouterLinkStubDirective);
+    el.triggerEventHandler('click', null);
+    dir.navigatedTo.should.equal('new');
+  });
+  it('should go to post editor when post title is clicked', () => {
+    fixture.detectChanges();
+    const el = fixture.debugElement.query(By.css('.title'));
+    const dir = el.injector.get(RouterLinkStubDirective);
+    el.triggerEventHandler('click', null);
+    dir.navigatedTo.should.equal('1');
+  });
+  it('should go to post editor when edit button is clicked', () => {
+    fixture.detectChanges();
+    const el = fixture.debugElement.query(By.css('.edit'));
+    const dir = el.injector.get(RouterLinkStubDirective);
+    el.triggerEventHandler('click', null);
+    dir.navigatedTo.should.equal('1');
+  });
 });

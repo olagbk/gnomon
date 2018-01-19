@@ -2,8 +2,10 @@
 <!--navigation-->
 
 <div class="buttons d-flex">
-  <a class="button-link" routerLink="../">Back</a>
-  <a class="button-link" (click)="savePost()">Save</a>
+  <a class="button-link"
+     routerLink="../">Back</a>
+  <a class="button-link"
+     (click)="savePost()">Save</a>
 </div>
 
 <div class="container" *ngIf="post">
@@ -39,7 +41,12 @@
   <!--post editor-->
 
   <div class="form-group">
-    <input type="text" class="title form-control rounded-0" id="title" title="title" [(ngModel)]="post.title" name="title">
+    <input type="text"
+           class="title form-control rounded-0"
+           id="title"
+           title="title"
+           name="title"
+           [(ngModel)]="post.title" >
   </div>
 
   <quill-editor #editor

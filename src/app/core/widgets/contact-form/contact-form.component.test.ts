@@ -27,7 +27,7 @@ describe('ContactFormComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule ],
-      providers: [ {provide: MailerService, useClass: MailerServiceStub} ],
+      providers: [{ provide: MailerService, useClass: MailerServiceStub }],
       declarations: [ ContactFormComponent ],
       schemas: [ NO_ERRORS_SCHEMA ]
     });

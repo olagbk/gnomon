@@ -78,6 +78,7 @@ export class ContactFormComponent implements OnInit {
         this.processing = false;
       })
       .catch(err => {
+        console.log(err);
         this.processing = false;
         this.error = true;
       });

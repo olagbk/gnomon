@@ -1,12 +1,19 @@
 <div class="gallery-wrapper px-5 mt-3 mt-md-4">
 
-  <div [ngSwitch]="true" class="d-flex justify-content-center">
+  <div [ngSwitch]="true"
+       class="d-flex justify-content-center">
 
-    <p *ngSwitchCase="galleryError" class="error-message p-3">Couldn't fetch images :(</p>
+    <p *ngSwitchCase="galleryError"
+       class="error-message p-3">Couldn't fetch images :(</p>
 
-    <div class="gallery-loaded" *ngSwitchCase="galleryLoaded">
+    <div class="gallery-loaded"
+         *ngSwitchCase="galleryLoaded">
 
-      <app-pagination [items]="totalItems" [perPage]="perPage" [perPageOpts]="perPageOpts" (perPageChanged)="perPageChange($event)"></app-pagination>
+      <app-pagination [items]="totalItems"
+                      [perPage]="perPage"
+                      [perPageOpts]="perPageOpts"
+                      (perPageChanged)="perPageChange($event)">
+      </app-pagination>
 
       <div class="row justify-content-center">
 
@@ -24,10 +31,6 @@
     <app-spinner *ngSwitchDefault></app-spinner>
 
   </div>
-
-
-
-
 
 </div>
 

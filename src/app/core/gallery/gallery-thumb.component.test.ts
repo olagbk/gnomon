@@ -28,14 +28,19 @@ describe('GalleryThumbComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ GalleryThumbComponent ],
       providers: [
-        {provide: GalleryService, useClass: GalleryServiceStub}
+        { provide: GalleryService, useClass: GalleryServiceStub }
       ]
     });
     fixture = TestBed.createComponent(GalleryThumbComponent);
     gallery = TestBed.get(GalleryService);
+
     thumbEl = fixture.debugElement.query(By.css('.image-frame'));
     component = fixture.componentInstance;
-    component.image = {src: '.././../assets/gnomon.png', thumbnail: '.././../assets/gnomon.png', text: 'gnomon'};
+    component.image = {
+      src: '.././../assets/gnomon.png',
+      thumbnail: '.././../assets/gnomon.png',
+      text: 'gnomon'
+    };
     fixture.detectChanges();
   });
 

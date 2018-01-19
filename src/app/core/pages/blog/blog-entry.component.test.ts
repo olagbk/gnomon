@@ -29,11 +29,11 @@ describe('BlogEntryComponent', () => {
     TestBed.configureTestingModule({
       declarations: [BlogEntryComponent, RouterLinkStubDirective],
       providers: [
-        {provide: BlogService, useClass: BlogServiceStub},
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub},
-        {provide: Router, useClass: RouterStub}
+        { provide: BlogService, useClass: BlogServiceStub },
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+        { provide: Router, useClass: RouterStub }
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [ NO_ERRORS_SCHEMA ]
     });
     blog = TestBed.get(BlogService);
     router = TestBed.get(Router);

@@ -128,6 +128,17 @@ describe('LoginComponent', () => {
     component.login();
     tick();
     spy.calledWith(['/admin']).should.be.true;
+    spy.restore();
+  }));
+  it('should navigate to previous URL if forced to relog', fakeAsync(() => {
+    const router = TestBed.get(Router);
+    const activatedRoute = TestBed.get(ActivatedRoute);
+    const spy = sinon.spy(router, 'navigate');
+    activatedRoute.testQueryParams = {redirectTo: '/admin/posts/new'};
+    component.login();
+    tick();
+    spy.called.should.be.true;
+    //spy.calledWith(['/admin/post/new']).should.be.true;
   }));
   it('should not emit loggedIn and redirect if authentication fails', fakeAsync(() => {
     const router = TestBed.get(Router);
@@ -153,7 +164,7 @@ describe('LoginComponent', () => {
     should().exist(msgEl);
     component.error.should.equal('Password is incorrect.');
     msgEl.nativeElement.textContent.should.equal(component.error);
-  }))
+  }));
 });
 
 

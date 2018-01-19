@@ -52,10 +52,8 @@ const declarations: Array<any> = [
   NavbarComponent,
   ContactFormComponent,
   TagsComponent,
-
   GalleryComponent,
   GalleryThumbComponent,
-
   HomeComponent,
   BlogComponent,
   BlogEntryComponent,
@@ -66,13 +64,11 @@ const declarations: Array<any> = [
   AlbumThumbComponent,
   AboutComponent,
   LoginComponent,
-
   TagSortPipe
 ];
 const imports: Array<any> = [
   AppRoutingModule,
   SharedModule,
-
   CommonModule,
   BrowserAnimationsModule,
   EllipsisModule,

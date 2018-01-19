@@ -8,7 +8,7 @@ export default (router, sequelize) => {
     .post((req, res) => {
       mailer.sendEmail(req.body)
         .then(() => res.json('sent'))
-        .catch(err => res.status(500).send(err));
+        .catch(err => res.status(502).send(err));
     });
 };
 

@@ -6,7 +6,10 @@
 
     <div class="row justify-content-center">
 
-      <app-album-thumb *ngFor="let album of albums; let i = index" [album]="album" (addBackground)="addThumb()"></app-album-thumb>
+      <app-album-thumb *ngFor="let album of albums; let i = index"
+                       [album]="album"
+                       (addBackground)="addThumb()">
+      </app-album-thumb>
 
     </div>
 

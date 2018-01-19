@@ -25,7 +25,7 @@ describe('SketchesComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ SketchesComponent, GalleryStubComponent ],
-      providers: [{provide: AlbumsService, useClass: AlbumsServiceStub}]
+      providers: [{ provide: AlbumsService, useClass: AlbumsServiceStub }]
     });
     fixture = TestBed.createComponent(SketchesComponent);
     component = fixture.componentInstance;

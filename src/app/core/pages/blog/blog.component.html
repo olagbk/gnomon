@@ -1,17 +1,28 @@
 <div class="container px-md-5">
 
-  <app-pagination *ngIf="filteredPosts" [items]="filteredPosts.getValue().length" [perPage]="perPage" [perPageOpts]="perPageOpts" (perPageChanged)="perPageChange($event)"></app-pagination>
+  <app-pagination *ngIf="filteredPosts"
+                  [items]="filteredPosts.getValue().length"
+                  [perPage]="perPage"
+                  [perPageOpts]="perPageOpts"
+                  (perPageChanged)="perPageChange($event)">
+  </app-pagination>
 
   <div class="tags dark-container p-3 mb-2">
 
     <ng-container *ngIf="activeTags.length > 0">
 
-      <a class="small-link reset" (click)="deleteAllTags()">[ reset ]</a>
+      <a class="small-link reset"
+         (click)="deleteAllTags()">[ reset ]
+      </a>
 
       <span class="stack-tags">
 
         <label class="custom-control custom-checkbox small-link">
-          <input type="checkbox" class="custom-control-input" [ngModel]="stackTags" (ngModelChange)="toggleStacking($event)">
+          <input type="checkbox"
+                 class="custom-control-input"
+                 [ngModel]="stackTags"
+                 (ngModelChange)="toggleStacking($event)">
+
           <span class="custom-control-indicator"></span>
           <span class="custom-control-description">Stack tags?</span>
         </label>
@@ -26,9 +37,7 @@
              (click)="toggleTagMode()">all
           </a>
         </span>
-
       </span>
-
     </ng-container>
 
     <app-tags [tags]="activeTags"
@@ -43,7 +52,10 @@
               (tagSelected)="addTag($event)"
               (tagsExpanded)="tagsExpanded = true">
     </app-tags>
-    <a class="small-link more" *ngIf="!tagsExpanded" (click)="tagsExpanded = true">more...</a>
+    <a class="small-link more"
+       *ngIf="!tagsExpanded"
+       (click)="tagsExpanded = true">more...
+    </a>
 
     <ng-container *ngIf="tagsExpanded">
 
@@ -65,8 +77,11 @@
 
   <ng-container *ngFor="let post of filteredPosts | async; let i = index">
 
-    <div class="dark-container post mb-4" *ngIf="perPage == -1 || currentPage * perPage - perPage <= i && i < currentPage * perPage">
-      <a class="link title mb-2" [routerLink]="post.id">{{ post.title }}</a>
+    <div class="dark-container post mb-4"
+         *ngIf="perPage == -1 || currentPage * perPage - perPage <= i && i < currentPage * perPage">
+      <a class="link title mb-2"
+         [routerLink]="post.id">{{ post.title }}
+      </a>
 
       <span class="created-at">{{post.createdAt | date }}</span>
 
@@ -85,4 +100,5 @@
 
   </ng-container>
 </div>
+
 <app-scroll></app-scroll>

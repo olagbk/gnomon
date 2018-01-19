@@ -42,9 +42,10 @@ export default (router, sequelize) => {
         model: sequelize.models.tags,
         attributes: ['name']
       };
+      opts.order = [['createdAt', 'DESC']];
+
       if (req.query.count) {
         opts.limit = req.query.count;
-        opts.order = [['createdAt', 'DESC']];
       }
       sequelize.models.posts.findAll(opts)
         .then(posts => res.json(posts))

@@ -27,7 +27,10 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.perPage = (localStorage && localStorage.getItem('galleryPerPage')) ? Number(localStorage.getItem('galleryPerPage')) : 24;
+    this.perPage = (localStorage && localStorage.getItem('galleryPerPage'))
+      ? Number(localStorage.getItem('galleryPerPage'))
+      : 24;
+
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.currentPage = Number(params['page']) || 1;
       this.getImages();
@@ -38,6 +41,7 @@ export class GalleryComponent implements OnInit {
     this.galleryError = false;
     this.flickr.getImages({page: this.currentPage, perPage: this.perPage, album: this.album})
       .then(data => {
+
         this.totalItems = data.count;
         this.totalPages = Math.ceil(data.count / this.perPage);
         this.images = data.images;

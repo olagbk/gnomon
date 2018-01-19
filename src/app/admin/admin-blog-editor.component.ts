@@ -64,8 +64,10 @@ export class AdminBlogEditorComponent implements OnInit {
       })
       .catch(err => {
       if (err.status === 401) {
+
         const postToSave = { post: this.post, postTags: this.postTags };
         localStorage.setItem('post', JSON.stringify(postToSave));
+
         this.canRedirect = true;
         this.router.navigate(['/login'], {queryParams: {redirectTo: this.router.url}});
       } else {

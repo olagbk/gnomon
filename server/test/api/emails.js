@@ -84,14 +84,14 @@ describe('/Email test', () => {
   });
 
   it('send error response to the client', done => {
-    sinon.stub(mailerService, 'sendEmail').returns(new Error());
+    sinon.stub(mailerService, 'sendEmail').rejects(new Error());
 
     chai.request(server)
       .post(`/api/emails`)
       .send(testEmail)
       .end((err, res) => {
         should.exist(err);
-        err.status.should.equal(500);
+        err.status.should.equal(502);
 
         done();
       });

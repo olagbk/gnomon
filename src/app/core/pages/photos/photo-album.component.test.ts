@@ -22,13 +22,15 @@ describe('PhotoAlbumComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ PhotoAlbumComponent, RouterLinkStubDirective, GalleryStubComponent ],
-      providers: [
-        Renderer2,
-        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
-        ]
+      providers: [{
+          provide: ActivatedRoute,
+          useClass: ActivatedRouteStub
+        },
+        Renderer2
+      ]
     });
     activatedRoute = TestBed.get(ActivatedRoute);
-    activatedRoute.testParams = { album: '123456' };
+    activatedRoute.testParams = {album: '123456'};
 
     fixture = TestBed.createComponent(PhotoAlbumComponent);
     component = fixture.componentInstance;

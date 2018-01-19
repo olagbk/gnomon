@@ -19,7 +19,7 @@ export class AlbumsService {
       .toPromise()
       .then((data: Album[]) => this._albumData = data)
       .catch((err: any) => {
-        console.log(`Couldn't prefetch albums from the server.`);
+        console.log(`Couldn't prefetch albums from the server. ${err}`);
         Promise.resolve();
       });
   }

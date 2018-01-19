@@ -5,6 +5,7 @@
     <p class="album-title">{{album.name}}</p>
   </a>
 
-  <img [src]="path" (load)="setBackground(thumb)" hidden>
-
+  <img [src]="path"
+       (load)="setBackground(thumb)"
+       hidden>
 </div>

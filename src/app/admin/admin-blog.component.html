@@ -1,6 +1,6 @@
 <app-spinner-screen *ngIf="processing"></app-spinner-screen>
 
-<a class="button-link" routerLink="new">New post</a>
+<a class="button-link new" routerLink="new">New post</a>
 
 <div class="container p-5 rounded text-center">
 
@@ -15,27 +15,38 @@
   </div>
   <div class="row post align-items-center"
        *ngFor="let post of posts">
+
     <div class="col-2">{{post.createdAt | date}}</div>
     <div class="col-2">{{post.updatedAt | date}}</div>
-    <div class="col link">{{post.title}}</div>
+    <div class="col link title"
+         [routerLink]="post.id">{{post.title}}</div>
     <div class="col-1">
-      <a class="button-link edit" [routerLink]="post.id">Edit</a>
+      <a class="button-link edit"
+         [routerLink]="post.id">Edit</a>
     </div>
     <div class="col-1">
-      <a class="button-link delete" (click)="openModal(post)">Delete</a>
+      <a class="button-link delete"
+         (click)="openModal(post)"
+      >Delete</a>
     </div>
   </div>
 </div>
 
 <ng-template #template>
   <div class="modal-wrapper">
+
     <div class="modal-header">
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <button type="button"
+              class="close pull-right"
+              aria-label="Close"
+              (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+
     <div class="modal-body text-center">
       <span class="message m-5">Are you sure you want to delete <em>{{postToDelete.title}}</em>?</span>
+
       <div class="buttons d-flex">
         <a class="button-link" (click)="deletePost()">Hell Yeah</a>
         <a class="button-link" (click)="modalRef.hide()">Maybe not</a>
