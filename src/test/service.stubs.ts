@@ -18,9 +18,9 @@ export class AuthServiceStub {
 export class MailerServiceStub {
   error = false;
 
-  send(email: Email): Promise<any> {
+  send(email: Email, captcha: String): Promise<any> {
     if (this.error) {
-      return Promise.reject(null);
+      return Promise.reject(this.error);
     }
     return Promise.resolve();
   }

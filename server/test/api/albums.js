@@ -102,12 +102,11 @@ describe('Albums route', () => {
           });
       });
 
-      it('should return correctly formatted data', done => {
+      it('should return correctly formatted data', () => {
         should.not.exist(response.err);
         response.res.should.have.status(200);
         response.res.type.should.equal('application/json');
         response.res.body.should.be.an('object');
-        done();
       });
       it('should have the expected properties', () => {
         response.res.body.type.should.equal('sketches');

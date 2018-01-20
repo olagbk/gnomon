@@ -6,9 +6,10 @@ export default (router, sequelize) => {
 
   router.route('/emails')
     .post((req, res) => {
-      mailer.sendEmail(req.body)
+      mailer.verifyCaptcha(req.body.captcha)
+        .then(() => mailer.sendEmail(req.body.email))
         .then(() => res.json('sent'))
-        .catch(err => res.status(502).send(err));
+        .catch(err => res.status(err.status || 500).send(err));
     });
 };
 

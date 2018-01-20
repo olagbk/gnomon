@@ -34,7 +34,7 @@ describe('/Email test', () => {
 
     chai.request(server)
       .post(`/api/emails`)
-      .send(testEmail)
+      .send({email: testEmail, captcha: 'mockcaptcha'})
       .end((err, res) => {
 
         spy.calledOnce.should.be.true;
@@ -54,18 +54,18 @@ describe('/Email test', () => {
 
     chai.request(server)
       .post(`/api/emails`)
-      .send(testEmail)
+      .send({email: testEmail, captcha: 'mockcaptcha'})
       .end((err, res) => {
 
         spy.calledOnce.should.be.true;
 
-        const options = spy.firstCall.args[0];
-        options.should.have.keys('from', 'to', 'replyTo', 'subject', 'text');
-        options.from.should.equal('"yo mama" <yomama@gmail.com>');
-        options.replyTo.should.equal('"yo mama" <yomama@gmail.com>');
-        options.to.should.equal("somedude@gmail.com");
-        options.subject.should.equal("[GNOMON] sup");
-        options.text.should.equal("bruh");
+        const email = spy.firstCall.args[0];
+        email.should.have.keys('from', 'to', 'replyTo', 'subject', 'text');
+        email.from.should.equal('"yo mama" <yomama@gmail.com>');
+        email.replyTo.should.equal('"yo mama" <yomama@gmail.com>');
+        email.to.should.equal("somedude@gmail.com");
+        email.subject.should.equal("[GNOMON] sup");
+        email.text.should.equal("bruh");
 
         done();
       });
@@ -74,7 +74,7 @@ describe('/Email test', () => {
   it('should send success response to the client', done => {
     chai.request(server)
       .post(`/api/emails`)
-      .send(testEmail)
+      .send({email: testEmail, captcha: 'mockcaptcha'})
       .end((err, res) => {
         res.status.should.equal(200);
         res.body.should.equal('sent');
@@ -83,17 +83,42 @@ describe('/Email test', () => {
       });
   });
 
-  it('send error response to the client', done => {
-    sinon.stub(mailerService, 'sendEmail').rejects(new Error());
+  it('should send 502 response if nodemailer fails', done => {
+    mailer.error = true;
 
     chai.request(server)
       .post(`/api/emails`)
-      .send(testEmail)
+      .send({email: testEmail, captcha: 'mockcaptcha'})
       .end((err, res) => {
         should.exist(err);
         err.status.should.equal(502);
-
         done();
       });
+  });
+  it('should send 400 response if captcha is incorrect', done => {
+    const stub = sinon.stub(mailerService, 'getCaptchaResponse').resolves({success: false, 'error-codes': ['invalid-input-response']});
+
+    chai.request(server)
+      .post(`/api/emails`)
+      .send({email: testEmail})
+      .end((err, res) => {
+        should.exist(err);
+        err.status.should.equal(400);
+        stub.restore();
+        done();
+      });
+  });
+  it('should send 500 response if secret key is invalid', done => {
+    mockConfig.recaptcha.secretKey = "fakeSecretKey";
+
+    chai.request(server)
+      .post(`/api/emails`)
+      .send({email: testEmail, captcha: 'mockcaptcha'})
+      .end((err, res) => {
+        should.exist(err);
+        err.status.should.equal(500);
+        done();
+      });
+
   })
 });

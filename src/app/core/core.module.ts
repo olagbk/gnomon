@@ -46,6 +46,7 @@ import { MailerService } from './widgets/contact-form/mailer.service';
 import { TagSortPipe } from './widgets/tags/sort.pipe';
 
 // config
+import { config } from '../../config/config';
 import { galleryConfig } from './gallery/gallery.config';
 
 const declarations: Array<any> = [
@@ -87,7 +88,7 @@ const providers: Array<any> = [
   MailerService,
   {
     provide: RECAPTCHA_SETTINGS,
-    useValue: { siteKey: '6LfB2jkUAAAAAAM_uaJSpcoLZk3mEe1Sh17ShDcN' } as RecaptchaSettings,
+    useValue: { siteKey: config.recaptcha.siteKey, theme: 'dark' } as RecaptchaSettings,
   },
 ];
 

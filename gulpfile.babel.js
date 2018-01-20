@@ -39,6 +39,10 @@ gulp.task('transpile', ['clean'], () => {
   });
 });
 
+gulp.task('build-prod', ['transpile'], cb => {
+  exec('ng build --prod --aot=false', cb)
+});
+
 gulp.task('build', ['transpile', 'ng-build']);
 
 gulp.task('ng-build', cb => {

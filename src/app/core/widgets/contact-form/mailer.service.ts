@@ -7,8 +7,8 @@ import 'rxjs/add/operator/toPromise';
 export class MailerService {
 
   constructor(private http: Http) { }
-  send(email: Email): Promise<any> {
-    return this.http.post('/api/emails', email).toPromise()
+  send(email: Email, captcha: string): Promise<any> {
+    return this.http.post('/api/emails', {email: email, captcha: captcha}).toPromise()
       .then(response => response.json());
   }
 

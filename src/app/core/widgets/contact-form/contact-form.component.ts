@@ -64,6 +64,7 @@ export class ContactFormComponent implements OnInit {
   submitted = false;
   formVisible = false;
   captcha: string;
+  captchaResponse: string;
   @ViewChild('contactForm') form: NgForm;
 
   constructor(private mailer: MailerService) { }
@@ -72,13 +73,13 @@ export class ContactFormComponent implements OnInit {
 
   sendEmail() {
     this.processing = true;
-    this.mailer.send(this.model)
+    this.mailer.send(this.model, this.captcha)
       .then(res => {
         this.submitted = true;
         this.processing = false;
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.message || err.name || err.statusText || err);
         this.processing = false;
         this.error = true;
       });

@@ -67,10 +67,11 @@ describe('ContactFormComponent', () => {
     spy.called.should.equal(true);
     component.submitted.should.equal(true);
   }));
-  it('should pass email object to mailer service', () => {
+  it('should pass email object and captcha to mailer service', () => {
     const spy = sinon.spy(mailer, 'send');
+    component.captcha = 'captchastring';
     component.sendEmail();
-    spy.calledWith(component.model).should.be.true;
+    spy.calledWith(component.model, component.captcha).should.be.true;
   });
   it('should set processing status while email is being sent', fakeAsync(() => {
     component.processing.should.equal(false);
@@ -116,7 +117,7 @@ describe('ContactFormComponent', () => {
     should().exist(messageEl);
     messageEl.nativeElement.textContent.should.include('sent');
   });
-  it('should handle sending errors', fakeAsync(() => {
+  it('should handle mailer errors', fakeAsync(() => {
     mailer.error = true;
     component.sendEmail();
     tick();

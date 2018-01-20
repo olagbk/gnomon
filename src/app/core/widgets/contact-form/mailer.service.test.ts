@@ -26,7 +26,7 @@ describe('MailerService', () => {
   it('should be created', inject([MailerService], (service: MailerService) => {
     should().exist(service);
   }));
-  it('should send a request with email in body', async(inject([MailerService], (service: MailerService) => {
+  it('should send a request with email and captcha in body', async(inject([MailerService], (service: MailerService) => {
     const mockBackend = TestBed.get(XHRBackend);
     const mockEmail = new Email('Ola', 'ola@email.com', 'Subject', 'Message');
     const mockResponse = 'sent';
@@ -39,9 +39,10 @@ describe('MailerService', () => {
       connection.mockRespond(response);
     });
 
-    service.send(mockEmail).then(res => {
-      const body = mockBackend.connectionsArray[0].request.getBody();
-      JSON.parse(body).should.deep.equal(mockEmail);
+    service.send(mockEmail, 'mockcaptcha').then(res => {
+      const body = JSON.parse(mockBackend.connectionsArray[0].request.getBody());
+      body.email.should.deep.equal(mockEmail);
+      body.captcha.should.equal('mockcaptcha');
       res.should.equal(mockResponse);
     });
   })));
