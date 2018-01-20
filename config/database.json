@@ -20,7 +20,6 @@
     "username": "reis",
     "password": "sever0s",
     "host": "/cloudsql/boguosgnomon:europe-west3:gnomon",
-    "port": 5431,
     "dialect": "postgres"
   }
 }
