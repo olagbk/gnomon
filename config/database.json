@@ -16,11 +16,11 @@
     "dialect": "postgres"
   },
   "production": {
-    "database": "daq0sbtvldq39s",
-    "username": "tdjoenszrauwdj",
-    "password": "82cdaf02541200afd3954349e13d88ce1eecd6b24dd97d7072bf6e387fc5a221",
-    "host": "ec2-107-22-167-179.compute-1.amazonaws.com",
-    "port": 5432,
+    "database": "postgres",
+    "username": "reis",
+    "password": "sever0s",
+    "host": "/cloudsql/boguosgnomon:europe-west3:gnomon",
+    "port": 5431,
     "dialect": "postgres"
   }
 }
