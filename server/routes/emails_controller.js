@@ -9,7 +9,7 @@ export default (router, sequelize) => {
       mailer.verifyCaptcha(req.body.captcha)
         .then(() => mailer.sendEmail(req.body.email))
         .then(() => res.json('sent'))
-        .catch(err => res.status(err.status || 500).send(err));
+        .catch(err => res.status(err.status || 500).send(err.message || err));
     });
 };
 

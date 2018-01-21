@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Response } from '@angular/http';
 import { Email } from './email';
 import { MailerService } from './mailer.service';
 
@@ -64,27 +65,26 @@ export class ContactFormComponent implements OnInit {
   submitted = false;
   formVisible = false;
   captcha: string;
-  captchaResponse: string;
   @ViewChild('contactForm') form: NgForm;
 
   constructor(private mailer: MailerService) { }
 
-  ngOnInit() { }
+  ngOnInit(): void { }
 
-  sendEmail() {
+  sendEmail(): void {
     this.processing = true;
     this.mailer.send(this.model, this.captcha)
       .then(res => {
         this.submitted = true;
         this.processing = false;
       })
-      .catch(err => {
-        console.log(err.message || err.name || err.statusText || err);
+      .catch((err: Response) => {
+        console.log(err.json());
         this.processing = false;
         this.error = true;
       });
   }
-  toggleForm() {
+  toggleForm(): void {
     this.formVisible = !this.formVisible;
   }
 }
