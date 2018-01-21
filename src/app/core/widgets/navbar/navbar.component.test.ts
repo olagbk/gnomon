@@ -44,7 +44,7 @@ describe('NavbarComponent', () => {
     const homeEl = linkEls[0];
     const homeD = homeEl.injector.get(RouterLinkStubDirective);
     homeEl.triggerEventHandler('click', null);
-    homeD.navigatedTo.should.equal('/home');
+    homeD.navigatedTo.should.equal('/');
 
     const blogEl = linkEls[1];
     const blogD = blogEl.injector.get(RouterLinkStubDirective);

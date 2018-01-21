@@ -1,4 +1,5 @@
 import { EventEmitter, Output } from '@angular/core';
+import { Response, ResponseOptions } from '@angular/http';
 import { Album } from '../app/core/gallery/album';
 import { Email } from '../app/core/widgets/contact-form/email';
 import { FlickrParams } from '../app/core/gallery/flickr-params';
@@ -20,7 +21,7 @@ export class MailerServiceStub {
 
   send(email: Email, captcha: String): Promise<any> {
     if (this.error) {
-      return Promise.reject(this.error);
+      return Promise.reject(new Response(new ResponseOptions()));
     }
     return Promise.resolve();
   }

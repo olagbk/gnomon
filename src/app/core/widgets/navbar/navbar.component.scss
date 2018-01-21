@@ -20,34 +20,35 @@ nav {
   text-transform: uppercase;
   text-shadow: .5px .5px 1px $gray-600;
   letter-spacing: 1px;
-  &:after {
-    height: 0;
+  &.active:after {
     content: '';
     display: block;
     position: relative;
     background: $navbar-dark-active-color;
     top: -(.75 * $navbar-font);
-    transition: 0.5s ease;
-  }
-  &.active:after{
+    transition: 0.25s ease;
     height: 1px;
   }
-  &:not(.active) {
-    &:after {
-      content: '';
-      display: block;
-      height: 1px;
-      width: 0;
-      top: 0;
-      background: transparent;
-      transition: width .25s ease, background-color .5s ease;
-    }
-    &:hover:after {
-      width: 100%;
-      background: $navbar-dark-hover-color;
-    }
+  &.active:hover:after {
+    display: block;
+    //width: 100%;
+    top: 0;
+  }
+  &:not(.active):after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 0;
+    top: 0;
+    background: transparent;
+    transition: width .25s ease, background-color .5s ease;
+  }
+  &:not(.active):hover:after {
+    width: 100%;
+    background: $navbar-dark-hover-color;
   }
 }
+
 .home-button {
   position: absolute;
   left: 0;

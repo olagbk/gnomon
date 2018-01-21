@@ -30,11 +30,6 @@ export class CanDeactivateGuard implements CanDeactivate<CanComponentDeactivate>
 export const routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
     component: HomeComponent
   },
   {
@@ -77,7 +72,7 @@ export const routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: ''
   }
 ];
 

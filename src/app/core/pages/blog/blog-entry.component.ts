@@ -16,6 +16,7 @@ export class BlogEntryComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private blog: BlogService) { }
 
   ngOnInit(): void {
+    window.scroll(0, 0);
     this.activatedRoute.params.subscribe(params => {
       this.blog.getPost(params.id).then(post => {
         if (!post) { this.router.navigate(['blog']); }

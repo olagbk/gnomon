@@ -15,6 +15,7 @@ export class PhotosComponent implements OnInit {
   constructor(private albumsService: AlbumsService) { }
 
   ngOnInit() {
+    window.scroll(0, 0);
     this.albums = this.albumsService.getPhotos();
   }
   addThumb() {

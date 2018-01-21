@@ -100,19 +100,6 @@ describe('AppComponent', () => {
     should().exist(outletEl);
     should().exist(footerEl);
   });
-  it('should scroll to top when user navigates away', () => {
-    component.backgroundUrl = '../assets/gnomon.png';
-    fixture.detectChanges();
-
-    const window = fixture.nativeElement.ownerDocument.defaultView;
-    const outletEl = fixture.debugElement.query(By.css('router-outlet'));
-
-    window.scrollTo(300, 300);
-    outletEl.triggerEventHandler('deactivate', null);
-
-    window.scrollX.should.equal(0);
-    window.scrollY.should.equal(0);
-  });
   it('footer should contain current year and copyright symbol', () => {
     const date = new Date();
     const year = date.getFullYear();
@@ -159,15 +146,15 @@ describe('App routing', () => {
     fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
   });
-  it('navigate to "" redirects you to /home', fakeAsync(() => {
+  it('navigate to "" redirects you to home', fakeAsync(() => {
     router.navigate(['']);
     tick();
-    location.path().should.equal('/home');
+    location.path().should.equal('/');
   }));
-  it('navigate to non-existing path redirects you to /home', fakeAsync(() => {
+  it('navigate to non-existing path redirects you to home', fakeAsync(() => {
     router.navigate(['fakepath']);
     tick();
-    location.path().should.equal('/home');
+    location.path().should.equal('/');
   }));
   it('navigate to blog', fakeAsync(() => {
     router.navigate(['blog']);

@@ -16,8 +16,4 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {}
-
-  scrollToTop() {
-    window.scroll(0, 0);
-  }
 }
